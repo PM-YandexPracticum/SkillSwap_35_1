@@ -1,0 +1,152 @@
+[
+    {
+    "id": "user1",
+    "name": "Иван",
+    "city": "Санкт-Петербург",
+    "age": 34,
+    "avatar": "/avatars/user1.jpg",
+    "gender": "male",
+    "email": "ivan@test.ru",
+    "password": "12345"
+    },
+    {
+    "id": "user2",
+    "name": "Анна",
+    "city": "Казань",
+    "age": 26,
+    "gender": "female",
+    "avatar": "/avatars/user2.jpg",
+    "email": "anna@test.ru",
+    "password": "54321"
+  },
+     {
+    "id": "user3",
+    "name": "Максим",
+    "city": "Москва",
+    "age": 23,
+    "gender": "male",
+    "avatar": "/avatars/user3.jpg",
+    "email": "maxim@test.ru",
+    "password": "54325"
+  },
+      {
+    "id": "user4",
+    "name": "Илона",
+    "city": "Екатеринбург",
+    "age": 33,
+    "gender": "female",
+    "avatar": "/avatars/user4.jpg",
+    "email": "ilona@test.ru",
+    "password": "543266"
+  },
+      {
+    "id": "user5",
+    "name": "Михаил",
+    "city": "Новосибирск",
+    "age": 29,
+    "gender":"male",
+    "avatar": "/avatars/user5.jpg",
+    "email": "mihail@test.ru",
+    "password": "543366"
+  },
+        {
+    "id": "user6",
+    "name": "Мария",
+    "city": "Краснодар",
+    "age": 21,
+    "gender":"female",
+    "avatar": "/avatars/user6.jpg",
+    "email": "maria@test.ru",
+    "password": "543332"
+  },
+    {
+    "id": "user7",
+    "name": "Виктория",
+    "city": "Кемерово",
+    "age": 30,
+    "gender":"female",
+    "avatar": "/avatars/user7.jpg",
+    "email": "viktoria@test.ru",
+    "password": "542212"
+  },
+     {
+    "id": "user8",
+    "name": "Елизавета",
+    "city": "Владивосток",
+    "age": 25,
+    "gender":"female",
+    "avatar": "/avatars/user8.jpg",
+    "email": "elizaveta@test.ru",
+    "password": "541112"
+  },
+     {
+    "id": "user9",
+    "name": "Виктория",
+    "city": "Сочи",
+    "age": 31,
+    "gender":"female",
+    "avatar": "/avatars/user9.jpg",
+    "email": "viktoria31@test.ru",
+    "password": "5443412"
+  },
+      {
+    "id": "user10",
+    "name": "Елена",
+    "city": "Красноярск",
+    "age": 28,
+    "gender":"female",
+    "avatar": "/avatars/user10.jpg",
+    "email": "elena@test.ru",
+    "password": "5433112"
+  },
+        {
+    "id": "user11",
+    "name": "Константин",
+    "city": "Иркутск",
+    "age": 36,
+    "gender":"male",
+    "avatar": "/avatars/user11.jpg",
+    "email": "konstantin@test.ru",
+    "password": "321351"
+  },
+      {
+    "id": "user12",
+    "name": "София",
+    "city": "Абакан",
+    "age": 24,
+    "gender":"female",
+    "avatar": "/avatars/user12.jpg",
+    "email": "sofia@test.ru",
+    "password": "321316"
+  },
+        {
+    "id": "user13",
+    "name": "Екатерина",
+    "city": "Пермь",
+    "age": 33,
+    "gender":"female",
+    "avatar": "/avatars/user13.jpg",
+    "email": "ekaterina@test.ru",
+    "password": "32131"
+  },
+          {
+    "id": "user14",
+    "name": "Дарья",
+    "city": "Ярославль",
+    "age": 26,
+    "gender":"female",
+    "avatar": "/avatars/user14.jpg",
+    "email": "daria@test.ru",
+    "password": "32131235"
+  },
+    {
+    "id": "user15",
+    "name": "Алла",
+    "city": "Архангельск",
+    "age": 22,
+    "gender":"female",
+    "avatar": "/avatars/user15.jpg",
+    "email": "alla@test.ru",
+    "password": "3213123"
+  }
+]
