@@ -3,7 +3,5 @@ export interface Skill {
   category: string;
   title: string;
   description: string;
-  type: 'Учу' | 'Учусь';
-  tagging: string[];
-  authorId: string;
+  photos: string[];
 }
