@@ -3,5 +3,5 @@ export interface Skill {
   category: string;
   title: string;
   description: string;
-  photos: string[];
+  photos: string;
 }
