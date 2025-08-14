@@ -1,0 +1,10 @@
+[
+  {
+    "id": "req1",
+    "skillId": 1,
+    "fromUserId": "user2",
+    "toUserId": "user1",
+    "status": "pending",
+    "createdAt": "2025-08-14"
+  }
+]
