@@ -1,3 +1,6 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from "eslint-plugin-storybook";
+
 import path from 'node:path';
 
 import { includeIgnoreFile } from '@eslint/compat';
@@ -75,7 +78,6 @@ export default [
   // Prettier Config
   ...prettierConfig,
   reactRefresh.configs.vite,
-
   {
     rules: {
       'react/function-component-definition': [
@@ -88,4 +90,5 @@ export default [
       'react/react-in-jsx-scope': 'off',
     },
   },
+  ...storybook.configs["flat/recommended"]
 ];
