@@ -5,7 +5,8 @@
     "category": "Бизнес и карьера",
     "subcategory": "Маркетинг и реклама",
     "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-    "photos": ["./photos/marketing.jpg"]
+    "photos": ["./photos/marketing.jpg"],
+    "authorId": "user1"
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "category": "Бизнес и карьера",
     "subcategory": "Продажи и переговоры",
     "description": "Научусь продажам и переговорам с нуля.",
-    "photos": ["./photos/sell.jpg"]
+    "photos": ["./photos/sell.jpg"],
+    "authorId": "user2"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "category": "Бизнес и карьера",
     "subcategory": "Личный бренд",
     "description": "Научу выстраивать личный бренд с минимальными вложениями.",
-    "photos": ["./photos/brand.jpg"]
+    "photos": ["./photos/brand.jpg"],
+    "authorId": "user3"
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "category": "Иностранные языки",
     "subcategory": "Английский",
     "description": "Хочу научиться английскому языку с нуля.",
-    "photos": ["./photos/english1.jpg", "./photos/english2.jpg", "./photos/english3.jpg", "./photos/english4.jpg"]
+    "photos": ["./photos/english1.jpg", "./photos/english2.jpg", "./photos/english3.jpg", "./photos/english4.jpg"],
+    "authorId": "user1"
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "category": "Иностранные языки",
     "subcategory": "Французский",
     "description": "Обучаю французскому языку с нуля для самых маленьких. Школа Je veux te dire",
-    "photos": ["./photos/france.jpg"]
+    "photos": ["./photos/france.jpg"],
+    "authorId": "user2"
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "category": "Иностранные языки",
     "subcategory": "Испанский",
     "description": "Хочу научиться испанскому языку с нуля.",
-    "photos": ["./photos/espanol.jpg"]
+    "photos": ["./photos/espanol.jpg"],
+    "authorId": "user3"
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "category": "Дом и уют",
     "subcategory": "Уборка и организация",
     "description": "Научу организовывать домашнее пространство и экономить время на уборке.",
-    "photos": ["./photos/cleaning.jpg"]
+    "photos": ["./photos/cleaning.jpg"],
+    "authorId": "user1"
   },
   {
     "id": 8,
@@ -61,7 +68,8 @@
     "category": "Дом и уют",
     "subcategory": "Домашние финансы",
     "description": "Научусь планировать финансы для экономий денег в семье.",
-    "photos": ["./photos/planning.jpg"]
+    "photos": ["./photos/planning.jpg"],
+    "authorId": "user2"
   },
   {
     "id": 9,
@@ -69,6 +77,7 @@
     "category": "Дом и уют",
     "subcategory": "Приготовление еды",
     "description": "Научу готовить не хуже чем Славный Друже",
-    "photos": ["./photos/cooking.jpg"]
+    "photos": ["./photos/cooking.jpg"],
+    "authorId": "user3"
   }
 ]

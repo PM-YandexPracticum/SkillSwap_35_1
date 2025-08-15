@@ -5,4 +5,5 @@ export interface ISkill {
   title: string;
   description: string;
   photos: string[];
+  authorId: string;
 }

@@ -3,7 +3,7 @@
         "id": "user4",
         "name": "Эля",
         "city": "Москва",
-        "dateOfBirth": 28,
+        "dateOfBirth": "02.06.1995",
         "gender": "female",
         "avatar": "/avatars/user4.jpg",
         "email": "elya@test.ru",

@@ -2,7 +2,7 @@ export interface IUser {
   id: string;
   name: string;
   city: string;
-  dateOfBirth: number;
+  dateOfBirth: string;
   avatar: string;
   gender: 'male' | 'female';
   about: string;
