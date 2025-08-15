@@ -26,3 +26,19 @@
     font-weight: 600;
     font-display: swap;
   }
+
+  :root {
+    --font-family-main: 'Roboto', sans-serif;
+    --font-family-header-redesigned: 'Jost', sans-serif;
+    --font-family-user-name: 'OpenSans', sans-serif;
+    --font-size-title: 32px;
+    --font-line-title: 40px;
+    --font-size-heading-secondary: 24px;
+    --font-line-heading-secondary: 28px;
+    --font-size-main-header: 20px;
+    --font-line-main-header: 24px;
+    --font-size-main-text: 16px;
+    --font-line-main-text: 24px;
+    --font-size-details: 12px;
+    --font-line-details: 16px;
+  }
