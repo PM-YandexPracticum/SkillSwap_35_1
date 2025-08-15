@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="none" viewBox="0 0 100 100">
+  <g class="user-circle">
+    <g class="user-circle">
+      <path stroke="#253017" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M74.925 78.021A31.21 31.21 0 0 0 50 65.625a31.21 31.21 0 0 0-24.925 12.396m49.85 0a37.5 37.5 0 1 0-49.85 0m49.85 0A37.385 37.385 0 0 1 50 87.501a37.375 37.375 0 0 1-24.925-9.48M62.5 40.625a12.5 12.5 0 1 1-25 0 12.5 12.5 0 0 1 25 0Z" class="Vector"/>
+    </g>
+  </g>
+</svg>

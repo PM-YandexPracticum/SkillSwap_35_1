@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" fill="none" viewBox="0 0 44 44">
+  <g class="favicon">
+    <g class="logo">
+      <rect width="40" height="40" x="2" y="2" fill="#ABD27A" rx="20"/>
+      <path fill="#F9FAF7" d="M22 12s.552 5.15 2.7 7.3C26.85 21.447 32 22 32 22s-5.15.552-7.3 2.7C22.553 26.85 22 32 22 32s-.552-5.15-2.7-7.3C17.15 22.553 12 22 12 22s5.15-.552 7.3-2.7C21.447 17.15 22 12 22 12Z" class="Star 6"/>
+    </g>
+  </g>
+</svg>
