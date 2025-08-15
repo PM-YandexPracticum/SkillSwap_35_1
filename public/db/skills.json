@@ -30,7 +30,6 @@
     "subcategory": "Английский",
     "description": "Хочу научиться английскому языку с нуля.",
     "photos": ["./photos/english1.jpg", "./photos/english2.jpg", "./photos/english3.jpg", "./photos/english4.jpg"]
-
   },
   {
     "id": 5,
@@ -39,7 +38,6 @@
     "subcategory": "Французский",
     "description": "Обучаю французскому языку с нуля для самых маленьких. Школа Je veux te dire",
     "photos": "./photos/france.jpg"
-
   },
   {
     "id": 6,
@@ -48,7 +46,6 @@
     "subcategory": "Испанский",
     "description": "Хочу научиться испанскому языку с нуля.",
     "photos": "./photos/espanol.jpg"
-
   },
   {
     "id": 7,
@@ -65,7 +62,6 @@
     "subcategory": "Домашние финансы",
     "description": "Научусь планировать финансы для экономий денег в семье.",
     "photos": "./photos/planning.jpg"
-
   },
   {
     "id": 9,
@@ -74,6 +70,5 @@
     "subcategory": "Приготовление еды",
     "description": "Научу готовить не хуже чем Славный Друже",
     "photos": "./photos/cooking.jpg"
-
   }
 ]
