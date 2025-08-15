@@ -1,0 +1,27 @@
+:root {
+    /* основные цвета */
+    --bg-color: #F9FAF7;
+    --secondary-color: #FFFFFF;
+    --main-color-text: #253017;
+    --accent-color-dark: #508826;
+    --accent-color: #ABD27A;
+    --accent-color-light: #DEEBC5;
+    --accent-color-lightest: #E4E8DF;
+    --color-alarm: #E0796E;
+    --color-error: #BF3920;
+
+    /* доп цвета */
+    --tertiary-color-dark: #69735D;
+    --tertiary-color: #B2B9A9;
+    --tertiary-color-light: #9CA197;
+    --color-black: #000000;
+
+    /* цвета для тегов (категорий) */
+    --color-tag-business: #EEE7F7;
+    --color-tag-creative: #F7E7F2;
+    --color-tag-language: #EBE5C5;
+    --color-tag-education: #E7F2F6;
+    --color-tag-household: #F7EBE5;
+    --color-tag-health: #E9F7E7;
+    --color-tag-another: #E8ECF7;
+}
