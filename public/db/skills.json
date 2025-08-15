@@ -5,7 +5,7 @@
     "category": "Бизнес и карьера",
     "subcategory": "Маркетинг и реклама",
     "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-    "photos": "./photos/marketing.jpg"
+    "photos": ["./photos/marketing.jpg"]
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "category": "Бизнес и карьера",
     "subcategory": "Продажи и переговоры",
     "description": "Научусь продажам и переговорам с нуля.",
-    "photos": "./photos/sell.jpg"
+    "photos": ["./photos/sell.jpg"]
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "category": "Бизнес и карьера",
     "subcategory": "Личный бренд",
     "description": "Научу выстраивать личный бренд с минимальными вложениями.",
-    "photos": "./photos/brand.jpg"
+    "photos": ["./photos/brand.jpg"]
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@
     "category": "Иностранные языки",
     "subcategory": "Французский",
     "description": "Обучаю французскому языку с нуля для самых маленьких. Школа Je veux te dire",
-    "photos": "./photos/france.jpg"
+    "photos": ["./photos/france.jpg"]
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "category": "Иностранные языки",
     "subcategory": "Испанский",
     "description": "Хочу научиться испанскому языку с нуля.",
-    "photos": "./photos/espanol.jpg"
+    "photos": ["./photos/espanol.jpg"]
   },
   {
     "id": 7,
@@ -53,7 +53,7 @@
     "category": "Дом и уют",
     "subcategory": "Уборка и организация",
     "description": "Научу организовывать домашнее пространство и экономить время на уборке.",
-    "photos": "./photos/cleaning.jpg"
+    "photos": ["./photos/cleaning.jpg"]
   },
   {
     "id": 8,
@@ -61,7 +61,7 @@
     "category": "Дом и уют",
     "subcategory": "Домашние финансы",
     "description": "Научусь планировать финансы для экономий денег в семье.",
-    "photos": "./photos/planning.jpg"
+    "photos": ["./photos/planning.jpg"]
   },
   {
     "id": 9,
@@ -69,6 +69,6 @@
     "category": "Дом и уют",
     "subcategory": "Приготовление еды",
     "description": "Научу готовить не хуже чем Славный Друже",
-    "photos": "./photos/cooking.jpg"
+    "photos": ["./photos/cooking.jpg"]
   }
 ]
