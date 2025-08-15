@@ -1,34 +1,20 @@
-/*
-accent-color - для текста и для цвета кнопок
-caption-color-text - для placeholder и подписи некоторых элементов
-link-color-text - для категорий фильтров
-    + используется для checkbox (в фильтрах)
-    + дни недели в календаре
-    + цвет кнопки в состоянии active
-color-disabled-button - в основном это цвет для кнопок (Disabled)
-    + для кнопок листания влево/вправо
-    + для некоторых дней в календаре
-    + линии сверху для определния этапа регистрации
-bg-element-color - для  фона карточек, кнопок, инпутов
-color-toggle - для кнопки переключения (не нашла что кнопка переключает)
-*/
-
 :root {
     /* основные цвета */
     --bg-color: #F9FAF7;
-    --accent-color: #ABD27A;
-    --bg-element-color: #FFFFFF;
-
-    /* цвета для текста */
+    --secondary-color: #FFFFFF;
     --main-color-text: #253017;
-    --caption-color-text: #69735D;
-    --link-color-text: #508826;
-    --color-disabled-text: #9CA197;
+    --accent-color: #ABD27A;
+    --accent-color-dark: #508826;
+    --color-alarm: #E0796E;
+    --color-error: #BF3920;
 
-    /* цвета для кнопок */
-    --color-disabled-button: #E4E8DF;
-    --color-hover-button: #DEEBC5;
-    --color-toggle: #B2B9A9;
+    /* вторичные цвета */
+    --color-green: #69735D;
+    --color-green-light: #DEEBC5;
+    --color-green-lightest: #B2B9A9;
+    --color-gray-light: #9CA197;
+    --color-gray-lightest: #E4E8DF;
+    --color-black: #000000;
 
     /* цвета для тегов (категорий) */
     --color-tag-business: #EEE7F7;
