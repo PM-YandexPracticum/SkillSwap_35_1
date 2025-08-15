@@ -1,68 +1,77 @@
 [
   {
     "id": 1,
+    "title": "Маркетинг SEO и SMM",
     "category": "Бизнес и карьера",
-    "title": "Маркетинг и реклама",
+    "subcategory": "Маркетинг и реклама",
     "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
     "photos": "./photos/marketing.jpg"
   },
   {
     "id": 2,
+    "title": "Продажи и полезные навыки",
     "category": "Бизнес и карьера",
-    "title": "Продажи и переговоры",
+    "subcategory": "Продажи и переговоры",
     "description": "Научусь продажам и переговорам с нуля.",
     "photos": "./photos/sell.jpg"
   },
   {
     "id": 3,
+    "title": "Выстраивание личного бренда",
     "category": "Бизнес и карьера",
-    "title": "Личный бренд",
+    "subcategory": "Личный бренд",
     "description": "Научу выстраивать личный бренд с минимальными вложениями.",
     "photos": "./photos/brand.jpg"
   },
   {
     "id": 4,
+    "title": "Изучение Английского языка",
     "category": "Иностранные языки",
-    "title": "Английский",
+    "subcategory": "Английский",
     "description": "Хочу научиться английскому языку с нуля.",
-    "photos": "./photos/english.jpg"
+    "photos": ["./photos/english1.jpg", "./photos/english2.jpg", "./photos/english3.jpg", "./photos/english4.jpg"]
 
   },
   {
     "id": 5,
+    "title": "Изучение Французского языка",
     "category": "Иностранные языки",
-    "title": "Французский",
+    "subcategory": "Французский",
     "description": "Обучаю французскому языку с нуля для самых маленьких. Школа Je veux te dire",
     "photos": "./photos/france.jpg"
 
   },
   {
     "id": 6,
+    "title": "Изучение Испанского языка",
     "category": "Иностранные языки",
-    "title": "Испанский",
+    "subcategory": "Испанский",
     "description": "Хочу научиться испанскому языку с нуля.",
     "photos": "./photos/espanol.jpg"
 
   },
   {
     "id": 7,
+    "title": "Организация уютной атмосферы дома",
     "category": "Дом и уют",
-    "title": "Уборка и организация",
+    "subcategory": "Уборка и организация",
     "description": "Научу организовывать домашнее пространство и экономить время на уборке.",
     "photos": "./photos/cleaning.jpg"
   },
   {
     "id": 8,
+    "title": "Планирование внутри семьи",  
     "category": "Дом и уют",
-    "title": "Домашние финансы",
+    "subcategory": "Домашние финансы",
     "description": "Научусь планировать финансы для экономий денег в семье.",
     "photos": "./photos/planning.jpg"
 
   },
   {
     "id": 9,
+    "title": "Вкусная еда дома",  
     "category": "Дом и уют",
-    "title": "Приготовление еды",
+    "subcategory": "Приготовление еды",
     "description": "Научу готовить не хуже чем Славный Друже",
     "photos": "./photos/cooking.jpg"
 
