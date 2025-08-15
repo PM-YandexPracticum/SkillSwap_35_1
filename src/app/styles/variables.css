@@ -3,17 +3,17 @@
     --bg-color: #F9FAF7;
     --secondary-color: #FFFFFF;
     --main-color-text: #253017;
-    --accent-color: #ABD27A;
     --accent-color-dark: #508826;
+    --accent-color: #ABD27A;
+    --accent-color-light: #DEEBC5;
+    --accent-color-lightest: #E4E8DF;
     --color-alarm: #E0796E;
     --color-error: #BF3920;
 
-    /* вторичные цвета */
-    --color-green: #69735D;
-    --color-green-light: #DEEBC5;
-    --color-green-lightest: #B2B9A9;
-    --color-gray-light: #9CA197;
-    --color-gray-lightest: #E4E8DF;
+    /* доп цвета */
+    --tertiary-color-dark: #69735D;
+    --tertiary-color: #B2B9A9;
+    --tertiary-color-light: #9CA197;
     --color-black: #000000;
 
     /* цвета для тегов (категорий) */
