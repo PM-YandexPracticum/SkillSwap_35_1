@@ -1,0 +1,29 @@
+/**
+ * Пропсы для компонента Input
+ *
+ * value — текущее значение инпута
+ * type — тип инпута
+ * label — подпись к полю ввода
+ * placeholder — текст-подсказка внутри инпута
+ * icon — иконка внутри инпута
+ * onIconClick — обработчик клика по иконке
+ * status — состояние валидации
+ * message — сообщение под инпутом (ошибка или подсказка)
+ * onChange — обработчик изменения значения инпута
+ * onFocus — обработчик фокуса на инпуте
+ * style — дополнительные inline-стили
+ */
+
+export interface InputProps {
+  value: string;
+  type?: 'text' | 'email' | 'password';
+  label: string;
+  placeholder: string;
+  icon?: React.ReactNode;
+  onIconClick?: () => void;
+  status?: 'success' | 'error';
+  message?: string;
+  onChange?(e: React.ChangeEvent<HTMLInputElement>): void;
+  onFocus?(e: React.FocusEvent<HTMLInputElement>): void;
+  style?: React.CSSProperties;
+}
