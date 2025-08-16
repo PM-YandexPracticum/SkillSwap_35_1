@@ -12,7 +12,7 @@
   line-height: var(--font-line-main-text);
   letter-spacing: 0.02em;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--main-border-radius);
   outline: none;
   cursor: pointer;
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { type ButtonProps } from './types';
-// eslint-disable-next-line import-x/no-unresolved
 import styles from './Button.module.scss';
 
 const Button: React.FC<ButtonProps> = ({
