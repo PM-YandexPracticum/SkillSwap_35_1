@@ -1,37 +1,47 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Text } from "./Text";
+import { Text } from './Text';
 
 const meta = {
-    component: Text
+  component: Text
 } satisfies Meta<typeof Text>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Text>;
 
 export const SelectStoryText: Story = {
-    args: {
-        children: 'Творчество и искусство',
-        as: 'div',
-        size: 12,
+  argTypes: {
+    as: {
+      options: ['div', 'p', 'span'],
+      control: { type: 'select' }
     },
 
-    argTypes: {
-        as: {
-            options: ['div', 'p', 'span'],
-            control: {type: 'select'},
-        },
-        size: {
-			options: [12, 16],
-			control: { type: 'select' },
-		},
-        color: {
-			options: ['textCaption', 'textDisabled', 'textLink', 'textError'],
-			control: { type: 'select' },
-		},
+    size: {
+      options: ['main', 'details'],
+      control: { type: 'select' }
     },
-    render: ({children, ...args}) => {
-        return (
-            <Text {...args}>{children}</Text>
-        )
+
+    color: {
+      options: [
+        'mainColorText',
+        'tertiaryColorDark',
+        'tertiaryColorLight',
+        'accentColorDark',
+        'colorError'
+      ],
+      control: { type: 'select' }
+    },
+
+    family: {
+      options: ['main', 'userName'],
+      control: { type: 'select' }
+    },
+
+    align: {
+      options: ['center', 'left'],
+      control: { type: 'select' }
     }
-}
+  },
+  render: (args) => {
+    return <Text {...args}>Творчество и искусство</Text>;
+  }
+};

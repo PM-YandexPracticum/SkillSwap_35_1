@@ -1,8 +1,15 @@
-import type { ElementType, ReactNode } from "react";
+import type { ElementType, ReactNode } from 'react';
 
 export type TextProps = {
-    children: ReactNode;
-    as: ElementType;
-    size: 12 | 16;
-    color?: 'textMain' | 'textCaption' | 'textDisabled' | 'textLink' | 'textError'
-}
+  children: ReactNode;
+  as: ElementType;
+  size: 'main' | 'details';
+  color?:
+    | 'mainColorText'
+    | 'tertiaryColorDark'
+    | 'tertiaryColorLight'
+    | 'accentColorDark'
+    | 'colorError';
+  family?: 'main' | 'userName';
+  align?: 'center' | 'left';
+};

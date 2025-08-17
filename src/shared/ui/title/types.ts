@@ -1,9 +1,8 @@
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 export type TitleProps = {
-    children: ReactNode;
-    as: ElementType;
-    size: 16 | 20 | 24 | 32;
-    family?: 'Jost' | 'Roboto';
-    align?: 'center' | 'left';
-}
+  children: ReactNode;
+  as: 'h1' | 'h2' | 'h3' | 'h4';
+  align?: 'center' | 'left';
+  color?: 'mainColorText' | 'accentColorDark';
+};

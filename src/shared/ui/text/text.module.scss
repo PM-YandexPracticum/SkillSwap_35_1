@@ -1,35 +1,50 @@
 .text {
-    font-family: inherit;
-    font-weight: 400;
-    font-style: normal;
+  font-weight: 400;
+  font-style: normal;
+
+  &main {
+    font-size: var(--font-size-main-text);
+    line-height: var(--font-line-main-text);
+  }
+
+  &details {
+    font-size: var(--font-size-details);
+    line-height: var(--font-line-details);
+  }
 }
 
-.size12 {
-    font-size: 12px;
-    line-height: 16px;
+.main {
+  font-family: var(--font-family-main);
 }
 
-.size16 {
-    font-size: 16px;
-    line-height: 24px;
+.userName {
+  font-family: var(--font-family-user-name);
 }
 
-.textMain {
-    color: #253017;
+.mainColorText {
+  color: var(--main-color-text);
 }
 
-.textCaption {
-    color: #69735D;
+.tertiaryColorDark {
+  color: var(--tertiary-color-dark);
 }
 
-.textDisabled {
-    color: #9CA197;
+.tertiaryColorLight {
+  color: var(--tertiary-color-light);
 }
 
-.textLink {
-    color: #508826;
+.accentColorDark {
+  color: var(--accent-color-dark);
 }
 
-.textError {
-    color: #BF3920;
+.colorError {
+  color: var(--color-error);
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
 }
