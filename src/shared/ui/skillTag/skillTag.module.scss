@@ -1,0 +1,37 @@
+.skill__tag {
+  width: max-content;
+  padding: 8px 12px;
+  color: var(--main-color-text);
+  font-size: var(--font-size-details);
+  font-family: var(--font-family-main), serif;
+  line-height: var(--font-line-details);
+  border-radius: 20px;
+}
+
+.skill__tag-language {
+  background: var(--color-tag-language);
+}
+
+.skill__tag-creative {
+  background: var(--color-tag-creative);
+}
+
+.skill__tag-business {
+  background: var(--color-tag-business);
+}
+
+.skill__tag-education {
+  background: var(--color-tag-education);
+}
+
+.skill__tag-household {
+  background: var(--color-tag-household);
+}
+
+.skill__tag-health {
+  background: var(--color-tag-health);
+}
+
+.skill__tag-other {
+  background: var(--color-tag-another);
+}
