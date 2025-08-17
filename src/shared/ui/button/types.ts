@@ -12,7 +12,7 @@ import React from 'react';
 
 export interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'tertiary';
   onClick?: () => void;
   disabled?: boolean;
   htmlType?: 'button' | 'submit' | 'reset';

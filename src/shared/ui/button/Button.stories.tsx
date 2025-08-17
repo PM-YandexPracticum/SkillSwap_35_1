@@ -7,7 +7,7 @@ const meta: Meta<typeof Button> = {
   component: Button,
   argTypes: {
     onClick: { action: 'clicked' },
-    variant: { control: 'radio', options: ['primary', 'secondary'] },
+    variant: { control: 'radio', options: ['primary', 'secondary', 'tertiary'] },
     disabled: { control: 'boolean' }
   }
 };
@@ -31,4 +31,13 @@ export const Secondary: Story = {
     </Button>
   ),
   args: { variant: 'secondary', disabled: false }
+};
+
+export const Tertiary: Story = {
+  render: (args) => (
+    <Button {...args} style={{ width: '200px' }}>
+      Tertiary
+    </Button>
+  ),
+  args: { variant: 'tertiary', disabled: false }
 };

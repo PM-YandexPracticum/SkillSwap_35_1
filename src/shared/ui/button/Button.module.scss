@@ -59,4 +59,21 @@
       border-color: var(--accent-color-lightest);
     }
   }
+
+  &.tertiary {
+    color: var(--main-color-text);
+    background-color: var(--secondary-color);
+
+    &:hover {
+      color: var(--tertiary-color-dark);
+    }
+
+    &:active {
+      color: var(--main-color-text);
+    }
+
+    &.disabled {
+      color: var(--tertiary-color-light);
+    }
+  }
 }

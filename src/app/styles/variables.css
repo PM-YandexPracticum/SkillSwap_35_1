@@ -38,4 +38,7 @@
   --font-line-main-text: 24px;
   --font-size-details: 12px;
   --font-line-details: 16px;
+
+  /* скругление углов */
+  --main-border-radius: 12px;
 }
