@@ -1,45 +1,41 @@
 :root {
-    /* основные цвета */
-    --bg-color: #F9FAF7;
-    --secondary-color: #FFFFFF;
-    --main-color-text: #253017;
-    --accent-color-dark: #508826;
-    --accent-color: #ABD27A;
-    --accent-color-light: #DEEBC5;
-    --accent-color-lightest: #E4E8DF;
-    --color-alarm: #E0796E;
-    --color-error: #BF3920;
+  /* основные цвета */
+  --bg-color: #f9faf7;
+  --secondary-color: #ffffff;
+  --main-color-text: #253017;
+  --accent-color-dark: #508826;
+  --accent-color: #abd27a;
+  --accent-color-light: #deebc5;
+  --accent-color-lightest: #e4e8df;
+  --color-alarm: #e0796e;
+  --color-error: #bf3920;
 
-    /* доп цвета */
-    --tertiary-color-dark: #69735D;
-    --tertiary-color: #B2B9A9;
-    --tertiary-color-light: #9CA197;
-    --color-neutral: #000000;
+  /* доп цвета */
+  --tertiary-color-dark: #69735d;
+  --tertiary-color: #b2b9a9;
+  --tertiary-color-light: #9ca197;
 
-    /* цвета для тегов (категорий) */
-    --color-tag-business: #EEE7F7;
-    --color-tag-creative: #F7E7F2;
-    --color-tag-language: #EBE5C5;
-    --color-tag-education: #E7F2F6;
-    --color-tag-household: #F7EBE5;
-    --color-tag-health: #E9F7E7;
-    --color-tag-another: #E8ECF7;
+  /* цвета для тегов (категорий) */
+  --color-tag-business: #eee7f7;
+  --color-tag-creative: #f7e7f2;
+  --color-tag-language: #ebe5c5;
+  --color-tag-education: #e7f2f6;
+  --color-tag-household: #f7ebe5;
+  --color-tag-health: #e9f7e7;
+  --color-tag-another: #e8ecf7;
 
-    /* шрифты */
-    --font-family-main: 'Roboto', sans-serif;
-    --font-family-header-redesigned: 'Jost', sans-serif;
-    --font-family-user-name: 'OpenSans', sans-serif;
-    --font-size-title: 32px;
-    --font-line-title: 40px;
-    --font-size-heading-secondary: 24px;
-    --font-line-heading-secondary: 28px;
-    --font-size-main-header: 20px;
-    --font-line-main-header: 24px;
-    --font-size-main-text: 16px;
-    --font-line-main-text: 24px;
-    --font-size-details: 12px;
-    --font-line-details: 16px;
-
-    /* скругление углов */
-    --main-border-radius: 12px;
+  /* шрифты */
+  --font-family-main: 'Roboto', sans-serif;
+  --font-family-header-redesigned: 'Jost', sans-serif;
+  --font-family-user-name: 'OpenSans', sans-serif;
+  --font-size-title: 32px;
+  --font-line-title: 40px;
+  --font-size-heading-secondary: 24px;
+  --font-line-heading-secondary: 28px;
+  --font-size-main-header: 20px;
+  --font-line-main-header: 24px;
+  --font-size-main-text: 16px;
+  --font-line-main-text: 24px;
+  --font-size-details: 12px;
+  --font-line-details: 16px;
 }
