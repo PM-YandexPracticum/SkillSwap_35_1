@@ -8,8 +8,11 @@
   width: 100%;
   min-width: 320px;
   max-width: 1440px;
+  max-width: 1440px;
   min-height: 100vh;
   margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.5;
   overflow-x: hidden;
   color: var(--main-color-text, #253017);
   font-family: var(--font-family-main, sans-serif);
