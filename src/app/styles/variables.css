@@ -14,6 +14,7 @@
     --tertiary-color-dark: #69735D;
     --tertiary-color: #B2B9A9;
     --tertiary-color-light: #9CA197;
+    --color-neutral: #FFFFFF;
 
     /* цвета для тегов (категорий) */
     --color-tag-business: #EEE7F7;
@@ -38,4 +39,7 @@
     --font-line-main-text: 24px;
     --font-size-details: 12px;
     --font-line-details: 16px;
+
+    /* скругление углов */
+    --main-border-radius: 12px;
 }
