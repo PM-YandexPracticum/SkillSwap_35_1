@@ -1,0 +1,18 @@
+@import url('./styles/variables.css');
+
+.app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 320px;
+  max-width: 1440px;
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow-x: hidden;
+  color: var(--main-color-text, #253017);
+  font-family: var(--font-family-main, sans-serif);
+  background-color: var(--bg-color, #f9faf7);
+  scroll-behavior: smooth;
+}
