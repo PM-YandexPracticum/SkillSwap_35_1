@@ -14,47 +14,11 @@
   user-select: none;
 }
 
-.checkmark {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
+.checked {
   margin-right: 10px;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 6px;
+  color: var(--accent-color, #abd27a);
 }
 
-.container .hidden:checked ~ .checkmark {
-  background-color: var(--accent-color, #abd27a);
-  border-color: var(--accent-color, #abd27a);
-}
-
-.checkmark::after {
-  content: '';
-  position: absolute;
-  top: calc(50% - 1px);
-  left: 8px;
-  display: none;
-  width: 4px;
-  height: 7px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.checkmark[data-variant="minus"]::after {
-  content: '';
-  position: absolute;
-  top: calc(50% - 1px);
-  left: 5px;
-  display: none;
-  width: 10px;
-  height: 0;
-  border: solid white;
-  border-width: 1px;
-  transform: none;
-}
-
-.container .hidden:checked ~ .checkmark::after {
-  display: block;
+.empty {
+  margin-right: 10px;
 }
