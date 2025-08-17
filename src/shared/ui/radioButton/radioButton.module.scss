@@ -1,0 +1,37 @@
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+
+    &__icon {
+      color: var(--color-neutral);
+      cursor: pointer;
+    }
+
+    &:checked + &__icon {
+        color: var(--accent-color-dark);
+        cursor: pointer;
+    }
+
+    &:disabled + &__icon {
+      color: var(--tertiary-color-light);
+      cursor: not-allowed;
+    }
+
+    &__label {
+      cursor: pointer;
+    }
+
+    &:disabled + &__icon + &__label {
+      color: var(--tertiary-color-light);
+      cursor: not-allowed;
+    }
+  }
+}

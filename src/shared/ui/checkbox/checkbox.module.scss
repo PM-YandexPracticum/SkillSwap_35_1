@@ -1,0 +1,25 @@
+.hidden {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checked {
+  margin-right: 10px;
+  color: var(--accent-color);
+}
+
+.empty {
+  margin-right: 10px;
+  color: var(--color-neutral);
+}

@@ -43,5 +43,10 @@ export default defineConfig({
         }
       }
     ]
+  },
+  resolve: {
+    alias: {
+      '@icons': path.resolve(__dirname, './src/shared/assets/icons')
+    }
   }
 });
