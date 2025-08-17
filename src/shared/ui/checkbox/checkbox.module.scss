@@ -16,9 +16,10 @@
 
 .checked {
   margin-right: 10px;
-  color: var(--accent-color, #abd27a);
+  color: var(--accent-color);
 }
 
 .empty {
   margin-right: 10px;
+  color: var(--color-neutral);
 }
