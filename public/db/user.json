@@ -1,0 +1,23 @@
+[
+  {
+    "id": "9",
+    "name": "Эля",
+    "city": "Москва",
+    "dateOfBirth": "02.03.1997",
+    "image": "./photos/user9.jpg",
+    "gender": "female",
+    "about": "Люблю прогулки и животных.",
+    "email": "elya@test.ru",
+    "password": "54545",
+    "can": {
+      "title": "Продажи и полезные навыки",
+      "category": "Бизнес и карьера",
+      "subcategory": "Продажи и переговоры",
+      "description": "Научусь продажам и переговорам с нуля.",
+      "images": ["./skills/sell.jpg"]
+    },
+    "want": ["Приготовление еды", "Домашние финансы"],
+    "createdAt": "10.08.2025",
+    "likeCount": 3
+  }
+]

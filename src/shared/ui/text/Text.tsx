@@ -1,0 +1,15 @@
+import type { TextProps } from './types';
+import styles from './text.module.scss';
+
+export const Text = ({
+  children,
+  as: Tag = 'div',
+  size = 'main',
+  color = 'mainColorText',
+  family = 'main',
+  align = 'left'
+}: TextProps) => {
+  const className = `${styles.text} ${styles[`text${size}`]} ${styles[`${family}`]} ${styles[`${color}`]} ${styles[`${align}`]}`;
+
+  return <Tag className={className}>{children}</Tag>;
+};

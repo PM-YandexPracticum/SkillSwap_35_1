@@ -21,7 +21,16 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@icons/*": ["src/shared/assets/icons/*"],
+      "@ui/*": ["src/shared/ui/*"],
+      "@components/*": ["src/app/components/*"],
+    }
+
   },
   "include": ["src"]
 }

@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-inline-size: 159px;
+}
+
+.iconLogoContainer {
+  display: flex;
+  inline-size: 40px;
+  block-size: 40px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+}
+
+.iconLogo {
+  margin: auto;
+}
+
+.textLogo {
+  color: var(--main-color-text);
+  font-weight: 600;
+  font-size: 24px;
+  font-family: var(--font-family-header-redesigned);
+  line-height: 1.2;
+  letter-spacing: -0.26px;
+}

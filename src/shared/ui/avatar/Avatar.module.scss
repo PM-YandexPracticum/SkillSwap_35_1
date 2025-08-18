@@ -1,0 +1,56 @@
+.avatarWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: transparent;
+
+  &.small {
+    width: 48px;
+    height: 48px;
+  }
+  
+  &.medium {
+    width: 100px;
+    height: 100px;
+  }
+  
+  &.large {
+    width: 244px;
+    height: 244px;
+  }
+
+  & .avatarImage {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  & .avatarDefaultImage {
+    width: 100%;
+    height: 100%;
+    color: var(--main-color-text);
+    transform: scale(1.3);
+
+    path {
+      stroke-width: 0.5;
+    }
+  }
+
+  & .avatarButton {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 56px;
+    height: 56px;
+    color: var(--secondary-color);
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+}
