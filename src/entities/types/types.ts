@@ -6,6 +6,11 @@ export interface ISkill {
     images?: string[];
 };
 
+export interface IDesiredSkill {
+    category: string;
+    subcategory: string;
+}
+
 export interface IUser {
     id: string;
     email: string;
@@ -17,7 +22,7 @@ export interface IUser {
     city: string;
     image?: string;
     can: ISkill;
-    want: string[];
+    want: IDesiredSkill[];
     likeCount: number;
     createdAt: string;
 };
