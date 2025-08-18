@@ -3,9 +3,10 @@
  *
  * value — текущее значение инпута
  * type — тип инпута
+ * inputSize - размер инпута
  * label — подпись к полю ввода
  * placeholder — текст-подсказка внутри инпута
- * icon — иконка внутри инпута
+ * icon — иконка справа внутри инпута
  * onIconClick — обработчик клика по иконке
  * status — состояние валидации
  * message — сообщение под инпутом (ошибка или подсказка)
@@ -16,9 +17,10 @@
 
 export interface InputProps {
   value: string;
-  type?: 'text' | 'email' | 'password';
-  label: string;
-  placeholder: string;
+  type?: 'text' | 'email' | 'password' | 'search';
+  inputSize?: 'small' | 'medium' | 'large' | 'xlarge';
+  label?: string;
+  placeholder?: string;
   icon?: React.ReactNode;
   onIconClick?: () => void;
   status?: 'success' | 'error';

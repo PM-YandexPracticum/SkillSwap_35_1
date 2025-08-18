@@ -1,11 +1,10 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import Input, { InputPassword, InputText } from './Input';
+import EyeIcon from '@icons/ui/eye.svg?react';
+import EyeSlashIcon from '@icons/ui/eye-slash.svg?react';
+import CrossIcon from '@icons/ui/cross.svg?react';
+import Input, { InputPassword, InputText, InputSearch } from './Input';
 import '../../../index.scss';
-// @ts-ignore
-import eye from '../../assets/icons/ui/eye.svg';
-// @ts-ignore
-import eyeSlash from '../../assets/icons/ui/eye-slash.svg';
 
 const meta: Meta<typeof Input> = {
   title: 'UI/Input',
@@ -88,12 +87,37 @@ export const PasswordWithError: Story = {
                   setShowPassword((prev) => !prev);
               }}
             >
-              <img
-                src={showPassword ? eyeSlash : eye}
-                alt={showPassword ? 'Скрыть пароль' : 'Показать пароль'}
-              />
+              {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
             </div>
           }
+        />
+      </div>
+    );
+  }
+};
+
+export const SearchInput: Story = {
+  render: () => {
+    const [query, setQuery] = useState('');
+
+    return (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 700,
+          height: 100,
+          backgroundColor: 'var(--bg-color)'
+        }}
+      >
+        <InputSearch
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder='Искать навык'
+          inputSize='large'
+          icon={query ? <CrossIcon /> : undefined}
+          onIconClick={() => setQuery('')}
         />
       </div>
     );

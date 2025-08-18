@@ -1,10 +1,12 @@
 import React, { useId } from 'react';
+import SearchIcon from '@icons/ui/search.svg?react';
 import { type InputProps } from './types';
 import styles from './Input.module.scss';
 
 const Input: React.FC<InputProps> = ({
   value,
   type = 'text',
+  inputSize = 'small',
   label,
   placeholder,
   icon,
@@ -16,8 +18,10 @@ const Input: React.FC<InputProps> = ({
   style
 }) => {
   const inputId = useId(); // для связи с лейблом
-  const wrapperClassName = `${styles.inputWrapper} ${status ? styles[`input-${status}`] : ''}`;
+  const wrapperClassName = `${styles.inputWrapper} ${styles[`size-${inputSize}`]} ${status ? styles[`input-${status}`] : ''}`;
   const inputClassName = `${styles.inputField} ${status ? styles[`input-${status}`] : ''}`;
+
+  const isSearch = type === 'search'; // для выведения исконки поиска
 
   return (
     <div className={wrapperClassName}>
@@ -27,6 +31,11 @@ const Input: React.FC<InputProps> = ({
         </label>
       )}
       <div className={styles.inputContainer}>
+        {isSearch && (
+          <div className={styles.searchIcon}>
+            <SearchIcon />
+          </div>
+        )}
         <input
           id={inputId}
           type={type}
@@ -72,4 +81,8 @@ export const InputEmail = (props: InputProps) => (
 
 export const InputPassword = ({ type, ...props }: InputProps) => (
   <Input {...props} type={type ?? 'password'} />
+);
+
+export const InputSearch = (props: InputProps) => (
+  <Input {...props} type='search' />
 );
