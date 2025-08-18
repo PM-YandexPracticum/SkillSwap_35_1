@@ -1,35 +1,154 @@
 [
-    {
-    "id": "user1",
+  {
+    "id": "1",
     "name": "Иван",
     "city": "Санкт-Петербург",
     "dateOfBirth": "20.02.1989",
     "avatar": "/avatars/user1.jpg",
     "gender": "male",
     "about": "Люблю путешествовать и быстрые машины.",
-    "can": ["Маркетинг и реклама"],
-    "want": ["Продажи и переговоры", "Личный бренд"]
+    "can": {
+      "title": "Продажи и полезные навыки",
+      "category": "Бизнес и карьера",
+      "subcategory": "Продажи и переговоры",
+      "description": "Научусь продажам и переговорам с нуля.",
+      "images": ["./photos/sell.jpg"]
     },
-    {
-    "id": "user2",
+    "want": ["Продажи и переговоры", "Личный бренд"],
+    "createdAt": "13.08.2025",
+    "likeCount": 2
+  },
+  {
+    "id": "2",
     "name": "Анна",
     "city": "Казань",
     "dateOfBirth": "05.10.1996",
     "gender": "female",
     "avatar": "/avatars/user2.jpg",
     "about": "Люблю модно одеваться и играть в шахматы.",
-    "can": ["Английский"],
-    "want": ["Французский", "Испанский"]
+    "can": {
+      "title": "Выстраивание личного бренда",
+      "category": "Бизнес и карьера",
+      "subcategory": "Личный бренд",
+      "description": "Научу выстраивать личный бренд с минимальными вложениями.",
+      "images": ["./photos/brand.jpg"]
     },
-    {
-    "id": "user3",
+    "want": ["Французский", "Испанский"],
+    "createdAt": "14.08.2025",
+    "likeCount": 1
+  },
+  {
+    "id": "3",
     "name": "Максим",
     "city": "Москва",
     "dateOfBirth": "03.02.1999",
     "gender": "male",
     "avatar": "/avatars/user3.jpg",
     "about": "Люблю вкусную еду и хорошие игры.",
-    "can": ["Уборка и организация"],
-    "want": ["Домашние финансы", "Приготовление еды"]
-    }
+    "can": {
+      "title": "Маркетинг SEO и SMM",
+      "category": "Бизнес и карьера",
+      "subcategory": "Маркетинг и реклама",
+      "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
+      "images": ["./photos/marketing.jpg"]
+    },
+    "want": ["Домашние финансы", "Приготовление еды"],
+    "createdAt": "15.08.2025",
+    "likeCount": 2
+  },
+  {
+    "id": "4",
+    "name": "Алла",
+    "city": "Архангельск",
+    "dateOfBirth": "02.05.1995",
+    "gender": "female",
+    "avatar": "/avatars/user4.jpg",
+    "about": "Люблю ходить по магазинам и заниматься спортом.",
+    "can": {
+      "title": "Продажи и полезные навыки",
+      "category": "Бизнес и карьера",
+      "subcategory": "Продажи и переговоры",
+      "description": "Научусь продажам и переговорам с нуля.",
+      "images": ["./photos/sell.jpg"]
+    },
+    "want": ["Продажи и переговоры"],
+    "createdAt": "12.08.2025",
+    "likeCount": 2
+  },
+  {
+    "id": "5",
+    "name": "Дарья",
+    "city": "Ярославль",
+    "dateOfBirth": "01.05.1997",
+    "gender": "female",
+    "avatar": "/avatars/user6.jpg",
+    "about": "Люблю работать и усердно учиться.",
+    "can": {
+      "title": "Выстраивание личного бренда",
+      "category": "Бизнес и карьера",
+      "subcategory": "Личный бренд",
+      "description": "Научу выстраивать личный бренд с минимальными вложениями.",
+      "images": ["./photos/brand.jpg"]
+    },
+    "want": ["Домашние финансы"],
+    "createdAt": "11.08.2025",
+    "likeCount": 1
+  },
+  {
+    "id": "6",
+    "name": "Екатерина",
+    "city": "Пермь",
+    "dateOfBirth": "21.05.1986",
+    "gender": "female",
+    "avatar": "/avatars/user7.jpg",
+    "about": "Постоянно развиваюсь и путешествую.",
+    "can": {
+      "title": "Маркетинг SEO и SMM",
+      "category": "Бизнес и карьера",
+      "subcategory": "Маркетинг и реклама",
+      "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
+      "images": ["./photos/marketing.jpg"]
+    },
+    "want": ["Приготовление еды"],
+    "createdAt": "10.08.2025",
+    "likeCount": 3
+  },
+  {
+    "id": "7",
+    "name": "Елена",
+    "city": "Красноярск",
+    "dateOfBirth": "21.05.1989",
+    "gender": "female",
+    "avatar": "/avatars/user8.jpg",
+    "about": "Люблю ходить по клубам и ездить на машине.",
+    "can": {
+      "title": "Продажи и полезные навыки",
+      "category": "Бизнес и карьера",
+      "subcategory": "Продажи и переговоры",
+      "description": "Научусь продажам и переговорам с нуля.",
+      "images": ["./photos/sell.jpg"]
+    },
+    "want": ["Маркетинг и реклама"],
+    "createdAt": "13.08.2025",
+    "likeCount": 3
+  },
+  {
+    "id": "8",
+    "name": "София",
+    "city": "Абакан",
+    "dateOfBirth": "21.05.1984",
+    "gender": "female",
+    "avatar": "/avatars/user9.jpg",
+    "about": "Люблю отдыхать и постоянно развиваться.",
+    "can": {
+      "title": "Маркетинг SEO и SMM",
+      "category": "Бизнес и карьера",
+      "subcategory": "Маркетинг и реклама",
+      "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
+      "images": ["./photos/marketing.jpg"]
+    },
+    "want": ["Приготовление еды"],
+    "createdAt": "11.08.2025",
+    "likeCount": 2
+  }
 ]
