@@ -4,11 +4,11 @@
     "name": "Эля",
     "city": "Москва",
     "dateOfBirth": "02.03.1997",
-    "gender": "female",
     "image": "./photos/user9.jpg",
+    "gender": "female",
+    "about": "Люблю прогулки и животных.",
     "email": "elya@test.ru",
     "password": "54545",
-    "about": "Люблю прогулки и животных.",
     "can": {
       "title": "Продажи и полезные навыки",
       "category": "Бизнес и карьера",
