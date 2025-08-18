@@ -14,7 +14,7 @@
       "category": "Бизнес и карьера",
       "subcategory": "Продажи и переговоры",
       "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["./photos/sell.jpg"]
+      "images": ["./skills/sell.jpg"]
     },
     "want": ["Приготовление еды", "Домашние финансы"]
   }
