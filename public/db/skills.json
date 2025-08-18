@@ -4,20 +4,20 @@
     "category": "Бизнес и карьера",
     "subcategory": "Маркетинг и реклама",
     "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-    "images": ["./photos/marketing.jpg"]
+    "images": ["./skills/marketing.jpg"]
   },
   {
     "title": "Продажи и полезные навыки",
     "category": "Бизнес и карьера",
     "subcategory": "Продажи и переговоры",
     "description": "Научусь продажам и переговорам с нуля.",
-    "images": ["./photos/sell.jpg"]
+    "images": ["./skills/sell.jpg"]
   },
   {
     "title": "Выстраивание личного бренда",
     "category": "Бизнес и карьера",
     "subcategory": "Личный бренд",
     "description": "Научу выстраивать личный бренд с минимальными вложениями.",
-    "images": ["./photos/brand.jpg"]
+    "images": ["./skills/brand.jpg"]
   }
 ]
