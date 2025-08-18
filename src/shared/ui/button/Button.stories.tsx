@@ -7,7 +7,10 @@ const meta: Meta<typeof Button> = {
   component: Button,
   argTypes: {
     onClick: { action: 'clicked' },
-    variant: { control: 'radio', options: ['primary', 'secondary', 'tertiary'] },
+    variant: {
+      control: 'radio',
+      options: ['primary', 'secondary', 'tertiary']
+    },
     disabled: { control: 'boolean' }
   }
 };

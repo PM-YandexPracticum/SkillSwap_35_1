@@ -16,8 +16,8 @@
     }
 
     &:checked + &__icon {
-        color: var(--accent-color-dark);
-        cursor: pointer;
+      color: var(--accent-color-dark);
+      cursor: pointer;
     }
 
     &:disabled + &__icon {
