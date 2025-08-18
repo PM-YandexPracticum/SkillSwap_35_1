@@ -1,0 +1,30 @@
+.base-overlay-wrapper {
+  position: fixed;             
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.base-overlay-wrapper.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.base-overlay {
+  background-color: var(--bg-color);
+  border-radius: var(--main-border-radius);
+  outline: none;
+  box-shadow: 0 10px 25px rgb(0 0 0 / 20%);
+  transform: scale(0.95);
+  transition: transform 0.2s ease-in-out;
+}
+
+.base-overlay-wrapper.open .base-overlay {
+  transform: scale(1);
+}
