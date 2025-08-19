@@ -1,0 +1,73 @@
+.container {
+  box-sizing: border-box;
+  width: 324px;
+  padding: 20px;
+  background-color: white;
+  border-radius: var(--main-border-radius);
+}
+
+p {
+  margin: 0;
+}
+
+.user {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.user_info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.user_name {
+  color: var(--main-color-text);
+  font-weight: 600;
+  font-size: var(--font-size-main-header);
+  font-family: var(--font-family-user-name);
+  line-height: var(--font-line-main-header);
+}
+
+.user_details {
+  color: var(--main-color-text);
+  font-weight: 400;
+  font-size: var(--font-size-details);
+  font-family: var(--font-family-main);
+  line-height: var(--font-line-details);
+}
+
+.like {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.learn {
+  margin-bottom: 12px;
+}
+
+.teach {
+  margin-bottom: 20px;
+}
+
+.text {
+  margin: 0;
+  margin-bottom: 8px;
+  color: var(--main-color-text);
+  font-weight: 600;
+  font-size: var(--font-size-main-text);
+  font-family: var(--font-family-main);
+  line-height: var(--font-line-main-text);
+}
+
+.skills_wrapper {
+  display: flex;
+  gap: 4px;
+}
