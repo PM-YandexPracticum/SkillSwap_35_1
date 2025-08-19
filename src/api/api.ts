@@ -20,14 +20,19 @@ function checkResponse(res: Response) {
         .then((err) => Promise.reject({ ...err, statusCode: res.status }));
 }
 
-// Базовый запрос. Изменить эндпоинт!
+// Базовый запрос. ВАЖНО: Указать нужный эндпоинт!
 async function request(endpoint: string, options: RequestInit = {}) {
   try {
+    const accessToken = localStorage.getItem('accessToken');
+    const headers = {
+      'Content-Type': 'application/json',
+      ...(accessToken ? { authorization: `Bearer ${accessToken}` } : {}),
+      ...options.headers
+    };
+
     const res = await fetch(`${URL}/api/${endpoint}`, {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      ...options
+      ...options,
+      headers
     });
     return await checkResponse(res);
   } catch (error) {
@@ -35,7 +40,7 @@ async function request(endpoint: string, options: RequestInit = {}) {
   }
 }
 
-// Обновление токена! Изменить эндпоинт!
+// Обновление токена. ВАЖНО: Указать нужный эндпоинт!
 function refreshToken() {
   return request('auth/token', {
     method: 'POST',
@@ -49,24 +54,16 @@ async function fetchWithRefresh(endpoint: string, options: RequestInit = {}) {
     return await request(endpoint, options);
   } catch (error: any) {
     if (error.statusCode === 401 || error.statusCode === 403) {
-      const refreshData = await refreshToken();
+      const refreshData: TRefreshResponse = await refreshToken();
 
       if (!refreshData.success) {
         return Promise.reject(refreshData);
       }
 
-      // Сохраняем оба токена в localStorage.
       localStorage.setItem('accessToken', refreshData.accessToken);
       localStorage.setItem('refreshToken', refreshData.refreshToken);
 
-      // Повторяем запрос с новым токеном.
-      return await request(endpoint, {
-        ...options,
-        headers: {
-          ...options.headers,
-          authorization: localStorage.getItem('accessToken') || ''
-        }
-      });
+      return await request(endpoint, options);
     }
     return Promise.reject(error);
   }
