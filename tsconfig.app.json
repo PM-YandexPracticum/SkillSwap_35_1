@@ -29,6 +29,7 @@
       "@icons/*": ["src/shared/assets/icons/*"],
       "@ui/*": ["src/shared/ui/*"],
       "@components/*": ["src/app/components/*"],
+      "@lib/*": ["src/shared/lib/*"],
     }
 
   },

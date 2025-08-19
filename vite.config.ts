@@ -49,6 +49,7 @@ export default defineConfig({
       '@icons': path.resolve(__dirname, './src/shared/assets/icons'),
       '@ui': path.resolve(__dirname, './src/shared/ui'),
       '@components': path.resolve(__dirname, './src/app/components'),
+      '@lib': path.resolve(__dirname, './src/shared/lib'),
     }
   }
 });
