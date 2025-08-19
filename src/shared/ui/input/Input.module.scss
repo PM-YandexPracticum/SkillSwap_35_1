@@ -70,6 +70,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--main-color-text);
   }
 
   & .searchIcon {
@@ -78,6 +79,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--tertiary-color-dark);
     pointer-events: none;
   }
 
