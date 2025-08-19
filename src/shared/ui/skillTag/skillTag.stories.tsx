@@ -13,7 +13,7 @@ const meta: Meta<typeof SkillTag> = {
     },
     category: {
       control: 'select',
-      options: ['language', 'business', 'creative', 'other'],
+      options: ['Иностранные языки', 'Бизнес и карьера', 'Творчество и искусство', 'other'],
       description: 'Категория навыка'
     },
     isCountExtra: {
@@ -29,7 +29,7 @@ type Story = StoryObj<typeof SkillTag>;
 export const LanguageSkill: Story = {
   args: {
     name: 'английский язык',
-    category: 'language',
+    category: 'Иностранные языки',
     isCountExtra: false
   }
 };
@@ -37,7 +37,7 @@ export const LanguageSkill: Story = {
 export const BusinessSkill: Story = {
   args: {
     name: 'Управление проектами',
-    category: 'business',
+    category: 'Бизнес и карьера',
     isCountExtra: false
   }
 };
@@ -45,7 +45,7 @@ export const BusinessSkill: Story = {
 export const CreativeSkill: Story = {
   args: {
     name: 'Игра на барабанах',
-    category: 'creative',
+    category: 'Творчество и искусство',
     isCountExtra: false
   }
 };

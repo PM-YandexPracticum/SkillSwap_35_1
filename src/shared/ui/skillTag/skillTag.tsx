@@ -11,17 +11,17 @@ export const SkillTag: FC<SkillTagProps> = ({
   // получение названия класса в зависимости от категории навыка
   const getClassCategory = (): string => {
     switch (category) {
-      case 'language':
+      case 'Иностранные языки':
         return 'skill__tag-language';
-      case 'business':
+      case 'Бизнес и карьера':
         return 'skill__tag-business';
-      case 'creative':
+      case 'Творчество и искусство':
         return 'skill__tag-creative';
-      case 'education':
+      case 'Образование и развитие':
         return 'skill__tag-education';
-      case 'household':
+      case 'Дом и уют':
         return 'skill__tag-household';
-      case 'health':
+      case 'Здоровье и лайфстайл':
         return 'skill__tag-health';
       default:
         return 'skill__tag-other';

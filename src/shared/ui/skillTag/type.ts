@@ -1,14 +1,7 @@
-type SkillCategory =
-  | 'language'
-  | 'business'
-  | 'creative'
-  | 'education'
-  | 'household'
-  | 'health'
-  | 'other';
+import type { TSkillCategory } from '../../lib/skillCategories';
 
 export interface SkillTagProps {
   name: string;
-  category: SkillCategory;
+  category: TSkillCategory | 'other';
   isCountExtra?: boolean;
 }

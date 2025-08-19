@@ -1,4 +1,4 @@
-const skillCategories = {
+const skillCategories: Record<string, string[]> = {
   'Бизнес и карьера': [
     'Управление командой',
     'Маркетинг и реклама',
@@ -54,5 +54,7 @@ const skillCategories = {
     'Баланс жизни и работы'
   ]
 };
+
+export type TSkillCategory = keyof typeof skillCategories;
 
 export default skillCategories;
