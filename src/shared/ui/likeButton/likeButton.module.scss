@@ -1,18 +1,26 @@
+.likeButtonWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-content: center;
+  align-items: center;
+}
+
 .likeButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px; // ширина кнопки, можно менять под дизайн
-  height: 40px; // высота кнопки
+  width: 40px;
+  height: 40px;
   padding: 4px;
   background-color: transparent;
   border: none;
   cursor: pointer;
   transition: transform 0.1s ease, color 0.2s ease;
-  color: var(--accent-color); // цвет по умолчанию для иконки
+  color: var(--clr-text-secondary);
 
   &:hover {
-    color: var(--accent-color-dark); // при наведении темнее
+    color: var(--accent-color);
     transform: scale(1.1);
   }
 
@@ -29,5 +37,24 @@
     width: 24px;
     height: 24px;
     display: block;
+    transition: fill 0.2s ease;
   }
+}
+
+// Стиль для активного состояния
+.likeButtonActive {
+  color: var(--accent-color);
+
+  &:hover {
+    color: var(--accent-color-dark);
+  }
+}
+
+.likeButtonNumber {
+  font-family: inherit;
+  color: var(--clr-text);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  margin: 0;
 }

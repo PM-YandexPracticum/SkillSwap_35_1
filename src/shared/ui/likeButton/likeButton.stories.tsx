@@ -8,6 +8,9 @@ const meta: Meta<typeof LikeButton> = {
   title: 'Components/LikeButton',
   component: LikeButton,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
   argTypes: {
     liked: { control: 'boolean' },
     onClick: { action: 'clicked' }
@@ -33,11 +36,42 @@ export const LikedButton: Story = {
 };
 
 // Интерактивный LikeButton с локальным состоянием
-export const ToggleLike = {
-  render: () => {
-    const [liked, setLiked] = useState(false);
-    const handleClick = () => setLiked(prev => !prev);
+export const Interactive: Story = {
+  render: function Render() {
+    const [isLiked, setIsLiked] = useState(false);
 
-    return <LikeButton liked={liked} onClick={handleClick} />;
+    const handleClick = () => {
+      setIsLiked(prev => !prev);
+    };
+
+    return (
+      <LikeButton
+        liked={isLiked}
+        onClick={handleClick}
+      />
+    );
   }
+};
+
+// Все состояния в одном месте
+export const AllStates = () => {
+  return (
+    <div style={{ 
+      display: 'flex', 
+      gap: '20px', 
+      flexWrap: 'wrap', 
+      justifyContent: 'center',
+      padding: '20px'
+    }}>
+      <div style={{ textAlign: 'center' }}>
+        <LikeButton liked={false} onClick={() => {}} />
+        <p style={{ marginTop: '8px', fontSize: '14px' }}>Неактивный</p>
+      </div>
+      
+      <div style={{ textAlign: 'center' }}>
+        <LikeButton liked={true} onClick={() => {}} />
+        <p style={{ marginTop: '8px', fontSize: '14px' }}>Активный</p>
+      </div>
+    </div>
+  );
 };
