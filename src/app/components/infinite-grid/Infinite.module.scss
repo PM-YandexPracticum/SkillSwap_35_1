@@ -1,0 +1,16 @@
+.infinite__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  &__item {
+    height: 368px;
+    background-color: #afa9a9;
+  }
+}
