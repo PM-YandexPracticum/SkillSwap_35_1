@@ -1,18 +1,13 @@
-import { configureStore, combineSlices, createSlice } from '@reduxjs/toolkit';
+import { configureStore, combineSlices } from '@reduxjs/toolkit';
 
 import type { TypedUseSelectorHook } from 'react-redux';
 import {
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
+import { SkillSlice } from './slices/skillsSlice';
 
-const dummySlice = createSlice({
-  name: 'dummy',
-  initialState: {},
-  reducers: {}
-}); // Временный пустой слайс-заглушка
-
-const rootReducer = combineSlices(dummySlice);
+export const rootReducer = combineSlices(SkillSlice);
 
 const store = configureStore({
   reducer: rootReducer,
