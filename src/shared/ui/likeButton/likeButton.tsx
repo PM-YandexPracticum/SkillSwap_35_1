@@ -6,10 +6,10 @@ import LikeIcon from '@icons/ui/like.svg?react';
 export const LikeButton: FC<LikeButtonUIProps> = ({ liked, onClick }) => {
   return (
     <button 
-      className={`${styles.likeButton} ${liked ? styles.liked : ''}`} 
+      className={`${styles.likeButton} ${liked ? styles.likeButtonActive : ''}`} 
       onClick={onClick}
     >
-      <LikeIcon className={liked ? styles.iconLiked : styles.iconNormal} />
+      <LikeIcon />
     </button>
   );
 };

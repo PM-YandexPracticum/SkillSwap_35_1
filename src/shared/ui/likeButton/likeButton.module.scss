@@ -17,7 +17,7 @@
   border: none;
   cursor: pointer;
   transition: transform 0.1s ease, color 0.2s ease;
-  color: var(--clr-text-secondary);
+  color: var(--tertiary-color);
 
   &:hover {
     color: var(--accent-color);
@@ -38,20 +38,21 @@
     height: 24px;
     display: block;
     transition: fill 0.2s ease;
+    fill: currentcolor;
   }
 }
 
 .likeButtonActive {
-  color: var(--accent-color);
+  color: var(--accent-color-dark);
 
   &:hover {
-    color: var(--accent-color-dark);
+    color: var(--accent-color);
   }
 }
 
 .likeButtonNumber {
-  font-family: inherit;
-  color: var(--clr-text);
+  font-family: var(--font-family-main);
+  color: var(--main-color-text);
   font-size: 12px;
   line-height: 1.33;
   letter-spacing: 0.02em;
