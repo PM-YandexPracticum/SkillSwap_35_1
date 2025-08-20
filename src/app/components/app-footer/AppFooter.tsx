@@ -3,7 +3,7 @@ import { Logo } from '@ui/logo';
 
 export const AppFooter = () => {
   return (
-    <div className={styles.container}>
+    <footer className={styles.container}>
       <div className={styles.logo}>
         <Logo />
         <p className={styles.copyright}>SkillSwap - 2025</p>
@@ -20,6 +20,6 @@ export const AppFooter = () => {
         <a href='#' target='_blank' className={styles.link}>Политика конфиденциальности</a>
         <a href='#' target='_blank' className={styles.link}>Пользовательское соглашение</a>
       </div>
-    </div>
+    </footer>
   );
 }

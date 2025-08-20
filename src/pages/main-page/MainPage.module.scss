@@ -1,7 +1,6 @@
 .main {
   display: flex;
   gap: 24px;
-  max-width: 1368px;
   height: 100%;
   overflow: hidden;
   margin: 0 auto;
@@ -9,9 +8,8 @@
 
 .filterPanel {
   width: 324px;
-  height: 1012px;
   color: var(--main-color-text);
-  background-color: var(--secondary-color);
+  background-color: var(--bg-color);
 }
 
 .cardsContainer {
