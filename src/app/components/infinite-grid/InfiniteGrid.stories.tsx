@@ -5,7 +5,7 @@ const meta = {
   title: 'Components/InfiniteGrid',
   component: InfiniteGrid,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
     docs: {
       description: {
         component:
@@ -15,7 +15,7 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    // Если бы были пропсы, мы бы их описали здесь
+    title: { control:'text' },
   }
 } satisfies Meta<typeof InfiniteGrid>;
 
@@ -24,7 +24,7 @@ type Story = StoryObj<typeof meta>;
 
 // История с начальной загрузкой
 export const WithInitialLoad: Story = {
-  args: {},
+  args: { title: 'Рекомендуем', },
   parameters: {
     docs: {
       description: {

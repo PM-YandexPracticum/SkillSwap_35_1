@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import type { TSkill } from './types';
+import type { IDesiredSkill } from '../../entities/types/types';
 import { SkillCard } from './SkillCard';
 
 const meta: Meta<typeof SkillCard> = {
@@ -19,15 +19,16 @@ export const SelectStory: Story = {
       backgroundColor: '#fafafa',
     };
 
-    const skillsToLearn: TSkill[] = [
-      { name: 'Тайм-менеджмент', category: 'Бизнес и карьера' },
-      { name: 'Медитация', category: 'Здоровье и лайфстайл' },
-      { name: 'Скорочтение', category: 'Образование и развитие' },
-      { name: 'Фотография', category: 'Творчество и искусство' },
+    const skillsToLearn: IDesiredSkill[] = [
+      { subcategory: 'Тайм-менеджмент', category: 'Бизнес и карьера' },
+      { subcategory: 'Медитация', category: 'Здоровье и лайфстайл' },
+      { subcategory: 'Скорочтение', category: 'Образование и развитие' },
+      { subcategory: 'Фотография', category: 'Творчество и искусство' },
     ];
 
     const userName = 'Маэстро';
-    const userDetails = 'Санкт-петербург, 34 года';
+    const userCity = 'Санкт-Петербург';
+    const userDateofBirth = '1988-07-14';
     const userSkillCategory = 'Иностранные языки';
     const userSkillName = 'Английский язык';
     const userPhotoUrl = 'https://distribution.faceit-cdn.net/images/5c0cd4f9-1b09-4c0a-9061-7c2c0edd24cb.jpeg';
@@ -36,7 +37,8 @@ export const SelectStory: Story = {
       <div style={styles}>
         <SkillCard
           userName={userName}
-          userDetails={userDetails}
+          userCity={userCity}
+          userDateofBirth={userDateofBirth}
           userSkillCategory={userSkillCategory}
           userSkillName={userSkillName}
           userPhotoUrl={userPhotoUrl}

@@ -1,84 +1,89 @@
 import { useEffect, useState } from 'react';
+import type { InfiniteGridProps } from './types';
+import type { IUserPublic } from '../../../entities/types/types';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Title } from '@ui/title/Title';
+import { SkillCard } from '../../../widgets/skill-card';
 import styles from './Infinite.module.scss';
 
-// Интерфейс для заглушки
-interface IUserData {
-  id: number;
-  name: {
-    first: string;
-    last: string;
-  };
-  gender: string;
-}
-
-export const InfiniteGrid = () => {
+export const InfiniteGrid: React.FC<InfiniteGridProps> = ({ title }) => {
   // Данные пользователей, для рендера карточки
-  const [users, setUsers] = useState<IUserData[]>([]);
+  const [cards, setCards] = useState<IUserPublic[]>([]);
   // Флаг - есть ли еще не загруженные данные
   const [hasMore, setHasMore] = useState(true);
 
   // Заглушка для проверки моковых данных
-  const generateMockUsers = (startIndex: number, count = 9): IUserData[] => {
-    const firstNames = ['Алексей', 'Мария', 'Иван', 'Екатерина'];
-    const lastNames = ['Иванов', 'Петрова', 'Сидоров', 'Смирнова'];
-
+  const generateMockCards = (startIndex: number, count = 20): IUserPublic[] => {
     return Array.from({ length: count }, (_, i) => {
-      const id = startIndex + i;
-      const firstName =
-        firstNames[Math.floor(Math.random() * firstNames.length)];
-      const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-      const gender = Math.random() > 0.5 ? 'male' : 'female';
+      const newId = (startIndex + i).toString();
 
       return {
-        id,
-        name: {
-          first: firstName,
-          last: lastName
-        },
-        gender
-      };
+      id: newId,
+      name: 'Маэстро',
+      about: 'Единственный и неповторимый',
+      gender: 'male',
+      dateOfBirth: '1988-07-14',
+      city: 'Санкт-Петербург',
+      image: 'https://distribution.faceit-cdn.net/images/5c0cd4f9-1b09-4c0a-9061-7c2c0edd24cb.jpeg',
+      can: {
+        title: 'Маркетинг SEO и SMM',
+        category: 'Бизнес и карьера',
+        subcategory: 'Маркетинг и реклама',
+        description: 'Научу заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу',
+        images: ['https://distribution.faceit-cdn.net/images/5c0cd4f9-1b09-4c0a-9061-7c2c0edd24cb.jpeg']
+      },
+      want: [
+        { subcategory: 'Тайм-менеджмент', category: 'Бизнес и карьера' },
+        { subcategory: 'Медитация', category: 'Здоровье и лайфстайл' },
+        { subcategory: 'Скорочтение', category: 'Образование и развитие' },
+        { subcategory: 'Фотография', category: 'Творчество и искусство' }
+      ],
+      likeCount: 1000000,
+      createdAt: 'сегодня'
+    };
     });
   };
   // Здесь будет запрос ( в нашем случае подгрузка) данных + стоит setTimeout для проверки работы
   const fetchData = () => {
     setTimeout(() => {
-      // За один запрос генерируется 9 карточек по умолчанию
-      const newUsers = generateMockUsers(users.length, 9);
-      setUsers((prevUsers) => [...prevUsers, ...newUsers]);
+      // За один запрос генерируется 20 карточек по умолчанию
+      const newCards = generateMockCards(cards.length, 20);
+      setCards((prevCards) => [...prevCards, ...newCards]);
 
-      if (users.length + newUsers.length >= 36) {
+      if (cards.length + newCards.length >= 100) {
         setHasMore(false);
       }
     }, 2000);
   };
 
   useEffect(() => {
-    const initialUsers = generateMockUsers(0, 18);
-    setUsers(initialUsers);
+    const initialCards = generateMockCards(0, 40);
+    setCards(initialCards);
   }, []);
 
   return (
     <div className={styles.infinite__grid}>
-      <Title as='h1'> Рекомендуем </Title>
+      <Title as='h2'> {title} </Title>
       <InfiniteScroll
-        dataLength={users.length}
+        dataLength={cards.length}
         next={fetchData}
         hasMore={hasMore}
         loader={<p>Загружаем ещё пользователей...</p>}
-        endMessage={<p>Вы просмотрели всех {users.length} пользователей</p>}
         scrollThreshold={0.8}
         style={{ overflow: 'hidden' }}
       >
         <div className={styles.infinite__grid__container}>
-          {users.map((user) => (
-            <div key={user.id} className={styles.infinite__grid__item}>
-              <h3>
-                {user.name.first} {user.name.last}
-              </h3>
-              <p>Пол: {user.gender === 'male' ? 'Мужской' : 'Женский'}</p>
-            </div>
+          {cards.map((card) => (
+            <SkillCard
+              key={card.id}
+              userName={card.name}
+              userCity={card.city}
+              userDateofBirth={card.dateOfBirth}
+              userSkillCategory={card.can.category}
+              userSkillName={card.can.title}
+              userPhotoUrl={card.image}
+              skillsToLearn={card.want}
+            />
           ))}
         </div>
       </InfiniteScroll>

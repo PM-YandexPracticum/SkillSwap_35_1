@@ -5,12 +5,8 @@
 
   &__container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-
-  &__item {
-    height: 368px;
-    background-color: #afa9a9;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 24px;
+    width: 100%;
   }
 }
