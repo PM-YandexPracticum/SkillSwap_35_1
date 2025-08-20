@@ -41,7 +41,6 @@
   }
 }
 
-// Стиль для активного состояния
 .likeButtonActive {
   color: var(--accent-color);
 
@@ -54,7 +53,7 @@
   font-family: inherit;
   color: var(--clr-text);
   font-size: 12px;
-  line-height: 16px;
+  line-height: 1.33;
   letter-spacing: 0.02em;
   margin: 0;
 }
