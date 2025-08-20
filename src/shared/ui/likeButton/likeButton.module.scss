@@ -1,0 +1,33 @@
+.likeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; // ширина кнопки, можно менять под дизайн
+  height: 40px; // высота кнопки
+  padding: 4px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease, color 0.2s ease;
+  color: var(--accent-color); // цвет по умолчанию для иконки
+
+  &:hover {
+    color: var(--accent-color-dark); // при наведении темнее
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+}
