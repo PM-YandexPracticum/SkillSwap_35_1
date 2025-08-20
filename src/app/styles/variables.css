@@ -14,6 +14,7 @@
   --tertiary-color-dark: #69735d;
   --tertiary-color: #b2b9a9;
   --tertiary-color-light: #9ca197;
+  --color-neutral: #000000;
 
   /* цвета для тегов (категорий) */
   --color-tag-business: #eee7f7;
