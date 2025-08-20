@@ -1,8 +1,11 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   box-sizing: border-box;
   width: 324px;
   padding: 20px;
-  background-color: white;
+  background-color: var(--secondary-color);
   border-radius: var(--main-border-radius);
 }
 
@@ -14,7 +17,6 @@ p {
   position: relative;
   display: flex;
   gap: 12px;
-  margin-bottom: 20px;
 }
 
 .user_info {
@@ -33,14 +35,6 @@ p {
   line-height: var(--font-line-main-header);
 }
 
-.user_details {
-  color: var(--main-color-text);
-  font-weight: 400;
-  font-size: var(--font-size-details);
-  font-family: var(--font-family-main);
-  line-height: var(--font-line-details);
-}
-
 .like {
   position: absolute;
   top: 0;
@@ -49,22 +43,16 @@ p {
   height: 24px;
 }
 
-.learn {
-  margin-bottom: 12px;
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.teach {
-  margin-bottom: 20px;
-}
-
-.text {
-  margin: 0;
-  margin-bottom: 8px;
-  color: var(--main-color-text);
-  font-weight: 600;
-  font-size: var(--font-size-main-text);
-  font-family: var(--font-family-main);
-  line-height: var(--font-line-main-text);
+.skill_section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .skills_wrapper {

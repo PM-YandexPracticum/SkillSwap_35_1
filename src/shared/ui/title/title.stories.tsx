@@ -11,7 +11,7 @@ type Story = StoryObj<typeof Title>;
 export const SelectStoryTitle: Story = {
   argTypes: {
     as: {
-      options: ['h1', 'h2', 'h3', 'h4'],
+      options: ['h2', 'h3', 'h4', 'h5'],
       control: { type: 'select' }
     },
 

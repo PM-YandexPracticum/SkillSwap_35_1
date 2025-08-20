@@ -1,5 +1,6 @@
 import Avatar from '@ui/avatar/Avatar';
 import { SkillTag } from '@ui/skillTag/skillTag';
+import { Text } from '@ui/text/Text';
 import Button from '@ui/button/Button';
 import IconLike from '@icons/ui/like.svg?react';
 import styles from './SkillCard.module.scss';
@@ -23,25 +24,46 @@ export const SkillCard = (props: SkillCardProps) => {
         <Avatar src={userPhotoUrl} size='medium' />
         <div className={styles.user_info}>
           <p className={styles.user_name}>{userName}</p>
-          <p className={styles.user_details}>{userDetails}</p>
+          <Text as='p' size='details'>{userDetails}</Text>
         </div>
         <div className={styles.like}>
           <IconLike onClick={onLikeClick} />
         </div>
       </div>
-      <div className={styles.learn}>
-        <p className={styles.text}>Может научить:</p>
-        <SkillTag name={userSkillName} category={userSkillCategory} />
-      </div>
-      <div className={styles.teach}>
-        <p className={styles.text}>Хочет научиться:</p>
-        <div className={styles.skills_wrapper}>
-          { (skillsToLearn.length > 0) && <SkillTag name={skillsToLearn[0].name} category={skillsToLearn[0].category} /> }
-          { (skillsToLearn.length > 1) && <SkillTag name={skillsToLearn[1].name} category={skillsToLearn[1].category} /> }
-          { (skillsToLearn.length > 2) && <SkillTag name={`+${skillsToLearn.length - 2}`} category='other' /> }
+      <div className={styles.skills}>
+        <div className={styles.skill_section}>
+          <Text as='div' size='main'>
+            Может научить:
+          </Text>
+          <SkillTag name={userSkillName} category={userSkillCategory} />
+        </div>
+        <div className={styles.skill_section}>
+          <Text as='div' size='main'>
+            Хочет научиться:
+          </Text>
+          <div className={styles.skills_wrapper}>
+            {skillsToLearn.length > 0 && (
+              <SkillTag
+                name={skillsToLearn[0].name}
+                category={skillsToLearn[0].category}
+              />
+            )}
+            {skillsToLearn.length > 1 && (
+              <SkillTag
+                name={skillsToLearn[1].name}
+                category={skillsToLearn[1].category}
+              />
+            )}
+            {skillsToLearn.length > 2 && (
+              <SkillTag
+                name={`+${skillsToLearn.length - 2}`}
+                category='other'
+              />
+            )}
+          </div>
         </div>
       </div>
       <Button onClick={onDetailsClick}>Подробнее</Button>
     </div>
   );
-}
+};
