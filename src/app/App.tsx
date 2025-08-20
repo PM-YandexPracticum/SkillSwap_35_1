@@ -1,9 +1,3 @@
-import { InfiniteGrid } from '@components/infinite-grid/InfiniteGrid';
-
-const App = () => (
-  <div>
-    <InfiniteGrid title='Рекомендуем' />
-  </div>
-);
+const App = () => null;
 
 export default App;

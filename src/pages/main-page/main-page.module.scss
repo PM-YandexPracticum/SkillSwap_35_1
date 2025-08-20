@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+  gap: 24px;
+  max-width: 1368px;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.filterPanel {
+  width: 324px;
+  height: 1012px;
+  color: var(--main-color-text);
+  background-color: var(--secondary-color);
+}
+
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  overflow-y: scroll;
+}
