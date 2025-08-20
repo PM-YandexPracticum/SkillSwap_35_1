@@ -36,9 +36,8 @@
 }
 
 .themeToggleButton {
-  display: flex;
-  align-items: center;
   background-color: transparent;
+  color: var(--main-color-text);
   border: none;
   cursor: pointer;
 }
@@ -61,15 +60,18 @@
     align-items: center;
     gap: 25px;
 
-    & .userIcons {
-      display: flex;
-      gap: 20px;
-    }
-
     & .userInfo {
       display: flex;
       align-items: center;
       gap: 9px;
+      max-width: 107px;
+
+      & p {
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 }

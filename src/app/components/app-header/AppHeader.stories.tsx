@@ -54,7 +54,8 @@ export const HeaderLoggedIn: Story = {
 
 export const HeaderRegistration: Story = {
   args: {
-    user: undefined
+    user: undefined,
+    isRegistrationHeader: true
   },
   parameters: {
     reactRouter: {
