@@ -104,7 +104,7 @@ export const SkillSlice = createSlice({
         );
       });
     },
-    getSkillById: (state, id: string) =>
+    getSkillById: (state) => (id: string) =>
       state.skills.find((user) => user.id === id)
   }
 });

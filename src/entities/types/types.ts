@@ -27,4 +27,4 @@ export interface IUser {
   createdAt: string;
 }
 
-export interface IUserPublic extends Omit<IUser, 'email' | 'password'> {}
+export type IUserPublic = Omit<IUser, 'email' | 'password'>;
