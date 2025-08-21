@@ -1,3 +1,12 @@
-.icon {
-  color: var(--color-error);
+.app {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  min-height: 100vh;
+  max-width: 1440px;
+  overflow: hidden;
+  color: var(--main-color-text);
+  font-family: var(--font-family-main);
+  background-color: var(--bg-color);
+  scroll-behavior: smooth;
 }

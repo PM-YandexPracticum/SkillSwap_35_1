@@ -2,14 +2,12 @@
   display: flex;
   gap: 24px;
   height: 100%;
-  overflow: hidden;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .filterPanel {
   width: 324px;
   color: var(--main-color-text);
-  background-color: var(--bg-color);
 }
 
 .cardsContainer {
