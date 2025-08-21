@@ -10,24 +10,24 @@ import type {
 export interface TSkillsState {
   skills: IUserPublic[];
   filters: {
-    category: string[];
-    subcategory: string[];
+    categories: string[];
+    subcategories: string[];
     gender: string;
     city: string;
-    can: ISkill | null;
-    want: IDesiredSkill[];
+    canTeach: ISkill | null;
+    wantToLearn: IDesiredSkill[];
   };
 }
 
 const initialState: TSkillsState = {
   skills: [],
   filters: {
-    category: [],
-    subcategory: [],
+    categories: [],
+    subcategories: [],
     gender: '',
     city: '',
-    can: null,
-    want: []
+    canTeach: null,
+    wantToLearn: []
   }
 };
 
@@ -38,73 +38,98 @@ export const SkillSlice = createSlice({
     setSkills: (state, action: PayloadAction<IUserPublic[]>) => {
       state.skills = action.payload;
     },
-    toggleCategoryFilter: (state, action: PayloadAction<string>) => {
-      const category = action.payload;
-      const index = state.filters.category.indexOf(category);
-      if (index === -1) {
-        state.filters.category.push(category);
-      } else {
-        state.filters.category.splice(index, 1);
-      }
-      state.filters.subcategory = [];
+
+    addCategory: (state, action: PayloadAction<string>) => {
+      state.filters.categories.push(action.payload);
+      state.filters.subcategories = [];
     },
-    toggleSubcategoryFilter: (state, action: PayloadAction<string>) => {
-      const subcategory = action.payload;
-      const index = state.filters.subcategory.indexOf(subcategory);
-      if (index === -1) {
-        state.filters.subcategory.push(subcategory);
-      } else {
-        state.filters.subcategory.splice(index, 1);
-      }
+
+    removeCategory: (state, action: PayloadAction<string>) => {
+      state.filters.categories = state.filters.categories.filter(
+        (cat) => cat !== action.payload
+      );
     },
-    setGenderFilter: (state, action: PayloadAction<string>) => {
+
+    addSubcategory: (state, action: PayloadAction<string>) => {
+      state.filters.subcategories.push(action.payload);
+    },
+
+    removeSubcategory: (state, action: PayloadAction<string>) => {
+      state.filters.subcategories = state.filters.subcategories.filter(
+        (subcat) => subcat !== action.payload
+      );
+    },
+
+    setGender: (state, action: PayloadAction<string>) => {
       state.filters.gender = action.payload;
     },
-    setCityFilter: (state, action: PayloadAction<string>) => {
+
+    setCity: (state, action: PayloadAction<string>) => {
       state.filters.city = action.payload;
     },
-    setCanFilter: (state, action: PayloadAction<ISkill | null>) => {
-      state.filters.can = action.payload;
+
+    setCanTeach: (state, action: PayloadAction<ISkill | null>) => {
+      state.filters.canTeach = action.payload;
     },
-    setWantFilter: (state, action: PayloadAction<IDesiredSkill[]>) => {
-      state.filters.want = action.payload;
+
+    setWantToLearn: (state, action: PayloadAction<IDesiredSkill[]>) => {
+      state.filters.wantToLearn = action.payload;
+    },
+
+    clearAllFilters: (state) => {
+      state.filters = initialState.filters;
     }
   },
   selectors: {
     getSkills: (state) => state.skills,
     getFilters: (state) => state.filters,
+
     getFilteredSkills: (state) => {
-      const { skills, filters } = state;
-      return skills.filter((user) => {
-        const matchesCategory =
-          filters.category.length === 0 ||
-          filters.category.includes(user.can.category);
-        const matchesSubcategory =
-          filters.subcategory.length === 0 ||
-          filters.subcategory.includes(user.can.subcategory);
-        const matchesGender =
-          filters.gender === '' || user.gender === filters.gender;
-        const matchesCity = filters.city === '' || user.city === filters.city;
-        const matchesCan = !filters.can || user.can.title === filters.can.title;
-        const matchesWant =
-          filters.want.length === 0 ||
-          filters.want.some((desiredSkill) =>
-            user.want.some(
-              (userDesiredSkill) =>
-                userDesiredSkill.category === desiredSkill.category &&
-                userDesiredSkill.subcategory === desiredSkill.subcategory
-            )
-          );
-        return (
-          matchesCategory &&
-          matchesSubcategory &&
-          matchesGender &&
-          matchesCity &&
-          matchesCan &&
-          matchesWant
+      let filteredUsers = state.skills;
+      const { categories, subcategories, gender, city, canTeach, wantToLearn } =
+        state.filters;
+
+      if (categories.length > 0) {
+        filteredUsers = filteredUsers.filter((user) =>
+          categories.includes(user.can.category)
         );
-      });
+      }
+
+      if (subcategories.length > 0) {
+        filteredUsers = filteredUsers.filter((user) =>
+          subcategories.includes(user.can.subcategory)
+        );
+      }
+
+      if (gender) {
+        filteredUsers = filteredUsers.filter((user) => user.gender === gender);
+      }
+
+      if (city) {
+        filteredUsers = filteredUsers.filter((user) => user.city === city);
+      }
+
+      if (canTeach) {
+        filteredUsers = filteredUsers.filter(
+          (user) => user.can.title === canTeach.title
+        );
+      }
+
+      if (wantToLearn.length > 0) {
+        filteredUsers = filteredUsers.filter((user) =>
+          wantToLearn.some((desiredSkill) =>
+            user.want.some(
+              (userSkill) =>
+                userSkill.category === desiredSkill.category &&
+                userSkill.subcategory === desiredSkill.subcategory
+            )
+          )
+        );
+      }
+
+      return filteredUsers;
     },
+
     getSkillById: (state) => (id: string) =>
       state.skills.find((user) => user.id === id)
   }
@@ -112,12 +137,15 @@ export const SkillSlice = createSlice({
 
 export const {
   setSkills,
-  toggleCategoryFilter,
-  toggleSubcategoryFilter,
-  setGenderFilter,
-  setCityFilter,
-  setCanFilter,
-  setWantFilter
+  addCategory,
+  removeCategory,
+  addSubcategory,
+  removeSubcategory,
+  setGender,
+  setCity,
+  setCanTeach,
+  setWantToLearn,
+  clearAllFilters
 } = SkillSlice.actions;
 
 export const { getSkills, getFilters, getFilteredSkills, getSkillById } =
