@@ -6,8 +6,12 @@ import type { InfiniteGridProps } from './types';
 import { SkillCard } from '../../../widgets/skill-card';
 import styles from './Infinite.module.scss';
 
-export const InfiniteGrid: React.FC<InfiniteGridProps> = ({ title, data, fetchData, hasMore }) => {
-  
+export const InfiniteGrid: React.FC<InfiniteGridProps> = ({
+  title,
+  data,
+  fetchData,
+  hasMore
+}) => {
   return (
     <div className={styles.infinite__grid}>
       <Title as='h2'> {title} </Title>
