@@ -14,7 +14,7 @@ import { InputSearch } from '@ui/input/Input';
 import { type AppHeaderProps } from './types';
 import styles from './AppHeader.module.scss';
 
-const AppHeader: React.FC<AppHeaderProps> = ({
+export const AppHeader: React.FC<AppHeaderProps> = ({
   user,
   isRegistrationHeader = false
 }) => {
@@ -100,5 +100,3 @@ const AppHeader: React.FC<AppHeaderProps> = ({
     </header>
   );
 };
-
-export default AppHeader;
