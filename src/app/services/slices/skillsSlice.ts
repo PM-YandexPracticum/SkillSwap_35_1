@@ -6,7 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { IUserPublic } from 'src/entities/types/types';
-import mockSkills from '../../../../public/db/users.json';
+//import mockSkills from '../../../../public/db/users.json';
 import { multiplyArrayElements } from '../../../utils';
 
 export type TSkillsState = {
@@ -27,21 +27,19 @@ export const getMockSkills = createAsyncThunk(
   'skills/getMockCards',
   async (startIndex: number, { rejectWithValue }) => {
     try {
-      await new Promise((resolve) => {
-        setTimeout(resolve, 1000);
-      });
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      const skillsData: IUserPublic[] = multiplyArrayElements(mockSkills);
+      const response = await fetch('/db/users.json');
+      const data: IUserPublic[] = await response.json();
+
+      const skillsData = multiplyArrayElements(data);
 
       const pageSize = 20;
       const pageStart = startIndex;
       const pageEnd = startIndex + pageSize;
 
       if (pageStart >= skillsData.length) {
-        return {
-          skills: [],
-          hasMore: false
-        };
+        return { skills: [], hasMore: false };
       }
 
       return {
