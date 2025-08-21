@@ -4,7 +4,7 @@
     "name": "Иван",
     "city": "Санкт-Петербург",
     "dateOfBirth": "20.02.1989",
-    "image": "/photos/user1.jpg",
+    "image": "db/photos/user1.jpg",
     "gender": "male",
     "about": "Люблю путешествовать и быстрые машины.",
     "can": {
@@ -12,7 +12,7 @@
       "category": "Бизнес и карьера",
       "subcategory": "Продажи и переговоры",
       "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["/skills/sell.jpg"]
+      "images": ["db/skills/sell.jpg"]
     },
     "want": [
       {
@@ -33,7 +33,7 @@
     "city": "Казань",
     "dateOfBirth": "05.10.1996",
     "gender": "female",
-    "image": "/photos/user2.jpg",
+    "image": "db/photos/user2.jpg",
     "about": "Люблю модно одеваться и играть в шахматы.",
     "can": {
       "title": "Наведение порядка",
@@ -41,10 +41,10 @@
       "subcategory": "Уборка и организация",
       "description": "Научу наводить чистоту и порядок в доме.",
       "images": [
-        "/skills/sell.jpg",
-        "skills/cooking.jpg",
-        "skills/planning.jpg",
-        "skills/espanol.jpg"
+        "db/skills/sell.jpg",
+        "db/skills/cooking.jpg",
+        "db/skills/planning.jpg",
+        "db/skills/espanol.jpg"
       ]
     },
     "want": [
@@ -66,14 +66,14 @@
     "city": "Москва",
     "dateOfBirth": "03.02.1999",
     "gender": "male",
-    "image": "/photos/user3.jpg",
+    "image": "db/photos/user3.jpg",
     "about": "Люблю вкусную еду и хорошие игры.",
     "can": {
       "title": "Игра на барабанах",
       "category": "Творчество и искусство",
       "subcategory": "Музыка и звук",
       "description": "Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры",
-      "images": ["/skills/brand.jpg"]
+      "images": ["db/skills/brand.jpg"]
     },
     "want": [
       {
@@ -94,14 +94,14 @@
     "city": "Архангельск",
     "dateOfBirth": "02.05.1995",
     "gender": "female",
-    "image": "/photos/user4.jpg",
+    "image": "db/photos/user4.jpg",
     "about": "Люблю ходить по магазинам и заниматься спортом.",
     "can": {
       "title": "Продажи и полезные навыки",
       "category": "Бизнес и карьера",
       "subcategory": "Продажи и переговоры",
       "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["/skills/sell.jpg"]
+      "images": ["db/skills/sell.jpg"]
     },
     "want": [
       {
@@ -122,14 +122,14 @@
     "city": "Ярославль",
     "dateOfBirth": "01.05.1997",
     "gender": "female",
-    "image": "/photos/user5.jpg",
+    "image": "db/photos/user5.jpg",
     "about": "Люблю работать и усердно учиться.",
     "can": {
       "title": "Выстраивание личного бренда",
       "category": "Бизнес и карьера",
       "subcategory": "Личный бренд",
       "description": "Научу выстраивать личный бренд с минимальными вложениями.",
-      "images": ["/skills/brand.jpg"]
+      "images": ["db/skills/brand.jpg"]
     },
     "want": [
       {
@@ -150,14 +150,14 @@
     "city": "Пермь",
     "dateOfBirth": "21.05.1986",
     "gender": "female",
-    "image": "/photos/user6.jpg",
+    "image": "db/photos/user6.jpg",
     "about": "Постоянно развиваюсь и путешествую.",
     "can": {
       "title": "Маркетинг SEO и SMM",
       "category": "Бизнес и карьера",
       "subcategory": "Маркетинг и реклама",
       "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-      "images": ["/skills/marketing.jpg"]
+      "images": ["db/skills/marketing.jpg"]
     },
     "want": [
       {
@@ -178,14 +178,14 @@
     "city": "Красноярск",
     "dateOfBirth": "21.05.1989",
     "gender": "female",
-    "image": "/photos/user7.jpg",
+    "image": "db/photos/user7.jpg",
     "about": "Люблю ходить по клубам и ездить на машине.",
     "can": {
       "title": "Продажи и полезные навыки",
       "category": "Бизнес и карьера",
       "subcategory": "Продажи и переговоры",
       "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["/skills/sell.jpg"]
+      "images": ["db/skills/sell.jpg"]
     },
     "want": [
       {
@@ -206,14 +206,14 @@
     "city": "Абакан",
     "dateOfBirth": "21.05.1984",
     "gender": "female",
-    "image": "/photos/user8.jpg",
+    "image": "db/photos/user8.jpg",
     "about": "Люблю отдыхать и постоянно развиваться.",
     "can": {
       "title": "Маркетинг SEO и SMM",
       "category": "Бизнес и карьера",
       "subcategory": "Маркетинг и реклама",
       "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-      "images": ["/skills/marketing.jpg"]
+      "images": ["db/skills/marketing.jpg"]
     },
     "want": [
       {
@@ -233,7 +233,7 @@
     "name": "Иван",
     "city": "Санкт-Петербург",
     "dateOfBirth": "20.02.1989",
-    "image": "/photos/user1.jpg",
+    "image": "db/photos/user1.jpg",
     "gender": "male",
     "about": "Люблю путешествовать и быстрые машины.",
     "can": {
@@ -241,7 +241,7 @@
       "category": "Бизнес и карьера",
       "subcategory": "Продажи и переговоры",
       "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["/skills/sell.jpg"]
+      "images": ["db/skills/sell.jpg"]
     },
     "want": [
       {
@@ -262,7 +262,7 @@
     "city": "Казань",
     "dateOfBirth": "05.10.1996",
     "gender": "female",
-    "image": "/photos/user2.jpg",
+    "image": "db/photos/user2.jpg",
     "about": "Люблю модно одеваться и играть в шахматы.",
     "can": {
       "title": "Наведение порядка",
@@ -270,10 +270,10 @@
       "subcategory": "Уборка и организация",
       "description": "Научу наводить чистоту и порядок в доме.",
       "images": [
-        "/skills/sell.jpg",
-        "skills/cooking.jpg",
-        "skills/planning.jpg",
-        "skills/espanol.jpg"
+        "db/skills/sell.jpg",
+        "db/skills/cooking.jpg",
+        "db/skills/planning.jpg",
+        "db/skills/espanol.jpg"
       ]
     },
     "want": [
@@ -295,14 +295,14 @@
     "city": "Москва",
     "dateOfBirth": "03.02.1999",
     "gender": "male",
-    "image": "/photos/user3.jpg",
+    "image": "db/photos/user3.jpg",
     "about": "Люблю вкусную еду и хорошие игры.",
     "can": {
       "title": "Игра на барабанах",
       "category": "Творчество и искусство",
       "subcategory": "Музыка и звук",
       "description": "Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры",
-      "images": ["/skills/brand.jpg"]
+      "images": ["db/skills/brand.jpg"]
     },
     "want": [
       {
@@ -323,14 +323,14 @@
     "city": "Архангельск",
     "dateOfBirth": "02.05.1995",
     "gender": "female",
-    "image": "/photos/user4.jpg",
+    "image": "db/photos/user4.jpg",
     "about": "Люблю ходить по магазинам и заниматься спортом.",
     "can": {
       "title": "Продажи и полезные навыки",
       "category": "Бизнес и карьера",
       "subcategory": "Продажи и переговоры",
       "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["/skills/sell.jpg"]
+      "images": ["db/skills/sell.jpg"]
     },
     "want": [
       {
@@ -351,14 +351,14 @@
     "city": "Ярославль",
     "dateOfBirth": "01.05.1997",
     "gender": "female",
-    "image": "/photos/user5.jpg",
+    "image": "db/photos/user5.jpg",
     "about": "Люблю работать и усердно учиться.",
     "can": {
       "title": "Выстраивание личного бренда",
       "category": "Бизнес и карьера",
       "subcategory": "Личный бренд",
       "description": "Научу выстраивать личный бренд с минимальными вложениями.",
-      "images": ["/skills/brand.jpg"]
+      "images": ["db/skills/brand.jpg"]
     },
     "want": [
       {
@@ -386,7 +386,7 @@
       "category": "Бизнес и карьера",
       "subcategory": "Маркетинг и реклама",
       "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-      "images": ["/skills/marketing.jpg"]
+      "images": ["db/skills/marketing.jpg"]
     },
     "want": [
       {
@@ -407,14 +407,14 @@
     "city": "Красноярск",
     "dateOfBirth": "21.05.1989",
     "gender": "female",
-    "image": "/photos/user7.jpg",
+    "image": "db/photos/user7.jpg",
     "about": "Люблю ходить по клубам и ездить на машине.",
     "can": {
       "title": "Продажи и полезные навыки",
       "category": "Бизнес и карьера",
       "subcategory": "Продажи и переговоры",
       "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["/skills/sell.jpg"]
+      "images": ["db/skills/sell.jpg"]
     },
     "want": [
       {
@@ -435,14 +435,14 @@
     "city": "Абакан",
     "dateOfBirth": "21.05.1984",
     "gender": "female",
-    "image": "/photos/user8.jpg",
+    "image": "db/photos/user8.jpg",
     "about": "Люблю отдыхать и постоянно развиваться.",
     "can": {
       "title": "Маркетинг SEO и SMM",
       "category": "Бизнес и карьера",
       "subcategory": "Маркетинг и реклама",
       "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-      "images": ["/skills/marketing.jpg"]
+      "images": ["db/skills/marketing.jpg"]
     },
     "want": [
       {
