@@ -379,7 +379,7 @@
     "city": "Пермь",
     "dateOfBirth": "21.05.1986",
     "gender": "female",
-    "image": "/photos/user6.jpg",
+    "image": "db/photos/user6.jpg",
     "about": "Постоянно развиваюсь и путешествую.",
     "can": {
       "title": "Маркетинг SEO и SMM",

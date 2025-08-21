@@ -6,7 +6,6 @@ import {
 } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { IUserPublic } from 'src/entities/types/types';
-//import mockSkills from '../../../../public/db/users.json';
 import { multiplyArrayElements } from '../../../utils';
 
 export type TSkillsState = {
