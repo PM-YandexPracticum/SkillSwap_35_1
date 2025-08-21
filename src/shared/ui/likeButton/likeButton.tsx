@@ -1,15 +1,16 @@
 import { type FC } from 'react';
 import type { LikeButtonUIProps } from './type';
 import styles from './likeButton.module.scss';
-import LikeIcon from '@icons/ui/like.svg?react';
+import ActiveLike from '@icons/ui/like-active.svg?react';
+import EmptyLike from '@icons/ui/like.svg?react';
 
 export const LikeButton: FC<LikeButtonUIProps> = ({ liked, onClick }) => {
   return (
     <button 
-      className={`${styles.likeButton} ${liked ? styles.likeButtonActive : ''}`} 
+      className={styles.likeButton} 
       onClick={onClick}
     >
-      <LikeIcon />
+      {liked? <ActiveLike className={styles.heart} />: <EmptyLike className={styles.heart} />}
     </button>
   );
 };

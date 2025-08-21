@@ -1,26 +1,19 @@
-.likeButtonWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  justify-content: center;
-  align-items: center;
-}
-
 .likeButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 4px;
-  background-color: transparent;
+  background: none;
   border: none;
+  padding: 0;
+  margin: 0;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;    
+  justify-content: center;
+  width: 24px;
+  height: 24px;
   transition: transform 0.1s ease, color 0.2s ease;
-  color: var(--tertiary-color);
+  color: var(--main-color-text);
 
   &:hover {
-    color: var(--accent-color);
+    color: var(--tertiary-color-dark);
     transform: scale(1.1);
   }
 
@@ -32,29 +25,10 @@
     cursor: not-allowed;
     opacity: 0.5;
   }
-
-  svg {
-    width: 24px;
-    height: 24px;
-    display: block;
-    transition: fill 0.2s ease;
-    fill: currentcolor;
-  }
 }
 
-.likeButtonActive {
-  color: var(--accent-color-dark);
-
-  &:hover {
-    color: var(--accent-color);
-  }
-}
-
-.likeButtonNumber {
-  font-family: var(--font-family-main);
-  color: var(--main-color-text);
-  font-size: 12px;
-  line-height: 1.33;
-  letter-spacing: 0.02em;
-  margin: 0;
+.heart {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
