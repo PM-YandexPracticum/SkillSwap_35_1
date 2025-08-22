@@ -310,11 +310,17 @@
     "image": "db/photos/user8.jpg",
     "about": "Люблю отдыхать и постоянно развиваться.",
     "can": {
-      "title": "Маркетинг SEO и SMM",
-      "category": "Бизнес и карьера",
-      "subcategory": "Маркетинг и реклама",
-      "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-      "images": ["db/skills/marketing.jpg"]
+      "title": "Правильное питание и забота за своим здоровьем",
+      "category": "Здоровье и лайфстайл",
+      "subcategory": "Питание и ЗОЖ",
+      "description": "Научу правильно питаться и следить за собственным здоровьем.",
+      "images": [
+        "db/skills/food1.jpeg",
+        "db/skills/food2.jpg",
+        "db/skills/food3.jpg",
+        "db/skills/food4.png",
+        "db/skills/food5.jpg"
+      ]
     },
     "want": [
       {
@@ -338,10 +344,10 @@
     "gender": "Мужской",
     "about": "Люблю путешествовать и быстрые машины.",
     "can": {
-      "title": "Продажи и полезные навыки",
-      "category": "Бизнес и карьера",
-      "subcategory": "Продажи и переговоры",
-      "description": "Научусь продажам и переговорам с нуля.",
+      "title": "Правильное хранение и порядок в доме",
+      "category": "Дом и уют",
+      "subcategory": "Хранение вещей",
+      "description": "Научу хранить вещи дома и экономить пространство.",
       "images": ["db/skills/sell.jpg"]
     },
     "want": [
