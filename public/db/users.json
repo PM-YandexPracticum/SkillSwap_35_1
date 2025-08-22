@@ -226,11 +226,17 @@
     "image": "db/photos/user6.jpg",
     "about": "Постоянно развиваюсь и путешествую.",
     "can": {
-      "title": "Маркетинг SEO и SMM",
-      "category": "Бизнес и карьера",
-      "subcategory": "Маркетинг и реклама",
-      "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-      "images": ["db/skills/marketing.jpg"]
+      "title": "Гармония с собой",
+      "category": "Творчество и искусство'",
+      "subcategory": "Арт-терапия",
+      "description": "Научу спокойствию и восстановлению сил с помощью Арт-терапии.",
+      "images": [
+        "db/skills/art1.jpg",
+        "db/skills/art2.jpg",
+        "db/skills/art3.jpg",
+        "db/skills/art4.jpg",
+        "db/skills/art5.jpg"
+      ]
     },
     "want": [
       {
@@ -262,11 +268,17 @@
     "image": "db/photos/user7.jpg",
     "about": "Люблю ходить по клубам и ездить на машине.",
     "can": {
-      "title": "Продажи и полезные навыки",
-      "category": "Бизнес и карьера",
-      "subcategory": "Продажи и переговоры",
-      "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["db/skills/sell.jpg"]
+      "title": "Обучение с нуля для абсолютно любого",
+      "category": "Образование и развитие",
+      "subcategory": "Навыки обучения",
+      "description": "Научу программированию любого человека при огромном желаний.",
+      "images": [
+        "db/skills/robot1.jpg",
+        "db/skills/robot2.jpg",
+        "db/skills/robot3.jpg",
+        "db/skills/robot4.jpg",
+        "db/skills/robot5.jpg"
+      ]
     },
     "want": [
       {
