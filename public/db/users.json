@@ -348,7 +348,13 @@
       "category": "Дом и уют",
       "subcategory": "Хранение вещей",
       "description": "Научу хранить вещи дома и экономить пространство.",
-      "images": ["db/skills/sell.jpg"]
+      "images": [
+        "db/skills/method1.jpg",
+        "db/skills/method2.jpg",
+        "db/skills/method3.jpg",
+        "db/skills/method4.jpeg",
+        "db/skills/method5.jpg"
+      ]
     },
     "want": [
       {
@@ -372,10 +378,10 @@
     "image": "db/photos/user2.jpg",
     "about": "Люблю модно одеваться и играть в шахматы.",
     "can": {
-      "title": "Наведение порядка",
-      "category": "Дом и уют",
-      "subcategory": "Уборка и организация",
-      "description": "Научу наводить чистоту и порядок в доме.",
+      "title": "Сведение и мастеринг звука",
+      "category": "Творчество и искусство",
+      "subcategory": "Музыка и звук",
+      "description": "Научу писать электронную музыку",
       "images": [
         "db/skills/sell.jpg",
         "db/skills/cooking.jpg",
