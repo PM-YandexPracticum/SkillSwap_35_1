@@ -555,8 +555,7 @@
         "db/skills/plant1.png",
         "db/skills/plant2.png",
         "db/skills/plant3.jpg",
-        "db/skills/plant4.jpg",
-        "db/skills/plant5.jpg"
+        "db/skills/plant4.jpg"
       ]
     },
     "want": [
@@ -581,11 +580,16 @@
     "image": "db/photos/user8.jpg",
     "about": "Люблю отдыхать и постоянно развиваться.",
     "can": {
-      "title": "Маркетинг SEO и SMM",
-      "category": "Бизнес и карьера",
-      "subcategory": "Маркетинг и реклама",
-      "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-      "images": ["db/skills/marketing.jpg"]
+      "title": "Помогу найти путь как к себе прийти",
+      "category": "Здоровье и лайфстайл",
+      "subcategory": "Йога и медитация",
+      "description": "Помогу научиться медитировать и обретать покой.",
+      "images": [
+        "db/skills/yoga1.jpg",
+        "db/skills/yoga2.jpg",
+        "db/skills/yoga4.jpg",
+        "db/skills/yoga5.jpg"
+      ]
     },
     "want": [
       {
