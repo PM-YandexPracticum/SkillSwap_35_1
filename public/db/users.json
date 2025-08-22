@@ -416,7 +416,13 @@
       "category": "Творчество и искусство",
       "subcategory": "Декор и DIY",
       "description": "Научу работать руками и собирать предметы для собственного дома.",
-      "images": ["db/skills/brand.jpg"]
+      "images": [
+        "db/skills/diy1.jpg",
+        "db/skills/diy2.png",
+        "db/skills/diy3.png",
+        "db/skills/diy4.png",
+        "db/skills/diy6.jpg"
+      ]
     },
     "want": [
       {
