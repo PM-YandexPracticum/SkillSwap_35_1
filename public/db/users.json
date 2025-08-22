@@ -547,11 +547,17 @@
     "image": "db/photos/user7.jpg",
     "about": "Люблю ходить по клубам и ездить на машине.",
     "can": {
-      "title": "Продажи и полезные навыки",
-      "category": "Бизнес и карьера",
-      "subcategory": "Продажи и переговоры",
-      "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["db/skills/sell.jpg"]
+      "title": "Давно планировал купить растения домой?",
+      "category": "Дом и уют",
+      "subcategory": "Домашние растения",
+      "description": "Научу ухаживать за домашними растениями.",
+      "images": [
+        "db/skills/plant1.png",
+        "db/skills/plant2.png",
+        "db/skills/plant3.jpg",
+        "db/skills/plant4.jpg",
+        "db/skills/plant5.jpg"
+      ]
     },
     "want": [
       {
