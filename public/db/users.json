@@ -5,46 +5,19 @@
     "city": "Санкт-Петербург",
     "dateOfBirth": "20.02.1989",
     "image": "db/photos/user1.jpg",
-    "gender": "male",
+    "gender": "Мужской",
     "about": "Люблю путешествовать и быстрые машины.",
     "can": {
       "title": "Продажи и полезные навыки",
       "category": "Бизнес и карьера",
       "subcategory": "Продажи и переговоры",
       "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["db/skills/sell.jpg"]
-    },
-    "want": [
-      {
-        "category": "Дом и уют",
-        "subcategory": "Приготовление еды"
-      },
-      {
-        "category": "Творчество и искусство",
-        "subcategory": "Фотография"
-      }
-    ],
-    "createdAt": "13.08.2025",
-    "likeCount": 2
-  },
-  {
-    "id": "2",
-    "name": "Анна",
-    "city": "Казань",
-    "dateOfBirth": "05.10.1996",
-    "gender": "female",
-    "image": "db/photos/user2.jpg",
-    "about": "Люблю модно одеваться и играть в шахматы.",
-    "can": {
-      "title": "Наведение порядка",
-      "category": "Дом и уют",
-      "subcategory": "Уборка и организация",
-      "description": "Научу наводить чистоту и порядок в доме.",
       "images": [
-        "db/skills/sell.jpg",
-        "db/skills/cooking.jpg",
-        "db/skills/planning.jpg",
-        "db/skills/espanol.jpg"
+        "db/skills/sell1.jpg",
+        "db/skills/sell2.jpg",
+        "db/skills/sell3.jpg",
+        "db/skills/sell4.jpg",
+        "db/skills/sell5.jpg"
       ]
     },
     "want": [
@@ -55,6 +28,56 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Йога и медитация"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Английский"
+      }
+    ],
+    "createdAt": "13.08.2025",
+    "likeCount": 2
+  },
+  {
+    "id": "2",
+    "name": "Анна",
+    "city": "Казань",
+    "dateOfBirth": "05.10.1996",
+    "gender": "Женский",
+    "image": "db/photos/user2.jpg",
+    "about": "Люблю модно одеваться и играть в шахматы.",
+    "can": {
+      "title": "Наведение порядка",
+      "category": "Дом и уют",
+      "subcategory": "Уборка и организация",
+      "description": "Научу наводить чистоту и порядок в доме.",
+      "images": [
+        "db/skills/cleaning1.jpeg",
+        "db/skills/cleaning2.jpg",
+        "db/skills/cleaning3.jpg",
+        "db/skills/cleaning4.jpg",
+        "db/skills/cleaning5.jpeg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Французский"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Питание и ЗОЖ"
       }
     ],
     "createdAt": "14.08.2025",
@@ -65,7 +88,7 @@
     "name": "Максим",
     "city": "Москва",
     "dateOfBirth": "03.02.1999",
-    "gender": "male",
+    "gender": "Мужской",
     "image": "db/photos/user3.jpg",
     "about": "Люблю вкусную еду и хорошие игры.",
     "can": {
@@ -83,6 +106,14 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Скорочтение"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Японский"
       }
     ],
     "createdAt": "15.08.2025",
@@ -93,7 +124,7 @@
     "name": "Алла",
     "city": "Архангельск",
     "dateOfBirth": "02.05.1995",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user4.jpg",
     "about": "Люблю ходить по магазинам и заниматься спортом.",
     "can": {
@@ -111,6 +142,22 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Декор и DIY"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Личностное развитие"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Китайский"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Ментальное здоровье"
       }
     ],
     "createdAt": "12.08.2025",
@@ -121,7 +168,7 @@
     "name": "Дарья",
     "city": "Ярославль",
     "dateOfBirth": "01.05.1997",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user5.jpg",
     "about": "Люблю работать и усердно учиться.",
     "can": {
@@ -139,6 +186,14 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Креативное письмо"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Осознанность"
       }
     ],
     "createdAt": "11.08.2025",
@@ -149,7 +204,7 @@
     "name": "Екатерина",
     "city": "Пермь",
     "dateOfBirth": "21.05.1986",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user6.jpg",
     "about": "Постоянно развиваюсь и путешествую.",
     "can": {
@@ -167,6 +222,14 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Дом и уют",
+        "subcategory": "Ремонт"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Сон и восстановление"
       }
     ],
     "createdAt": "10.08.2025",
@@ -177,7 +240,7 @@
     "name": "Елена",
     "city": "Красноярск",
     "dateOfBirth": "21.05.1989",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user7.jpg",
     "about": "Люблю ходить по клубам и ездить на машине.",
     "can": {
@@ -195,6 +258,14 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Навыки обучения"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Баланс жизни и работы"
       }
     ],
     "createdAt": "13.08.2025",
@@ -205,7 +276,7 @@
     "name": "София",
     "city": "Абакан",
     "dateOfBirth": "21.05.1984",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user8.jpg",
     "about": "Люблю отдыхать и постоянно развиваться.",
     "can": {
@@ -234,7 +305,7 @@
     "city": "Санкт-Петербург",
     "dateOfBirth": "20.02.1989",
     "image": "db/photos/user1.jpg",
-    "gender": "male",
+    "gender": "Мужской",
     "about": "Люблю путешествовать и быстрые машины.",
     "can": {
       "title": "Продажи и полезные навыки",
@@ -261,7 +332,7 @@
     "name": "Анна",
     "city": "Казань",
     "dateOfBirth": "05.10.1996",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user2.jpg",
     "about": "Люблю модно одеваться и играть в шахматы.",
     "can": {
