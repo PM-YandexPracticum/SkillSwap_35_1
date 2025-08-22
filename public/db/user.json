@@ -10,11 +10,16 @@
     "email": "elya@test.ru",
     "password": "54545",
     "can": {
-      "title": "Давно мечтал открыть своё дело?",
+      "title": "Давно мечтал или мечтала открыть своё дело?",
       "category": "Бизнес и карьера",
       "subcategory": "Предпринимательство",
       "description": "Помогу опредедлиться с нишей и начать зарабатывать.",
-      "images": ["./skills/sell.jpg"]
+      "images": [
+        "db/skills/business1.jpg",
+        "db/skills/business2.jpg",
+        "db/skills/business3.jpeg",
+        "db/skills/business4.jpg"
+      ]
     },
     "want": ["Приготовление еды", "Домашние финансы"],
     "createdAt": "10.08.2025",
