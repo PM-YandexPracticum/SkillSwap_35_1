@@ -4,7 +4,5 @@ export type CheckboxProps = {
   checked: boolean;
   onChange?: () => void;
   variant?: 'minus';
-  name?: string;
-  value?: string;
   children?: ReactNode;
 };
