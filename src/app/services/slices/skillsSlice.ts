@@ -13,13 +13,15 @@ export type TSkillsState = {
   loading: boolean;
   error: string | null;
   hasMore: boolean;
+  searchQuery: string;
 };
 
 const initialState: TSkillsState = {
   skills: [],
   loading: false,
   error: null,
-  hasMore: true
+  hasMore: true,
+  searchQuery: '',
 };
 
 export const getMockSkills = createAsyncThunk(
@@ -57,10 +59,14 @@ export const SkillSlice = createSlice({
   reducers: {
     setSkills: (state, action: PayloadAction<IUserPublic[]>) => {
       state.skills = action.payload;
+    },
+    setSearchQuery: (state, action: PayloadAction<string>) => {
+      state.searchQuery = action.payload;
     }
   },
   selectors: {
-    getSkills: (state) => state.skills
+    getSkills: (state) => state.skills,
+    getSearchQuery: (state) => state.searchQuery
   },
   extraReducers(builder) {
     builder
@@ -87,3 +93,7 @@ export const getSkillById = createSelector(
   (_, id) => id,
   (skills: IUserPublic[], id: string) => skills.find((skill) => skill.id === id)
 );
+
+export const { setSkills, setSearchQuery } = SkillSlice.actions;
+
+export const { getSkills, getSearchQuery } = SkillSlice.selectors;
