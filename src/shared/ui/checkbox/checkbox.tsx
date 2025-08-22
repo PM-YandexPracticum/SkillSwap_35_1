@@ -5,7 +5,7 @@ import IconCheckboxDone from '@icons/ui/checkbox-done.svg?react';
 import IconCheckboxRemove from '@icons/ui/checkbox-remove.svg?react';
 
 export const Checkbox = (props: CheckboxProps) => {
-  const { checked, variant, onChange, children } = props;
+  const { checked, variant, onChange, children, name, value } = props;
 
   const IconChecked =
     variant === 'minus' ? IconCheckboxRemove : IconCheckboxDone;
@@ -17,6 +17,8 @@ export const Checkbox = (props: CheckboxProps) => {
         className={styles.hidden}
         checked={checked}
         onChange={onChange}
+		name={name}
+		value={value}
       />
       {checked ? (
         <IconChecked className={styles.checked} />
