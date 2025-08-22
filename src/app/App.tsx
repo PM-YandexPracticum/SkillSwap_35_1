@@ -10,13 +10,15 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(getMockSkills(0));
-    }, [dispatch]);
+    dispatch(getMockSkills(0));
+  }, [dispatch]);
 
   return (
     <div className={styles.app}>
       <AppHeader />
-      <MainPage />
+      <main className={styles.main}>
+        <MainPage />
+      </main>
       <AppFooter />
     </div>
   );

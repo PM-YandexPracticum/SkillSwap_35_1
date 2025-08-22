@@ -14,7 +14,7 @@ export const MainPage = () => {
   };
 
   return (
-    <main className={styles.main}>
+    <div className={styles.main}>
       <div className={styles.filterPanel}>Заглушка</div>
       <div className={styles.cardsContainer}>
         <InfiniteGrid 
@@ -24,6 +24,6 @@ export const MainPage = () => {
           hasMore={hasMore} 
         />
       </div>
-    </main>
+    </div>
   );
 };
