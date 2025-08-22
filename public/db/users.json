@@ -378,15 +378,16 @@
     "image": "db/photos/user2.jpg",
     "about": "Люблю модно одеваться и играть в шахматы.",
     "can": {
-      "title": "Сведение и мастеринг звука",
-      "category": "Творчество и искусство",
-      "subcategory": "Музыка и звук",
-      "description": "Научу писать электронную музыку",
+      "title": "Разговорный японский с нуля",
+      "category": "Иностранные языки",
+      "subcategory": "Японский",
+      "description": "Научу разговаривать на японском языке.",
       "images": [
-        "db/skills/sell.jpg",
-        "db/skills/cooking.jpg",
-        "db/skills/planning.jpg",
-        "db/skills/espanol.jpg"
+        "db/skills/japan1.jpg",
+        "db/skills/japan2.jpg",
+        "db/skills/japan3.jpg",
+        "db/skills/japan4.jpg",
+        "db/skills/japan5.jpg"
       ]
     },
     "want": [
@@ -411,10 +412,10 @@
     "image": "db/photos/user3.jpg",
     "about": "Люблю вкусную еду и хорошие игры.",
     "can": {
-      "title": "Игра на барабанах",
+      "title": "Как собрать что-то своими руками?",
       "category": "Творчество и искусство",
-      "subcategory": "Музыка и звук",
-      "description": "Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры",
+      "subcategory": "Декор и DIY",
+      "description": "Научу работать руками и собирать предметы для собственного дома.",
       "images": ["db/skills/brand.jpg"]
     },
     "want": [
