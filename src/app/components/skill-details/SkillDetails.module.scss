@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  /*
+  height: 444px;
+  width: 1020px;
+  */
+  border-radius: 12px;
+  padding: 32px 52px 40px;
+  background-color: white;
+}
+
+p, h2 {
+  margin: 0;
+}
+
+.actions {
+  height: 24px;
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.main {
+  display: flex;
+  gap: 77px;
+  width: 916px;
+  height: 324px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 399px;
+  height: 324px;
+}
+
+.images {
+  width: 440px;
+  height: 324px;
+}
+
+.text {
+  max-height: 160px;
+  overflow: hidden;
+  margin-top: 20px;
+}
