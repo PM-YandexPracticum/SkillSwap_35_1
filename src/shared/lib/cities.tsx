@@ -1,3 +1,4 @@
+// src/shared/lib/cities.tsx
 const cities = [
     "Москва",
     "Санкт-Петербург",
@@ -9,6 +10,6 @@ const cities = [
     "Абакан"
 ] as const;
 
-export type TCity = typeof cities[number];
+export type TCities = typeof cities[number];
 
 export default cities;
