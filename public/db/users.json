@@ -5,46 +5,19 @@
     "city": "Санкт-Петербург",
     "dateOfBirth": "20.02.1989",
     "image": "db/photos/user1.jpg",
-    "gender": "male",
+    "gender": "Мужской",
     "about": "Люблю путешествовать и быстрые машины.",
     "can": {
       "title": "Продажи и полезные навыки",
       "category": "Бизнес и карьера",
       "subcategory": "Продажи и переговоры",
       "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["db/skills/sell.jpg"]
-    },
-    "want": [
-      {
-        "category": "Дом и уют",
-        "subcategory": "Приготовление еды"
-      },
-      {
-        "category": "Творчество и искусство",
-        "subcategory": "Фотография"
-      }
-    ],
-    "createdAt": "13.08.2025",
-    "likeCount": 2
-  },
-  {
-    "id": "2",
-    "name": "Анна",
-    "city": "Казань",
-    "dateOfBirth": "05.10.1996",
-    "gender": "female",
-    "image": "db/photos/user2.jpg",
-    "about": "Люблю модно одеваться и играть в шахматы.",
-    "can": {
-      "title": "Наведение порядка",
-      "category": "Дом и уют",
-      "subcategory": "Уборка и организация",
-      "description": "Научу наводить чистоту и порядок в доме.",
       "images": [
-        "db/skills/sell.jpg",
-        "db/skills/cooking.jpg",
-        "db/skills/planning.jpg",
-        "db/skills/espanol.jpg"
+        "db/skills/sell1.jpg",
+        "db/skills/sell2.jpg",
+        "db/skills/sell3.jpg",
+        "db/skills/sell4.jpg",
+        "db/skills/sell5.jpg"
       ]
     },
     "want": [
@@ -55,6 +28,56 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Йога и медитация"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Английский"
+      }
+    ],
+    "createdAt": "13.08.2025",
+    "likeCount": 2
+  },
+  {
+    "id": "2",
+    "name": "Анна",
+    "city": "Казань",
+    "dateOfBirth": "05.10.1996",
+    "gender": "Женский",
+    "image": "db/photos/user2.jpg",
+    "about": "Люблю модно одеваться и играть в шахматы.",
+    "can": {
+      "title": "Наведение порядка",
+      "category": "Дом и уют",
+      "subcategory": "Уборка и организация",
+      "description": "Научу наводить чистоту и порядок в доме.",
+      "images": [
+        "db/skills/cleaning1.jpeg",
+        "db/skills/cleaning2.jpg",
+        "db/skills/cleaning3.jpg",
+        "db/skills/cleaning4.jpg",
+        "db/skills/cleaning5.jpeg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Французский"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Питание и ЗОЖ"
       }
     ],
     "createdAt": "14.08.2025",
@@ -65,7 +88,7 @@
     "name": "Максим",
     "city": "Москва",
     "dateOfBirth": "03.02.1999",
-    "gender": "male",
+    "gender": "Мужской",
     "image": "db/photos/user3.jpg",
     "about": "Люблю вкусную еду и хорошие игры.",
     "can": {
@@ -73,7 +96,13 @@
       "category": "Творчество и искусство",
       "subcategory": "Музыка и звук",
       "description": "Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры",
-      "images": ["db/skills/brand.jpg"]
+      "images": [
+        "db/skills/music1.jpg",
+        "db/skills/music2.jpg",
+        "db/skills/music3.jpg",
+        "db/skills/music4.jpg",
+        "db/skills/music5.jpg"
+      ]
     },
     "want": [
       {
@@ -83,6 +112,14 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Скорочтение"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Японский"
       }
     ],
     "createdAt": "15.08.2025",
@@ -93,15 +130,21 @@
     "name": "Алла",
     "city": "Архангельск",
     "dateOfBirth": "02.05.1995",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user4.jpg",
     "about": "Люблю ходить по магазинам и заниматься спортом.",
     "can": {
-      "title": "Продажи и полезные навыки",
-      "category": "Бизнес и карьера",
-      "subcategory": "Продажи и переговоры",
-      "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["db/skills/sell.jpg"]
+      "title": "Полезные навыки",
+      "category": "Дом и уют",
+      "subcategory": "Ремонт",
+      "description": "Научусь делать ремонт дома с нуля.",
+      "images": [
+        "db/skills/repair.jpg",
+        "db/skills/repair2.jpg",
+        "db/skills/repair3.jpg",
+        "db/skills/repair4.jpg",
+        "db/skills/repair5.jpg"
+      ]
     },
     "want": [
       {
@@ -111,6 +154,14 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Декор и DIY"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Личностное развитие"
       }
     ],
     "createdAt": "12.08.2025",
@@ -121,15 +172,21 @@
     "name": "Дарья",
     "city": "Ярославль",
     "dateOfBirth": "01.05.1997",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user5.jpg",
     "about": "Люблю работать и усердно учиться.",
     "can": {
-      "title": "Выстраивание личного бренда",
-      "category": "Бизнес и карьера",
-      "subcategory": "Личный бренд",
-      "description": "Научу выстраивать личный бренд с минимальными вложениями.",
-      "images": ["db/skills/brand.jpg"]
+      "title": "Работа с ПО по монтажу",
+      "category": "Творчество и искусство",
+      "subcategory": "Видеомонтаж",
+      "description": "Научу видеомонтажу абсолютно любого с нуля.",
+      "images": [
+        "db/skills/editing1.jpg",
+        "db/skills/editing2.jpg",
+        "db/skills/editing3.jpg",
+        "db/skills/editing4.jpg",
+        "db/skills/editing5.jpg"
+      ]
     },
     "want": [
       {
@@ -139,6 +196,14 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Креативное письмо"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Осознанность"
       }
     ],
     "createdAt": "11.08.2025",
@@ -149,15 +214,21 @@
     "name": "Екатерина",
     "city": "Пермь",
     "dateOfBirth": "21.05.1986",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user6.jpg",
     "about": "Постоянно развиваюсь и путешествую.",
     "can": {
-      "title": "Маркетинг SEO и SMM",
-      "category": "Бизнес и карьера",
-      "subcategory": "Маркетинг и реклама",
-      "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-      "images": ["db/skills/marketing.jpg"]
+      "title": "Гармония с собой",
+      "category": "Творчество и искусство",
+      "subcategory": "Арт-терапия",
+      "description": "Научу спокойствию и восстановлению сил с помощью Арт-терапии.",
+      "images": [
+        "db/skills/art1.jpg",
+        "db/skills/art2.jpg",
+        "db/skills/art3.jpg",
+        "db/skills/art4.jpg",
+        "db/skills/art5.jpg"
+      ]
     },
     "want": [
       {
@@ -167,6 +238,14 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Дом и уют",
+        "subcategory": "Ремонт"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Сон и восстановление"
       }
     ],
     "createdAt": "10.08.2025",
@@ -177,15 +256,21 @@
     "name": "Елена",
     "city": "Красноярск",
     "dateOfBirth": "21.05.1989",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user7.jpg",
     "about": "Люблю ходить по клубам и ездить на машине.",
     "can": {
-      "title": "Продажи и полезные навыки",
-      "category": "Бизнес и карьера",
-      "subcategory": "Продажи и переговоры",
-      "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["db/skills/sell.jpg"]
+      "title": "Обучение с нуля для абсолютно любого",
+      "category": "Образование и развитие",
+      "subcategory": "Навыки обучения",
+      "description": "Научу программированию любого человека при огромном желаний.",
+      "images": [
+        "db/skills/robot1.jpg",
+        "db/skills/robot2.jpg",
+        "db/skills/robot3.jpg",
+        "db/skills/robot4.jpg",
+        "db/skills/robot5.jpeg"
+      ]
     },
     "want": [
       {
@@ -195,6 +280,14 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Навыки обучения"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Баланс жизни и работы"
       }
     ],
     "createdAt": "13.08.2025",
@@ -205,15 +298,21 @@
     "name": "София",
     "city": "Абакан",
     "dateOfBirth": "21.05.1984",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user8.jpg",
     "about": "Люблю отдыхать и постоянно развиваться.",
     "can": {
-      "title": "Маркетинг SEO и SMM",
-      "category": "Бизнес и карьера",
-      "subcategory": "Маркетинг и реклама",
-      "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-      "images": ["db/skills/marketing.jpg"]
+      "title": "Правильное питание и забота за своим здоровьем",
+      "category": "Здоровье и лайфстайл",
+      "subcategory": "Питание и ЗОЖ",
+      "description": "Научу правильно питаться и следить за собственным здоровьем.",
+      "images": [
+        "db/skills/food1.jpeg",
+        "db/skills/food2.jpg",
+        "db/skills/food3.jpg",
+        "db/skills/food4.png",
+        "db/skills/food5.jpg"
+      ]
     },
     "want": [
       {
@@ -223,6 +322,14 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Английский"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Ментальное здоровье"
       }
     ],
     "createdAt": "11.08.2025",
@@ -234,46 +341,19 @@
     "city": "Санкт-Петербург",
     "dateOfBirth": "20.02.1989",
     "image": "db/photos/user1.jpg",
-    "gender": "male",
+    "gender": "Мужской",
     "about": "Люблю путешествовать и быстрые машины.",
     "can": {
-      "title": "Продажи и полезные навыки",
-      "category": "Бизнес и карьера",
-      "subcategory": "Продажи и переговоры",
-      "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["db/skills/sell.jpg"]
-    },
-    "want": [
-      {
-        "category": "Дом и уют",
-        "subcategory": "Приготовление еды"
-      },
-      {
-        "category": "Творчество и искусство",
-        "subcategory": "Фотография"
-      }
-    ],
-    "createdAt": "13.08.2025",
-    "likeCount": 2
-  },
-  {
-    "id": "10",
-    "name": "Анна",
-    "city": "Казань",
-    "dateOfBirth": "05.10.1996",
-    "gender": "female",
-    "image": "db/photos/user2.jpg",
-    "about": "Люблю модно одеваться и играть в шахматы.",
-    "can": {
-      "title": "Наведение порядка",
+      "title": "Правильное хранение и порядок в доме",
       "category": "Дом и уют",
-      "subcategory": "Уборка и организация",
-      "description": "Научу наводить чистоту и порядок в доме.",
+      "subcategory": "Хранение вещей",
+      "description": "Научу хранить вещи дома и экономить пространство.",
       "images": [
-        "db/skills/sell.jpg",
-        "db/skills/cooking.jpg",
-        "db/skills/planning.jpg",
-        "db/skills/espanol.jpg"
+        "db/skills/method1.jpg",
+        "db/skills/method2.jpg",
+        "db/skills/method3.jpg",
+        "db/skills/method4.jpeg",
+        "db/skills/method5.jpg"
       ]
     },
     "want": [
@@ -284,6 +364,56 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Бизнес и карьера",
+        "subcategory": "Тайм-менеджмент"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Физические тренировки"
+      }
+    ],
+    "createdAt": "13.08.2025",
+    "likeCount": 2
+  },
+  {
+    "id": "10",
+    "name": "Анна",
+    "city": "Казань",
+    "dateOfBirth": "05.10.1996",
+    "gender": "Женский",
+    "image": "db/photos/user2.jpg",
+    "about": "Люблю модно одеваться и играть в шахматы.",
+    "can": {
+      "title": "Разговорный японский с нуля",
+      "category": "Иностранные языки",
+      "subcategory": "Японский",
+      "description": "Научу разговаривать на японском языке.",
+      "images": [
+        "db/skills/japan1.jpg",
+        "db/skills/japan2.jpg",
+        "db/skills/japan3.jpg",
+        "db/skills/japan4.jpg",
+        "db/skills/japan5.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Французский"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Коучинг"
       }
     ],
     "createdAt": "14.08.2025",
@@ -294,15 +424,21 @@
     "name": "Максим",
     "city": "Москва",
     "dateOfBirth": "03.02.1999",
-    "gender": "male",
+    "gender": "Мужской",
     "image": "db/photos/user3.jpg",
     "about": "Люблю вкусную еду и хорошие игры.",
     "can": {
-      "title": "Игра на барабанах",
+      "title": "Как собрать что-то своими руками?",
       "category": "Творчество и искусство",
-      "subcategory": "Музыка и звук",
-      "description": "Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры",
-      "images": ["db/skills/brand.jpg"]
+      "subcategory": "Декор и DIY",
+      "description": "Научу работать руками и собирать предметы для собственного дома.",
+      "images": [
+        "db/skills/diy1.jpg",
+        "db/skills/diy2.png",
+        "db/skills/diy3.png",
+        "db/skills/diy4.png",
+        "db/skills/diy5.jpg"
+      ]
     },
     "want": [
       {
@@ -312,6 +448,14 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Дом и уют",
+        "subcategory": "Домашние растения"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Рисование и иллюстрация"
       }
     ],
     "createdAt": "15.08.2025",
@@ -322,15 +466,20 @@
     "name": "Алла",
     "city": "Архангельск",
     "dateOfBirth": "02.05.1995",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user4.jpg",
     "about": "Люблю ходить по магазинам и заниматься спортом.",
     "can": {
-      "title": "Продажи и полезные навыки",
-      "category": "Бизнес и карьера",
-      "subcategory": "Продажи и переговоры",
-      "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["db/skills/sell.jpg"]
+      "title": "Получаем знания и быстро во Францию",
+      "category": "Иностранные языки",
+      "subcategory": "Французский",
+      "description": "Научусь разговаривать на французском с нуля.",
+      "images": [
+        "db/skills/france1.jpg",
+        "db/skills/france2.jpg",
+        "db/skills/france3.jpg",
+        "db/skills/france4.jpg"
+      ]
     },
     "want": [
       {
@@ -340,6 +489,14 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Испанский"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Осознанность"
       }
     ],
     "createdAt": "12.08.2025",
@@ -350,15 +507,21 @@
     "name": "Дарья",
     "city": "Ярославль",
     "dateOfBirth": "01.05.1997",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user5.jpg",
     "about": "Люблю работать и усердно учиться.",
     "can": {
-      "title": "Выстраивание личного бренда",
+      "title": "Как правильно подготовить резюме?",
       "category": "Бизнес и карьера",
-      "subcategory": "Личный бренд",
-      "description": "Научу выстраивать личный бренд с минимальными вложениями.",
-      "images": ["db/skills/brand.jpg"]
+      "subcategory": "Резюме и собеседование",
+      "description": "Научу заполнять резюме, чтобы оно было заметно и интересно.",
+      "images": [
+        "db/skills/resume1.jpg",
+        "db/skills/resume2.png",
+        "db/skills/resume3.svg",
+        "db/skills/resume4.svg",
+        "db/skills/resume5.svg"
+      ]
     },
     "want": [
       {
@@ -368,6 +531,14 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Бизнес и карьера",
+        "subcategory": "Управление командой"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Личностное развитие"
       }
     ],
     "createdAt": "11.08.2025",
@@ -378,15 +549,21 @@
     "name": "Екатерина",
     "city": "Пермь",
     "dateOfBirth": "21.05.1986",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user6.jpg",
     "about": "Постоянно развиваюсь и путешествую.",
     "can": {
-      "title": "Маркетинг SEO и SMM",
-      "category": "Бизнес и карьера",
-      "subcategory": "Маркетинг и реклама",
-      "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-      "images": ["db/skills/marketing.jpg"]
+      "title": "Давно мечтал об Октоберфесте?",
+      "category": "Иностранные языки",
+      "subcategory": "Немецкий",
+      "description": "Научу разговаривать на немецком языке, опыт преподавания 5 лет.",
+      "images": [
+        "db/skills/germany1.jpg",
+        "db/skills/germany2.jpg",
+        "db/skills/germany3.jpg",
+        "db/skills/germany4.jpg",
+        "db/skills/germany5.jpg"
+      ]
     },
     "want": [
       {
@@ -396,6 +573,18 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Английский"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Питание и ЗОЖ"
+      },
+      {
+        "category": "Бизнес и карьера",
+        "subcategory": "Маркетинг и реклама"
       }
     ],
     "createdAt": "10.08.2025",
@@ -406,15 +595,20 @@
     "name": "Елена",
     "city": "Красноярск",
     "dateOfBirth": "21.05.1989",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user7.jpg",
     "about": "Люблю ходить по клубам и ездить на машине.",
     "can": {
-      "title": "Продажи и полезные навыки",
-      "category": "Бизнес и карьера",
-      "subcategory": "Продажи и переговоры",
-      "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["db/skills/sell.jpg"]
+      "title": "Давно планировал купить растения домой?",
+      "category": "Дом и уют",
+      "subcategory": "Домашние растения",
+      "description": "Научу ухаживать за домашними растениями.",
+      "images": [
+        "db/skills/plant1.png",
+        "db/skills/plant2.png",
+        "db/skills/plant3.jpg",
+        "db/skills/plant4.jpg"
+      ]
     },
     "want": [
       {
@@ -424,6 +618,18 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Дом и уют",
+        "subcategory": "Домашние финансы"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Декор и DIY"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Баланс жизни и работы"
       }
     ],
     "createdAt": "13.08.2025",
@@ -434,15 +640,20 @@
     "name": "София",
     "city": "Абакан",
     "dateOfBirth": "21.05.1984",
-    "gender": "female",
+    "gender": "Женский",
     "image": "db/photos/user8.jpg",
     "about": "Люблю отдыхать и постоянно развиваться.",
     "can": {
-      "title": "Маркетинг SEO и SMM",
-      "category": "Бизнес и карьера",
-      "subcategory": "Маркетинг и реклама",
-      "description": "Научусь заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-      "images": ["db/skills/marketing.jpg"]
+      "title": "Помогу найти путь как к себе прийти",
+      "category": "Здоровье и лайфстайл",
+      "subcategory": "Йога и медитация",
+      "description": "Помогу научиться медитировать и обретать покой.",
+      "images": [
+        "db/skills/yoga1.jpg",
+        "db/skills/yoga2.jpg",
+        "db/skills/yoga3.jpg",
+        "db/skills/yoga4.jpg"
+      ]
     },
     "want": [
       {
@@ -452,6 +663,18 @@
       {
         "category": "Творчество и искусство",
         "subcategory": "Фотография"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Ментальное здоровье"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Когнитивные техники"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Китайский"
       }
     ],
     "createdAt": "11.08.2025",
