@@ -446,11 +446,16 @@
     "image": "db/photos/user4.jpg",
     "about": "Люблю ходить по магазинам и заниматься спортом.",
     "can": {
-      "title": "Продажи и полезные навыки",
-      "category": "Бизнес и карьера",
-      "subcategory": "Продажи и переговоры",
-      "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["db/skills/sell.jpg"]
+      "title": "Получаем знания и быстро во Францию",
+      "category": "Иностранные языки",
+      "subcategory": "Французский",
+      "description": "Научусь разговаривать на французском с нуля.",
+      "images": [
+        "db/skills/france1.jpg",
+        "db/skills/france2.png",
+        "db/skills/france3.png",
+        "db/skills/france4.png"
+      ]
     },
     "want": [
       {
