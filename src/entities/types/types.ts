@@ -17,7 +17,7 @@ export interface IUser {
     password: string;
     name: string;
     about: string;
-    gender: 'male' | 'female';
+    gender: 'Женский' | 'Мужской';
     dateOfBirth: string;
     city: string;
     image?: string;
