@@ -479,11 +479,17 @@
     "image": "db/photos/user5.jpg",
     "about": "Люблю работать и усердно учиться.",
     "can": {
-      "title": "Выстраивание личного бренда",
+      "title": "Как правильно подготовить резюме?",
       "category": "Бизнес и карьера",
-      "subcategory": "Личный бренд",
-      "description": "Научу выстраивать личный бренд с минимальными вложениями.",
-      "images": ["db/skills/brand.jpg"]
+      "subcategory": "Резюме и собеседование",
+      "description": "Научу заполнять резюме, чтобы оно было заметно и интересно.",
+      "images": [
+        "db/skills/resume1.jpg",
+        "db/skills/resume2.png",
+        "db/skills/resume3.svg",
+        "db/skills/resume4.svg",
+        "db/skills/resume5.svg"
+      ]
     },
     "want": [
       {
