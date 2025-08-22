@@ -1,22 +1,44 @@
 [
   {
-    "id": "9",
+    "id": "17",
     "name": "Эля",
     "city": "Москва",
     "dateOfBirth": "02.03.1997",
     "image": "./photos/user9.jpg",
-    "gender": "female",
-    "about": "Люблю прогулки и животных.",
+    "gender": "Женский",
+    "about": "Люблю прогулки и домашних животных.",
     "email": "elya@test.ru",
     "password": "54545",
     "can": {
-      "title": "Продажи и полезные навыки",
+      "title": "Давно мечтал или мечтала открыть своё дело?",
       "category": "Бизнес и карьера",
-      "subcategory": "Продажи и переговоры",
-      "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["./skills/sell.jpg"]
+      "subcategory": "Предпринимательство",
+      "description": "Помогу определиться с нишей и начать зарабатывать.",
+      "images": [
+        "db/skills/business1.jpg",
+        "db/skills/business2.jpg",
+        "db/skills/business3.jpeg",
+        "db/skills/business4.jpg"
+      ]
     },
-    "want": ["Приготовление еды", "Домашние финансы"],
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Китайский"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Ментальное здоровье"
+      }
+    ],
     "createdAt": "10.08.2025",
     "likeCount": 3
   }
