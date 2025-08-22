@@ -96,7 +96,13 @@
       "category": "Творчество и искусство",
       "subcategory": "Музыка и звук",
       "description": "Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры",
-      "images": ["db/skills/brand.jpg"]
+      "images": [
+        "db/skills/music1.jpg",
+        "db/skills/music2.jpg",
+        "db/skills/music3.jpg",
+        "db/skills/music4.jpg",
+        "db/skills/music5.jpg"
+      ]
     },
     "want": [
       {
@@ -128,11 +134,17 @@
     "image": "db/photos/user4.jpg",
     "about": "Люблю ходить по магазинам и заниматься спортом.",
     "can": {
-      "title": "Продажи и полезные навыки",
-      "category": "Бизнес и карьера",
-      "subcategory": "Продажи и переговоры",
-      "description": "Научусь продажам и переговорам с нуля.",
-      "images": ["db/skills/sell.jpg"]
+      "title": "Полезные навыки",
+      "category": "Дом и уют",
+      "subcategory": "Ремонт",
+      "description": "Научусь делать ремонт дома с нуля.",
+      "images": [
+        "db/skills/repair.jpg",
+        "db/skills/repair2.jpg",
+        "db/skills/repair3.jpg",
+        "db/skills/repair4.jpg",
+        "db/skills/repair5.jpg"
+      ]
     },
     "want": [
       {
@@ -172,11 +184,17 @@
     "image": "db/photos/user5.jpg",
     "about": "Люблю работать и усердно учиться.",
     "can": {
-      "title": "Выстраивание личного бренда",
-      "category": "Бизнес и карьера",
-      "subcategory": "Личный бренд",
-      "description": "Научу выстраивать личный бренд с минимальными вложениями.",
-      "images": ["db/skills/brand.jpg"]
+      "title": "Работа с ПО по монтажу",
+      "category": "Творчество и искусство",
+      "subcategory": "Видеомонтаж",
+      "description": "Научу видеомонтажу абсолютно любого с нуля.",
+      "images": [
+        "db/skills/editing1.jpg",
+        "db/skills/editing2.jpg",
+        "db/skills/editing3.jpg",
+        "db/skills/editing4.jpg",
+        "db/skills/editing5.jpg"
+      ]
     },
     "want": [
       {
