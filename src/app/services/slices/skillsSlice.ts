@@ -31,7 +31,7 @@ const initialState: TSkillsState = {
     subcategories: [],
     gender: 'Не имеет значения',
     cities: [],
-    searchTarget: 'Всё',
+    searchTarget: 'Всё'
   }
 };
 
@@ -79,7 +79,10 @@ export const SkillSlice = createSlice({
         (subcat) => subcat !== action.payload
       );
     },
-    setGender: (state, action: PayloadAction<'Мужской' | 'Женский' | 'Не имеет значения'>) => {
+    setGender: (
+      state,
+      action: PayloadAction<'Мужской' | 'Женский' | 'Не имеет значения'>
+    ) => {
       state.filters.gender = action.payload;
     },
     addCity: (state, action: PayloadAction<string>) => {
@@ -90,7 +93,10 @@ export const SkillSlice = createSlice({
         (subcat) => subcat !== action.payload
       );
     },
-    setSearchTarget: (state, action: PayloadAction<'Хочу научиться' | 'Могу научить' | 'Всё'>) => {
+    setSearchTarget: (
+      state,
+      action: PayloadAction<'Хочу научиться' | 'Могу научить' | 'Всё'>
+    ) => {
       state.filters.searchTarget = action.payload;
     },
     clearAllFilters: (state) => {
@@ -124,30 +130,32 @@ export const getSkills = (state: RootState) => state.skills.skills;
 export const getFilters = (state: RootState) => state.skills.filters;
 
 export const getSkillById = (id: string) =>
-  createSelector(getSkills, (skills) => skills.find(skill => skill.id === id));
+  createSelector(getSkills, (skills) =>
+    skills.find((skill) => skill.id === id)
+  );
 
 export const getFilteredSkills = createSelector(
   [getSkills, getFilters],
   (skills, filters) => {
     const { subcategories, gender, cities, searchTarget } = filters;
-
-    return skills.filter(skill => {
-      if (gender !== 'Не имеет значения' && skill.gender !== gender) return false;
-
-      const cityMatch = cities.length === 0 || cities.includes(skill.city);
-
-      if (subcategories.length > 0) {
-        const canMatch = skill.can && subcategories.includes(skill.can.subcategory) && cityMatch;
-        const wantMatch = skill.want.some(w => subcategories.includes(w.subcategory)) && cityMatch;
-
-        if (searchTarget === 'Хочу научиться' && !canMatch) return false;
-        if (searchTarget === 'Могу научить' && !wantMatch) return false;
-        if (searchTarget === 'Всё' && !canMatch && !wantMatch) return false;
-      } else {
-        if (!cityMatch) return false;
-      }
-
-      return true;
-    });
+    let filtered = skills;
+    if (gender !== 'Не имеет значения') {
+      filtered = filtered.filter((skill) => skill.gender === gender);
+    }
+    if (cities.length > 0) {
+      filtered = filtered.filter((skill) => cities.includes(skill.city));
+    }
+    if (subcategories.length > 0) {
+      filtered = filtered.filter((skill) => {
+        const can = skill.can && subcategories.includes(skill.can.subcategory);
+        const want = skill.want.some((w) =>
+          subcategories.includes(w.subcategory)
+        );
+        if (searchTarget === 'Хочу научиться') return can;
+        if (searchTarget === 'Могу научить') return want;
+        return can || want;
+      });
+    }
+    return filtered;
   }
 );
