@@ -67,33 +67,14 @@ export const SkillSlice = createSlice({
     setSkills: (state, action: PayloadAction<IUserPublic[]>) => {
       state.skills = action.payload;
     },
-    addSubcategory: (state, action: PayloadAction<string>) => {
-      state.filters.subcategories.push(action.payload);
+    setFilters: (state, action: PayloadAction<IFilters>) => {
+      state.filters = action.payload;
     },
-    removeSubcategory: (state, action: PayloadAction<string>) => {
-      state.filters.subcategories = state.filters.subcategories.filter(
-        (subcat) => subcat !== action.payload
-      );
-    },
-    setGender: (
+    updateFilters: (
       state,
-      action: PayloadAction<'Мужской' | 'Женский' | 'Не имеет значения'>
+      action: PayloadAction<Partial<IFilters>>
     ) => {
-      state.filters.gender = action.payload;
-    },
-    addCity: (state, action: PayloadAction<string>) => {
-      state.filters.cities.push(action.payload);
-    },
-    removeCity: (state, action: PayloadAction<string>) => {
-      state.filters.cities = state.filters.cities.filter(
-        (subcat) => subcat !== action.payload
-      );
-    },
-    setSearchTarget: (
-      state,
-      action: PayloadAction<'Хочу научиться' | 'Могу научить' | 'Всё'>
-    ) => {
-      state.filters.searchTarget = action.payload;
+      state.filters = { ...state.filters, ...action.payload };
     },
     clearAllFilters: (state) => {
       state.filters = initialState.filters;
