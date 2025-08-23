@@ -15,6 +15,7 @@ export type TSkillsState = {
   loading: boolean;
   error: string | null;
   hasMore: boolean;
+  searchQuery: string;
   filters: IFilters;
 };
 
@@ -23,6 +24,7 @@ export const initialState: TSkillsState = {
   loading: false,
   error: null,
   hasMore: true,
+  searchQuery: '',
   filters: {
     subcategories: [],
     gender: 'Не имеет значения',
@@ -67,6 +69,9 @@ export const SkillSlice = createSlice({
     setSkills: (state, action: PayloadAction<IUserPublic[]>) => {
       state.skills = action.payload;
     },
+    setSearchQuery: (state, action: PayloadAction<string>) => {
+      state.searchQuery = action.payload;
+    },
     setFilters: (state, action: PayloadAction<IFilters>) => {
       state.filters = action.payload;
     },
@@ -103,7 +108,16 @@ export const SkillSlice = createSlice({
 
 export default SkillSlice.reducer;
 
+export const {
+  setSkills,
+  setSearchQuery,
+  setFilters,
+  updateFilters,
+  clearAllFilters,
+} = SkillSlice.actions;
+
 export const getSkills = (state: RootState) => state.skills.skills;
+export const getSearchQuery = (state: RootState) => state.skills.searchQuery;
 export const getFilters = (state: RootState) => state.skills.filters;
 
 export const getSkillById = (id: string) =>

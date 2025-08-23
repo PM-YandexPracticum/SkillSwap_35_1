@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, type ChangeEvent } from 'react';
 import { NavLink } from 'react-router-dom';
 import Chevron from '@icons/ui/chevron-down.svg?react';
 import DarkThemeIcon from '@icons/ui/moon.svg?react';
@@ -13,12 +13,25 @@ import { Text } from '@ui/text/Text';
 import { InputSearch } from '@ui/input/Input';
 import { type AppHeaderProps } from './types';
 import styles from './AppHeader.module.scss';
+import { useDispatch } from '../../services/store';
+import { setSearchQuery } from '../../services/slices/skillsSlice';
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
   user,
   isRegistrationHeader = false
 }) => {
   const [searchValue, setSearchValue] = useState(''); // для инпута поиска
+  const dispatch = useDispatch();
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+    dispatch(setSearchQuery(e.target.value));
+  };
+
+  const onIconClick = () => {
+    setSearchValue('');
+    dispatch(setSearchQuery(''));
+  }
 
   return (
     <header className={styles.container}>
@@ -60,11 +73,11 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 
           <InputSearch
             value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={handleSearch}
             placeholder='Искать навык'
             inputSize={user ? 'xlarge' : 'large'}
             icon={searchValue ? <CrossIcon /> : undefined}
-            onIconClick={() => setSearchValue('')}
+            onIconClick={onIconClick}
           />
 
           <button type='button' className={styles.themeToggleButton}>
