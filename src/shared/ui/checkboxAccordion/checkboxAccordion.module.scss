@@ -2,6 +2,10 @@
     width: 100%;
 }
 
+.wrapper {
+    display: flex;
+}
+
 .toggle {
     display: flex;
     justify-content: start;
@@ -9,6 +13,7 @@
     width: 100%;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .toggle__icon {

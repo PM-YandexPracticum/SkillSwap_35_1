@@ -7,4 +7,5 @@ export type CheckboxProps = {
   children?: ReactNode;
   name?: string;
   value?: string;
+  ariaLabel?: string;
 };

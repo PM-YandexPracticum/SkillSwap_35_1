@@ -10,30 +10,26 @@ const meta: Meta<typeof CheckboxAccordion> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const DefaultState = () => {
-  const [items, setItems] = useState([
-    {
-      id: '1',
-      label: 'Рисование и иллюстрация',
-      value: 'drawing',
-      checked: false
-    },
-    { id: '2', label: 'Фотография', value: 'photography', checked: false },
-    { id: '3', label: 'Видеомонтаж', value: 'video', checked: false }
-  ]);
+export const DefaultState: Story = {
+  render: () => {
+    const [items, setItems] = useState([
+      { value: 'Рисование и иллюстрация', checked: false },
+      { value: 'Фотография', checked: false },
+      { value: 'Видеомонтаж', checked: false }
+    ]);
 
-  const updateListItems = (updatedItems: CheckboxAccordionItem[]) => {
-    setItems(updatedItems);
-  };
+    const updateListItems = (updatedItems: CheckboxAccordionItem[]) => {
+      setItems(updatedItems);
+    };
 
-  return (
-    <div style={{ padding: '20px', width: '400px' }}>
-      <CheckboxAccordion
-        label='Творчество и искусство'
-        groupName='arts'
-        items={items}
-        onItemsChange={updateListItems}
-      />
-    </div>
-  );
+    return (
+      <div style={{ padding: '20px', width: '400px' }}>
+        <CheckboxAccordion
+          groupName="Творчество и искусство"
+          items={items}
+          onItemsChange={updateListItems}
+        />
+      </div>
+    );
+  }
 };

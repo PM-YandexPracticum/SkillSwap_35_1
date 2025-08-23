@@ -8,7 +8,6 @@ import { Checkbox } from '../checkbox/checkbox';
 import { Text } from '../text/Text';
 
 export const CheckboxAccordion: FC<CheckboxAccordionProps> = ({
-  label,
   groupName,
   items,
   onItemsChange
@@ -75,7 +74,7 @@ export const CheckboxAccordion: FC<CheckboxAccordionProps> = ({
   const handleListItemChange = useCallback(
     (id: string) => {
       const updatedList = items.map((item) => {
-        if (item.id === id) {
+        if (item.value === id) {
           return {
             ...item,
             checked: !item.checked
@@ -92,35 +91,38 @@ export const CheckboxAccordion: FC<CheckboxAccordionProps> = ({
 
   return (
     <div className={styles.accordion}>
-      <button
-        type='button'
-        className={`${styles.toggle} ${isAccordionOpen && styles.toggle_open}`}
-        onClick={toggleMenu}
-      >
+      <div className={styles.wrapper}>
         <Checkbox
           checked={isSomeChecked}
           variant='minus'
           onChange={handleToggleChange}
+          ariaLabel={groupName}
         />
+        <button
+        type='button'
+        className={`${styles.toggle} ${isAccordionOpen && styles.toggle_open}`}
+        onClick={toggleMenu}
+      >
         <Text as='span' size='main'>
-          {label}
+          {groupName}
         </Text>
         <IconChevronDown className={styles.toggle__icon} />
       </button>
+      </div>
       {isListOpen && (
         <ul className={styles.list} ref={listRef}>
-          {items.map((item) => (
-            <li key={item.id} className={styles.list__item}>
+          {items.map((item, index) => (
+            <li key={`${groupName}-${index}`} className={styles.list__item}>
               <Checkbox
                 checked={item.checked}
                 name={groupName}
                 value={item.value}
                 onChange={() => {
-                  handleListItemChange(item.id);
+                  handleListItemChange(item.value);
                 }}
               >
                 <Text as='span' size='main'>
-                  {item.label}
+                  {item.value}
                 </Text>
               </Checkbox>
             </li>
