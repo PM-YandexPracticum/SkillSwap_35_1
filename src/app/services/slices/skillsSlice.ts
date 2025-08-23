@@ -7,19 +7,32 @@ import {
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { IUserPublic } from 'src/entities/types/types';
 import { multiplyArrayElements } from '../../../utils';
+import type { RootState } from '../store';
 
 export type TSkillsState = {
   skills: IUserPublic[];
   loading: boolean;
   error: string | null;
   hasMore: boolean;
+  filters: {
+    subcategories: string[];
+    gender: 'Мужской' | 'Женский' | 'Не имеет значения';
+    cities: string[];
+    searchTarget: 'Хочу научиться' | 'Могу научить' | 'Всё';
+  };
 };
 
 const initialState: TSkillsState = {
   skills: [],
   loading: false,
   error: null,
-  hasMore: true
+  hasMore: true,
+  filters: {
+    subcategories: [],
+    gender: 'Не имеет значения',
+    cities: [],
+    searchTarget: 'Всё',
+  }
 };
 
 export const getMockSkills = createAsyncThunk(
@@ -57,11 +70,34 @@ export const SkillSlice = createSlice({
   reducers: {
     setSkills: (state, action: PayloadAction<IUserPublic[]>) => {
       state.skills = action.payload;
+    },
+    addSubcategory: (state, action: PayloadAction<string>) => {
+      state.filters.subcategories.push(action.payload);
+    },
+    removeSubcategory: (state, action: PayloadAction<string>) => {
+      state.filters.subcategories = state.filters.subcategories.filter(
+        (subcat) => subcat !== action.payload
+      );
+    },
+    setGender: (state, action: PayloadAction<'Мужской' | 'Женский' | 'Не имеет значения'>) => {
+      state.filters.gender = action.payload;
+    },
+    addCity: (state, action: PayloadAction<string>) => {
+      state.filters.cities.push(action.payload);
+    },
+    removeCity: (state, action: PayloadAction<string>) => {
+      state.filters.cities = state.filters.cities.filter(
+        (subcat) => subcat !== action.payload
+      );
+    },
+    setSearchTarget: (state, action: PayloadAction<'Хочу научиться' | 'Могу научить' | 'Всё'>) => {
+      state.filters.searchTarget = action.payload;
+    },
+    clearAllFilters: (state) => {
+      state.filters = initialState.filters;
     }
   },
-  selectors: {
-    getSkills: (state) => state.skills
-  },
+
   extraReducers(builder) {
     builder
       .addCase(getMockSkills.pending, (state) => {
@@ -82,8 +118,36 @@ export const SkillSlice = createSlice({
   }
 });
 
-export const getSkillById = createSelector(
-  SkillSlice.selectors.getSkills,
-  (_, id) => id,
-  (skills: IUserPublic[], id: string) => skills.find((skill) => skill.id === id)
+export default SkillSlice.reducer;
+
+export const getSkills = (state: RootState) => state.skills.skills;
+export const getFilters = (state: RootState) => state.skills.filters;
+
+export const getSkillById = (id: string) =>
+  createSelector(getSkills, (skills) => skills.find(skill => skill.id === id));
+
+export const getFilteredSkills = createSelector(
+  [getSkills, getFilters],
+  (skills, filters) => {
+    const { subcategories, gender, cities, searchTarget } = filters;
+
+    return skills.filter(skill => {
+      if (gender !== 'Не имеет значения' && skill.gender !== gender) return false;
+
+      const cityMatch = cities.length === 0 || cities.includes(skill.city);
+
+      if (subcategories.length > 0) {
+        const canMatch = skill.can && subcategories.includes(skill.can.subcategory) && cityMatch;
+        const wantMatch = skill.want.some(w => subcategories.includes(w.subcategory)) && cityMatch;
+
+        if (searchTarget === 'Хочу научиться' && !canMatch) return false;
+        if (searchTarget === 'Могу научить' && !wantMatch) return false;
+        if (searchTarget === 'Всё' && !canMatch && !wantMatch) return false;
+      } else {
+        if (!cityMatch) return false;
+      }
+
+      return true;
+    });
+  }
 );

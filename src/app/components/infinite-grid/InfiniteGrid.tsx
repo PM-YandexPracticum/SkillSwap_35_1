@@ -7,12 +7,16 @@ import { SkillCard } from '../../../widgets/skill-card';
 import styles from './Infinite.module.scss';
 
 export const InfiniteGrid: React.FC<InfiniteGridProps> = ({ title, data, fetchData, hasMore }) => {
+
+  if(!data || data.length === 0) {
+    return null;
+  }
   
   return (
     <div className={styles.infinite__grid}>
       <Title as='h2'> {title} </Title>
       <InfiniteScroll
-        dataLength={data.length}
+        dataLength={data?.length ?? 0}
         next={fetchData}
         hasMore={hasMore}
         loader={<Preloader />}
@@ -20,7 +24,7 @@ export const InfiniteGrid: React.FC<InfiniteGridProps> = ({ title, data, fetchDa
         style={{ overflow: 'hidden' }}
       >
         <div className={styles.infinite__grid__container}>
-          {data.map((card) => (
+          {(data ?? []).map((card) => (
             <SkillCard
               key={card.id}
               userName={card.name}
