@@ -8,18 +8,14 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type { IUserPublic } from 'src/entities/types/types';
 import { multiplyArrayElements } from '../../../utils';
 import type { RootState } from '../store';
+import type { IFilters } from '../../../shared/types/types';
 
 export type TSkillsState = {
   skills: IUserPublic[];
   loading: boolean;
   error: string | null;
   hasMore: boolean;
-  filters: {
-    subcategories: string[];
-    gender: 'Мужской' | 'Женский' | 'Не имеет значения';
-    cities: string[];
-    searchTarget: 'Хочу научиться' | 'Могу научить' | 'Всё';
-  };
+  filters: IFilters;
 };
 
 export const initialState: TSkillsState = {
