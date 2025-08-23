@@ -22,7 +22,7 @@ export type TSkillsState = {
   };
 };
 
-const initialState: TSkillsState = {
+export const initialState: TSkillsState = {
   skills: [],
   loading: false,
   error: null,
