@@ -7,6 +7,8 @@ import {
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { IUserPublic } from 'src/entities/types/types';
 import { multiplyArrayElements } from '../../../utils';
+import type { RootState } from '../store';
+import type { IFilters } from '../../../shared/types/types';
 
 export type TSkillsState = {
   skills: IUserPublic[];
@@ -14,14 +16,21 @@ export type TSkillsState = {
   error: string | null;
   hasMore: boolean;
   searchQuery: string;
+  filters: IFilters;
 };
 
-const initialState: TSkillsState = {
+export const initialState: TSkillsState = {
   skills: [],
   loading: false,
   error: null,
   hasMore: true,
   searchQuery: '',
+  filters: {
+    subcategories: [],
+    gender: 'Не имеет значения',
+    cities: [],
+    searchTarget: 'Всё'
+  }
 };
 
 export const getMockSkills = createAsyncThunk(
@@ -62,12 +71,21 @@ export const SkillSlice = createSlice({
     },
     setSearchQuery: (state, action: PayloadAction<string>) => {
       state.searchQuery = action.payload;
+    },
+    setFilters: (state, action: PayloadAction<IFilters>) => {
+      state.filters = action.payload;
+    },
+    updateFilters: (
+      state,
+      action: PayloadAction<Partial<IFilters>>
+    ) => {
+      state.filters = { ...state.filters, ...action.payload };
+    },
+    clearAllFilters: (state) => {
+      state.filters = initialState.filters;
     }
   },
-  selectors: {
-    getSkills: (state) => state.skills,
-    getSearchQuery: (state) => state.searchQuery
-  },
+
   extraReducers(builder) {
     builder
       .addCase(getMockSkills.pending, (state) => {
@@ -88,12 +106,47 @@ export const SkillSlice = createSlice({
   }
 });
 
-export const getSkillById = createSelector(
-  SkillSlice.selectors.getSkills,
-  (_, id) => id,
-  (skills: IUserPublic[], id: string) => skills.find((skill) => skill.id === id)
+export default SkillSlice.reducer;
+
+export const {
+  setSkills,
+  setSearchQuery,
+  setFilters,
+  updateFilters,
+  clearAllFilters,
+} = SkillSlice.actions;
+
+export const getSkills = (state: RootState) => state.skills.skills;
+export const getSearchQuery = (state: RootState) => state.skills.searchQuery;
+export const getFilters = (state: RootState) => state.skills.filters;
+
+export const getSkillById = (id: string) =>
+  createSelector(getSkills, (skills) =>
+    skills.find((skill) => skill.id === id)
+  );
+
+export const getFilteredSkills = createSelector(
+  [getSkills, getFilters],
+  (skills, filters) => {
+    const { subcategories, gender, cities, searchTarget } = filters;
+    let filtered = skills;
+    if (gender !== 'Не имеет значения') {
+      filtered = filtered.filter((skill) => skill.gender === gender);
+    }
+    if (cities.length > 0) {
+      filtered = filtered.filter((skill) => cities.includes(skill.city));
+    }
+    if (subcategories.length > 0) {
+      filtered = filtered.filter((skill) => {
+        const can = skill.can && subcategories.includes(skill.can.subcategory);
+        const want = skill.want.some((w) =>
+          subcategories.includes(w.subcategory)
+        );
+        if (searchTarget === 'Хочу научиться') return can;
+        if (searchTarget === 'Могу научить') return want;
+        return can || want;
+      });
+    }
+    return filtered;
+  }
 );
-
-export const { setSkills, setSearchQuery } = SkillSlice.actions;
-
-export const { getSkills, getSearchQuery } = SkillSlice.selectors;
