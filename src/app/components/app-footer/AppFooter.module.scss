@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   display: flex;
   gap: 24px;
   max-width: 1440px;
@@ -6,6 +7,24 @@
   padding: 32px 36px;
   margin-top: 60px;
   background-color: var(--secondary-color);
+}
+
+.container::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top:0;
+  left: 50%;
+  z-index: 1;
+  inline-size: 120vw;
+  block-size: 100%;
+  background-color: inherit;
+  transform: translateX(-50%);
+}
+
+.container > div {
+  position: relative;
+  z-index: 2;
 }
 
 .copyright {
