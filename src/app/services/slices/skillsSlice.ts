@@ -107,8 +107,6 @@ export const SkillSlice = createSlice({
 });
 
 export default SkillSlice.reducer;
-export const { setSkills, setFilters, updateFilters, clearAllFilters } =
-  SkillSlice.actions;
 
 export const {
   setSkills,
