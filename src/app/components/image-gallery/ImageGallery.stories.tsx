@@ -10,7 +10,7 @@ type Story = StoryObj<typeof ImageGallery>;
 
 export const SelectStory: Story = {
   render: () => {
-    const styles = {
+    const styles: React.CSSProperties = {
       paddingTop: '50px',
       paddingBottom: '50px',
       display: 'flex',
