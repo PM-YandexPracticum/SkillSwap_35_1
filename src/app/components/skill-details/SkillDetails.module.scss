@@ -2,14 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-
-  /*
-  height: 444px;
-  width: 1020px;
-  */
-  border-radius: 12px;
+  border-radius: var(--main-border-radius);
   padding: 32px 52px 40px;
-  background-color: white;
+  background-color: var(--secondary-color);
 }
 
 p, h2 {
@@ -26,7 +21,6 @@ p, h2 {
 .main {
   display: flex;
   gap: 77px;
-  width: 916px;
   height: 324px;
 }
 
@@ -34,16 +28,14 @@ p, h2 {
   display: flex;
   flex-direction: column;
   width: 399px;
-  height: 324px;
-}
-
-.images {
-  width: 440px;
-  height: 324px;
 }
 
 .text {
   max-height: 160px;
   overflow: hidden;
   margin-top: 20px;
+}
+
+.subtitle {
+  margin-top: 4px;
 }

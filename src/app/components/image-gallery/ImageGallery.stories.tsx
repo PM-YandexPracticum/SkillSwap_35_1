@@ -28,8 +28,6 @@ export const SelectStory: Story = {
       'https://avatars.mds.yandex.net/i?id=2be283817200af1fae06ba28089beb656107b11f-6367247-images-thumbs&n=13',
       'https://avatars.mds.yandex.net/i?id=a544e8e61777043cd6f9e70aa5318d4e16750964-6579542-images-thumbs&n=13', 
     ];
-    /*
-    ];*/
 
     return (
       <div style={styles}>
