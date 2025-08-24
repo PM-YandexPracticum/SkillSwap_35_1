@@ -1,4 +1,6 @@
-import type { FC } from 'react';
+import { type FC, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { calculateMaxCards } from '../../../utils/calculateMaxCards';
 import type { CardSectionProps } from '@components/card-section/types';
 import { Title } from '@ui/title';
 import Button from '@ui/button/Button';
@@ -9,30 +11,47 @@ import IconRowRight from '../../../shared/assets/icons/ui/chevron-right.svg?reac
 export const CardSection: FC<CardSectionProps> = ({
   data,
   linkSeeAll,
-  title,
-  maxVisible = 3
+  title
 }) => {
+  const navigate = useNavigate();
+  const containerRef = useRef<HTMLElement>(null);
+  const [maxVisible, setMaxVisible] = useState(3);
+
+  useEffect(() => {
+    const updateVisible = () => {
+      if (!containerRef.current) return;
+      const containerWidth = containerRef.current.offsetWidth;
+
+      const visibleCards = calculateMaxCards(containerWidth);
+      setMaxVisible(visibleCards);
+    };
+
+    updateVisible();
+
+    const resizeObserver = new ResizeObserver(updateVisible);
+    if (containerRef.current) resizeObserver.observe(containerRef.current);
+
+    return () => resizeObserver.disconnect();
+  }, []);
+
   const visibleData = data.slice(0, maxVisible);
   const hasMoreData = data.length > maxVisible;
 
   const onClick = () => {
-    console.log({ linkSeeAll });
-    // здесь будет роутинг с опредленным путем
+    if (linkSeeAll) {
+      navigate(linkSeeAll);
+    }
   };
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} ref={containerRef}>
       <div className={styles.section__alignTop}>
-        <Title as={'h2'}> {title} </Title>
+        <Title as="h2">{title}</Title>
         {hasMoreData && (
           <div className={styles.section__wrapperBtn}>
-            <Button
-              onClick={onClick}
-              variant='tertiary'
-              style={{ padding: '24px' }}
-            >
-              смотреть еще
-              <IconRowRight />
+            <Button onClick={onClick} variant="tertiary">
+              Смотреть все
+              <IconRowRight className={styles.iconBtn} />
             </Button>
           </div>
         )}

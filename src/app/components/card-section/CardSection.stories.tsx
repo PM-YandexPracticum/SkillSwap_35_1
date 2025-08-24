@@ -8,7 +8,7 @@ const mockData: IUserPublic[] = [
     id: '1',
     name: 'Иван Иванов',
     about: 'Опытный дизайнер с 5-летним стажем, специализируюсь на UI/UX',
-    gender: 'male',
+    gender: 'Мужской',
     dateOfBirth: '1990-05-15',
     city: 'Москва',
     image:
@@ -25,14 +25,8 @@ const mockData: IUserPublic[] = [
       ]
     },
     want: [
-      {
-        category: 'Программирование',
-        subcategory: 'Frontend'
-      },
-      {
-        category: 'Маркетинг',
-        subcategory: 'SMM'
-      }
+      { category: 'Программирование', subcategory: 'Frontend' },
+      { category: 'Маркетинг', subcategory: 'SMM' }
     ],
     likeCount: 24,
     createdAt: '2024-01-15T10:30:00Z'
@@ -41,7 +35,7 @@ const mockData: IUserPublic[] = [
     id: '2',
     name: 'Мария Петрова',
     about: 'Frontend разработчик с опытом работы в крупных IT компаниях',
-    gender: 'female',
+    gender: 'Женский',
     dateOfBirth: '1988-12-20',
     city: 'Санкт-Петербург',
     image:
@@ -58,14 +52,8 @@ const mockData: IUserPublic[] = [
       ]
     },
     want: [
-      {
-        category: 'Дизайн',
-        subcategory: 'Графический дизайн'
-      },
-      {
-        category: 'Английский язык',
-        subcategory: 'Разговорный'
-      }
+      { category: 'Дизайн', subcategory: 'Графический дизайн' },
+      { category: 'Английский язык', subcategory: 'Разговорный' }
     ],
     likeCount: 18,
     createdAt: '2024-02-10T14:20:00Z'
@@ -74,7 +62,7 @@ const mockData: IUserPublic[] = [
     id: '3',
     name: 'Алексей Сидоров',
     about: 'Digital маркетолог, помогаю бизнесу расти в интернете',
-    gender: 'male',
+    gender: 'Мужской',
     dateOfBirth: '1995-08-10',
     city: 'Казань',
     image:
@@ -90,14 +78,8 @@ const mockData: IUserPublic[] = [
       ]
     },
     want: [
-      {
-        category: 'Аналитика',
-        subcategory: 'Веб-аналитика'
-      },
-      {
-        category: 'Программирование',
-        subcategory: 'Python'
-      }
+      { category: 'Аналитика', subcategory: 'Веб-аналитика' },
+      { category: 'Программирование', subcategory: 'Python' }
     ],
     likeCount: 32,
     createdAt: '2024-03-05T09:15:00Z'
@@ -106,7 +88,7 @@ const mockData: IUserPublic[] = [
     id: '4',
     name: 'Елена Васильева',
     about: 'Преподаватель английского с международными сертификатами',
-    gender: 'female',
+    gender: 'Женский',
     dateOfBirth: '1992-03-25',
     city: 'Новосибирск',
     image:
@@ -123,14 +105,8 @@ const mockData: IUserPublic[] = [
       ]
     },
     want: [
-      {
-        category: 'Дизайн',
-        subcategory: 'Графический дизайн'
-      },
-      {
-        category: 'Психология',
-        subcategory: 'Коучинг'
-      }
+      { category: 'Дизайн', subcategory: 'Графический дизайн' },
+      { category: 'Психология', subcategory: 'Коучинг' }
     ],
     likeCount: 15,
     createdAt: '2024-01-28T16:45:00Z'
@@ -148,10 +124,6 @@ const meta: Meta<typeof CardSection> = {
     title: {
       control: 'text',
       description: 'Заголовок секции'
-    },
-    maxVisible: {
-      control: { type: 'number', min: 1, max: 10 },
-      description: 'Максимальное количество отображаемых карточек'
     },
     linkSeeAll: {
       control: 'text',
@@ -172,7 +144,6 @@ export const Default: Story = {
   args: {
     title: 'Популярные навыки',
     data: mockData,
-    linkSeeAll: '/all-skills',
-    maxVisible: 3
+    linkSeeAll: '/all-skills'
   }
 };
