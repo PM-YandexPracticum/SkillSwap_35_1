@@ -16,7 +16,7 @@ export const SelectStory: Story = {
       paddingBottom: '50px',
       display: 'flex',
       justifyContent: 'center',
-      backgroundColor: '#fafafa',
+      backgroundColor: '#fafafa'
     };
 
     const skillsToLearn: IDesiredSkill[] = [
