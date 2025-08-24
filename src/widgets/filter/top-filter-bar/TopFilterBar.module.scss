@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.container > button {
+  max-width: max-content;
+}
