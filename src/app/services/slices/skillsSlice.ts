@@ -119,6 +119,7 @@ export const {
 export const getSkills = (state: RootState) => state.skills.skills;
 export const getSearchQuery = (state: RootState) => state.skills.searchQuery;
 export const getFilters = (state: RootState) => state.skills.filters;
+export const getHasMore = (state: RootState) => state.skills.hasMore;
 
 export const getSkillById = (id: string) =>
   createSelector(getSkills, (skills) =>
