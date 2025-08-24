@@ -7,7 +7,7 @@ import EmptyLike from '@icons/ui/like.svg?react';
 export const LikeButton: FC<LikeButtonUIProps> = ({ liked, onClick }) => {
   return (
     <button 
-      className={styles.likeButton} 
+      className={`${styles.likeButton} ${liked ? styles.liked : ''}`} 
       onClick={onClick}
     >
       {liked? <ActiveLike className={styles.heart} />: <EmptyLike className={styles.heart} />}
