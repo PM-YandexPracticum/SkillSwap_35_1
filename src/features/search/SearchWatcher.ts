@@ -9,25 +9,21 @@ const SearchWatcher = () => {
   const location = useLocation();
   const previousPath = useRef<string | null>(null);
 
-  const isSearchPage = location.pathname.startsWith('/search');
-
   useEffect(() => {
-    const queryTrimmed = searchQuery.trim();
-
-    if (queryTrimmed !== '') {
-      if (!previousPath.current && !isSearchPage) {
+    if (searchQuery && searchQuery.trim() !== '') {
+      if (!previousPath.current && location.pathname !== '/search') {
         previousPath.current = location.pathname + location.search;
       }
-      if (!isSearchPage) {
+      if (location.pathname !== '/search') {
         navigate('/search');
       }
     }
 
-    if (queryTrimmed === '' && isSearchPage) {
+    if ((!searchQuery || searchQuery.trim() === '') && location.pathname === '/search') {
       navigate(previousPath.current || '/');
       previousPath.current = null;
     }
-  }, [searchQuery, navigate, isSearchPage, location.pathname, location.search]);
+  }, [searchQuery, navigate, location]);
 
   return null;
 };

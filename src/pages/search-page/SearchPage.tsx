@@ -1,5 +1,5 @@
 import { InfiniteGrid } from '@components/infinite-grid';
-import styles from './SearchPage.module.scss';
+import styles from '../../shared/styles/skill-list/skillList.module.scss';
 import { useSelector } from '../../app/services/store';
 import { getSearchQuery, getSkills } from '../../app/services/slices/skillsSlice';
 import { fetchMoreSkills } from '../../utils/fetchMoreSkills';

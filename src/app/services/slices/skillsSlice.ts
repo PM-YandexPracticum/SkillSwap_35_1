@@ -112,7 +112,7 @@ export const {
   setSearchQuery,
   setFilters,
   updateFilters,
-  clearAllFilters,
+  clearAllFilters
 } = SkillSlice.actions;
 
 export const getSkills = (state: RootState) => state.skills.skills;
@@ -151,15 +151,12 @@ export const getFilteredSkills = createSelector(
   }
 );
 
-export const getNew = createSelector(getSkills, (skills) =>
-  [...skills]
-    .sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    )
-    .slice(0, 10)
+export const getNewSkills = createSelector(getSkills, (skills) =>
+  [...skills].sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  )
 );
 
-export const getPopular = createSelector(getSkills, (skills) =>
+export const getPopularSkills = createSelector(getSkills, (skills) =>
   skills.filter((skill) => skill.likeCount >= 100)
 );
