@@ -10,14 +10,14 @@ import { multiplyArrayElements } from '../../../utils';
 import type { RootState } from '../store';
 import type { IFilters } from '../../../shared/types/types';
 
-export type TSkillsState = {
+export interface TSkillsState {
   skills: IUserPublic[];
   loading: boolean;
   error: string | null;
   hasMore: boolean;
   searchQuery: string;
   filters: IFilters;
-};
+}
 
 export const initialState: TSkillsState = {
   skills: [],
@@ -37,7 +37,9 @@ export const getMockSkills = createAsyncThunk(
   'skills/getMockCards',
   async (startIndex: number, { rejectWithValue }) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => {
+        setTimeout(resolve, 1000);
+      });
 
       const response = await fetch('/db/users.json');
       const data: IUserPublic[] = await response.json();
@@ -75,10 +77,7 @@ export const SkillSlice = createSlice({
     setFilters: (state, action: PayloadAction<IFilters>) => {
       state.filters = action.payload;
     },
-    updateFilters: (
-      state,
-      action: PayloadAction<Partial<IFilters>>
-    ) => {
+    updateFilters: (state, action: PayloadAction<Partial<IFilters>>) => {
       state.filters = { ...state.filters, ...action.payload };
     },
     clearAllFilters: (state) => {
@@ -150,4 +149,17 @@ export const getFilteredSkills = createSelector(
     }
     return filtered;
   }
+);
+
+export const getNew = createSelector(getSkills, (skills) =>
+  [...skills]
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )
+    .slice(0, 10)
+);
+
+export const getPopular = createSelector(getSkills, (skills) =>
+  skills.filter((skill) => skill.likeCount >= 100)
 );
