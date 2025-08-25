@@ -1,8 +1,10 @@
-// src/pages/main-page/MainPage.tsx
 import { useState, useMemo } from 'react';
 
 import { InfiniteGrid } from '@components/infinite-grid';
 import ExpendableMenu from '@ui/expendable-menu/ExpendableMenu';
+import { Checkbox } from '@ui/checkbox/checkbox';
+import { RadioButton } from '@ui/radioButton/radioButton';
+
 import citiesList from '@lib/cities';
 import skillCategories from '@lib/skillCategories';
 
@@ -38,7 +40,9 @@ export const MainPage = () => {
         (selectedMainFilter === 'Хочу научиться' &&
           Array.isArray(s.want) &&
           s.want.length > 0) ||
-        (selectedMainFilter === 'Могу научить' && s.can && (s.can.title || s.can.category));
+        (selectedMainFilter === 'Могу научить' &&
+          s.can &&
+          (s.can.title || s.can.category));
 
       if (!matchesMain) return false;
 
@@ -54,13 +58,15 @@ export const MainPage = () => {
       const matchesCategory =
         selectedCategories.length === 0 ||
         selectedCategories.includes(s?.can?.category) ||
-        (Array.isArray(s.want) && s.want.some((w: any) => selectedCategories.includes(w.category)));
+        (Array.isArray(s.want) &&
+          s.want.some((w: any) => selectedCategories.includes(w.category)));
 
       if (!matchesCategory) return false;
 
       // 4) Города
       const matchesCity =
-        selectedCities.length === 0 || (s.city && selectedCities.includes(s.city));
+        selectedCities.length === 0 ||
+        (s.city && selectedCities.includes(s.city));
 
       if (!matchesCity) return false;
 
@@ -72,52 +78,72 @@ export const MainPage = () => {
     <main className={styles.main}>
       <div className={styles.filterPanel}>
         {/* Главное меню */}
-        <ExpendableMenu
-          title="Фильтры"
-          items={['Всё', 'Хочу научиться', 'Могу научить']}
-          visibleCount={3}
-          collapsedLabel="Всё"
-          onSelect={(val) => {
-            if (typeof val === 'string') setSelectedMainFilter(val);
-          }}
-          multiple={false}
-        />
+        <ExpendableMenu title="Фильтры" maxCount={3} buttonText="Все фильтры" collapseText="Свернуть">
+          {['Всё', 'Хочу научиться', 'Могу научить'].map((item) => (
+            <RadioButton
+              key={item}
+              id={`main-${item}`}
+              name="mainFilter"
+              value={item}
+              label={item}
+              checked={selectedMainFilter === item}
+              onChange={(val) => setSelectedMainFilter(val)}
+            />
+          ))}
+        </ExpendableMenu>
 
         {/* Навыки */}
-        <ExpendableMenu
-          title="Навыки"
-          items={categories}
-          visibleCount={5}
-          collapsedLabel="Все категории"
-          onSelect={(val) => {
-            if (Array.isArray(val)) setSelectedCategories(val);
-          }}
-          multiple
-        />
+        <ExpendableMenu title="Навыки" maxCount={5} buttonText="Все категории" collapseText="Свернуть">
+          {categories.map((cat) => (
+            <Checkbox
+              key={cat}
+              checked={selectedCategories.includes(cat)}
+              onChange={(e) => {
+                if (e.target.checked) {
+                  setSelectedCategories((prev) => [...prev, cat]);
+                } else {
+                  setSelectedCategories((prev) => prev.filter((c) => c !== cat));
+                }
+              }}
+            >
+              {cat}
+            </Checkbox>
+          ))}
+        </ExpendableMenu>
 
         {/* Пол автора */}
-        <ExpendableMenu
-          title="Пол автора"
-          items={['Не имеет значения', 'Мужской', 'Женский']}
-          visibleCount={3}
-          collapsedLabel="Не имеет значения"
-          onSelect={(val) => {
-            if (typeof val === 'string') setSelectedGender(val);
-          }}
-          multiple={false}
-        />
+        <ExpendableMenu title="Пол автора" maxCount={3} buttonText="Все варианты" collapseText="Свернуть">
+          {['Не имеет значения', 'Мужской', 'Женский'].map((gender) => (
+            <RadioButton
+              key={gender}
+              id={`gender-${gender}`}
+              name="gender"
+              value={gender}
+              label={gender}
+              checked={selectedGender === gender}
+              onChange={(val) => setSelectedGender(val)}
+            />
+          ))}
+        </ExpendableMenu>
 
         {/* Города */}
-        <ExpendableMenu
-          title="Город"
-          items={citiesList}
-          visibleCount={5}
-          collapsedLabel="Все города"
-          onSelect={(val) => {
-            if (Array.isArray(val)) setSelectedCities(val);
-          }}
-          multiple
-        />
+        <ExpendableMenu title="Город" maxCount={5} buttonText="Все города" collapseText="Свернуть">
+          {citiesList.map((city) => (
+            <Checkbox
+              key={city}
+              checked={selectedCities.includes(city)}
+              onChange={(e) => {
+                if (e.target.checked) {
+                  setSelectedCities((prev) => [...prev, city]);
+                } else {
+                  setSelectedCities((prev) => prev.filter((c) => c !== city));
+                }
+              }}
+            >
+              {city}
+            </Checkbox>
+          ))}
+        </ExpendableMenu>
       </div>
 
       <div className={styles.cardsContainer}>
