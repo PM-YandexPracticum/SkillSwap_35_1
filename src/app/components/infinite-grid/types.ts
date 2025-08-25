@@ -5,4 +5,5 @@ export interface InfiniteGridProps {
   data: IUserPublic[];
   fetchData: () => void;
   hasMore: boolean;
+  onClick?: () => void;
 }

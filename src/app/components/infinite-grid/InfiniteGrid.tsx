@@ -5,12 +5,24 @@ import { Preloader } from '@ui/preloader';
 import type { InfiniteGridProps } from './types';
 import { SkillCard } from '../../../widgets/skill-card';
 import styles from './Infinite.module.scss';
+import Button from '@ui/button/Button';
+import IconSort from '../../../shared/assets/icons/ui/sort.svg?react';
 
-export const InfiniteGrid: React.FC<InfiniteGridProps> = ({ title, data, fetchData, hasMore }) => {
+export const InfiniteGrid: React.FC<InfiniteGridProps> = ({ title, data, fetchData, hasMore, onClick }) => {
   return (
     <div className={styles.infinite__grid}>
-      <Title as='h2'>{title}</Title>
-
+      <div className={styles.infinite__grid__header}>
+        <Title as='h2'>{title}</Title>
+        {onClick && (
+          <div>
+            <Button variant='tertiary' onClick={onClick} >
+              <IconSort></IconSort>
+              Сначала новые
+            </Button>
+          </div>
+        )}
+      </div>
+      
       {data && data.length > 0 && (
         <InfiniteScroll
           dataLength={data.length}
