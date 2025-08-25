@@ -4,6 +4,7 @@ import { MainPage } from '../pages/main-page';
 import { SearchPage } from '../pages/search-page';
 import { LatestSkills } from '../pages/latest-skills';
 import { PopularSkills } from '../pages/popular-skills';
+import { FilterPage } from '../pages/filter-page';
 import { AppFooter } from '../app/components/app-footer';
 import { AppHeader } from '../app/components/app-header';
 import { FilterLayout } from '../widgets/filter/filter-layout';
@@ -29,6 +30,7 @@ const App = () => {
             <Route path='/search' element={<SearchPage />} />
             <Route path='/popular' element={<PopularSkills />} />
             <Route path='/latest' element={<LatestSkills />} />
+            <Route path='/filter' element={<FilterPage />} />
           </Route>
         </Routes>
         <SearchWatcher />
