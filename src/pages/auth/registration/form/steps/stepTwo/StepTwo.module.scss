@@ -1,0 +1,49 @@
+.avatarWrapper {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  display: inline-block;
+}
+
+.avatarIcon {
+  width: 100%;
+  height: 100%;
+
+  path {
+    stroke-width: 0.5;
+  }
+}
+
+.avatarButtonIcon {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  background-color: #ABD27A;
+  border-radius: 50%;
+
+  path:nth-of-type(2),
+  path:nth-of-type(3) {
+    fill: #FFFFFF;
+    transform: scale(1.3);
+    transform-origin: center;
+  }
+}
+
+.inputsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
