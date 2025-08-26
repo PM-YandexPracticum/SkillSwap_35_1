@@ -35,7 +35,7 @@ const initialState: IUserState = {
 };
 
 export const toggleFavourites = createAsyncThunk(
-  'user/toggleFavourites',
+  'user/toggleFavorites',
   async (likedId: string, { rejectWithValue }) => {
     try {
       const response = await mockToggleFavorites(likedId);
