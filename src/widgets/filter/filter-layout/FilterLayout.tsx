@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import styles from './FilterLayout.module.scss';
-import { FilterPanel } from '../../filter-panel/FilterPanel';
+import { FilterPanel } from '../filter-panel/FilterPanel';
 import { useDispatch, useSelector } from '../../../app/services/store';
 import { setFilters, clearAllFilters, getFilters } from '../../../app/services/slices/skillsSlice';
 import type { IFilters } from '@shared-types/types';

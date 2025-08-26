@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import IconClose from '@icons/ui/cross.svg?react';
 import {
   getFilters,
-  updateFilters
+  updateFilters,
+  initialState
 } from '../../../app/services/slices/skillsSlice';
 import type { IFilters } from '../../../shared/types/types';
 import styles from './TopFilterBar.module.scss';
@@ -87,8 +88,12 @@ export const TopFilterBar: FC = () => {
     console.log(filters);
   }, [filters]);
 
+  const areFiltersApplied =
+      JSON.stringify(filters) !== JSON.stringify(initialState.filters);
+
+
   return (
-    <div className={styles.container}>
+    <div className={areFiltersApplied ? styles.container : styles.container_invisible}>
       {filterItems.map((filter) => (
         <Button
           key={`${filter.type}-${filter.value}`}
