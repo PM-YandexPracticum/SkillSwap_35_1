@@ -1,3 +1,4 @@
+/* eslint-disable import-x/prefer-default-export */
 import React, { useState, type ChangeEvent } from 'react';
 import { NavLink } from 'react-router-dom';
 import Chevron from '@icons/ui/chevron-down.svg?react';
@@ -13,15 +14,23 @@ import { Text } from '@ui/text/Text';
 import { InputSearch } from '@ui/input/Input';
 import { type AppHeaderProps } from './types';
 import styles from './AppHeader.module.scss';
-import { useDispatch } from '../../services/store';
-import { setSearchQuery } from '../../services/slices/skillsSlice';
+import { useDispatch, useSelector } from '../../services/store';
+import {
+  setSearchQuery,
+  getFilters,
+  initialState
+} from '../../services/slices/skillsSlice';
 
-export const AppHeader: React.FC<AppHeaderProps> = ({
+export const AppHeader = ({
   user,
   isRegistrationHeader = false
-}) => {
+}: AppHeaderProps) => {
   const [searchValue, setSearchValue] = useState(''); // для инпута поиска
   const dispatch = useDispatch();
+  const filters = useSelector(getFilters);
+
+  const areFiltersApplied =
+    JSON.stringify(filters) !== JSON.stringify(initialState.filters);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -31,10 +40,12 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   const onIconClick = () => {
     setSearchValue('');
     dispatch(setSearchQuery(''));
-  }
+  };
 
   return (
-    <header className={styles.container}>
+    <header
+      className={`${styles.container} ${areFiltersApplied ? styles.start : ''}`}
+    >
       <div className={styles.logo}>
         <NavLink to='/'>
           <Logo />
@@ -71,14 +82,16 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
             </div>
           </div>
 
-          <InputSearch
-            value={searchValue}
-            onChange={handleSearch}
-            placeholder='Искать навык'
-            inputSize={user ? 'xlarge' : 'large'}
-            icon={searchValue ? <CrossIcon /> : undefined}
-            onIconClick={onIconClick}
-          />
+          {!areFiltersApplied && (
+            <InputSearch
+              value={searchValue}
+              onChange={handleSearch}
+              placeholder='Искать навык'
+              inputSize={user ? 'xlarge' : 'large'}
+              icon={searchValue ? <CrossIcon /> : undefined}
+              onIconClick={onIconClick}
+            />
+          )}
 
           <button type='button' className={styles.themeToggleButton}>
             {/* TODO: временная заглушка, 
