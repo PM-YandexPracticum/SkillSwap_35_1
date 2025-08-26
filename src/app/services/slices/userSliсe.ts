@@ -34,7 +34,7 @@ const initialState: IUserState = {
   error: null
 };
 
-export const toggleFavourites = createAsyncThunk(
+export const toggleFavorites = createAsyncThunk(
   'user/toggleFavorites',
   async (likedId: string, { rejectWithValue }) => {
     try {
@@ -160,11 +160,11 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // Переключение избранных
-      .addCase(toggleFavourites.pending, (state) => {
+      .addCase(toggleFavorites.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(toggleFavourites.fulfilled, (state, action) => {
+      .addCase(toggleFavorites.fulfilled, (state, action) => {
         state.isLoading = false;
         if (state.user) {
           if (action.payload.status === 'added') {
@@ -176,7 +176,7 @@ const userSlice = createSlice({
           }
         }
       })
-      .addCase(toggleFavourites.rejected, (state, action) => {
+      .addCase(toggleFavorites.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string;
       })
