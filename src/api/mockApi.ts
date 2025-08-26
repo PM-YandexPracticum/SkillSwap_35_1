@@ -6,7 +6,7 @@ export type IRegisterData = Omit<
   | 'id'
   | 'createdAt'
   | 'likeCount'
-  | 'favourites'
+  | 'favorites'
   | 'incomingRequests'
   | 'outgoingRequests'
   | 'exchanges'
@@ -92,14 +92,14 @@ export const mockToggleFavorites = async (
   await delay(200);
   const user = getCurrentUser();
   let status: 'added' | 'removed';
-  if (user.favourites.includes(likedId)) {
-    user.favourites = user.favourites.filter((id) => id !== likedId);
+  if (user.favorites.includes(likedId)) {
+    user.favorites = user.favorites.filter((id) => id !== likedId);
     status = 'removed';
   } else {
-    user.favourites.push(likedId);
+    user.favorites.push(likedId);
     status = 'added';
   }
-  updateStoredUser(user.id, { favourites: user.favourites });
+  updateStoredUser(user.id, { favorites: user.favorites });
   return { userId: likedId, status: status };
 };
 
@@ -160,7 +160,7 @@ export const mockRegisterUser = async (
     ...data,
     id: Date.now().toString() + Math.floor(Math.random() * 1000),
     likeCount: 0,
-    favourites: [],
+    favorites: [],
     incomingRequests: [],
     outgoingRequests: [],
     exchanges: [],

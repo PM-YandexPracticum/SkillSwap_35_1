@@ -24,7 +24,7 @@ export interface IUser {
   can: ISkill;
   want: IDesiredSkill[];
   likeCount: number;
-  favourites: string[];
+  favorites: string[];
   incomingRequests: string[];
   outgoingRequests: string[];
   exchanges: string[];
