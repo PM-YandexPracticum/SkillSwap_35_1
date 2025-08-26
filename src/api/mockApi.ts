@@ -1,10 +1,43 @@
 import { type IUser, type IUserPublic } from '../entities/types/types';
 import { multiplyArrayElements } from '../utils';
 
+export type IRegisterData = Omit<
+  IUser,
+  | 'id'
+  | 'createdAt'
+  | 'likeCount'
+  | 'favourites'
+  | 'incomingRequests'
+  | 'outgoingRequests'
+  | 'exchanges'
+>;
+export interface ILoginData {
+  email: string;
+  password: string;
+}
 
-export type TRegisterData = Omit<IUser, 'id' | 'createdAt' | 'likeCount'>;
+interface ITokens {
+  refreshToken: string;
+  accessToken: string;
+}
 
-export type TLoginData = { email: string; password: string; };
+export type IAuthResponse = ITokens & {
+  user: IUser;
+};
+
+export type TLikeResponse = {
+  status: 'added' | 'removed';
+  userId: string;
+};
+
+export interface logoutRespose {
+  success: boolean;
+}
+
+interface IErrorResponse {
+  status: number;
+  message: string;
+}
 
 const getStoredUsers = (): IUser[] => {
   const data = localStorage.getItem('users');
@@ -15,124 +48,153 @@ const setStoredUsers = (users: IUser[]) => {
   localStorage.setItem('users', JSON.stringify(users));
 };
 
-const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+const updateStoredUser = (userId: string, update: Partial<IUser>) => {
+  const users = getStoredUsers();
+  const index = users.findIndex((u) => u.id === userId);
+  if (index === -1)
+    throw { status: 404, message: 'Пользователь не найден' } as IErrorResponse;
+  users[index] = { ...users[index], ...update };
+  setStoredUsers(users);
+};
 
-const simulateTokenRefresh = async () => {
+const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+
+const createTokens = async (): Promise<ITokens> => {
   await delay(100);
   const accessToken = 'mockAccessToken-' + Date.now();
   const refreshToken = 'mockRefreshToken-' + Date.now();
-  localStorage.setItem('accessToken', accessToken);
-  localStorage.setItem('refreshToken', refreshToken);
   return { accessToken, refreshToken };
 };
 
 const getCurrentUser = (): IUser => {
   const currentUserId = localStorage.getItem('currentUser');
   const users = getStoredUsers();
-  const user = users.find(u => u.id === currentUserId);
-  if (!user) throw { success: false, message: 'Пользователь не найден' };
+  const user = users.find((u) => u.id === currentUserId);
+  if (!user)
+    throw { status: 404, message: 'Пользователь не найден' } as IErrorResponse;
   return user;
 };
 
+// Получение карточек
+
 export const mockGetSkills = async (): Promise<IUserPublic[]> => {
-  await delay(500);
+  await delay(300);
   const response = await fetch('/db/users.json');
   const data: IUserPublic[] = await response.json();
   return multiplyArrayElements(data);
 };
 
-export const mockGetSkillById = async (id: string): Promise<IUserPublic> => {
-  await delay(200);
-  const response = await fetch('/db/users.json');
-  const skills: IUserPublic[] = await response.json();
-  const skill = skills.find(s => s.id === id);
-  if (!skill) throw { success: false, message: 'Публикация не найдена' };
-  return skill;
-};
+// Добавление /удаление избранного
 
-export const mockToggleFavourites = async (likedId: string) => {
+export const mockToggleFavourites = async (
+  likedId: string
+): Promise<TLikeResponse> => {
   await delay(200);
   const user = getCurrentUser();
   let status: 'added' | 'removed';
   if (user.favourites.includes(likedId)) {
-    user.favourites = user.favourites.filter(id => id !== likedId);
+    user.favourites = user.favourites.filter((id) => id !== likedId);
     status = 'removed';
   } else {
     user.favourites.push(likedId);
     status = 'added';
   }
-  setStoredUsers(getStoredUsers());
-  await simulateTokenRefresh();
-  return { success: true, status, id: likedId };
+  updateStoredUser(user.id, { favourites: user.favourites });
+  return { userId: likedId, status: status };
 };
 
+// Заявка на обмен навыками
 
-export const mockRequest = async (requestedId: string) => {
+export const mockRequest = async (requestedId: string): Promise<string> => {
   await delay(200);
   const user = getCurrentUser();
-  if (!user.requests.includes(requestedId)) user.requests.push(requestedId);
-  setStoredUsers(getStoredUsers());
-  await simulateTokenRefresh();
-  return { success: true, requested: requestedId };
+  if (!user.outgoingRequests.includes(requestedId))
+    user.outgoingRequests.push(requestedId);
+  updateStoredUser(user.id, { outgoingRequests: user.outgoingRequests });
+  return requestedId;
 };
 
-export const mockAccept = async (acceptedId: string) => {
+// Отклонение заявки
+
+export const mockDecline = async (declinedId: string): Promise<string> => {
+  await delay(200);
+  const user = getCurrentUser();
+  if (user.incomingRequests.includes(declinedId))
+    user.incomingRequests = user.incomingRequests.filter(
+      (id) => id !== declinedId
+    );
+  updateStoredUser(user.id, { incomingRequests: user.incomingRequests });
+  return declinedId;
+};
+
+// Принятие заявки
+
+export const mockAccept = async (acceptedId: string): Promise<string> => {
   await delay(200);
   const user = getCurrentUser();
   if (!user.exchanges.includes(acceptedId)) user.exchanges.push(acceptedId);
-  setStoredUsers(getStoredUsers());
-  await simulateTokenRefresh();
-  return { success: true, accepted: acceptedId };
+  updateStoredUser(user.id, { exchanges: user.exchanges });
+  return acceptedId;
 };
 
-export const mockGetUser = async () => {
-  await delay(200);
-  const user = getCurrentUser();
-  await simulateTokenRefresh();
-  return { success: true, user };
-};
 
-export const mockUpdateUser = async (update: Partial<TRegisterData>) => {
+// Обновление данных пользователя
+
+export const mockUpdateUser = async (
+  update: Partial<IRegisterData>
+): Promise<IUser> => {
   await delay(200);
   const user = getCurrentUser();
   Object.assign(user, update);
-  setStoredUsers(getStoredUsers());
-  await simulateTokenRefresh();
-  return { success: true, user };
+  updateStoredUser(user.id, update);
+  return user;
 };
 
-export const mockRegisterUser = async (data: TRegisterData) => {
+// Регистрация пользователя (пользователь добавляется в local storage)
+
+export const mockRegisterUser = async (
+  data: IRegisterData
+): Promise<IAuthResponse> => {
   await delay(300);
   const users = getStoredUsers();
   const newUser: IUser = {
     ...data,
     id: Date.now().toString() + Math.floor(Math.random() * 1000),
     likeCount: 0,
-    requests: [],
+    favourites: [],
+    incomingRequests: [],
+    outgoingRequests: [],
     exchanges: [],
-    createdAt: new Date().toISOString(),
+    createdAt: new Date().toISOString()
   };
   users.push(newUser);
   setStoredUsers(users);
   localStorage.setItem('currentUser', newUser.id);
-  const tokens = await simulateTokenRefresh();
-  return { success: true, user: newUser, ...tokens };
+  const tokens = await createTokens();
+  return { user: newUser, ...tokens };
 };
 
-export const mockLoginUser = async (data: TLoginData) => {
+// Логин пользователя
+
+export const mockLoginUser = async (
+  data: ILoginData
+): Promise<IAuthResponse> => {
   await delay(300);
   const users = getStoredUsers();
-  const user = users.find(u => u.email === data.email && u.password === data.password);
-  if (!user) throw { success: false, message: 'Введены неправильные данные' };
+  const user = users.find(
+    (u) => u.email === data.email && u.password === data.password
+  );
+  if (!user)
+    throw { status: 401, message: 'Неправильные данные' } as IErrorResponse;
   localStorage.setItem('currentUser', user.id);
-  const tokens = await simulateTokenRefresh();
-  return { success: true, user, ...tokens };
+  const tokens = await createTokens();
+  return { user, ...tokens };
 };
 
-export const mocklogout = async () => {
+// Выход пользователя
+
+export const mocklogout = async (): Promise<logoutRespose> => {
   await delay(100);
-  localStorage.removeItem('accessToken');
-  localStorage.removeItem('refreshToken');
   localStorage.removeItem('currentUser');
   return { success: true };
 };

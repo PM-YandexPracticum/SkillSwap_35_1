@@ -25,9 +25,10 @@ export interface IUser {
   want: IDesiredSkill[];
   likeCount: number;
   favourites: string[];
-  requests: string[];
+  incomingRequests: string[];
+  outgoingRequests: string[];
   exchanges: string[];
   createdAt: string;
 }
 
-export type IUserPublic = Omit<IUser, 'email' | 'password' | 'favourites' | 'requests' | 'exchanges'>;
+export type IUserPublic = Omit<IUser, 'email' | 'password' | 'favourites' | 'incomingRequests' | 'outgoingRequests' | 'exchanges'>;
