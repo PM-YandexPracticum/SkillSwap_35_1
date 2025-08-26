@@ -30,7 +30,7 @@ export type TLikeResponse = {
   userId: string;
 };
 
-export interface logoutRespose {
+export interface logoutResponse {
   success: boolean;
 }
 
@@ -86,7 +86,7 @@ export const mockGetSkills = async (): Promise<IUserPublic[]> => {
 
 // Добавление /удаление избранного
 
-export const mockToggleFavourites = async (
+export const mockToggleFavorites = async (
   likedId: string
 ): Promise<TLikeResponse> => {
   await delay(200);
@@ -136,7 +136,6 @@ export const mockAccept = async (acceptedId: string): Promise<string> => {
   updateStoredUser(user.id, { exchanges: user.exchanges });
   return acceptedId;
 };
-
 
 // Обновление данных пользователя
 
@@ -193,7 +192,7 @@ export const mockLoginUser = async (
 
 // Выход пользователя
 
-export const mockLogout = async (): Promise<logoutRespose> => {
+export const mockLogout = async (): Promise<logoutResponse> => {
   await delay(100);
   localStorage.removeItem('currentUser');
   return { success: true };
