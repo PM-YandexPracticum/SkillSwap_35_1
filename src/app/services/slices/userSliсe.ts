@@ -133,6 +133,7 @@ export const logoutUser = createAsyncThunk(
     }
   }
 );
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
