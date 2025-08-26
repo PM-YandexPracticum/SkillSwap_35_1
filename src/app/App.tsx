@@ -9,14 +9,14 @@ import { AppHeader } from '../app/components/app-header';
 import { FilterLayout } from '../widgets/filter/filter-layout';
 import { useDispatch } from './services/store';
 import styles from './App.module.scss';
-import { getMockSkills } from './services/slices/skillsSlice';
+import { loadSkills } from './services/slices/skillsSlice';
 import SearchWatcher from '../features/search/SearchWatcher';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMockSkills(0));
+    dispatch(loadSkills(0));
   }, [dispatch]);
 
   return (

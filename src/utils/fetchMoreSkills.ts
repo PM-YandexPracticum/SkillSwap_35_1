@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from '../app/services/store';
-import { getMockSkills } from '../app/services/slices/skillsSlice';
+import { loadSkills } from '../app/services/slices/skillsSlice';
 
 export const fetchMoreSkills = () => {
   const { skills, hasMore, loading } = useSelector((state) => state.skills);
@@ -7,7 +7,7 @@ export const fetchMoreSkills = () => {
 
   const fetchMoreData = () => {
     if (hasMore && !loading) {
-      dispatch(getMockSkills(skills.length));
+      dispatch(loadSkills(skills.length));
     }
   };
 
