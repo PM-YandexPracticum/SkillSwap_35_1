@@ -193,7 +193,7 @@ export const mockLoginUser = async (
 
 // Выход пользователя
 
-export const mocklogout = async (): Promise<logoutRespose> => {
+export const mockLogout = async (): Promise<logoutRespose> => {
   await delay(100);
   localStorage.removeItem('currentUser');
   return { success: true };
