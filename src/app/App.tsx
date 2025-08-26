@@ -12,7 +12,7 @@ import { useDispatch } from './services/store';
 import styles from './App.module.scss';
 import { loadSkills } from './services/slices/skillsSlice';
 import SearchWatcher from '../features/search/SearchWatcher';
-import FilterWatcher from '../features/filter/filtersWatcher';
+import FilterWatcher from '../features/filter/FiltersWatcher';
 
 const App = () => {
   const dispatch = useDispatch();

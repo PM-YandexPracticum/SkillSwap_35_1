@@ -1,5 +1,5 @@
 /* eslint-disable import-x/prefer-default-export */
-import React, { useState, type ChangeEvent } from 'react';
+import { useState, type ChangeEvent } from 'react';
 import { NavLink } from 'react-router-dom';
 import Chevron from '@icons/ui/chevron-down.svg?react';
 import DarkThemeIcon from '@icons/ui/moon.svg?react';
