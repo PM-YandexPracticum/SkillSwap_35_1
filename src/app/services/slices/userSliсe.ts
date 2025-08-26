@@ -168,9 +168,9 @@ const userSlice = createSlice({
         state.isLoading = false;
         if (state.user) {
           if (action.payload.status === 'added') {
-            state.user.favourites.push(action.payload.userId);
+            state.user.favorites.push(action.payload.userId);
           } else {
-            state.user.favourites = state.user.favourites.filter(
+            state.user.favorites = state.user.favorites.filter(
               (id) => id !== action.payload.userId
             );
           }
