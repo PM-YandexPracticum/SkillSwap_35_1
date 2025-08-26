@@ -1,27 +1,36 @@
-import { useEffect, useRef } from 'react';
-import { useSelector } from '../../app/services/store';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { getSearchQuery } from '../../app/services/slices/skillsSlice';
+import { getSearchQuery, setSearchQuery } from '../../app/services/slices/skillsSlice';
 
 const SearchWatcher = () => {
   const searchQuery = useSelector(getSearchQuery);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const previousPath = useRef<string | null>(null);
 
   useEffect(() => {
-    if (searchQuery && searchQuery.trim() !== '') {
-      if (!previousPath.current && location.pathname !== '/search') {
-        previousPath.current = location.pathname + location.search;
-      }
-      if (location.pathname !== '/search') {
-        navigate('/search');
-      }
+    const trimmedQuery = searchQuery?.trim();
+    if (trimmedQuery && location.pathname !== '/search') {
+      navigate('/search');
     }
+  }, [searchQuery, navigate, location]);
 
-    if ((!searchQuery || searchQuery.trim() === '') && location.pathname === '/search') {
-      navigate(previousPath.current || '/');
-      previousPath.current = null;
+  useEffect(() => {
+    return () => {
+      if (location.pathname === '/search') {
+        dispatch(setSearchQuery(''));
+      }
+    };
+  }, [location.pathname, dispatch]);
+
+  useEffect(() => {
+    if (!searchQuery?.trim() && location.pathname === '/search') {
+      if (window.history.length > 1) {
+        navigate(-1);
+      } else {
+        navigate('/');
+      }
     }
   }, [searchQuery, navigate, location]);
 

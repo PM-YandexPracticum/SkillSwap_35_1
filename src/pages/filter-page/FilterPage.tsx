@@ -1,4 +1,5 @@
 import { InfiniteGrid } from '@components/infinite-grid';
+import { TopFilterBar } from '../../widgets/filter/top-filter-bar';
 import { useSelector } from '../../app/services/store';
 import { getFilteredSkills } from '../../app/services/slices/skillsSlice';
 import { fetchMoreSkills } from '../../utils/fetchMoreSkills';
@@ -10,6 +11,7 @@ export const FilterPage = () => {
 
   return (
     <div className={styles.main}>
+      <TopFilterBar />
       <InfiniteGrid
         title={`Подходящие предложения: ${filteredSkills.length}`}
         data={filteredSkills}

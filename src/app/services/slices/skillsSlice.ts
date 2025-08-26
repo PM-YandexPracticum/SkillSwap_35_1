@@ -130,8 +130,8 @@ export const getFilteredSkills = createSelector(
         const want = skill.want.some((w) =>
           subcategories.includes(w.subcategory)
         );
-        if (searchTarget === 'Хочу научиться') return can;
-        if (searchTarget === 'Могу научить') return want;
+        if (searchTarget === 'Могу научить') return can;
+        if (searchTarget === 'Хочу научиться') return want;
         return can || want;
       });
     }
