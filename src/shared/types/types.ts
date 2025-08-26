@@ -1,6 +1,9 @@
+export type TGender = 'Мужской' | 'Женский' | 'Не имеет значения';
+export type TSearchTarget = 'Хочу научиться' | 'Могу научить' | 'Всё';
+
 export interface IFilters {
     subcategories: string[];
-    gender: 'Мужской' | 'Женский' | 'Не имеет значения';
+    gender: TGender;
     cities: string[];
-    searchTarget: 'Хочу научиться' | 'Могу научить' | 'Всё';
+    searchTarget: TSearchTarget;
   };

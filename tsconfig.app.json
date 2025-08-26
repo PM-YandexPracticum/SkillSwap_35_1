@@ -30,6 +30,7 @@
       "@ui/*": ["src/shared/ui/*"],
       "@components/*": ["src/app/components/*"],
       "@lib/*": ["src/shared/lib/*"],
+      "@shared-types/*": ["src/shared/types/*"],
     }
 
   },

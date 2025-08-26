@@ -50,6 +50,7 @@ export default defineConfig({
       '@ui': path.resolve(__dirname, './src/shared/ui'),
       '@components': path.resolve(__dirname, './src/app/components'),
       '@lib': path.resolve(__dirname, './src/shared/lib'),
+      '@shared-types': path.resolve(__dirname, './src/shared/types'),
     }
   }
 });

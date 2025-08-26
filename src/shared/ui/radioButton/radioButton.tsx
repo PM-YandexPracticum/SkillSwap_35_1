@@ -11,7 +11,7 @@ export const RadioButton: FC<RadioUiProps> = ({
   name,
   value,
   checked,
-  label,
+  children,
   onChange,
   disabled
 }) => {
@@ -36,7 +36,7 @@ export const RadioButton: FC<RadioUiProps> = ({
       ) : (
         <IconEmpty className={styles.radio__input__icon} />
       )}
-      <span className={styles.radio__input__label}>{label}</span>
+      <span className={styles.radio__input__label}>{children}</span>
     </label>
   );
 };
