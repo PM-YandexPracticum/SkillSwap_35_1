@@ -1,6 +1,5 @@
 import { type FC, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { calculateMaxCards } from '../../../utils/calculateMaxCards';
 import type { CardSectionProps } from '@components/card-section/types';
 import { Title } from '@ui/title';
 import Button from '@ui/button/Button';
@@ -14,16 +13,21 @@ export const CardSection: FC<CardSectionProps> = ({
   title
 }) => {
   const navigate = useNavigate();
-  const containerRef = useRef<HTMLElement>(null);
-  const [maxVisible, setMaxVisible] = useState(3);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [visibleCount, setVisibleCount] = useState(data.length);
 
   useEffect(() => {
     const updateVisible = () => {
       if (!containerRef.current) return;
-      const containerWidth = containerRef.current.offsetWidth;
 
-      const visibleCards = calculateMaxCards(containerWidth);
-      setMaxVisible(visibleCards);
+      const containerWidth = containerRef.current.offsetWidth;
+      const cardWidth = 324;
+      const gap = 24;
+
+      const cardsThatFit = Math.floor(
+        (containerWidth + gap) / (cardWidth + gap)
+      );
+      setVisibleCount(Math.max(1, Math.min(cardsThatFit, data.length)));
     };
 
     updateVisible();
@@ -32,24 +36,22 @@ export const CardSection: FC<CardSectionProps> = ({
     if (containerRef.current) resizeObserver.observe(containerRef.current);
 
     return () => resizeObserver.disconnect();
-  }, []);
+  }, [data]);
 
-  const visibleData = data.slice(0, maxVisible);
-  const hasMoreData = data.length > maxVisible;
+  const visibleData = data.slice(0, visibleCount);
+  const hasMoreData = visibleCount < data.length;
 
   const onClick = () => {
-    if (linkSeeAll) {
-      navigate(linkSeeAll);
-    }
+    if (linkSeeAll) navigate(linkSeeAll);
   };
 
   return (
-    <section className={styles.section} ref={containerRef}>
+    <section className={styles.section}>
       <div className={styles.section__alignTop}>
-        <Title as="h2">{title}</Title>
+        <Title as='h2'>{title}</Title>
         {hasMoreData && (
           <div className={styles.section__wrapperBtn}>
-            <Button onClick={onClick} variant="tertiary">
+            <Button onClick={onClick} variant='tertiary'>
               Смотреть все
               <IconRowRight className={styles.iconBtn} />
             </Button>
@@ -57,7 +59,7 @@ export const CardSection: FC<CardSectionProps> = ({
         )}
       </div>
 
-      <div className={styles.cards}>
+      <div className={styles.cards} ref={containerRef}>
         {visibleData.map((card) => (
           <SkillCard
             key={card.id}
