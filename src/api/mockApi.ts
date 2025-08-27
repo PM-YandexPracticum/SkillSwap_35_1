@@ -6,7 +6,7 @@ export type IRegisterData = Omit<
   | 'id'
   | 'createdAt'
   | 'likeCount'
-  | 'favourites'
+  | 'favorites'
   | 'incomingRequests'
   | 'outgoingRequests'
   | 'exchanges'
@@ -30,7 +30,7 @@ export type TLikeResponse = {
   userId: string;
 };
 
-export interface logoutRespose {
+export interface logoutResponse {
   success: boolean;
 }
 
@@ -86,20 +86,20 @@ export const mockGetSkills = async (): Promise<IUserPublic[]> => {
 
 // Добавление /удаление избранного
 
-export const mockToggleFavourites = async (
+export const mockToggleFavorites = async (
   likedId: string
 ): Promise<TLikeResponse> => {
   await delay(200);
   const user = getCurrentUser();
   let status: 'added' | 'removed';
-  if (user.favourites.includes(likedId)) {
-    user.favourites = user.favourites.filter((id) => id !== likedId);
+  if (user.favorites.includes(likedId)) {
+    user.favorites = user.favorites.filter((id) => id !== likedId);
     status = 'removed';
   } else {
-    user.favourites.push(likedId);
+    user.favorites.push(likedId);
     status = 'added';
   }
-  updateStoredUser(user.id, { favourites: user.favourites });
+  updateStoredUser(user.id, { favorites: user.favorites });
   return { userId: likedId, status: status };
 };
 
@@ -137,7 +137,6 @@ export const mockAccept = async (acceptedId: string): Promise<string> => {
   return acceptedId;
 };
 
-
 // Обновление данных пользователя
 
 export const mockUpdateUser = async (
@@ -161,7 +160,7 @@ export const mockRegisterUser = async (
     ...data,
     id: Date.now().toString() + Math.floor(Math.random() * 1000),
     likeCount: 0,
-    favourites: [],
+    favorites: [],
     incomingRequests: [],
     outgoingRequests: [],
     exchanges: [],
@@ -193,7 +192,7 @@ export const mockLoginUser = async (
 
 // Выход пользователя
 
-export const mockLogout = async (): Promise<logoutRespose> => {
+export const mockLogout = async (): Promise<logoutResponse> => {
   await delay(100);
   localStorage.removeItem('currentUser');
   return { success: true };
