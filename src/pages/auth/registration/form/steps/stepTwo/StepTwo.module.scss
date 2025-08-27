@@ -1,5 +1,6 @@
 .avatarWrapper {
   position: relative;
+  margin-top: 32px;
   width: 72px;
   height: 72px;
   display: inline-block;
@@ -21,12 +22,13 @@
   cursor: pointer;
   width: 16px;
   height: 16px;
-  background-color: #ABD27A;
+  background-color: var(--accent-color);
+  color: var(--accent-color);
   border-radius: 50%;
 
   path:nth-of-type(2),
   path:nth-of-type(3) {
-    fill: #FFFFFF;
+    fill: var(--secondary-color);
     transform: scale(1.3);
     transform-origin: center;
   }

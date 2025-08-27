@@ -10,6 +10,7 @@ import styles from './RegistrationForm.module.scss';
 import StepOne from './steps/stepOne/StepOne';
 import StepTwo from './steps/stepTwo/StepTwo';
 import StepThree from './steps/stepThree/StepThree';
+import RegistrationInfo from '../info/RegistrationInfo';
 
 export interface TFormData {
   email: string;
@@ -56,17 +57,21 @@ const RegistrationForm = () => {
   };
 
   return (
-    <FormProvider {...methods}>
-      <form
-        className={`${styles.container} ${styles[`step-${step}`]}`}
-        onSubmit={methods.handleSubmit(onSubmit)}
-      >
-        {step === 1 && <StepOne nextStep={nextStep} />}
-        {step === 2 && <StepTwo nextStep={nextStep} prevStep={prevStep} />}
-        {/* ЗАГЛУШКА по макету сабмит будет в модальном окне, дополнить */}
-        {step === 3 && <StepThree prevStep={prevStep} onReady={() => {}} />}
-      </form>
-    </FormProvider>
+    <div className={styles.registrationPage}>
+      <FormProvider {...methods}>
+        <form
+          className={`${styles.container} ${styles[`step-${step}`]}`}
+          onSubmit={methods.handleSubmit(onSubmit)}
+        >
+          {step === 1 && <StepOne nextStep={nextStep} />}
+          {step === 2 && <StepTwo nextStep={nextStep} prevStep={prevStep} />}
+          {/* ЗАГЛУШКА по макету сабмит будет в модальном окне, дополнить */}
+          {step === 3 && <StepThree prevStep={prevStep} onReady={() => {}} />}
+          {/* ЗАГЛУШКА тут будет шаг 4 с открытием модалки со SkillDetails can variant */}
+        </form>
+      </FormProvider>
+      <RegistrationInfo step={step} />
+    </div>
   );
 };
 

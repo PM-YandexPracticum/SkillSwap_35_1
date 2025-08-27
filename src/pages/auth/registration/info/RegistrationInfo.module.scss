@@ -2,6 +2,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  gap: 40px;
+  padding: 120px 0;
+  background-color: var(--secondary-color);
+  width: 100%;
+  height: 100%;
+
+  .image {
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .textWrapper {
+    max-width: 436px;
+    padding-left:5px;
+
+    > :first-child {
+      margin-bottom: 13px;
+    }
+  }
 }

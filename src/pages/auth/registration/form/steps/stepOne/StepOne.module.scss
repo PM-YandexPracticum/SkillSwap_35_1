@@ -1,6 +1,7 @@
 .inputsWraper {
   display: flex;
   flex-direction: column;
+  margin-top: 112px;
   gap: 16px;
   width: 100%;
 }
@@ -9,7 +10,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  margin: 16px 0;
+  padding: 8px 0;
   gap: 8px;
 
   hr {

@@ -20,7 +20,6 @@ const AddIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <AddAvatarIcon
     className={styles.avatarButtonIcon}
     {...props}
-    style={{ fill: '#ABD27A', color: '#ABD27A' }}
   />
 );
 
@@ -95,7 +94,7 @@ const StepTwo = ({ nextStep, prevStep }: StepTwoProps) => {
         />
 
         <div className={styles.row}>
-          {/* Дата рождения - СЕЙЧАС ЗАГЛУШКА НУЖЕН КОМПОНЕНТ ВЫПАДАЮЩИЙ СПИСОК */}
+          {/* Дата рождения - СЕЙЧАС ЗАГЛУШКА НУЖЕН СПЕЦ ИНПУТ ДАТЫ */}
           <Controller
             name='dateOfBirth'
             control={control}

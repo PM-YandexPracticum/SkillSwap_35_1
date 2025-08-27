@@ -48,9 +48,6 @@ const StepThree = ({ prevStep, onReady }: StepThreeProps) => {
     );
 
     if (validationResults.every(Boolean)) {
-      const formData = watch();
-      localStorage.setItem('registrationData', JSON.stringify(formData));
-
       // Можно открыть модальное окно
       if (onReady) onReady();
     }
@@ -168,7 +165,6 @@ const StepThree = ({ prevStep, onReady }: StepThreeProps) => {
             Назад
           </Text>
         </Button>
-        {/* ЗАГЛУШКА по макету сабмит будет в модальном окне, дополнить */}
         <Button onClick={handleNextStep} htmlType='button'>
           <Text as='span' size='main' align='center'>
             Далее

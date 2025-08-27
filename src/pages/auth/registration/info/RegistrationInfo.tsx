@@ -29,11 +29,19 @@ const stepDescription: Record<number, { title: string; text: string }> = {
 
 const RegistrationInfo = ({ step }: RegistrationInfoProps) => (
   <div className={styles.container}>
-    <img src={images[step]} alt={stepDescription[step].title} />
-    <Title as='h2'>{stepDescription[step].title}</Title>
-    <Text as='p' size='main' align='center'>
-      {stepDescription[step].text}
-    </Text>
+    <img
+      className={styles.image}
+      src={images[step]}
+      alt={stepDescription[step].title}
+    />
+    <div className={styles.textWrapper}>
+      <Title as='h3' align='center'>
+        {stepDescription[step].title}
+      </Title>
+      <Text as='p' size='main' align='center'>
+        {stepDescription[step].text}
+      </Text>
+    </div>
   </div>
 );
 
