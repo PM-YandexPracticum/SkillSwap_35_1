@@ -14,6 +14,7 @@ import {
   mockRegisterUser,
   mockLoginUser,
   mockLogout,
+  mockGetUser
   type IRegisterData,
   type ILoginData
 } from 'src/api/mockApi';
@@ -98,11 +99,26 @@ export const updateUser = createAsyncThunk(
   }
 );
 
+export const getUser = createAsyncThunk(
+  'user/getUser',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await mockGetUser();
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(
+        error.message || 'Ошибка при получении данных пользователя'
+      );
+    }
+  }
+);
+
 export const registerUser = createAsyncThunk(
   'user/registerUser',
   async (userData: IRegisterData, { rejectWithValue }) => {
     try {
       const response = await mockRegisterUser(userData);
+      localStorage.setItem('accessToken', response.accessToken);
       return response;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Ошибка при регистрации');
@@ -115,6 +131,7 @@ export const loginUser = createAsyncThunk(
   async (loginData: ILoginData, { rejectWithValue }) => {
     try {
       const response = await mockLoginUser(loginData);
+      localStorage.setItem('accessToken', response.accessToken);
       return response;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Ошибка при авторизации');
@@ -127,9 +144,23 @@ export const logoutUser = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await mockLogout();
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('accessToken');
       return response;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Ошибка при выходе');
+    }
+  }
+);
+
+export const checkUserAuth = createAsyncThunk(
+  'user/checkUserAuth',
+  async (_, { dispatch }) => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      await dispatch(getUser());
+    } else {
+      dispatch(userSlice.actions.setUser(null));
     }
   }
 );
@@ -285,6 +316,26 @@ const userSlice = createSlice({
         state.error = action.payload as string;
         state.isAuth = false;
       })
+
+      // Получение пользователя
+      .addCase(getUser.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload.user;
+        state.isAuth = true;
+        state.isInit = true;
+      })
+      .addCase(getUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.user = null;
+        state.isAuth = false;
+        state.isInit = true;
+        state.error = action.payload as string;
+      })
+
 
       // Выход пользователя
       .addCase(logoutUser.pending, (state) => {

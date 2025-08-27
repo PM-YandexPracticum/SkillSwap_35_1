@@ -16,12 +16,11 @@ export interface ILoginData {
   password: string;
 }
 
-interface ITokens {
-  refreshToken: string;
+interface IToken {
   accessToken: string;
 }
 
-export type IAuthResponse = ITokens & {
+export type IAuthResponse = IToken & {
   user: IUser;
 };
 
@@ -59,11 +58,10 @@ const updateStoredUser = (userId: string, update: Partial<IUser>) => {
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
-const createTokens = async (): Promise<ITokens> => {
+const createToken = async (): Promise<IToken> => {
   await delay(100);
   const accessToken = 'mockAccessToken-' + Date.now();
-  const refreshToken = 'mockRefreshToken-' + Date.now();
-  return { accessToken, refreshToken };
+  return { accessToken };
 };
 
 const getCurrentUser = (): IUser => {
@@ -133,8 +131,20 @@ export const mockAccept = async (acceptedId: string): Promise<string> => {
   await delay(200);
   const user = getCurrentUser();
   if (!user.exchanges.includes(acceptedId)) user.exchanges.push(acceptedId);
+  if (user.incomingRequests.includes(acceptedId))
+    user.incomingRequests = user.incomingRequests.filter(
+      (id) => id !== acceptedId
+    );
   updateStoredUser(user.id, { exchanges: user.exchanges });
   return acceptedId;
+};
+
+//Получение пользователя
+
+export const mockGetUser = async (): Promise<{ user: IUser }> => {
+  await delay(100);
+  const user = getCurrentUser();
+  return { user };
 };
 
 // Обновление данных пользователя
@@ -169,8 +179,8 @@ export const mockRegisterUser = async (
   users.push(newUser);
   setStoredUsers(users);
   localStorage.setItem('currentUser', newUser.id);
-  const tokens = await createTokens();
-  return { user: newUser, ...tokens };
+  const token = await createToken();
+  return { user: newUser, ...token };
 };
 
 // Логин пользователя
@@ -186,8 +196,8 @@ export const mockLoginUser = async (
   if (!user)
     throw { status: 401, message: 'Неправильные данные' } as IErrorResponse;
   localStorage.setItem('currentUser', user.id);
-  const tokens = await createTokens();
-  return { user, ...tokens };
+  const token = await createToken();
+  return { user, ...token };
 };
 
 // Выход пользователя
