@@ -44,7 +44,7 @@ const StepOne = ({ nextStep }: StepOneProps) => {
           style={{ borderColor: '#69735D' }}
         >
           <GoogleIcon />
-          <Text as='span' size='main' align='center'>
+          <Text tag='span' size='main' align='center'>
             Продолжить с Google
           </Text>
         </Button>
@@ -54,13 +54,13 @@ const StepOne = ({ nextStep }: StepOneProps) => {
           style={{ borderColor: '#69735D' }}
         >
           <AppleIcon />
-          <Text as='span' size='main' align='center'>
+          <Text tag='span' size='main' align='center'>
             Продолжить с Apple
           </Text>
         </Button>
         <div className={styles.orSeparator}>
           <hr />
-          <Text as='span' size='main' align='center'>
+          <Text tag='span' size='main' align='center'>
             или
           </Text>
           <hr />
@@ -122,7 +122,7 @@ const StepOne = ({ nextStep }: StepOneProps) => {
         />
       </div>
       <Button onClick={handleNextStep} disabled={!isStepValid}>
-        <Text as='span' size='main' align='center'>
+        <Text tag='span' size='main' align='center'>
           Далее
         </Text>
       </Button>

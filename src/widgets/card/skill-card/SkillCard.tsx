@@ -56,7 +56,7 @@ export const SkillCard = (props: SkillCardProps) => {
         <div className={styles.user_info}>
           <p className={styles.user_name}>{userName}</p>
           <Text
-            as='p'
+            tag='p'
             size='details'
           >{`${userCity}, ${getAgeWithSuffix(userDateofBirth)}`}</Text>
         </div>
@@ -72,13 +72,13 @@ export const SkillCard = (props: SkillCardProps) => {
       </div>
       <div className={styles.skills}>
         <div className={styles.skill_section}>
-          <Text as='div' size='main'>
+          <Text tag='div' size='main'>
             Может научить:
           </Text>
           <SkillTag name={userSkillName} category={userSkillCategory} />
         </div>
         <div className={styles.skill_section}>
-          <Text as='div' size='main'>
+          <Text tag='div' size='main'>
             Хочет научиться:
           </Text>
           <div className={styles.skills_wrapper}>

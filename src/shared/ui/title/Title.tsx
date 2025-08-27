@@ -4,7 +4,7 @@ import styles from './title.module.scss';
 
 export const Title = ({
   children,
-  as: Tag = 'h2',
+  tag: Tag = 'h2',
   align = 'left',
   color = 'mainColorText'
 }: TitleProps) => {

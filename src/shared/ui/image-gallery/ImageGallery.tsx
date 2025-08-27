@@ -45,7 +45,7 @@ export const ImageGallery = (props: ImageGalleryProp) => {
           <div className={styles.thumbnail} style={{backgroundImage: getUrlByIndex(3)}}>
             { images.length > 4 && (
               <div className={styles.more}>
-                <Text as='div' size='main'>{`+${images.length - 4}`}</Text>
+                <Text tag='div' size='main'>{`+${images.length - 4}`}</Text>
               </div>
             )}
           </div> 

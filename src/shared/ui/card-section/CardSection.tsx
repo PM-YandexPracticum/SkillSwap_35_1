@@ -48,7 +48,7 @@ export const CardSection: FC<CardSectionProps> = ({
   return (
     <section className={styles.section}>
       <div className={styles.section__alignTop}>
-        <Title as='h2'>{title}</Title>
+        <Title tag='h2'>{title}</Title>
         {hasMoreData && (
           <div className={styles.section__wrapperBtn}>
             <Button onClick={onClick} variant='tertiary'>

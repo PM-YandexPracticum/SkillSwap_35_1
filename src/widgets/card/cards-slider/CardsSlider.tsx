@@ -10,7 +10,7 @@ import { SkillCard } from '../../../widgets/card/skill-card';
 export const CardsSlider: FC<CardsSliderProps> = ({ title, skillsList }) => {
   return (
     <div className={styles.section}>
-      <Title as='h2'>{title}</Title>
+      <Title tag='h2'>{title}</Title>
 
       <Slider
         data={skillsList}

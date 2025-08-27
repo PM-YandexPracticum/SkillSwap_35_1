@@ -9,7 +9,7 @@ import styles from './Infinite.module.scss';
 export const InfiniteGrid: React.FC<InfiniteGridProps> = ({ title, data, fetchData, hasMore }) => {
   return (
     <div className={styles.infinite__grid}>
-      <Title as='h2'>{title}</Title>
+      <Title tag='h2'>{title}</Title>
 
       {data && data.length > 0 && (
         <InfiniteScroll

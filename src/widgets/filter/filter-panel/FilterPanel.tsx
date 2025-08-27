@@ -57,10 +57,10 @@ export const FilterPanel = (props: FilterPanelProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Title as='h3'>Фильтры{filtersCount > 0 ? ` (${filtersCount})` : ''}</Title>
+        <Title tag='h3'>Фильтры{filtersCount > 0 ? ` (${filtersCount})` : ''}</Title>
         {filtersCount > 0 && (
           <div className={styles.reset} onClick={onReset}>
-            <Text as='div' size='main' color='accentColorDark'>Сбросить</Text>
+            <Text tag='div' size='main' color='accentColorDark'>Сбросить</Text>
             <IconCross/>
           </div>
         )}
@@ -73,7 +73,7 @@ export const FilterPanel = (props: FilterPanelProps) => {
           checked={filters.searchTarget === 'Всё'}
           onChange={() => handleTargetChange('Всё')}
         >
-          <Text as='span' size='main'>Всё</Text>
+          <Text tag='span' size='main'>Всё</Text>
         </RadioButton>
         <RadioButton
           id='target-learn'
@@ -82,7 +82,7 @@ export const FilterPanel = (props: FilterPanelProps) => {
           checked={filters.searchTarget === 'Хочу научиться'}
           onChange={() => handleTargetChange('Хочу научиться')}
         >
-          <Text as='span' size='main'>Хочу научиться</Text>
+          <Text tag='span' size='main'>Хочу научиться</Text>
         </RadioButton>
         <RadioButton
           id='target-teach'
@@ -91,11 +91,11 @@ export const FilterPanel = (props: FilterPanelProps) => {
           checked={filters.searchTarget === 'Могу научить'}
           onChange={() => handleTargetChange('Могу научить')}
         >
-          <Text as='span' size='main'>Могу научить</Text>
+          <Text tag='span' size='main'>Могу научить</Text>
         </RadioButton>
       </div>
 
-      <Title as='h4'>Навыки</Title>
+      <Title tag='h4'>Навыки</Title>
       <div className={styles.block}>
         {Object.keys(skills).map(city => (
           <CheckboxAccordion
@@ -107,7 +107,7 @@ export const FilterPanel = (props: FilterPanelProps) => {
         ))}
       </div>
 
-      <Title as='h4'>Пол автора</Title>
+      <Title tag='h4'>Пол автора</Title>
       <div className={styles.block}>
         <RadioButton
           id='gender-all'
@@ -116,7 +116,7 @@ export const FilterPanel = (props: FilterPanelProps) => {
           checked={filters.gender === 'Не имеет значения'}
           onChange={() => handleGenderChange('Не имеет значения')}
         >
-          <Text as='span' size='main'>Не имеет значения</Text>
+          <Text tag='span' size='main'>Не имеет значения</Text>
         </RadioButton>
         <RadioButton
           id='gender-male'
@@ -125,7 +125,7 @@ export const FilterPanel = (props: FilterPanelProps) => {
           checked={filters.gender === 'Мужской'}
           onChange={() => handleGenderChange('Мужской')}
         >
-          <Text as='span' size='main'>Мужской</Text>
+          <Text tag='span' size='main'>Мужской</Text>
         </RadioButton>
         <RadioButton
           id='gender-female'
@@ -134,11 +134,11 @@ export const FilterPanel = (props: FilterPanelProps) => {
           checked={filters.gender === 'Женский'}
           onChange={() => handleGenderChange('Женский')}
         >
-          <Text as='span' size='main'>Женский</Text>
+          <Text tag='span' size='main'>Женский</Text>
         </RadioButton>
       </div>
 
-      <Title as='h4'>Город</Title>
+      <Title tag='h4'>Город</Title>
       <div className={styles.block}>
         {cities.map(city => (
           <Checkbox
@@ -146,7 +146,7 @@ export const FilterPanel = (props: FilterPanelProps) => {
             checked={filters.cities.includes(city)}
             onChange={() => handleCityChange(city)}
           >
-            <Text as='span' size='main'>{city}</Text>
+            <Text tag='span' size='main'>{city}</Text>
           </Checkbox>
         ))}
       </div>

@@ -103,7 +103,7 @@ export const CheckboxAccordion: FC<CheckboxAccordionProps> = ({
         className={`${styles.toggle} ${isAccordionOpen && styles.toggle_open}`}
         onClick={toggleMenu}
       >
-        <Text as='span' size='main'>
+        <Text tag='span' size='main'>
           {groupName}
         </Text>
         <IconChevronDown className={styles.toggle__icon} />
@@ -121,7 +121,7 @@ export const CheckboxAccordion: FC<CheckboxAccordionProps> = ({
                   handleListItemChange(item.value);
                 }}
               >
-                <Text as='span' size='main'>
+                <Text tag='span' size='main'>
                   {item.value}
                 </Text>
               </Checkbox>

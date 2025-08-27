@@ -35,10 +35,10 @@ const RegistrationInfo = ({ step }: RegistrationInfoProps) => (
       alt={stepDescription[step].title}
     />
     <div className={styles.textWrapper}>
-      <Title as='h3' align='center'>
+      <Title tag='h3' align='center'>
         {stepDescription[step].title}
       </Title>
-      <Text as='p' size='main' align='center'>
+      <Text tag='p' size='main' align='center'>
         {stepDescription[step].text}
       </Text>
     </div>

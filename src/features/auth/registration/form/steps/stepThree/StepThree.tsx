@@ -161,12 +161,12 @@ const StepThree = ({ prevStep, onReady }: StepThreeProps) => {
 
       <div className={styles.row}>
         <Button onClick={prevStep} variant='secondary'>
-          <Text as='span' size='main' align='center'>
+          <Text tag='span' size='main' align='center'>
             Назад
           </Text>
         </Button>
         <Button onClick={handleNextStep} htmlType='button'>
-          <Text as='span' size='main' align='center'>
+          <Text tag='span' size='main' align='center'>
             Далее
           </Text>
         </Button>

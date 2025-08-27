@@ -217,12 +217,12 @@ const StepTwo = ({ nextStep, prevStep }: StepTwoProps) => {
 
       <div className={styles.row}>
         <Button onClick={prevStep} variant='secondary'>
-          <Text as='span' size='main' align='center'>
+          <Text tag='span' size='main' align='center'>
             Назад
           </Text>
         </Button>
         <Button onClick={handleNextStep}>
-          <Text as='span' size='main' align='center'>
+          <Text tag='span' size='main' align='center'>
             Продолжить
           </Text>
         </Button>

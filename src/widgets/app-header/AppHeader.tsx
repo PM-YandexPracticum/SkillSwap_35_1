@@ -55,7 +55,7 @@ export const AppHeader = ({
             maxInlineSize: '147px'
           }}
         >
-          <Text as='span' size='main' color='mainColorText'>
+          <Text tag='span' size='main' color='mainColorText'>
             Закрыть
           </Text>
           <CrossIcon style={{ color: 'var(--main-color-text)' }} />
@@ -65,13 +65,13 @@ export const AppHeader = ({
           <div className={styles.menu}>
             {/* TODO: временная заглушка, заменить на реальный href */}
             <a href='/about' className={styles.link}>
-              <Text as='span' size='main' color='mainColorText'>
+              <Text tag='span' size='main' color='mainColorText'>
                 О проекте
               </Text>
             </a>
             {/* TODO: временная заглушка, заменить на настоящий выпадающий список */}
             <div className={styles.dropdown}>
-              <Text as='span' size='main' color='mainColorText'>
+              <Text tag='span' size='main' color='mainColorText'>
                 Все навыки
               </Text>
               <Chevron />
@@ -102,7 +102,7 @@ export const AppHeader = ({
                 <NotificationIcon />
                 <LikeIcon />
                 <div className={styles.userInfo}>
-                  <Text as='p' size='main' color='mainColorText'>
+                  <Text tag='p' size='main' color='mainColorText'>
                     {user.name}
                   </Text>
                   <Avatar src={user.image} size='small' />
