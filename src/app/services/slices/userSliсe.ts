@@ -14,7 +14,7 @@ import {
   mockRegisterUser,
   mockLoginUser,
   mockLogout,
-  mockGetUser
+  mockGetUser,
   type IRegisterData,
   type ILoginData
 } from 'src/api/mockApi';
