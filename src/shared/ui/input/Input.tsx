@@ -15,7 +15,9 @@ const Input: React.FC<InputProps> = ({
   message,
   onChange,
   onFocus,
-  style
+  style,
+  multiline = false,
+  rows = 3
 }) => {
   const inputId = useId(); // для связи с лейблом
   const wrapperClassName = `${styles.inputWrapper} ${styles[`size-${inputSize}`]} ${status ? styles[`input-${status}`] : ''}`;
@@ -36,16 +38,31 @@ const Input: React.FC<InputProps> = ({
             <SearchIcon />
           </div>
         )}
-        <input
-          id={inputId}
-          type={type}
-          value={value}
-          placeholder={placeholder}
-          onChange={onChange}
-          onFocus={onFocus}
-          className={inputClassName}
-          style={style}
-        />
+        {multiline ? (
+          <textarea
+            id={inputId}
+            value={value}
+            placeholder={placeholder}
+            onChange={(e) => onChange?.(e)}
+            onFocus={(e) =>
+              onFocus?.(e as React.FocusEvent<HTMLTextAreaElement>)
+            }
+            className={inputClassName}
+            style={style}
+            rows={rows}
+          />
+        ) : (
+          <input
+            id={inputId}
+            type={type}
+            value={value}
+            placeholder={placeholder}
+            onChange={(e) => onChange?.(e)}
+            onFocus={(e) => onFocus?.(e as React.FocusEvent<HTMLInputElement>)}
+            className={inputClassName}
+            style={style}
+          />
+        )}
         {icon &&
           (onIconClick ? (
             <div
@@ -85,4 +102,8 @@ export const InputPassword = ({ type, ...props }: InputProps) => (
 
 export const InputSearch = (props: InputProps) => (
   <Input {...props} type='search' />
+);
+
+export const InputTextArea = ({ rows = 3, ...props }: InputProps) => (
+  <Input {...props} multiline rows={rows} />
 );

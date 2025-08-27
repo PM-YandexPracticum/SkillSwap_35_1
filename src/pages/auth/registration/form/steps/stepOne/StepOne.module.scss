@@ -1,0 +1,21 @@
+.inputsWraper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 112px;
+  gap: 16px;
+  width: 100%;
+}
+
+.orSeparator {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 0;
+  gap: 8px;
+
+  hr {
+    flex: 1;
+    border: none;
+    border-top: 1px solid var(--accent-color-lightest);
+  }
+}
