@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from '../../../app/providers/store/store';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getFilters, initialState, clearAllFilters } from '../../../entities/skill/model/skills-slice/skillsSlice';
@@ -9,32 +9,36 @@ const FilterWatcher = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const areFiltersDefault = (filters: typeof initialState.filters) => {
-    return (
-      filters.gender === initialState.filters.gender &&
-      filters.searchTarget === initialState.filters.searchTarget &&
-      filters.subcategories.length === 0 &&
-      filters.cities.length === 0
-    );
-  };
+  const prevPath = useRef(location.pathname);
 
-  
+  const areFiltersDefault = JSON.stringify(filters) === JSON.stringify(initialState.filters);
+
   useEffect(() => {
-    const filtersChanged = !areFiltersDefault(filters);
+  const filtersChanged = !areFiltersDefault;
 
-    if (filtersChanged && location.pathname !== '/filter') {
-      navigate('/filter');
-    }
-  }, [filters, navigate, location]);
+  if (
+    filtersChanged &&
+    location.pathname !== '/filter' &&
+    prevPath.current !== '/filter'
+  ) {
+    const timeout = setTimeout(() => {
+      navigate('/filter', { replace: true });
+    }, 50);
 
-  
-  useEffect(() => {
-    return () => {
-      if (location.pathname === '/filter') {
+    return () => clearTimeout(timeout);
+  }
+}, [filters, navigate, location.pathname, areFiltersDefault]);
+
+useEffect(() => {
+  if (prevPath.current === '/filter' && location.pathname !== '/filter') {
+    if (location.pathname !== '/search') {
+      setTimeout(() => {
         dispatch(clearAllFilters());
-      }
-    };
-  }, [location.pathname, dispatch]);
+      }, 0);
+    }
+  }
+  prevPath.current = location.pathname;
+}, [location.pathname, dispatch]);
 
   return null;
 };
