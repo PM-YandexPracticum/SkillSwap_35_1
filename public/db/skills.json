@@ -4,7 +4,12 @@
     "category": "Бизнес и карьера",
     "subcategory": "Маркетинг и реклама",
     "description": "Научу заниматься SEO и SMM. Выстраивать бренд и таргетировать рекламу.",
-    "images": ["/skills/marketing.jpg"]
+    "images": [
+      "db/skills/business1.jpg",
+      "db/skills/business2.jpg",
+      "db/skills/business3.jpeg",
+      "db/skills/business4.jpg"
+    ]
   },
   {
     "title": "Наведение порядка",
@@ -12,10 +17,11 @@
     "subcategory": "Уборка и организация",
     "description": "Научу наводить чистоту и порядок в доме.",
     "images": [
-      "/skills/sell.jpg",
-      "skills/cooking.jpg",
-      "skills/planning.jpg",
-      "skills/espanol.jpg"
+      "db/skills/cleaning1.jpeg",
+      "db/skills/cleaning2.jpg",
+      "db/skills/cleaning3.jpg",
+      "db/skills/cleaning4.jpg",
+      "db/skills/cleaning5.jpeg"
     ]
   },
   {
@@ -23,6 +29,12 @@
     "category": "Творчество и искусство",
     "subcategory": "Музыка и звук",
     "description": "Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры",
-    "images": ["./skills/brand.jpg"]
+    "images": [
+      "db/skills/music1.jpg",
+      "db/skills/music2.jpg",
+      "db/skills/music3.jpg",
+      "db/skills/music4.jpg",
+      "db/skills/music5.jpg"
+    ]
   }
 ]

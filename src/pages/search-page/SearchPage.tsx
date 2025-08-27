@@ -20,16 +20,12 @@ export const SearchPage = () => {
     });
   }, [skills, searchQuery]);
 
-  const title = searchQuery
-    ? `Подходящие предложения: ${filteredSkills.length}`
-    : 'Рекомендуем';
-
   const { hasMore, fetchMoreData } = fetchMoreSkills();
 
   return (
     <div className={styles.main}>
       <InfiniteGrid
-        title={title}
+        title={`Подходящие предложения: ${filteredSkills.length}`}
         data={filteredSkills}
         fetchData={fetchMoreData}
         hasMore={hasMore}

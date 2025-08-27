@@ -1,6 +1,6 @@
 /* eslint-disable import-x/prefer-default-export */
 import { useState, type ChangeEvent } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Chevron from '@icons/ui/chevron-down.svg?react';
 import DarkThemeIcon from '@icons/ui/moon.svg?react';
 // import LightThemeIcon from '@icons/ui/sun.svg?react';
@@ -14,12 +14,8 @@ import { Text } from '@ui/text/Text';
 import { InputSearch } from '@ui/input/Input';
 import { type AppHeaderProps } from './types';
 import styles from './AppHeader.module.scss';
-import { useDispatch, useSelector } from '../../services/store';
-import {
-  setSearchQuery,
-  getFilters,
-  initialState
-} from '../../services/slices/skillsSlice';
+import { useDispatch } from '../../services/store';
+import { setSearchQuery } from '../../services/slices/skillsSlice';
 
 export const AppHeader = ({
   user,
@@ -27,10 +23,10 @@ export const AppHeader = ({
 }: AppHeaderProps) => {
   const [searchValue, setSearchValue] = useState(''); // для инпута поиска
   const dispatch = useDispatch();
-  const filters = useSelector(getFilters);
+  const location = useLocation();
 
-  const areFiltersApplied =
-    JSON.stringify(filters) !== JSON.stringify(initialState.filters);
+  const isFilterPage =
+    location.pathname === '/filter';
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -44,7 +40,7 @@ export const AppHeader = ({
 
   return (
     <header
-      className={`${styles.container} ${areFiltersApplied ? styles.start : ''}`}
+      className={`${styles.container} ${isFilterPage ? styles.start : ''}`}
     >
       <div className={styles.logo}>
         <NavLink to='/'>
@@ -82,7 +78,7 @@ export const AppHeader = ({
             </div>
           </div>
 
-          {!areFiltersApplied && (
+          {!isFilterPage && (
             <InputSearch
               value={searchValue}
               onChange={handleSearch}
