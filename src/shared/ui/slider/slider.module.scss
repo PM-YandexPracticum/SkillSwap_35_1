@@ -40,9 +40,13 @@
         transform: translate(50%, -50%);
     }
 
+    &:hover {
+        background-color: var(--accent-color-light);
+    }
+
     &:disabled {
         opacity: 1;
-        background-color: var(--accent-color-light);
+        background-color: var(--accent-color-lightest);
         pointer-events: none;
     }
 }
