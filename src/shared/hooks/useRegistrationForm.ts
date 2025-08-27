@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { type TFormData } from '../../pages/auth/registration/form/RegistrationForm';
+import { type TFormData } from '../../features/auth/registration/form/RegistrationForm';
 
 // Проверка валидности шага
 export const useStepValidation = (fields: (keyof TFormData)[]) => {

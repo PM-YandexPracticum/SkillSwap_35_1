@@ -1,4 +1,4 @@
-import type { IFilters } from '@shared-types/types';
+import type { IFilters } from '@shared-types/IFilters';
 
 export type FilterPanelProps = {
   filters: IFilters;

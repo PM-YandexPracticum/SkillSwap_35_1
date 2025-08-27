@@ -1,5 +1,5 @@
-import { type IUser, type IUserPublic } from '../entities/types/types';
-import { multiplyArrayElements } from '../utils';
+import { type IUserPublic, type IUser } from '../entities/user/model/types/types'
+import { multiplyArrayElements } from '../utils/multiplyArrayElements';
 
 export type IRegisterData = Omit<
   IUser,

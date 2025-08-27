@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FilterPanel } from './FilterPanel';
-import type { IFilters } from '@shared-types/types';
+import type { IFilters } from '@shared-types/IFilters';
 import { useState } from 'react';
 
 const meta: Meta<typeof FilterPanel> = {

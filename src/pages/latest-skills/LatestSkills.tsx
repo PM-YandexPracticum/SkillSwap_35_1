@@ -1,6 +1,6 @@
-import { useSelector } from '../../app/services/store';
-import { getNewSkills } from '../../app/services/slices/skillsSlice';
-import { InfiniteGrid } from '@components/infinite-grid';
+import { useSelector } from '../../app/providers/store/store';
+import { getNewSkills } from '../../entities/skill/model/skills-slice/skillsSlice';
+import { InfiniteGrid } from '@ui/infinite-grid';
 import styles from '../../shared/styles/skill-list/skillList.module.scss';
 import { fetchMoreSkills } from '../../utils/fetchMoreSkills';
 
