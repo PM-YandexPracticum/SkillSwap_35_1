@@ -1,7 +1,7 @@
-import { InfiniteGrid } from '@components/infinite-grid';
+import { InfiniteGrid } from '@ui/infinite-grid';
 import { TopFilterBar } from '../../widgets/filter/top-filter-bar';
-import { useSelector } from '../../app/services/store';
-import { getFilteredSkills } from '../../app/services/slices/skillsSlice';
+import { useSelector } from '../../app/providers/store/store';
+import { getFilteredSkills } from '../../entities/skill/model/skills-slice/skillsSlice';
 import { fetchMoreSkills } from '../../utils/fetchMoreSkills';
 import styles from '../../shared/styles/skill-list/skillList.module.scss';
 

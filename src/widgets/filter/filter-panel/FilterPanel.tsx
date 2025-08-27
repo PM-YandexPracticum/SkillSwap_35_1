@@ -6,10 +6,10 @@ import { RadioButton } from '@ui/radioButton/radioButton';
 import { Checkbox } from '@ui/checkbox/checkbox';
 import { CheckboxAccordion } from '@ui/checkboxAccordion/checkboxAccordion';
 import type { CheckboxAccordionItem } from '@ui/checkboxAccordion/type';
-import cities from '@lib/cities';
-import skillCategories from '@lib/skillCategories';
+import cities from '@lib/constants/cities';
+import skillCategories from '@lib/constants/skillCategories';
 import type { FilterPanelProps  } from './types';
-import type { TGender, TSearchTarget } from '@shared-types/types';
+import type { TGender, TSearchTarget } from '@shared-types/IFilters';
 
 export const FilterPanel = (props: FilterPanelProps) => {
   const { filters, onChange, onReset } = props;

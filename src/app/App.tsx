@@ -5,14 +5,14 @@ import { SearchPage } from '../pages/search-page';
 import { LatestSkills } from '../pages/latest-skills';
 import { PopularSkills } from '../pages/popular-skills';
 import { FilterPage } from '../pages/filter-page';
-import { AppFooter } from '../app/components/app-footer';
-import { AppHeader } from '../app/components/app-header';
-import { FilterLayout } from '../widgets/filter/filter-layout';
-import { useDispatch } from './services/store';
+import { AppFooter } from '../shared/ui/app-footer';
+import { AppHeader } from '../widgets/app-header';
+import { FilterLayout } from '../shared/layouts/filter-layout';
+import { useDispatch } from './providers/store/store';
 import styles from './App.module.scss';
-import { loadSkills } from './services/slices/skillsSlice';
-import SearchWatcher from '../features/search/SearchWatcher';
-import FilterWatcher from '../features/filter/FiltersWatcher';
+import { loadSkills } from '../entities/skill/model/skills-slice/skillsSlice';
+import SearchWatcher from '../features/search/search-watcher/SearchWatcher';
+import FilterWatcher from '../features/filter/filters-watcher/FiltersWatcher';
 
 const App = () => {
   const dispatch = useDispatch();

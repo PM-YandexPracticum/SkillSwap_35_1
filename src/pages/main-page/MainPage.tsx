@@ -1,8 +1,8 @@
-import { InfiniteGrid } from '@components/infinite-grid';
-import { useSelector } from '../../app/services/store';
-import { getNewSkills } from '../../app/services/slices/skillsSlice';
-import { getPopularSkills } from '../../app/services/slices/skillsSlice';
-import { CardSection } from '../../app/components/card-section';
+import { InfiniteGrid } from '@ui/infinite-grid';
+import { useSelector } from '../../app/providers/store/store';
+import { getNewSkills } from '../../entities/skill/model/skills-slice/skillsSlice';
+import { getPopularSkills } from '../../entities/skill/model/skills-slice/skillsSlice';
+import { CardSection } from '../../shared/ui/card-section';
 import styles from '../../shared/styles/skill-list/skillList.module.scss';
 import { fetchMoreSkills } from '../../utils/fetchMoreSkills';
 

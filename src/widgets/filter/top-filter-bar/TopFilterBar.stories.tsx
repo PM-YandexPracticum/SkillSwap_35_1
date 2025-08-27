@@ -5,7 +5,7 @@ import { TopFilterBar } from './TopFilterBar';
 import {
   initialState,
   SkillSlice
-} from '../../../app/services/slices/skillsSlice';
+} from '../../../entities/skill/model/skills-slice/skillsSlice';
 
 const meta: Meta<typeof TopFilterBar> = {
   title: 'Components/TopFilterBar',

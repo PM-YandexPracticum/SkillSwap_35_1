@@ -6,8 +6,8 @@ import {
   getFilters,
   updateFilters,
   initialState
-} from '../../../app/services/slices/skillsSlice';
-import type { IFilters } from '../../../shared/types/types';
+} from '../../../entities/skill/model/skills-slice/skillsSlice';
+import type { IFilters } from '../../../shared/types/IFilters';
 import styles from './TopFilterBar.module.scss';
 
 export const TopFilterBar: FC = () => {

@@ -1,5 +1,5 @@
-import { useSelector, useDispatch } from '../app/services/store';
-import { loadSkills } from '../app/services/slices/skillsSlice';
+import { useSelector, useDispatch } from '../app/providers/store/store';
+import { loadSkills } from '../entities/skill/model/skills-slice/skillsSlice';
 
 export const fetchMoreSkills = () => {
   const { skills, hasMore, loading } = useSelector((state) => state.skills);

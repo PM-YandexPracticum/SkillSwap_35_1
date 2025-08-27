@@ -1,7 +1,7 @@
-import { InfiniteGrid } from '@components/infinite-grid';
+import { InfiniteGrid } from '@ui/infinite-grid';
 import styles from '../../shared/styles/skill-list/skillList.module.scss';
-import { useSelector } from '../../app/services/store';
-import { getSearchQuery, getSkills } from '../../app/services/slices/skillsSlice';
+import { useSelector } from '../../app/providers/store/store';
+import { getSearchQuery, getSkills } from '../../entities/skill/model/skills-slice/skillsSlice';
 import { fetchMoreSkills } from '../../utils/fetchMoreSkills';
 import { useMemo } from 'react';
 
