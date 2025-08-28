@@ -26,7 +26,9 @@ export const SkillCard = (props: SkillCardProps) => {
   const [liked, setLiked] = useState<boolean>(false);
 
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${userAbout ? styles['with-about'] : ''}`}
+    >
       <div className={styles.user}>
         <Avatar src={userPhotoUrl} size='medium' />
         <div className={styles.user_info}>
@@ -53,7 +55,9 @@ export const SkillCard = (props: SkillCardProps) => {
           {userAbout}
         </Text>
       )}
-      <div className={styles.skills}>
+      <div
+        className={`${styles.skills} ${userAbout ? styles['with-about'] : ''}`}
+      >
         <div className={styles.skill_section}>
           <Text tag='div' size='main'>
             Может научить:
@@ -77,7 +81,17 @@ export const SkillCard = (props: SkillCardProps) => {
                 category={skillsToLearn[1].category}
               />
             )}
-            {skillsToLearn.length > 2 && (
+            {skillsToLearn.length > 2 && userAbout ? (
+              skillsToLearn
+                .slice(2)
+                .map((skill, index) => (
+                  <SkillTag
+                    key={index}
+                    name={skill.subcategory}
+                    category={skill.category}
+                  />
+                ))
+            ) : (
               <SkillTag
                 name={`+${skillsToLearn.length - 2}`}
                 category='other'
@@ -86,7 +100,7 @@ export const SkillCard = (props: SkillCardProps) => {
           </div>
         </div>
       </div>
-      <Button onClick={onDetailsClick}>Подробнее</Button>
+      {!userAbout && <Button onClick={onDetailsClick}>Подробнее</Button>}
     </div>
   );
 };

@@ -8,6 +8,10 @@
   padding: 20px;
   background-color: var(--secondary-color);
   border-radius: var(--main-border-radius);
+
+  &.with-about {
+    padding: 32px;
+  }
 }
 
 p {
@@ -48,6 +52,10 @@ p {
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  &.with-about {
+    gap: 24px;
+  }
 }
 
 .skill_section {
