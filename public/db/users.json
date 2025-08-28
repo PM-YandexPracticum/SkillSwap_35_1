@@ -223,11 +223,11 @@
       "subcategory": "Арт-терапия",
       "description": "Научу спокойствию и восстановлению сил с помощью Арт-терапии.",
       "images": [
-        "db/skills/art1.jpg",
-        "db/skills/art2.jpg",
-        "db/skills/art3.jpg",
-        "db/skills/art4.jpg",
-        "db/skills/art5.jpg"
+        "https://i.ibb.co/jkpVQHc6/art4.jpg",
+        "https://i.ibb.co/rGLQrz9p/art5.jpg",
+        "https://i.ibb.co/dsHyW5rF/art3.jpg",
+        "https://i.ibb.co/z1HZX08/art2.png",
+        "https://i.ibb.co/Pn6hJzq/art1.jpg"
       ]
     },
     "want": [
