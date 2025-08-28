@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import styles from './not-found.module.scss';
+import styles from './not-found404.module.scss';
 import pageNotFound from './error-404.png';
 import Button from '@ui/button/Button';
 
-export const NotFoundPage = () => {
+export const NotFoundPage404 = () => {
   const navigate = useNavigate();
   const handleGoHome = () => {
     navigate('/');
