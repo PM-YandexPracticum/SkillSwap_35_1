@@ -139,11 +139,11 @@
       "subcategory": "Ремонт",
       "description": "Научу делать ремонт дома с нуля.",
       "images": [
-        "db/skills/repair1.jpg",
-        "db/skills/repair2.jpg",
-        "db/skills/repair3.jpg",
-        "db/skills/repair4.jpg",
-        "db/skills/repair5.jpg"
+        "https://i.ibb.co/BHLtHjcv/repair1.jpg",
+        "https://i.ibb.co/Q7xtcGwV/repair2.jpg",
+        "https://i.ibb.co/1f66j1F8/repair3.jpg",
+        "https://i.ibb.co/gMV5WhhD/repair4.jpg",
+        "https://i.ibb.co/fbFVS2y/repair5.jpg"
       ]
     },
     "want": [
