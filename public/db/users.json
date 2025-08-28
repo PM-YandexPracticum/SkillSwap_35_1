@@ -307,11 +307,11 @@
       "subcategory": "Питание и ЗОЖ",
       "description": "Научу правильно питаться и следить за здоровьем.",
       "images": [
-        "db/skills/food1.jpeg",
-        "db/skills/food2.jpg",
-        "db/skills/food3.jpg",
-        "db/skills/food4.png",
-        "db/skills/food5.jpg"
+        "https://i.ibb.co/Y7z6czFY/food1.jpg",
+        "https://i.ibb.co/TqknkpGG/food2.jpg",
+        "https://i.ibb.co/FL6VSqBz/food3.jpg",
+        "https://i.ibb.co/Ndm9bwXK/food4.png",
+        "https://i.ibb.co/QFGFTtZ0/food5.jpg"
       ]
     },
     "want": [
