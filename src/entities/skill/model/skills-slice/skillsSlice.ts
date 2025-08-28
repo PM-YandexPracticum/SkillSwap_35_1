@@ -6,7 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 import { mockGetSkills } from '../../../../api/mockApi';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { IUserPublic } from "src/entities/user/model/types/types";
+import type { IUserPublic } from 'src/entities/user/model/types/types';
 import type { RootState } from '../../../../app/providers/store/store';
 import type { IFilters } from '../../../../shared/types/IFilters';
 
@@ -158,5 +158,44 @@ export const getSimilarSkills = createSelector(
       (skill) =>
         skill.can?.subcategory === user.can.subcategory && skill.id !== user.id
     );
+  }
+);
+
+export const getSearchResults = createSelector(
+  [getSkills, getSearchQuery, getFilters],
+  (skills, searchQuery, filters) => {
+    let filtered = skills;
+
+    const { subcategories, gender, cities, searchTarget } = filters;
+
+    if (gender !== 'Не имеет значения') {
+      filtered = filtered.filter((skill) => skill.gender === gender);
+    }
+
+    if (cities.length > 0) {
+      filtered = filtered.filter((skill) => cities.includes(skill.city));
+    }
+
+    if (subcategories.length > 0) {
+      filtered = filtered.filter((skill) => {
+        const can = skill.can && subcategories.includes(skill.can.subcategory);
+        const want = skill.want.some((w) =>
+          subcategories.includes(w.subcategory)
+        );
+        if (searchTarget === 'Могу научить') return can;
+        if (searchTarget === 'Хочу научиться') return want;
+        return can || want;
+      });
+    }
+
+    if (searchQuery) {
+      filtered = filtered.filter((skill) => {
+        return skill.can.title
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase());
+      });
+    }
+
+    return filtered;
   }
 );
