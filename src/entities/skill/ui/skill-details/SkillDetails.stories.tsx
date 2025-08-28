@@ -35,6 +35,7 @@ export const SelectStory: Story = {
     return (
       <div style={styles}>
         <SkillDetails
+          variant="want"
           images={images}
           subTitle={subTitle}
           title='Игра на барабанах'
