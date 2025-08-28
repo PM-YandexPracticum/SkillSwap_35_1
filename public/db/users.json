@@ -604,10 +604,10 @@
       "subcategory": "Домашние растения",
       "description": "Научу ухаживать за домашними растениями.",
       "images": [
-        "db/skills/plant1.png",
-        "db/skills/plant2.png",
-        "db/skills/plant3.jpg",
-        "db/skills/plant4.jpg"
+        "https://i.ibb.co/dsZpWBRX/plant1.png",
+        "https://i.ibb.co/Q3wpGrFF/plant2.png",
+        "https://i.ibb.co/LzmXVbCC/plant3.jpg",
+        "https://i.ibb.co/4R8TbzhX/plant4.jpg"
       ]
     },
     "want": [
