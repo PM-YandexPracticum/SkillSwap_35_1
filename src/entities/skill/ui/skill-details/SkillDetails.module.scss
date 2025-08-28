@@ -39,3 +39,20 @@ p, h2 {
 .subtitle {
   margin-top: 4px;
 }
+
+.modal {
+  .main {
+    gap: 44px;
+  }
+
+  .content {
+    width: 420px;
+  }
+
+  .buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    margin-top: auto;
+  }
+}
