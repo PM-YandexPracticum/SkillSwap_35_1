@@ -63,6 +63,7 @@ export const CardSection = ({
         {visibleData.map((card) => (
           <SkillCard
             key={card.id}
+            id={card.id}
             userName={card.name}
             userCity={card.city}
             userDateofBirth={card.dateOfBirth}

@@ -8,9 +8,11 @@ import { LikeButton } from '@ui/likeButton';
 import styles from './SkillCard.module.scss';
 import type { SkillCardProps } from './types';
 import { getAgeWithSuffix } from '../../../utils/getAgeWithSuffix';
+import { useNavigate } from 'react-router-dom';
 
 export const SkillCard = (props: SkillCardProps) => {
   const {
+    id,
     userName,
     userCity,
     userDateofBirth,
@@ -20,10 +22,10 @@ export const SkillCard = (props: SkillCardProps) => {
     userAbout,
     skillsToLearn,
     onLikeClick,
-    onDetailsClick
   } = props;
 
   const [liked, setLiked] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   return (
     <div
@@ -100,7 +102,7 @@ export const SkillCard = (props: SkillCardProps) => {
           </div>
         </div>
       </div>
-      {!userAbout && <Button onClick={onDetailsClick}>Подробнее</Button>}
+      {!userAbout && <Button onClick={() => navigate(`/skills/${id}`)}>Подробнее</Button>}
     </div>
   );
 };

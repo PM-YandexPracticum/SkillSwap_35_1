@@ -16,6 +16,7 @@ export const CardsSlider = ({ title, skillsList }: CardsSliderProps) => {
         getItemId={(skill) => skill.id}
         renderItem={(skill) => (
           <SkillCard
+            id={skill.id}
             userName={skill.name}
             userCity={skill.city}
             userDateofBirth={skill.dateOfBirth}
