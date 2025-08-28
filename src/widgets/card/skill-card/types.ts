@@ -1,5 +1,5 @@
 import type { TSkillCategory } from '@lib/constants/skillCategories';
-import type { IDesiredSkill } from "src/entities/skill/model/types/types";
+import type { IDesiredSkill } from '../../../entities/skill/model/types/types';
 
 export type SkillCardProps = {
   userName: string;
@@ -8,7 +8,8 @@ export type SkillCardProps = {
   userSkillCategory: TSkillCategory;
   userSkillName: string;
   userPhotoUrl?: string;
+  userAbout?: string;
   skillsToLearn: IDesiredSkill[];
   onLikeClick?: () => void;
   onDetailsClick?: () => void;
-}
+};

@@ -1,3 +1,4 @@
+/* eslint-disable import-x/prefer-default-export */
 import { useState } from 'react';
 import Avatar from '@ui/avatar/Avatar';
 import { SkillTag } from '@ui/skillTag/skillTag';
@@ -16,6 +17,7 @@ export const SkillCard = (props: SkillCardProps) => {
     userSkillCategory,
     userSkillName,
     userPhotoUrl,
+    userAbout,
     skillsToLearn,
     onLikeClick,
     onDetailsClick
@@ -44,6 +46,11 @@ export const SkillCard = (props: SkillCardProps) => {
           />
         </div>
       </div>
+      {userAbout && (
+        <Text tag='p' size='main'>
+          {userAbout}
+        </Text>
+      )}
       <div className={styles.skills}>
         <div className={styles.skill_section}>
           <Text tag='div' size='main'>
