@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './server-error500.module.scss';
-import pageNotFound from '../../shared/assets/images/decorative/page-error-500.png'
+import pageNotFound from '../../shared/assets/images/decorative/page-error-500.png';
 import Button from '@ui/button/Button';
 
 export const ServerError500 = () => {
