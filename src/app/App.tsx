@@ -13,6 +13,7 @@ import styles from './App.module.scss';
 import { loadSkills } from '../entities/skill/model/skills-slice/skillsSlice';
 import SearchWatcher from '../features/search/search-watcher/SearchWatcher';
 import FilterWatcher from '../features/filter/filters-watcher/FiltersWatcher';
+import { NotFoundPage } from '../pages/not-found';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const App = () => {
             <Route path='/latest' element={<LatestSkills />} />
             <Route path='/filter' element={<FilterPage />} />
           </Route>
+          <Route path='*' element={<NotFoundPage />} />
         </Routes>
         <SearchWatcher />
         <FilterWatcher />
