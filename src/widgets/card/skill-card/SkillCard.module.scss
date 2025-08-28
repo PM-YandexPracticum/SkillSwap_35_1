@@ -3,7 +3,8 @@
   flex-direction: column;
   gap: 20px;
   box-sizing: border-box;
-  width: 324px;
+  width: 100%;
+  max-width: 324px;
   padding: 20px;
   background-color: var(--secondary-color);
   border-radius: var(--main-border-radius);
@@ -57,5 +58,6 @@ p {
 
 .skills_wrapper {
   display: flex;
+  flex-wrap: wrap;
   gap: 4px;
 }
