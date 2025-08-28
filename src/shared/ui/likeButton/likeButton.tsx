@@ -8,6 +8,7 @@ export const LikeButton = ({ liked, onClick }: LikeButtonUIProps) => {
     <button 
       className={`${styles.likeButton} ${liked ? styles.liked : ''}`} 
       onClick={onClick}
+      aria-label={liked ? 'Удалить из избранного' : 'Добавить в избранное'}
     >
       {liked? <ActiveLike className={styles.heart} />: <EmptyLike className={styles.heart} />}
     </button>
