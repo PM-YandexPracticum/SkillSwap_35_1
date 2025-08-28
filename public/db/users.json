@@ -475,10 +475,10 @@
       "subcategory": "Французский",
       "description": "Научусь разговаривать на французском с нуля.",
       "images": [
-        "db/skills/france1.jpg",
-        "db/skills/france2.jpg",
-        "db/skills/france3.jpg",
-        "db/skills/france4.jpg"
+        "https://i.ibb.co/Zz7Mfk7C/france1.jpg",
+        "https://i.ibb.co/HwcT2vp/france2.jpg",
+        "https://i.ibb.co/GfvqTc4y/france3.jpg",
+        "https://i.ibb.co/Q7gndhYv/france4.jpg"
       ]
     },
     "want": [
