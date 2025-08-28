@@ -16,10 +16,9 @@ export const NotFoundPage500 = () => {
       </div>
 
       <div className={styles.text}>
-        <h1 className={styles.text_title}>Страница не найдена</h1>
+        <h1 className={styles.text_title}>На сервере произошла ошибкаа</h1>
         <p className={styles.text_subtitle}>
-          К сожалению, эта страница недоступна. Вернитесь на главную страницу
-          или попробуйте позже
+          Попробуйте позже или вернитесь на главную страницу
         </p>
       </div>
 
