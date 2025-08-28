@@ -516,11 +516,10 @@
       "subcategory": "Резюме и собеседование",
       "description": "Научу заполнять резюме, чтобы оно было заметно и интересно.",
       "images": [
-        "db/skills/resume1.jpg",
-        "db/skills/resume2.png",
-        "db/skills/resume3.svg",
-        "db/skills/resume4.svg",
-        "db/skills/resume5.svg"
+        "https://i.ibb.co/7xKBDy95/resume4.jpg",
+        "https://i.ibb.co/fVpLhMHy/resume1.jpg",
+        "https://i.ibb.co/XfKWrZTf/resume3.jpg",
+        "https://i.ibb.co/PZMs2SvZ/resume2.jpg"
       ]
     },
     "want": [
