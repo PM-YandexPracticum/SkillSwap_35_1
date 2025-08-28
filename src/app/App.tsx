@@ -14,6 +14,7 @@ import { loadSkills } from '../entities/skill/model/skills-slice/skillsSlice';
 import SearchWatcher from '../features/search/search-watcher/SearchWatcher';
 import FilterWatcher from '../features/filter/filters-watcher/FiltersWatcher';
 import { NotFoundPage } from '../pages/not-found';
+import { NotFoundPage500 } from '../pages/not-found500';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const App = () => {
             <Route path='/filter' element={<FilterPage />} />
           </Route>
           <Route path='*' element={<NotFoundPage />} />
+          <Route path='/500' element={<NotFoundPage500 />} />
         </Routes>
         <SearchWatcher />
         <FilterWatcher />
