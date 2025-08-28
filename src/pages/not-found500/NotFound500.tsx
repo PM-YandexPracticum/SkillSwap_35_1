@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './not-found500.module.scss';
-import pageNotFound from './error-500.png';
+import pageNotFound from '../../shared/assets/images/decorative/page-error-500.png'
 import Button from '@ui/button/Button';
 
 export const NotFoundPage500 = () => {
@@ -16,7 +16,7 @@ export const NotFoundPage500 = () => {
       </div>
 
       <div className={styles.text}>
-        <h1 className={styles.text_title}>На сервере произошла ошибкаа</h1>
+        <h1 className={styles.text_title}>На сервере произошла ошибка</h1>
         <p className={styles.text_subtitle}>
           Попробуйте позже или вернитесь на главную страницу
         </p>

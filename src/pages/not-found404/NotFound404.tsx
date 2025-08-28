@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './not-found404.module.scss';
-import pageNotFound from './error-404.png';
+import pageNotFound from '../../shared/assets/images/decorative/page-error-404.png';
 import Button from '@ui/button/Button';
 
 export const NotFoundPage404 = () => {
