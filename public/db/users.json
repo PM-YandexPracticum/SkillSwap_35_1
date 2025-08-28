@@ -349,11 +349,11 @@
       "subcategory": "Хранение вещей",
       "description": "Научу хранить вещи дома и экономить пространство.",
       "images": [
-        "db/skills/method1.jpg",
-        "db/skills/method2.jpg",
-        "db/skills/method3.jpg",
-        "db/skills/method4.jpeg",
-        "db/skills/method5.jpg"
+        "https://i.ibb.co/zVhJ4V9f/method1.jpg",
+        "https://i.ibb.co/3wc9dKQ/method2.jpg",
+        "https://i.ibb.co/jktpwDXc/method3.jpg",
+        "https://i.ibb.co/dsHZT3YJ/method4.jpg",
+        "https://i.ibb.co/pjpx8F9x/method5.jpg"
       ]
     },
     "want": [
