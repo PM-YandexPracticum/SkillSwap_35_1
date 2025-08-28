@@ -649,10 +649,10 @@
       "subcategory": "Йога и медитация",
       "description": "Помогу научиться медитировать и обретать покой.",
       "images": [
-        "db/skills/yoga1.jpg",
-        "db/skills/yoga2.jpg",
-        "db/skills/yoga3.jpg",
-        "db/skills/yoga4.jpg"
+        "https://i.ibb.co/B57YvksX/yoga1.jpg",
+        "https://i.ibb.co/hR3r288F/yoga2.jpg",
+        "https://i.ibb.co/YsRMNVX/yoga3.jpg",
+        "https://i.ibb.co/ccj86R3V/yoga4.jpg"
       ]
     },
     "want": [
