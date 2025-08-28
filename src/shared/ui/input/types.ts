@@ -32,4 +32,5 @@ export interface InputProps {
   style?: React.CSSProperties;
   multiline?: boolean;
   rows?: number;
+  onClick?: () => void;
 }
