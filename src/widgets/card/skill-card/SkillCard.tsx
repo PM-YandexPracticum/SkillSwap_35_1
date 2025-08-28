@@ -36,15 +36,17 @@ export const SkillCard = (props: SkillCardProps) => {
             size='details'
           >{`${userCity}, ${getAgeWithSuffix(userDateofBirth)}`}</Text>
         </div>
-        <div className={styles.like}>
-          <LikeButton
-            onClick={() => {
-              setLiked((prev) => !prev);
-              onLikeClick?.();
-            }}
-            liked={liked}
-          />
-        </div>
+        {!userAbout && (
+          <div className={styles.like}>
+            <LikeButton
+              onClick={() => {
+                setLiked((prev) => !prev);
+                onLikeClick?.();
+              }}
+              liked={liked}
+            />
+          </div>
+        )}
       </div>
       {userAbout && (
         <Text tag='p' size='main'>
