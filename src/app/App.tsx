@@ -14,7 +14,7 @@ import { loadSkills } from '../entities/skill/model/skills-slice/skillsSlice';
 import SearchWatcher from '../features/search/search-watcher/SearchWatcher';
 import FilterWatcher from '../features/filter/filters-watcher/FiltersWatcher';
 import { NotFoundPage404 } from '../pages/not-found404';
-import { NotFoundPage500 } from '../pages/not-found500';
+import { ServerError500 } from '../pages/server-error500';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const App = () => {
             <Route path='/filter' element={<FilterPage />} />
           </Route>
           <Route path='*' element={<NotFoundPage404 />} />
-          <Route path='/500' element={<NotFoundPage500 />} />
+          <Route path='/500' element={<ServerError500 />} />
         </Routes>
         <SearchWatcher />
         <FilterWatcher />

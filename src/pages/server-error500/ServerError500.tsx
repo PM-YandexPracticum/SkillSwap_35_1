@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import styles from './not-found500.module.scss';
+import styles from './server-error500.module.scss';
 import pageNotFound from '../../shared/assets/images/decorative/page-error-500.png'
 import Button from '@ui/button/Button';
 
-export const NotFoundPage500 = () => {
+export const ServerError500 = () => {
   const navigate = useNavigate();
   const handleGoHome = () => {
     navigate('/');
