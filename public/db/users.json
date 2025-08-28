@@ -265,11 +265,11 @@
       "subcategory": "Навыки обучения",
       "description": "Научу программированию любого человека при огромном желаний.",
       "images": [
-        "db/skills/robot1.jpg",
-        "db/skills/robot2.jpg",
-        "db/skills/robot3.jpg",
-        "db/skills/robot4.jpg",
-        "db/skills/robot5.jpeg"
+        "https://i.ibb.co/xSsgTxYf/robot1.jpg",
+        "https://i.ibb.co/4wq4JwL0/robot2.jpg",
+        "https://i.ibb.co/WvnfGV75/robot3.jpg",
+        "https://i.ibb.co/jnyKjCG/robot4.jpg",
+        "https://i.ibb.co/7tSdP3kf/robot5.jpg"
       ]
     },
     "want": [
