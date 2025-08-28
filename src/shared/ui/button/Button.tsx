@@ -1,15 +1,14 @@
-import React from 'react';
 import { type ButtonProps } from './types';
 import styles from './Button.module.scss';
 
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   children,
   variant = 'primary',
   onClick,
   disabled = false,
   htmlType,
   style
-}) => {
+}: ButtonProps) => {
   const className = `${styles.button} ${styles[variant]} ${disabled ? styles.disabled : ''}`;
 
   return (

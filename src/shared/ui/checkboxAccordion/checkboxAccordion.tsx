@@ -1,17 +1,17 @@
 /* eslint-disable consistent-return */
 /* eslint-disable import-x/prefer-default-export */
 import IconChevronDown from '@icons/ui/chevron-down.svg?react';
-import { useCallback, useLayoutEffect, useRef, useState, type FC } from 'react';
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import styles from './checkboxAccordion.module.scss';
 import type { CheckboxAccordionProps } from './type';
 import { Checkbox } from '../checkbox/checkbox';
 import { Text } from '../text/Text';
 
-export const CheckboxAccordion: FC<CheckboxAccordionProps> = ({
+export const CheckboxAccordion = ({
   groupName,
   items,
   onItemsChange
-}) => {
+}: CheckboxAccordionProps) => {
   const listRef = useRef<HTMLUListElement | null>(null);
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
   const [isListOpen, setIsListOpen] = useState(false);

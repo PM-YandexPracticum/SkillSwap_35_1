@@ -1,4 +1,4 @@
-import { type FC, useEffect } from 'react';
+import { type JSX, useEffect } from 'react';
 import Button from '@ui/button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import IconClose from '@icons/ui/cross.svg?react';
@@ -10,7 +10,7 @@ import {
 import type { IFilters } from '../../../shared/types/IFilters';
 import styles from './TopFilterBar.module.scss';
 
-export const TopFilterBar: FC = () => {
+export const TopFilterBar = (): JSX.Element => {
   const filters = useSelector(getFilters);
   const dispatch = useDispatch();
 

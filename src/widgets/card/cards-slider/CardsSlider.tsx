@@ -1,13 +1,12 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable import-x/prefer-default-export */
 import { Title } from '@ui/title';
-import { type FC } from 'react';
 import { Slider } from '@ui/slider';
 import styles from './CardsSlider.module.scss';
 import type { CardsSliderProps } from './types';
 import { SkillCard } from '../../../widgets/card/skill-card';
 
-export const CardsSlider: FC<CardsSliderProps> = ({ title, skillsList }) => {
+export const CardsSlider = ({ title, skillsList }: CardsSliderProps) => {
   return (
     <div className={styles.section}>
       <Title tag='h2'>{title}</Title>

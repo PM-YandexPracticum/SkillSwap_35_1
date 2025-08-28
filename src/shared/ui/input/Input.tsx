@@ -3,7 +3,7 @@ import SearchIcon from '@icons/ui/search.svg?react';
 import { type InputProps } from './types';
 import styles from './Input.module.scss';
 
-const Input: React.FC<InputProps> = ({
+const Input = ({
   value,
   type = 'text',
   inputSize = 'small',
@@ -18,7 +18,7 @@ const Input: React.FC<InputProps> = ({
   style,
   multiline = false,
   rows = 3
-}) => {
+}: InputProps) => {
   const inputId = useId(); // для связи с лейблом
   const wrapperClassName = `${styles.inputWrapper} ${styles[`size-${inputSize}`]} ${status ? styles[`input-${status}`] : ''}`;
   const inputClassName = `${styles.inputField} ${status ? styles[`input-${status}`] : ''}`;

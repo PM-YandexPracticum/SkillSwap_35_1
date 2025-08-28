@@ -1,4 +1,4 @@
-import { type FC, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { CardSectionProps } from '@ui/card-section/types';
 import { Title } from '@ui/title';
@@ -7,11 +7,11 @@ import { SkillCard } from '../../../widgets/card/skill-card';
 import styles from './CardSection.module.scss';
 import IconRowRight from '../../../shared/assets/icons/ui/chevron-right.svg?react';
 
-export const CardSection: FC<CardSectionProps> = ({
+export const CardSection = ({
   data,
   linkSeeAll,
   title
-}) => {
+}: CardSectionProps) => {
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
   const [visibleCount, setVisibleCount] = useState(data.length);
