@@ -97,11 +97,11 @@
       "subcategory": "Музыка и звук",
       "description": "Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры",
       "images": [
-        "db/skills/music1.jpg",
-        "db/skills/music2.jpg",
-        "db/skills/music3.jpg",
-        "db/skills/music4.jpg",
-        "db/skills/music5.jpg"
+        "https://i.ibb.co/Kj3VpST8/music1.jpg",
+        "https://i.ibb.co/Hw1rDw9/music2.jpg",
+        "https://i.ibb.co/Rpm84Q0D/music3.jpg",
+        "https://i.ibb.co/0VJ63KKn/music4.jpg",
+        "https://i.ibb.co/S7XFtZJf/music5.jpg"
       ]
     },
     "want": [
