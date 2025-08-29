@@ -162,40 +162,13 @@ export const getSimilarSkills = createSelector(
 );
 
 export const getSearchResults = createSelector(
-  [getSkills, getSearchQuery, getFilters],
-  (skills, searchQuery, filters) => {
-    let filtered = skills;
+  [getSkills, getSearchQuery],
+  (skills, searchQuery) => {
+    if (!searchQuery) return skills;
 
-    const { subcategories, gender, cities, searchTarget } = filters;
-
-    if (gender !== 'Не имеет значения') {
-      filtered = filtered.filter((skill) => skill.gender === gender);
-    }
-
-    if (cities.length > 0) {
-      filtered = filtered.filter((skill) => cities.includes(skill.city));
-    }
-
-    if (subcategories.length > 0) {
-      filtered = filtered.filter((skill) => {
-        const can = skill.can && subcategories.includes(skill.can.subcategory);
-        const want = skill.want.some((w) =>
-          subcategories.includes(w.subcategory)
-        );
-        if (searchTarget === 'Могу научить') return can;
-        if (searchTarget === 'Хочу научиться') return want;
-        return can || want;
-      });
-    }
-
-    if (searchQuery) {
-      filtered = filtered.filter((skill) => {
-        return skill.can.title
-          .toLowerCase()
-          .includes(searchQuery.toLowerCase());
-      });
-    }
-
-    return filtered;
+    const lowerQuery = searchQuery.toLowerCase();
+    return skills.filter((skill) =>
+      skill.can?.title?.toLowerCase().includes(lowerQuery)
+    );
   }
 );
