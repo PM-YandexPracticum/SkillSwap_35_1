@@ -4,10 +4,10 @@ import { InputText } from '@ui/input/Input';
 import OpenIcon from '@icons/ui/chevron-down.svg?react';
 import CloseIcon from '@icons/ui/chevron-up.svg?react';
 import ClearIcon from '@icons/ui/cross.svg?react';
-import DropdownList from './dropdownList/dropdownList';
+import DropdownList from './dropdown-list/DropdownList';
 import useClickOutside from '../../hooks/useClickOutside';
 import useDropdown from '../../hooks/useDropdown';
-import type { DropdownProps } from './types';
+import type { DropdownProps } from '@ui/dropdown/types';
 import styles from './dropdown.module.scss';
 
 const Dropdown = ({

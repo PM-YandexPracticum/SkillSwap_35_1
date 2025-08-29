@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useCallback } from 'react';
-import OptionItem from '../optionItem/optionItem';
+import OptionItem from '../option-item/OptionItem';
 import type { DropdownListProps } from './types';
 import styles from './dropdownList.module.scss';
 

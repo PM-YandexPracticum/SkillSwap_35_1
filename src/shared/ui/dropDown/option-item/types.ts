@@ -1,4 +1,4 @@
-import type { Option } from '../types';
+import type { Option } from '@ui/dropdown/types';
 
 /**
  * Пропсы для компонента OptionItem
