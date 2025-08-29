@@ -13,11 +13,11 @@
       "subcategory": "Продажи и переговоры",
       "description": "Научусь продажам и переговорам с нуля.",
       "images": [
-        "db/skills/sell1.jpg",
-        "db/skills/sell2.jpg",
-        "db/skills/sell3.jpg",
-        "db/skills/sell4.jpg",
-        "db/skills/sell5.jpg"
+        "https://i.ibb.co/Mx631D6g/sell1.jpg",
+        "https://i.ibb.co/sfRNL8v/sell2.jpg",
+        "https://i.ibb.co/jvxPZYBn/sell3.jpg",
+        "https://i.ibb.co/TMs3vBb6/sell4.jpg",
+        "https://i.ibb.co/5WkJrFfS/sell5.jpg"
       ]
     },
     "want": [
@@ -55,11 +55,11 @@
       "subcategory": "Уборка и организация",
       "description": "Научу наводить чистоту и порядок в доме.",
       "images": [
-        "db/skills/cleaning1.jpeg",
-        "db/skills/cleaning2.jpg",
-        "db/skills/cleaning3.jpg",
-        "db/skills/cleaning4.jpg",
-        "db/skills/cleaning5.jpeg"
+        "https://i.ibb.co/bgpRkRYy/cleaning5.jpg",
+        "https://i.ibb.co/GfPV4qSV/cleaning4.jpg",
+        "https://i.ibb.co/C3fq2mb4/cleaning3.jpg",
+        "https://i.ibb.co/Z1cPtp0G/cleaning2.jpg",
+        "https://i.ibb.co/gb1JGhjj/cleaning1.jpg"
       ]
     },
     "want": [
@@ -97,11 +97,11 @@
       "subcategory": "Музыка и звук",
       "description": "Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры",
       "images": [
-        "db/skills/music1.jpg",
-        "db/skills/music2.jpg",
-        "db/skills/music3.jpg",
-        "db/skills/music4.jpg",
-        "db/skills/music5.jpg"
+        "https://i.ibb.co/Kj3VpST8/music1.jpg",
+        "https://i.ibb.co/Hw1rDw9/music2.jpg",
+        "https://i.ibb.co/Rpm84Q0D/music3.jpg",
+        "https://i.ibb.co/0VJ63KKn/music4.jpg",
+        "https://i.ibb.co/S7XFtZJf/music5.jpg"
       ]
     },
     "want": [
@@ -139,11 +139,11 @@
       "subcategory": "Ремонт",
       "description": "Научу делать ремонт дома с нуля.",
       "images": [
-        "db/skills/repair1.jpg",
-        "db/skills/repair2.jpg",
-        "db/skills/repair3.jpg",
-        "db/skills/repair4.jpg",
-        "db/skills/repair5.jpg"
+        "https://i.ibb.co/BHLtHjcv/repair1.jpg",
+        "https://i.ibb.co/Q7xtcGwV/repair2.jpg",
+        "https://i.ibb.co/1f66j1F8/repair3.jpg",
+        "https://i.ibb.co/gMV5WhhD/repair4.jpg",
+        "https://i.ibb.co/fbFVS2y/repair5.jpg"
       ]
     },
     "want": [
@@ -181,11 +181,11 @@
       "subcategory": "Видеомонтаж",
       "description": "Научу видеомонтажу абсолютно любого с нуля.",
       "images": [
-        "db/skills/editing1.jpg",
-        "db/skills/editing2.jpg",
-        "db/skills/editing3.jpg",
-        "db/skills/editing4.jpg",
-        "db/skills/editing5.jpg"
+        "https://i.ibb.co/W4ZcQr6Q/editing1.jpg",
+        "https://i.ibb.co/GvMWrL1T/editing2.jpg",
+        "https://i.ibb.co/JwDqyFkW/editing3.jpg",
+        "https://i.ibb.co/TB5CcZQ6/editing4.jpg",
+        "https://i.ibb.co/fVhTCNh1/editing5.jpg"
       ]
     },
     "want": [
@@ -223,11 +223,11 @@
       "subcategory": "Арт-терапия",
       "description": "Научу спокойствию и восстановлению сил с помощью Арт-терапии.",
       "images": [
-        "db/skills/art1.jpg",
-        "db/skills/art2.jpg",
-        "db/skills/art3.jpg",
-        "db/skills/art4.jpg",
-        "db/skills/art5.jpg"
+        "https://i.ibb.co/jkpVQHc6/art4.jpg",
+        "https://i.ibb.co/rGLQrz9p/art5.jpg",
+        "https://i.ibb.co/dsHyW5rF/art3.jpg",
+        "https://i.ibb.co/z1HZX08/art2.png",
+        "https://i.ibb.co/Pn6hJzq/art1.jpg"
       ]
     },
     "want": [
@@ -265,11 +265,11 @@
       "subcategory": "Навыки обучения",
       "description": "Научу программированию любого человека при огромном желаний.",
       "images": [
-        "db/skills/robot1.jpg",
-        "db/skills/robot2.jpg",
-        "db/skills/robot3.jpg",
-        "db/skills/robot4.jpg",
-        "db/skills/robot5.jpeg"
+        "https://i.ibb.co/xSsgTxYf/robot1.jpg",
+        "https://i.ibb.co/4wq4JwL0/robot2.jpg",
+        "https://i.ibb.co/WvnfGV75/robot3.jpg",
+        "https://i.ibb.co/jnyKjCG/robot4.jpg",
+        "https://i.ibb.co/7tSdP3kf/robot5.jpg"
       ]
     },
     "want": [
@@ -307,11 +307,11 @@
       "subcategory": "Питание и ЗОЖ",
       "description": "Научу правильно питаться и следить за здоровьем.",
       "images": [
-        "db/skills/food1.jpeg",
-        "db/skills/food2.jpg",
-        "db/skills/food3.jpg",
-        "db/skills/food4.png",
-        "db/skills/food5.jpg"
+        "https://i.ibb.co/Y7z6czFY/food1.jpg",
+        "https://i.ibb.co/TqknkpGG/food2.jpg",
+        "https://i.ibb.co/FL6VSqBz/food3.jpg",
+        "https://i.ibb.co/Ndm9bwXK/food4.png",
+        "https://i.ibb.co/QFGFTtZ0/food5.jpg"
       ]
     },
     "want": [
@@ -349,11 +349,11 @@
       "subcategory": "Хранение вещей",
       "description": "Научу хранить вещи дома и экономить пространство.",
       "images": [
-        "db/skills/method1.jpg",
-        "db/skills/method2.jpg",
-        "db/skills/method3.jpg",
-        "db/skills/method4.jpeg",
-        "db/skills/method5.jpg"
+        "https://i.ibb.co/zVhJ4V9f/method1.jpg",
+        "https://i.ibb.co/3wc9dKQ/method2.jpg",
+        "https://i.ibb.co/jktpwDXc/method3.jpg",
+        "https://i.ibb.co/dsHZT3YJ/method4.jpg",
+        "https://i.ibb.co/pjpx8F9x/method5.jpg"
       ]
     },
     "want": [
@@ -391,11 +391,11 @@
       "subcategory": "Японский",
       "description": "Научу разговаривать на японском языке.",
       "images": [
-        "db/skills/japan1.jpg",
-        "db/skills/japan2.jpg",
-        "db/skills/japan3.jpg",
-        "db/skills/japan4.jpg",
-        "db/skills/japan5.jpg"
+        "https://i.ibb.co/ccYSjcFR/japan1.jpg",
+        "https://i.ibb.co/zhnM0tgk/japan2.jpg",
+        "https://i.ibb.co/1f5SjPKm/japan3.jpg",
+        "https://i.ibb.co/HLtQStwq/japan4.jpg",
+        "https://i.ibb.co/qZPr42N/japan5.jpg"
       ]
     },
     "want": [
@@ -433,11 +433,11 @@
       "subcategory": "Декор и DIY",
       "description": "Научу работать руками и собирать предметы для собственного дома.",
       "images": [
-        "db/skills/diy1.jpg",
-        "db/skills/diy2.png",
-        "db/skills/diy3.png",
-        "db/skills/diy4.png",
-        "db/skills/diy5.jpg"
+        "https://i.ibb.co/Kcn7kmf3/diy5.jpg",
+        "https://i.ibb.co/qVT4bmT/diy4.png",
+        "https://i.ibb.co/M5JBjJ3G/diy3.png",
+        "https://i.ibb.co/3bPx8y9/diy2.png",
+        "https://i.ibb.co/tMf8Ry7X/diy1.jpg"
       ]
     },
     "want": [
@@ -475,10 +475,10 @@
       "subcategory": "Французский",
       "description": "Научусь разговаривать на французском с нуля.",
       "images": [
-        "db/skills/france1.jpg",
-        "db/skills/france2.jpg",
-        "db/skills/france3.jpg",
-        "db/skills/france4.jpg"
+        "https://i.ibb.co/Zz7Mfk7C/france1.jpg",
+        "https://i.ibb.co/HwcT2vp/france2.jpg",
+        "https://i.ibb.co/GfvqTc4y/france3.jpg",
+        "https://i.ibb.co/Q7gndhYv/france4.jpg"
       ]
     },
     "want": [
@@ -516,11 +516,10 @@
       "subcategory": "Резюме и собеседование",
       "description": "Научу заполнять резюме, чтобы оно было заметно и интересно.",
       "images": [
-        "db/skills/resume1.jpg",
-        "db/skills/resume2.png",
-        "db/skills/resume3.svg",
-        "db/skills/resume4.svg",
-        "db/skills/resume5.svg"
+        "https://i.ibb.co/7xKBDy95/resume4.jpg",
+        "https://i.ibb.co/fVpLhMHy/resume1.jpg",
+        "https://i.ibb.co/XfKWrZTf/resume3.jpg",
+        "https://i.ibb.co/PZMs2SvZ/resume2.jpg"
       ]
     },
     "want": [
@@ -558,11 +557,11 @@
       "subcategory": "Немецкий",
       "description": "Научу разговаривать на немецком языке, опыт преподавания 5 лет.",
       "images": [
-        "db/skills/germany1.jpg",
-        "db/skills/germany2.jpg",
-        "db/skills/germany3.jpg",
-        "db/skills/germany4.jpg",
-        "db/skills/germany5.jpg"
+        "https://i.ibb.co/SkJ8QCR/germany1.jpg",
+        "https://i.ibb.co/CpFyjgm0/germany2.jpg",
+        "https://i.ibb.co/Q7W80XKt/germany3.jpg",
+        "https://i.ibb.co/Vcs1Z7q9/germany4.jpg",
+        "https://i.ibb.co/1pX260C/germany5.jpg"
       ]
     },
     "want": [
@@ -604,10 +603,10 @@
       "subcategory": "Домашние растения",
       "description": "Научу ухаживать за домашними растениями.",
       "images": [
-        "db/skills/plant1.png",
-        "db/skills/plant2.png",
-        "db/skills/plant3.jpg",
-        "db/skills/plant4.jpg"
+        "https://i.ibb.co/dsZpWBRX/plant1.png",
+        "https://i.ibb.co/Q3wpGrFF/plant2.png",
+        "https://i.ibb.co/LzmXVbCC/plant3.jpg",
+        "https://i.ibb.co/4R8TbzhX/plant4.jpg"
       ]
     },
     "want": [
@@ -649,10 +648,10 @@
       "subcategory": "Йога и медитация",
       "description": "Помогу научиться медитировать и обретать покой.",
       "images": [
-        "db/skills/yoga1.jpg",
-        "db/skills/yoga2.jpg",
-        "db/skills/yoga3.jpg",
-        "db/skills/yoga4.jpg"
+        "https://i.ibb.co/B57YvksX/yoga1.jpg",
+        "https://i.ibb.co/hR3r288F/yoga2.jpg",
+        "https://i.ibb.co/YsRMNVX/yoga3.jpg",
+        "https://i.ibb.co/ccj86R3V/yoga4.jpg"
       ]
     },
     "want": [
