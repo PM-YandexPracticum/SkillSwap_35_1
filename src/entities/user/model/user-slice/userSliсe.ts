@@ -6,6 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 import { type IUser } from "../types/types";
 import type { RootState } from '../../../../app/providers/store/store';
+import type { IRegisterData } from 'src/features/auth/types/types';
 import {
   mockToggleFavorites,
   mockRequest,
@@ -16,7 +17,6 @@ import {
   mockLoginUser,
   mockLogout,
   mockGetUser,
-  type IRegisterData,
   type ILoginData
 } from '../../../../api/mockApi';
 
