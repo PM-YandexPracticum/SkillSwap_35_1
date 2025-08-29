@@ -149,17 +149,16 @@ export const getPopularSkills = createSelector(getSkills, (skills) =>
   skills.filter((skill) => skill.likeCount >= 100)
 );
 
-export const getSimilarSkills = createSelector(
-  [getSkills, (_, user: IUserPublic) => user],
-  (skills, user) => {
+export const getSimilarSkills = (userId: string) =>
+  createSelector(getSkills, (skills) => {
+    const user = skills.find((skill) => skill.id === userId);
     if (!user?.can?.subcategory) return [];
 
     return skills.filter(
       (skill) =>
         skill.can?.subcategory === user.can.subcategory && skill.id !== user.id
     );
-  }
-);
+  });
 
 export const getSearchResults = createSelector(
   [getSkills, getSearchQuery],
