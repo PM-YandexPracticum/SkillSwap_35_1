@@ -6,7 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 import { mockGetSkills } from '../../../../api/mockApi';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { IUserPublic } from "src/entities/user/model/types/types";
+import type { IUserPublic } from 'src/entities/user/model/types/types';
 import type { RootState } from '../../../../app/providers/store/store';
 import type { IFilters } from '../../../../shared/types/IFilters';
 
@@ -157,6 +157,18 @@ export const getSimilarSkills = createSelector(
     return skills.filter(
       (skill) =>
         skill.can?.subcategory === user.can.subcategory && skill.id !== user.id
+    );
+  }
+);
+
+export const getSearchResults = createSelector(
+  [getSkills, getSearchQuery],
+  (skills, searchQuery) => {
+    if (!searchQuery) return skills;
+
+    const lowerQuery = searchQuery.toLowerCase();
+    return skills.filter((skill) =>
+      skill.can?.title?.toLowerCase().includes(lowerQuery)
     );
   }
 );
