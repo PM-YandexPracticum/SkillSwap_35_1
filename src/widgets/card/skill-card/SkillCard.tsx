@@ -20,8 +20,7 @@ export const SkillCard = (props: SkillCardProps) => {
     userSkillName,
     userPhotoUrl,
     userAbout,
-    skillsToLearn,
-    onLikeClick,
+    skillsToLearn
   } = props;
 
   const [liked, setLiked] = useState<boolean>(false);
@@ -45,7 +44,6 @@ export const SkillCard = (props: SkillCardProps) => {
             <LikeButton
               onClick={() => {
                 setLiked((prev) => !prev);
-                onLikeClick?.();
               }}
               liked={liked}
             />
@@ -71,38 +69,42 @@ export const SkillCard = (props: SkillCardProps) => {
             Хочет научиться:
           </Text>
           <div className={styles.skills_wrapper}>
-            {skillsToLearn.length > 0 && (
-              <SkillTag
-                name={skillsToLearn[0].subcategory}
-                category={skillsToLearn[0].category}
-              />
-            )}
-            {skillsToLearn.length > 1 && (
-              <SkillTag
-                name={skillsToLearn[1].subcategory}
-                category={skillsToLearn[1].category}
-              />
-            )}
-            {skillsToLearn.length > 2 && userAbout ? (
-              skillsToLearn
-                .slice(2)
-                .map((skill, index) => (
-                  <SkillTag
-                    key={index}
-                    name={skill.subcategory}
-                    category={skill.category}
-                  />
-                ))
+            {userAbout ? (
+              skillsToLearn.map((skill, index) => (
+                <SkillTag
+                  key={index}
+                  name={skill.subcategory}
+                  category={skill.category}
+                />
+              ))
             ) : (
-              <SkillTag
-                name={`+${skillsToLearn.length - 2}`}
-                category='other'
-              />
+              <>
+                {skillsToLearn.length > 0 && (
+                  <SkillTag
+                    name={skillsToLearn[0].subcategory}
+                    category={skillsToLearn[0].category}
+                  />
+                )}
+                {skillsToLearn.length > 1 && (
+                  <SkillTag
+                    name={skillsToLearn[1].subcategory}
+                    category={skillsToLearn[1].category}
+                  />
+                )}
+                {skillsToLearn.length > 2 && (
+                  <SkillTag
+                    name={`+${skillsToLearn.length - 2}`}
+                    category='other'
+                  />
+                )}
+              </>
             )}
           </div>
         </div>
       </div>
-      {!userAbout && <Button onClick={() => navigate(`/skills/${id}`)}>Подробнее</Button>}
+      {!userAbout && (
+        <Button onClick={() => navigate(`/skills/${id}`)}>Подробнее</Button>
+      )}
     </div>
   );
 };

@@ -1,8 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SkillCard } from './SkillCard';
+import { MemoryRouter } from 'react-router-dom';
 
 const meta: Meta<typeof SkillCard> = {
   component: SkillCard,
+  decorators: [
+    (Story) => (
+      <MemoryRouter>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
   render: ({ ...args }) => {
     const styles = {
       paddingTop: '50px',
@@ -15,8 +23,6 @@ const meta: Meta<typeof SkillCard> = {
       <div style={styles}>
         <SkillCard
           {...args}
-          onLikeClick={() => alert('Like clicked')}
-          onDetailsClick={() => alert('Details clicked')}
         />
       </div>
     );

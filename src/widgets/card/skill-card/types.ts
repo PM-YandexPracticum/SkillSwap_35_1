@@ -11,5 +11,4 @@ export type SkillCardProps = {
   userPhotoUrl?: string;
   userAbout?: string;
   skillsToLearn: IDesiredSkill[];
-  onLikeClick?: () => void;
 };
