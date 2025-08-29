@@ -32,8 +32,10 @@
   }
 
   &:disabled {
-    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--tertiary-color-dark);
     opacity: 0.5;
+    transform: none;
   }
 }
 
