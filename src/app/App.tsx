@@ -5,6 +5,7 @@ import { SearchPage } from '../pages/search-page';
 import { LatestSkills } from '../pages/latest-skills';
 import { PopularSkills } from '../pages/popular-skills';
 import { FilterPage } from '../pages/filter-page';
+import { ProfilePage } from '../pages/profile/ProfilePage';
 import { AppFooter } from '../shared/ui/app-footer';
 import { AppHeader } from '../widgets/app-header';
 import { FilterLayout } from '../shared/layouts/filter-layout';
@@ -33,6 +34,7 @@ const App = () => {
             <Route path='/latest' element={<LatestSkills />} />
             <Route path='/filter' element={<FilterPage />} />
           </Route>
+          <Route path='/profile' element={<ProfilePage />}></Route>
         </Routes>
         <SearchWatcher />
         <FilterWatcher />

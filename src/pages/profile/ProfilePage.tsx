@@ -15,31 +15,31 @@ export const ProfilePage = () => {
           <li >
             <NavLink to={'/temp'} className={({ isActive }) => `${styles.link} ${isActive ? styles.link_active : ''}`}>
               <IconRequest></IconRequest>
-              <Text as={'div'} size='main'>Заявки</Text>
+              <Text tag={'div'} size='main'>Заявки</Text>
             </NavLink>
           </li>
           <li>
             <NavLink to={'/temp'} className={({ isActive }) => `${styles.link} ${isActive ? styles.link_active : ''}`}>
               <IconMessage></IconMessage>
-              <Text as={'div'} size='main'>Мои обмены</Text>
+              <Text tag={'div'} size='main'>Мои обмены</Text>
             </NavLink>
           </li>
           <li>
             <NavLink to={'/temp'} className={({ isActive }) => `${styles.link} ${isActive ? styles.link_active : ''}`}>
               <IconLike></IconLike>
-              <Text as={'div'} size='main'>Избранное</Text>
+              <Text tag={'div'} size='main'>Избранное</Text>
             </NavLink>
           </li>
           <li>
             <NavLink to={'/temp'} className={({ isActive }) => `${styles.link} ${isActive ? styles.link_active : ''}`}>
               <IconIdea></IconIdea>
-              <Text as={'div'} size='main'>Мои навыки</Text>
+              <Text tag={'div'} size='main'>Мои навыки</Text>
             </NavLink>
           </li>
           <li>
             <NavLink to={'/temp'} className={({ isActive }) => `${styles.link} ${isActive ? styles.link_active : ''}`}>
               <IconUser></IconUser>
-              <Text as={'div'} size='main'>Личные данные</Text>
+              <Text tag={'div'} size='main'>Личные данные</Text>
             </NavLink>
           </li>
         </ul>
