@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
+  position: relative;
 
   &.size-small {
     width: 436px;
@@ -19,12 +20,19 @@
     width: 648px;
   }
 
+  &.size-full {
+    width: 100%;
+  }
+
   & .inputField {
     width: 100%;
     padding: 13px 54px 12px 20px;
     font-size: var(--font-size-main-text);
     font-family: var(--font-family-main);
-    border: 1px solid var(--tertiary-color-dark);
+    border-left: 1px solid var(--tertiary-color-dark);
+    border-right: 1px solid var(--tertiary-color-dark);
+    border-top: 1px solid var(--tertiary-color-dark);
+    border-bottom: 1px solid var(--tertiary-color-dark);
     border-radius: var(--main-border-radius);
     outline: none;
 
@@ -39,7 +47,8 @@
   }
 
   & .message {
-    margin-top: 2px;
+    position: absolute;
+    top: 100%;
     color: var(--tertiary-color-dark);
     font-weight: 400;
     font-size: var(--font-size-details);
