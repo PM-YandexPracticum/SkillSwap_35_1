@@ -4,6 +4,7 @@ import Avatar from '@ui/avatar/Avatar';
 import { SkillTag } from '@ui/skillTag/skillTag';
 import { Text } from '@ui/text/Text';
 import Button from '@ui/button/Button';
+import Clock from '@icons/ui/clock.svg?react';
 import { LikeButton } from '@ui/likeButton';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -124,7 +125,7 @@ export const SkillCard = (props: SkillCardProps) => {
         (!isRequestSent ? (
           <Button onClick={() => navigate(`/skills/${id}`)}>Подробнее</Button>
         ) : (
-          <Button variant='secondary'>Обмен предложен</Button>
+          <Button variant='secondary'><Clock className={styles.button_icon}/>Обмен предложен</Button>
         ))}
     </div>
   );
