@@ -17,6 +17,7 @@ export const SkillDetails = (props: SkillDetailsProps) => {
     subTitle,
     title,
     isLiked = false,
+    isLikeActive = false,
     variant,
     onExchangeClick,
     onLikeClick,
@@ -32,7 +33,7 @@ export const SkillDetails = (props: SkillDetailsProps) => {
     >
       {variant !== 'can' && (
         <div className={styles.actions}>
-          <LikeButton liked={isLiked} onClick={onLikeClick} />
+          <LikeButton liked={isLiked} onClick={onLikeClick} isActive={isLikeActive} />
           <IconShare onClick={onShareClick} />
           <IconMore onClick={onMoreClick} />
         </div>
