@@ -4,7 +4,7 @@
     "name": "Эля",
     "city": "Москва",
     "dateOfBirth": "02.03.1997",
-    "image": "./photos/user9.jpg",
+    "image": "https://i.ibb.co/N67QXmz3/user9.jpg",
     "gender": "Женский",
     "about": "Люблю прогулки и домашних животных.",
     "email": "elya@test.ru",
