@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import OptionItem from '../optionItem/optionItem';
 import type { DropdownListProps } from './types';
-import styles from '../dropDown.module.scss';
+import styles from './dropdownList.module.scss';
 
 const DropdownList = React.memo(
   ({

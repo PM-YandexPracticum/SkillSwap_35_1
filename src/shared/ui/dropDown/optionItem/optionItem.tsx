@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { Checkbox } from '@ui/checkbox/checkbox';
 import type { OptionItemProps } from './types';
-import styles from '../dropDown.module.scss';
+import styles from './optionItem.module.scss';
 
 const OptionItem = React.memo(
   ({
@@ -32,7 +32,12 @@ const OptionItem = React.memo(
       <div
         role='option'
         tabIndex={0}
-        className={`${styles.option} ${isSelected ? styles.selected : ''} ${isHighlighted ? styles.highlighted : ''}`}
+        className={`
+          ${styles.option} 
+          ${isSelected ? styles.selected : ''} 
+          ${isHighlighted ? styles.highlighted : ''} 
+          ${!multiple ? styles.single : ''}
+        `}
         aria-selected={isSelected}
         onClick={handleClick}
         onKeyDown={handleKeyDown}

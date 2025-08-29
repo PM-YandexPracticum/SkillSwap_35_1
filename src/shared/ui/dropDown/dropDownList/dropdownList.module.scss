@@ -1,0 +1,19 @@
+.options {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0;
+  max-height: 300px;
+  overflow-y: auto;
+  cursor: pointer;
+  border-left: 1px solid var(--tertiary-color-dark);
+  border-right: 1px solid var(--tertiary-color-dark);
+  border-bottom: 1px solid var(--tertiary-color-dark);
+  border-top: none;
+  border-radius: 0 0 var(--main-border-radius) var(--main-border-radius);
+  background-color: var(--secondary-color);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 53;
+}

@@ -17,9 +17,9 @@ export interface Option {
 export interface DropdownProps {
   options: Option[];
   value: string | string[];
-  multiple?: boolean; // мультивыбор
-  label?: string; // название поля сверху
-  placeholder?: string; // текст внутри поля, когда ничего не выбрано
-  error?: string; // текст ошибки
-  onChange: (val: string | string[]) => void; // обработчик изменения
+  multiple?: boolean;
+  label?: string;
+  placeholder?: string;
+  error?: string;
+  onChange: (val: string | string[]) => void;
 }

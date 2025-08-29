@@ -1,53 +1,11 @@
 .container {
   display: flex;
   flex-direction: column;
-  margin-top: 186px;
-  margin-left: 20px;
-  width: 436px;
+  width: 100%;
+  position: relative;
 
   .selectLabel {
     margin-bottom: 7px;
-  }
-
-  .options {
-    display: flex;
-    flex-direction: column;
-    padding: 6px 0;
-    max-height: 300px;
-    overflow-y: auto;
-    cursor: pointer;
-    border-left: 1px solid var(--tertiary-color-dark);
-    border-right: 1px solid var(--tertiary-color-dark);
-    border-bottom: 1px solid var(--tertiary-color-dark);
-    border-top: none;
-    border-radius: 0 0 var(--main-border-radius) var(--main-border-radius);
-    background-color: #FFFFFF; 
-
-    .option {
-      display: flex;
-      align-items: center;
-      padding: 6px 11px;
-
-      &:hover {
-        background-color: #E4E8DF;
-      }
-
-      &.selected {
-        color: #508826;
-      }
-
-      &.highlighted {
-        background-color: #E4E8DF;
-      }
-    }
-  }
-
-  &.single {
-    .options {
-      .option {
-        padding: 9px 18px;
-      }
-    }
   }
   
   .iconButton {

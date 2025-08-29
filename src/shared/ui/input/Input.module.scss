@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
+  position: relative;
 
   &.size-small {
     width: 436px;
@@ -17,6 +18,10 @@
 
   &.size-xlarge {
     width: 648px;
+  }
+
+  &.size-full {
+    width: 100%;
   }
 
   & .inputField {
@@ -42,7 +47,8 @@
   }
 
   & .message {
-    margin-top: 2px;
+    position: absolute;
+    top: 100%;
     color: var(--tertiary-color-dark);
     font-weight: 400;
     font-size: var(--font-size-details);

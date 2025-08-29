@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { type Option } from '@ui/dropDown/types';
+import { type Option } from '@ui/dropdown/types';
 
 interface UseDropdownProps {
   value: string | string[];
@@ -9,7 +9,7 @@ interface UseDropdownProps {
   onChange: (val: string | string[]) => void;
 }
 
-// управления логикой дропдауна
+// управление логикой дропдауна
 const useDropdown = ({
   value,
   multiple = false,
@@ -20,15 +20,12 @@ const useDropdown = ({
   const [search, setSearch] = useState('');
   const [active, setActive] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
-  const [internalValues, setInternalValues] = useState<string[]>(
-    Array.isArray(value) ? value : value ? [value] : []
-  );
 
-  // Синхронизация с внешним value
-  useEffect(() => {
-    const newValues = Array.isArray(value) ? value : value ? [value] : [];
-    setInternalValues(newValues);
-  }, [value]);
+  // Нормализация value в массив выбранных значений
+  const selectedValues = useMemo(
+    () => (Array.isArray(value) ? value : value ? [value] : []),
+    [value]
+  );
 
   // Фильтрация опций по поиску
   const filteredOptions = useMemo(() => {
@@ -42,21 +39,18 @@ const useDropdown = ({
   const setOption = useCallback(
     (val: string) => {
       if (multiple) {
-        setInternalValues((prev) => {
-          const next = prev.includes(val)
-            ? prev.filter((v) => v !== val)
-            : [...prev, val];
-          onChange(next);
-          return next;
-        });
+        const next = selectedValues.includes(val)
+          ? selectedValues.filter((v) => v !== val)
+          : [...selectedValues, val];
+        onChange(next);
       } else {
-        setInternalValues([val]);
         onChange(val);
         setActive(false);
         setSearch('');
+        setHighlightedIndex(null);
       }
     },
-    [multiple, onChange]
+    [multiple, onChange, selectedValues]
   );
 
   // Очистка поиска
@@ -90,19 +84,25 @@ const useDropdown = ({
     if (!active) setHighlightedIndex(null);
   }, [active]);
 
-  // Сброс выделения при изменении фильтрованных опций
+  // Корректировка индекса выделения при изменении списка опций
   useEffect(() => {
-    setHighlightedIndex(null);
-  }, [filteredOptions]);
+    if (highlightedIndex === null) {
+      if (filteredOptions.length > 0) setHighlightedIndex(0);
+      return;
+    }
 
-  // Возвращаемые значения
+    if (highlightedIndex >= filteredOptions.length) {
+      setHighlightedIndex(filteredOptions.length - 1);
+    }
+  }, [filteredOptions, highlightedIndex]);
+
   return {
     search,
     setSearch,
     active,
     setActive,
     highlightedIndex,
-    selectedValues: internalValues,
+    selectedValues,
     filteredOptions,
     setOption,
     clearSearch,
