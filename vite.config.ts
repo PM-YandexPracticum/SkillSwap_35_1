@@ -51,6 +51,8 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/app/components'),
       '@lib': path.resolve(__dirname, './src/shared/lib'),
       '@shared-types': path.resolve(__dirname, './src/shared/types'),
+      '@widgets': path.resolve(__dirname, './src/widgets'),
+      '@entities': path.resolve(__dirname, './src/entities'),
     }
   }
 });
