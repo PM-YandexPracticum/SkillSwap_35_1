@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { SkillCard } from '@widgets/card/skill-card';
 import { CardsSlider } from '@widgets/card/cards-slider';
 import { SkillDetails } from '@entities/skill/ui/skill-details';
-import { getSkillById, getSkills, getSimilarSkills } from '@entities/skill/model/skills-slice/skillsSlice';
+import { getSkillById, getSimilarSkills } from '@entities/skill/model/skills-slice/skillsSlice';
 import type { IUser, IUserPublic } from '@entities/user/model/types/types';
 import { getUserData, toggleFavorites } from '@entities/user/model/user-slice/userSliсe';
 
@@ -15,7 +15,7 @@ export const SkillPage = () => {
   const dispatch = useDispatch();
 
   const skill: IUserPublic | undefined = useSelector(getSkillById(id || ''));
-  const similarSkills = useSelector(getSkills); // #TODO: Заменить на getSimilarSkills
+  const similarSkills = useSelector(getSimilarSkills(id || ''));
   const user: IUser | null = useSelector(getUserData);
 
   if (!skill) {
