@@ -4,9 +4,9 @@ export interface IRegisterData {
   email: string;
   password: string;
   name: string;
-  about: string;
+  about?: string;
   city: string;
-  gender: 'Мужской' | 'Женский';
+  gender: 'Мужской' | 'Женский' | undefined;
   dateOfBirth: string;
   want: IDesiredSkill[];
   can: (Omit<ISkill, 'images'> & { images?: File[] });

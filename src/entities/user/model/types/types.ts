@@ -8,8 +8,8 @@ export interface IUser {
   email: string;
   password: string;
   name: string;
-  about: string;
-  gender: 'Женский' | 'Мужской';
+  about?: string;
+  gender: 'Женский' | 'Мужской' | undefined;
   dateOfBirth: string;
   city: string;
   image?: string;
