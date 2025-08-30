@@ -144,7 +144,7 @@ const ImageInput: React.FC<ImageInputProps> = ({
                   </Text>
                 </div>
                 <Button
-                  onClick={(e: Event) => {
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                     e.stopPropagation();
                     removeFile(index);
                   }}
