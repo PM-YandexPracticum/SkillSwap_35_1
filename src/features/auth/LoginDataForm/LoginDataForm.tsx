@@ -8,14 +8,14 @@ import GoogleIcon from '@icons/ui/google.svg?react';
 import EyeIcon from '@icons/ui/eye.svg?react';
 import EyeSlashIcon from '@icons/ui/eye-slash.svg?react';
 import { useFormContext, Controller } from 'react-hook-form';
-import styles from './StepOne.module.scss';
-import type { TFormData } from '../../RegistrationForm';
+import styles from './LoginDataForm.module.scss';
+import type { TFormData } from '../registration/form/RegistrationForm';
 
-interface StepOneProps {
+interface LoginDataFormProps {
   nextStep: () => void;
 }
 
-const StepOne = ({ nextStep }: StepOneProps) => {
+const LoginDataForm = ({ nextStep }: LoginDataFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const { control, formState, trigger } = useFormContext<TFormData>();
   const { errors } = formState;
@@ -130,4 +130,4 @@ const StepOne = ({ nextStep }: StepOneProps) => {
   );
 };
 
-export default StepOne;
+export default LoginDataForm;

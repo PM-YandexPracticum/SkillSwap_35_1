@@ -5,15 +5,15 @@ import Button from '@ui/button/Button';
 import { Text } from '@ui/text';
 import skillCategories from '@lib/constants/skillCategories';
 import { useFormContext, Controller } from 'react-hook-form';
-import type { TFormData } from '../../RegistrationForm';
-import styles from './StepThree.module.scss';
+import type { TFormData } from '../registration/form/RegistrationForm';
+import styles from './SkillDataForm.module.scss';
 
-interface StepThreeProps {
+interface SkillDataFormProps {
   prevStep: () => void;
   onReady: () => void; // для последующего открытия модалки
 }
 
-const StepThree = ({ prevStep, onReady }: StepThreeProps) => {
+const SkillDataForm = ({ prevStep, onReady }: SkillDataFormProps) => {
   const { control, watch, setValue, trigger } = useFormContext<TFormData>();
   const selectedCategory = watch('can.category');
 
@@ -175,4 +175,4 @@ const StepThree = ({ prevStep, onReady }: StepThreeProps) => {
   );
 };
 
-export default StepThree;
+export default SkillDataForm;

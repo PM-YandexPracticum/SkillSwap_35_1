@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import type {
+  ISkill,
+  IDesiredSkill
+} from 'src/entities/skill/model/types/types';
 import registrationSchema from './registrationSchema';
-import { type IDesiredSkill } from "src/entities/skill/model/types/types";
-import { type ISkill } from "src/entities/skill/model/types/types";
 import styles from './RegistrationForm.module.scss';
-import StepOne from './steps/stepOne/StepOne';
-import StepTwo from './steps/stepTwo/StepTwo';
-import StepThree from './steps/stepThree/StepThree';
+import LoginDataForm from '../../LoginDataForm/LoginDataForm';
+import UserDataForm from '../../UserDataForm/UserDataForm';
+import SkillDataForm from '../../SkillDataForm/SkillDataForm';
 import RegistrationInfo from '../info/RegistrationInfo';
 
 export interface TFormData {
@@ -15,11 +17,11 @@ export interface TFormData {
   password: string;
   name: string;
   city: string;
-  gender: 'male' | 'female' | '';
+  gender: 'Мужской' | 'Женский' | '';
   dateOfBirth: string;
   want: IDesiredSkill[];
   can: ISkill;
-  image?: string;
+  image?: File;
 }
 
 const RegistrationForm = () => {
@@ -38,7 +40,7 @@ const RegistrationForm = () => {
       city: '',
       gender: '',
       dateOfBirth: '',
-      image: '',
+      image: undefined,
       can: {
         category: '',
         subcategory: '',
@@ -46,7 +48,7 @@ const RegistrationForm = () => {
         description: '',
         images: []
       },
-      want: [{ category: '', subcategory: '' }]
+      want: []
     }
   });
 
@@ -61,10 +63,14 @@ const RegistrationForm = () => {
           className={`${styles.container} ${styles[`step-${step}`]}`}
           onSubmit={methods.handleSubmit(onSubmit)}
         >
-          {step === 1 && <StepOne nextStep={nextStep} />}
-          {step === 2 && <StepTwo nextStep={nextStep} prevStep={prevStep} />}
+          {step === 1 && <LoginDataForm nextStep={nextStep} />}
+          {step === 2 && (
+            <UserDataForm nextStep={nextStep} prevStep={prevStep} />
+          )}
           {/* ЗАГЛУШКА по макету сабмит будет в модальном окне, дополнить */}
-          {step === 3 && <StepThree prevStep={prevStep} onReady={() => {}} />}
+          {step === 3 && (
+            <SkillDataForm prevStep={prevStep} onReady={() => {}} />
+          )}
           {/* ЗАГЛУШКА тут будет шаг 4 с открытием модалки со SkillDetails can variant */}
         </form>
       </FormProvider>

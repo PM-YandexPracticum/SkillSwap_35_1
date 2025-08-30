@@ -25,12 +25,25 @@ const registrationSchema: yup.ObjectSchema<TFormData> = yup.object({
     .required('Введите пароль'),
   name: yup.string().required('Введите ваше имя'),
   city: yup.string().required('Укажите город'),
-  gender: yup.string().oneOf(['male', 'female'], 'Выберете пол').required(),
+  gender: yup
+    .string()
+    .oneOf(['Женский', 'Мужской', ''], 'Выберете пол')
+    .required('Выберите пол'),
   dateOfBirth: yup
     .string()
     .required('Введите дату рождения')
     .matches(/^\d{2}\.\d{2}\.\d{4}$/, 'Формат: дд.мм.гггг'),
-  image: yup.string().defined().optional(),
+  image: yup
+    .mixed<File>()
+    .optional()
+    .test(
+      'fileType',
+      'Неверный формат файла',
+      (value) =>
+        !value ||
+        (value instanceof File &&
+          ['image/png', 'image/jpeg', 'image/jpg'].includes(value.type))
+    ),
 
   can: yup
     .object({
