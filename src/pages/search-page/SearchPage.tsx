@@ -2,12 +2,12 @@ import { InfiniteGrid } from '@ui/infinite-grid';
 import styles from '../../shared/styles/skill-list/skillList.module.scss';
 import { useSelector } from '../../app/providers/store/store';
 import { getSearchResults } from '../../entities/skill/model/skills-slice/skillsSlice';
-import { fetchMoreSkills } from '../../utils/fetchMoreSkills';
+import { useFetchMoreSkills } from '../../shared/hooks/useFetchMoreSkills';
 
 export const SearchPage = () => {
   const filteredSkills = useSelector(getSearchResults);
 
-  const { hasMore, fetchMoreData } = fetchMoreSkills();
+  const { hasMore, fetchMoreData } = useFetchMoreSkills();
 
   return (
     <div className={styles.main}>

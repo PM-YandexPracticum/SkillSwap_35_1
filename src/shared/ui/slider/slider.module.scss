@@ -16,6 +16,10 @@
     inline-size: 100%;
 }
 
+.slider__loader {
+    position: relative;
+}
+
 .slider__navigation {
     display: flex;
     justify-content: center;

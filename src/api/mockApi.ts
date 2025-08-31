@@ -86,7 +86,7 @@ const getCurrentUser = (): IUser => {
 // Получение карточек
 
 export const mockGetSkills = async (): Promise<IUserPublic[]> => {
-  await delay(300);
+  await delay(500);
   const response = await fetch('/db/users.json');
   const data: IUserPublic[] = await response.json();
   return multiplyArrayElements(data);
