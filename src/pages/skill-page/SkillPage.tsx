@@ -81,7 +81,7 @@ export const SkillPage = () => {
           onLikeClick={() => dispatch(toggleFavorites(skill.id))}
         />
       </div>
-      <CardsSlider title='Похожие предложения' skillsList={similarSkills ?? []} />
+      <CardsSlider title='Похожие предложения' skillsList={similarSkills ?? []} loading={similarSkills === null} />
     </div>
   );
 };

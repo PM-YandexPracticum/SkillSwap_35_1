@@ -1,5 +1,11 @@
 .slider__wrapper {
     position: relative;
+
+    &_empty {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .slider {

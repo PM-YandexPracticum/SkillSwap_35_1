@@ -7,16 +7,29 @@ import 'swiper/css';
 import ChevronRight from '@icons/ui/chevron-right.svg?react';
 import type { SliderProps } from './types';
 import styles from './slider.module.scss';
+import { Text } from '@ui/text';
+import { ButtonPreloader } from '@ui/button-preloader';
 
 export const Slider = <T,>({
   data = [],
   renderItem,
   getItemId,
+  loading = false
 }: SliderProps<T>): JSX.Element => {
+  if (loading) {
+    return (
+      <div className={`${styles.slider__wrapper_empty}`}>
+        <ButtonPreloader />
+      </div>
+    );
+  }
+
   if (!data || data.length === 0) {
     return (
-      <div className={`${styles.slider__wrapper}`}>
-        <div>No items to display</div>
+      <div className={`${styles.slider__wrapper_empty}`}>
+        <Text tag='div' size='main'>
+          Здесь пока ничего нет
+        </Text>
       </div>
     );
   }
