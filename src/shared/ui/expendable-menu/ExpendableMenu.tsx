@@ -28,7 +28,7 @@ const ExpendableMenu = ({ children, maxCount = 3, collapsedLabel }: ExpendableMe
           className={styles.toggle}
           onClick={() => setExpanded((p) => !p)}
         >
-          <Text as="span" size="main" color="primaryColor">
+          <Text tag='span' size='main' color='mainColorText'>
             {expanded ? "Свернуть" : collapsedLabel}
           </Text>
           <ChevronDown
