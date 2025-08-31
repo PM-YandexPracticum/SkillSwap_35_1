@@ -8,12 +8,11 @@ import { SkillDetails } from '@entities/skill/ui/skill-details';
 import { Preloader } from '@ui/preloader';
 import { Text } from '@ui/text';
 import {
-  getSkillById,
+  getPreview,
   fetchSkillById,
   getSimilarSkills,
   loadSimilarSkills,
   getLoading,
-  getHasMore
 } from '@entities/skill/model/skills-slice/skillsSlice';
 import type { IUser, IUserPublic } from '@entities/user/model/types/types';
 import {
@@ -25,20 +24,18 @@ export const SkillPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const skill: IUserPublic | undefined = useSelector(getSkillById(id || ''));
+  const skill: IUserPublic | null = useSelector(getPreview);
   const loading = useSelector(getLoading);
-  const similarSkills = useSelector(getSimilarSkills(id || ''));
-  const hasMore = useSelector(getHasMore);
+  const similarSkills = useSelector(getSimilarSkills);
   const user: IUser | null = useSelector(getUserData);
 
   useEffect(() => {
-    if (id && !skill) {
-      dispatch(fetchSkillById(id));
-    };
-    if (id && skill && hasMore) {
-      dispatch(loadSimilarSkills(id));
-    }
-  }, [id, skill, dispatch, hasMore]);
+  if (!id) return;
+
+  dispatch(fetchSkillById(id)).then(() => {
+    dispatch(loadSimilarSkills(id));
+  });
+}, [id, dispatch]);
 
 
   useEffect(() => {
@@ -84,7 +81,7 @@ export const SkillPage = () => {
           onLikeClick={() => dispatch(toggleFavorites(skill.id))}
         />
       </div>
-      <CardsSlider title='Похожие предложения' skillsList={similarSkills} />
+      <CardsSlider title='Похожие предложения' skillsList={similarSkills ?? []} />
     </div>
   );
 };
