@@ -12,7 +12,17 @@
   transition: transform 0.1s ease, color 0.2s ease;
   color: var(--main-color-text);
 
-  &:hover {
+  &.liked {
+    color: var(--accent-color);
+
+    &:hover {
+      color: var(--accent-color-light);
+    }
+  }
+
+   /* stylelint-disable-next-line no-duplicate-selectors */
+  
+   &:hover {
     color: var(--tertiary-color-dark);
     transform: scale(1.1);
   }
@@ -22,8 +32,10 @@
   }
 
   &:disabled {
-    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--tertiary-color-dark);
     opacity: 0.5;
+    transform: none;
   }
 }
 

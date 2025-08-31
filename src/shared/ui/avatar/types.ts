@@ -1,4 +1,4 @@
-import type { FC, SVGProps } from 'react';
+import type { JSX, SVGProps } from 'react';
 
 /**
  * Пропсы для компонента Avatar
@@ -13,6 +13,6 @@ export interface AvatarProps {
   src?: string;
   alt?: string;
   size?: 'small' | 'medium' | 'large';
-  buttonIcon?: FC<SVGProps<SVGSVGElement>>;
+  buttonIcon?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
   onButtonClick?: () => void;
 }

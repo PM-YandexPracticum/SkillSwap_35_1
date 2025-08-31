@@ -3,13 +3,13 @@ import DefaultAvatar from '@icons/ui/user-circle.svg?react';
 import { type AvatarProps } from './types';
 import styles from './Avatar.module.scss';
 
-const Avatar: React.FC<AvatarProps> = ({
+const Avatar = ({
   src,
   alt = 'Аватар пользователя',
   size = 'medium',
   buttonIcon,
   onButtonClick
-}) => {
+}: AvatarProps) => {
   const ButtonIcon = buttonIcon;
 
   return (

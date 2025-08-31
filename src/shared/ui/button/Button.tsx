@@ -1,24 +1,23 @@
-import React from 'react';
 import { type ButtonProps } from './types';
 import styles from './Button.module.scss';
 
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   children,
   variant = 'primary',
-  onClick,
   disabled = false,
   htmlType,
-  style
-}) => {
+  style,
+  ...rest
+}: ButtonProps) => {
   const className = `${styles.button} ${styles[variant]} ${disabled ? styles.disabled : ''}`;
 
   return (
     <button
       type={htmlType === 'submit' ? 'submit' : 'button'}
-      onClick={onClick}
       disabled={disabled}
       className={className}
       style={style}
+      {...rest}
     >
       {children}
     </button>

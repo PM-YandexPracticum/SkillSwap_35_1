@@ -2,7 +2,7 @@ import type { ElementType, ReactNode } from 'react';
 
 export type TextProps = {
   children: ReactNode;
-  as: ElementType;
+  tag: ElementType;
   size: 'main' | 'details';
   color?:
     | 'mainColorText'

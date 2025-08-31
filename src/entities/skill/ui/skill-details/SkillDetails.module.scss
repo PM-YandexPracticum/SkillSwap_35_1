@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: var(--main-border-radius);
+  padding: 32px 52px 40px;
+  background-color: var(--secondary-color);
+}
+
+p, h2 {
+  margin: 0;
+}
+
+.actions {
+  height: 24px;
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.main {
+  display: flex;
+  gap: 77px;
+  height: 324px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 399px;
+}
+
+.text {
+  max-height: 160px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.subtitle {
+  margin-top: 4px;
+}
+
+.modal {
+  .main {
+    gap: 44px;
+  }
+
+  .content {
+    width: 420px;
+  }
+
+  .buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    margin-top: auto;
+  }
+}

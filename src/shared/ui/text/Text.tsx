@@ -3,7 +3,7 @@ import styles from './text.module.scss';
 
 export const Text = ({
   children,
-  as: Tag = 'div',
+  tag: Tag = 'div',
   size = 'main',
   color = 'mainColorText',
   family = 'main',

@@ -10,7 +10,7 @@ type Story = StoryObj<typeof Text>;
 
 export const SelectStoryText: Story = {
   argTypes: {
-    as: {
+    tag: {
       options: ['div', 'p', 'span'],
       control: { type: 'select' }
     },

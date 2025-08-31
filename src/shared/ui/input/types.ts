@@ -13,19 +13,24 @@
  * onChange — обработчик изменения значения инпута
  * onFocus — обработчик фокуса на инпуте
  * style — дополнительные inline-стили
+ * multiline — если true, инпут становится многострочным (textarea)
+ * rows — количество строк для многострочного инпута
  */
 
 export interface InputProps {
   value: string;
   type?: 'text' | 'email' | 'password' | 'search';
-  inputSize?: 'small' | 'medium' | 'large' | 'xlarge';
+  inputSize?: 'small' | 'medium' | 'large' | 'xlarge' | 'full';
   label?: string;
   placeholder?: string;
   icon?: React.ReactNode;
   onIconClick?: () => void;
   status?: 'success' | 'error';
   message?: string;
-  onChange?(e: React.ChangeEvent<HTMLInputElement>): void;
-  onFocus?(e: React.FocusEvent<HTMLInputElement>): void;
+  onChange?(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void;
+  onFocus?(e: React.FocusEvent): void;
   style?: React.CSSProperties;
+  multiline?: boolean;
+  rows?: number;
+  onClick?: () => void;
 }

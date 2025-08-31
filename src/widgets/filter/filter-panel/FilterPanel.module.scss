@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  border-radius: var(--main-border-radius);
+  background-color: var(--secondary-color);
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+h3, h4 {
+  margin: 0;
+}
+
+.reset {
+  display: flex;
+  align-items: center;
+  color: var(--accent-color-dark);
+  cursor: pointer;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 32px;
+}

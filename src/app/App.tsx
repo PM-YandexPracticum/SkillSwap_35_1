@@ -1,23 +1,45 @@
 import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { MainPage } from '../pages/main-page';
-import { AppFooter } from '../app/components/app-footer';
-import { AppHeader } from '../app/components/app-header';
-import { useDispatch } from './services/store';
+import { SearchPage } from '../pages/search-page';
+import { LatestSkills } from '../pages/latest-skills';
+import { PopularSkills } from '../pages/popular-skills';
+import { FilterPage } from '../pages/filter-page';
+import { ProfilePage } from '../pages/profile/ProfilePage';
+import { SkillPage } from '../pages/skill-page';
+import { AppFooter } from '../shared/ui/app-footer';
+import { AppHeader } from '../widgets/app-header';
+import { FilterLayout } from '../shared/layouts/filter-layout';
+import { useDispatch } from './providers/store/store';
 import styles from './App.module.scss';
-import { getMockSkills } from './services/slices/skillsSlice';
+import { loadSkills } from '../entities/skill/model/skills-slice/skillsSlice';
+import SearchWatcher from '../features/search/search-watcher/SearchWatcher';
+import FilterWatcher from '../features/filter/filters-watcher/FiltersWatcher';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMockSkills(0));
+    dispatch(loadSkills(0));
   }, [dispatch]);
 
   return (
     <div className={styles.app}>
       <AppHeader />
       <main className={styles.main}>
-        <MainPage />
+        <Routes>
+          <Route element={<FilterLayout />}>
+            <Route path='/' element={<MainPage />} />
+            <Route path='/search' element={<SearchPage />} />
+            <Route path='/popular' element={<PopularSkills />} />
+            <Route path='/latest' element={<LatestSkills />} />
+            <Route path='/filter' element={<FilterPage />} />
+          </Route>
+          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/skills/:id' element={<SkillPage />} />
+        </Routes>
+        <SearchWatcher />
+        <FilterWatcher />
       </main>
       <AppFooter />
     </div>

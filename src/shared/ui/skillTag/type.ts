@@ -1,4 +1,4 @@
-import type { TSkillCategory } from '../../lib/skillCategories';
+import type { TSkillCategory } from '../../lib/constants/skillCategories';
 
 export interface SkillTagProps {
   name: string;

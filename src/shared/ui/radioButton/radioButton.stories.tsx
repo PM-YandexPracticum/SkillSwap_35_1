@@ -30,7 +30,7 @@ export const StandardRadio: Story = {
     id: 'radio-1',
     name: 'radio-group',
     value: 'option1',
-    label: 'Option 1',
+    children: 'Option 1',
     checked: false,
     disabled: false
   }
@@ -51,26 +51,29 @@ export const RadioGroup = () => {
         name='options'
         value='option1'
         checked={selectedValue === 'option1'}
-        label='First Option'
         onChange={handleChange}
-      />
+      >
+        First Option
+      </RadioButton>
       <RadioButton
         id='option2'
         name='options'
         value='option2'
         checked={selectedValue === 'option2'}
-        label='Second Option'
         onChange={handleChange}
-      />
+      >
+        Second Option
+      </RadioButton>
       <RadioButton
         id='option3'
         name='options'
         value='option3'
         checked={selectedValue === 'option3'}
-        label='Third Option (Disabled)'
         disabled
         onChange={handleChange}
-      />
+      >
+        Third Option (Disabled)
+      </RadioButton>
     </div>
   );
 };
@@ -91,36 +94,40 @@ export const AllStates: Story = {
           id='unchecked'
           name='states'
           value='unchecked'
-          label='Unchecked'
           checked={selectedValue === 'unchecked'}
           onChange={handleChange}
-        />
+        >
+          Unchecked
+        </RadioButton>
         <RadioButton
           id='checked'
           name='states'
           value='checked'
-          label='Checked'
           checked={selectedValue === 'checked'}
           onChange={handleChange}
-        />
+        >
+          Checked
+        </RadioButton>
         <RadioButton
           id='disabled-unchecked'
           name='states'
           value='disabled-unchecked'
-          label='Disabled Unchecked'
           checked={selectedValue === 'disabled-unchecked'}
           disabled
           onChange={handleChange}
-        />
+        >
+          Disabled Unchecked
+        </RadioButton>
         <RadioButton
           id='disabled-checked'
           name='states'
           value='disabled-checked'
-          label='Disabled Checked'
           checked={selectedValue === 'disabled-checked'}
           disabled
           onChange={handleChange}
-        />
+        >
+          Disabled Checked
+        </RadioButton>
       </div>
     );
   }

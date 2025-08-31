@@ -1,13 +1,12 @@
-import type { FC } from 'react';
 import type { SkillTagProps } from './type';
 import styles from './skillTag.module.scss';
 
 // eslint-disable-next-line import-x/prefer-default-export
-export const SkillTag: FC<SkillTagProps> = ({
+export const SkillTag = ({
   name,
   category,
   isCountExtra = false
-}) => {
+}: SkillTagProps) => {
   // получение названия класса в зависимости от категории навыка
   const getClassCategory = (): string => {
     switch (category) {

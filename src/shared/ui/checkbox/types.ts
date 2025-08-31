@@ -5,4 +5,7 @@ export type CheckboxProps = {
   onChange?: () => void;
   variant?: 'minus';
   children?: ReactNode;
+  name?: string;
+  value?: string;
+  ariaLabel?: string;
 };

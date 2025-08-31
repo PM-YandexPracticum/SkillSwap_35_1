@@ -1,4 +1,3 @@
-import { type FC } from 'react';
 import * as React from 'react';
 import type { RadioUiProps } from './type';
 import styles from './radioButton.module.scss';
@@ -6,15 +5,15 @@ import IconActive from '../../assets/icons/ui/radiobutton-active.svg?react';
 import IconEmpty from '../../assets/icons/ui/radiobutton-empty.svg?react';
 
 // eslint-disable-next-line import-x/prefer-default-export
-export const RadioButton: FC<RadioUiProps> = ({
+export const RadioButton = ({
   id,
   name,
   value,
   checked,
-  label,
+  children,
   onChange,
   disabled
-}) => {
+}: RadioUiProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
   };
@@ -36,7 +35,7 @@ export const RadioButton: FC<RadioUiProps> = ({
       ) : (
         <IconEmpty className={styles.radio__input__icon} />
       )}
-      <span className={styles.radio__input__label}>{label}</span>
+      <span className={styles.radio__input__label}>{children}</span>
     </label>
   );
 };
