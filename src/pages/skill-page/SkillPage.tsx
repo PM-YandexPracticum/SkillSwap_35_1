@@ -12,7 +12,8 @@ import {
   fetchSkillById,
   getSimilarSkills,
   loadSimilarSkills,
-  getLoading
+  getLoading,
+  getHasMore
 } from '@entities/skill/model/skills-slice/skillsSlice';
 import type { IUser, IUserPublic } from '@entities/user/model/types/types';
 import {
@@ -27,16 +28,17 @@ export const SkillPage = () => {
   const skill: IUserPublic | undefined = useSelector(getSkillById(id || ''));
   const loading = useSelector(getLoading);
   const similarSkills = useSelector(getSimilarSkills(id || ''));
+  const hasMore = useSelector(getHasMore);
   const user: IUser | null = useSelector(getUserData);
 
   useEffect(() => {
     if (id && !skill) {
       dispatch(fetchSkillById(id));
     };
-    if (skill && id) {
+    if (id && skill && hasMore) {
       dispatch(loadSimilarSkills(id));
     }
-  }, [id, skill, dispatch]);
+  }, [id, skill, dispatch, hasMore]);
 
 
   useEffect(() => {
