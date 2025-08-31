@@ -78,7 +78,7 @@ export const MainPage = () => {
     <main className={styles.main}>
       <div className={styles.filterPanel}>
         {/* Главное меню */}
-        <ExpendableMenu title="Фильтры" maxCount={3} buttonText="Все фильтры" collapseText="Свернуть">
+        <ExpendableMenu maxCount={3} collapsedLabel="Всё">
           {['Всё', 'Хочу научиться', 'Могу научить'].map((item) => (
             <RadioButton
               key={item}
@@ -93,7 +93,7 @@ export const MainPage = () => {
         </ExpendableMenu>
 
         {/* Навыки */}
-        <ExpendableMenu title="Навыки" maxCount={5} buttonText="Все категории" collapseText="Свернуть">
+        <ExpendableMenu maxCount={5} collapsedLabel="Все категории">
           {categories.map((cat) => (
             <Checkbox
               key={cat}
@@ -112,7 +112,7 @@ export const MainPage = () => {
         </ExpendableMenu>
 
         {/* Пол автора */}
-        <ExpendableMenu title="Пол автора" maxCount={3} buttonText="Все варианты" collapseText="Свернуть">
+        <ExpendableMenu maxCount={3} collapsedLabel="Не имеет значения">
           {['Не имеет значения', 'Мужской', 'Женский'].map((gender) => (
             <RadioButton
               key={gender}
@@ -127,7 +127,7 @@ export const MainPage = () => {
         </ExpendableMenu>
 
         {/* Города */}
-        <ExpendableMenu title="Город" maxCount={5} buttonText="Все города" collapseText="Свернуть">
+        <ExpendableMenu maxCount={5} collapsedLabel="Все города">
           {citiesList.map((city) => (
             <Checkbox
               key={city}

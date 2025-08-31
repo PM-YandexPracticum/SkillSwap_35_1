@@ -1,10 +1,10 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 export interface ExpendableMenuProps {
-  /** Элементы меню */
-  items: ReactNode[];
-  /** Сколько элементов показывать изначально */
-  visibleCount?: number;
-  /** Подпись кнопки при свернутом меню (например, "Все категории") */
+  /** Любые элементы, которые нужно отрисовать сверху вниз */
+  children: ReactNode | ReactNode[];
+  /** Сколько элементов показывать в свернутом состоянии */
+  maxCount?: number;
+  /** Текст кнопки в свернутом состоянии (например, "Все города") */
   collapsedLabel: string;
 }
