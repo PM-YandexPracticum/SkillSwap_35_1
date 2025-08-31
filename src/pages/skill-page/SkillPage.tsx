@@ -23,7 +23,7 @@ export const SkillPage = () => {
   }
 
   return (
-    <div>
+    <div className={styles.page}>
       <div className={styles.container}>
         <SkillCard 
           id={skill.id}
