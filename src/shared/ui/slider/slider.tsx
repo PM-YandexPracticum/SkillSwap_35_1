@@ -12,7 +12,6 @@ export const Slider = <T,>({
   data = [],
   renderItem,
   getItemId,
-  onReachEnd
 }: SliderProps<T>): JSX.Element => {
   if (!data || data.length === 0) {
     return (
@@ -40,9 +39,6 @@ export const Slider = <T,>({
           nextEl: `.${styles.slider__navigation_next}`
         }}
         virtual
-        onReachEnd={() => {
-          if (onReachEnd) onReachEnd();
-        }}
         a11y={{
           enabled: true,
           prevSlideMessage: 'Previous slide',

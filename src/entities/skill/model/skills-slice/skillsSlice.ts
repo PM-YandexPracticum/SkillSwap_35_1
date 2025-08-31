@@ -4,7 +4,11 @@ import {
   createSlice,
   createAsyncThunk
 } from '@reduxjs/toolkit';
-import { mockGetSkills, mockGetSkillById } from '../../../../api/mockApi';
+import {
+  mockGetSkills,
+  mockGetSkillById,
+  mockGetSimilarSkills
+} from '../../../../api/mockApi';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { IUserPublic } from 'src/entities/user/model/types/types';
 import type { RootState } from '../../../../app/providers/store/store';
@@ -52,14 +56,27 @@ export const loadSkills = createAsyncThunk(
   }
 );
 
-export const fetchSkillById = createAsyncThunk<IUserPublic | null, string, { rejectValue: string }>(
-  'skills/fetchSkillById',
-  async (id, { rejectWithValue }) => {
+export const fetchSkillById = createAsyncThunk<
+  IUserPublic | null,
+  string,
+  { rejectValue: string }
+>('skills/fetchSkillById', async (id, { rejectWithValue }) => {
+  try {
+    const skill = await mockGetSkillById(id);
+    return skill;
+  } catch {
+    return rejectWithValue('Ошибка при загрузке навыка');
+  }
+});
+
+export const loadSimilarSkills = createAsyncThunk(
+  'skills/loadSimilarSkills',
+  async (userId: string, { rejectWithValue }) => {
     try {
-      const skill = await mockGetSkillById(id);
-      return skill;
+      const data = await mockGetSimilarSkills(userId);
+      return data;
     } catch {
-      return rejectWithValue('Ошибка при загрузке навыка');
+      return rejectWithValue('Ошибка при загрузке похожих навыков');
     }
   }
 );
@@ -124,6 +141,22 @@ export const SkillSlice = createSlice({
         }
       )
       .addCase(fetchSkillById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      })
+      .addCase(loadSimilarSkills.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(loadSimilarSkills.fulfilled, (state, action: PayloadAction<IUserPublic[]>) => {
+        state.loading = false;
+        action.payload.forEach(skill => {
+          if (!state.skills.find(s => s.id === skill.id)) {
+            state.skills.push(skill);
+          }
+        });
+      })
+      .addCase(loadSimilarSkills.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       });

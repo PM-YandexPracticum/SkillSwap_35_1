@@ -101,6 +101,15 @@ export const mockGetSkillById = async (id: string): Promise<IUserPublic | null> 
   return skill;
 };
 
+export const mockGetSimilarSkills = async (userId: string): Promise<IUserPublic[]> => {
+  const allSkills = await mockGetSkills();
+  const user = allSkills.find(u => u.id === userId);
+  if (!user?.can?.subcategory) return [];
+  return allSkills.filter(
+    s => s.can?.subcategory === user.can.subcategory && s.id !== user.id
+  );
+};
+
 // Добавление /удаление избранного
 
 export const mockToggleFavorites = async (

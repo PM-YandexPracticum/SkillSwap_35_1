@@ -5,11 +5,8 @@ import { Slider } from '@ui/slider';
 import styles from './CardsSlider.module.scss';
 import type { CardsSliderProps } from './types';
 import { SkillCard } from '../../../widgets/card/skill-card';
-import { useFetchMoreSkills } from '../../../shared/hooks/useFetchMoreSkills';
 
 export const CardsSlider = ({ title, skillsList }: CardsSliderProps) => {
-
-  const { fetchMoreData } = useFetchMoreSkills();
 
   return (
     <div className={styles.section}>
@@ -30,7 +27,6 @@ export const CardsSlider = ({ title, skillsList }: CardsSliderProps) => {
             skillsToLearn={skill.want}
           />
         )}
-        onReachEnd={fetchMoreData}
       />
     </div>
   );

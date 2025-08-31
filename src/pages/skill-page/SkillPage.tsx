@@ -11,6 +11,7 @@ import {
   getSkillById,
   fetchSkillById,
   getSimilarSkills,
+  loadSimilarSkills,
   getLoading
 } from '@entities/skill/model/skills-slice/skillsSlice';
 import type { IUser, IUserPublic } from '@entities/user/model/types/types';
@@ -31,8 +32,12 @@ export const SkillPage = () => {
   useEffect(() => {
     if (id && !skill) {
       dispatch(fetchSkillById(id));
+    };
+    if (skill && id) {
+      dispatch(loadSimilarSkills(id));
     }
   }, [id, skill, dispatch]);
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
