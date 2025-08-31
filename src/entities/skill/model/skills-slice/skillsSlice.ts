@@ -4,7 +4,7 @@ import {
   createSlice,
   createAsyncThunk
 } from '@reduxjs/toolkit';
-import { mockGetSkills } from '../../../../api/mockApi';
+import { mockGetSkills, mockGetSkillById } from '../../../../api/mockApi';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { IUserPublic } from 'src/entities/user/model/types/types';
 import type { RootState } from '../../../../app/providers/store/store';
@@ -52,6 +52,18 @@ export const loadSkills = createAsyncThunk(
   }
 );
 
+export const fetchSkillById = createAsyncThunk<IUserPublic | null, string, { rejectValue: string }>(
+  'skills/fetchSkillById',
+  async (id, { rejectWithValue }) => {
+    try {
+      const skill = await mockGetSkillById(id);
+      return skill;
+    } catch {
+      return rejectWithValue('Ошибка при загрузке навыка');
+    }
+  }
+);
+
 export const SkillSlice = createSlice({
   name: 'skills',
   initialState,
@@ -83,10 +95,35 @@ export const SkillSlice = createSlice({
         state.loading = false;
         state.error = null;
 
-        state.skills = [...state.skills, ...action.payload.skills];
+        const newSkills = action.payload.skills.filter(
+          (s) => !state.skills.find((existing) => existing.id === s.id)
+        );
+        state.skills = [...state.skills, ...newSkills];
         state.hasMore = action.payload.hasMore;
       })
       .addCase(loadSkills.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      })
+      .addCase(fetchSkillById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(
+        fetchSkillById.fulfilled,
+        (state, action: PayloadAction<IUserPublic | null>) => {
+          state.loading = false;
+          if (action.payload) {
+            const exists = state.skills.find(
+              (s) => s.id === action.payload!.id
+            );
+            if (!exists) {
+              state.skills.push(action.payload);
+            }
+          }
+        }
+      )
+      .addCase(fetchSkillById.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       });
@@ -107,6 +144,7 @@ export const getSkills = (state: RootState) => state.skills.skills;
 export const getSearchQuery = (state: RootState) => state.skills.searchQuery;
 export const getFilters = (state: RootState) => state.skills.filters;
 export const getHasMore = (state: RootState) => state.skills.hasMore;
+export const getLoading = (state: RootState) => state.skills.loading;
 
 export const getSkillById = (id: string) =>
   createSelector(getSkills, (skills) =>

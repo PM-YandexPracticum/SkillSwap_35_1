@@ -92,6 +92,15 @@ export const mockGetSkills = async (): Promise<IUserPublic[]> => {
   return multiplyArrayElements(data);
 };
 
+export const mockGetSkillById = async (id: string): Promise<IUserPublic | null> => {
+  await delay(200);
+  const response = await fetch('/db/users.json');
+  const data: IUserPublic[] = await response.json();
+  const expanded = multiplyArrayElements(data);
+  const skill = expanded.find((user) => user.id === id) || null;
+  return skill;
+};
+
 // Добавление /удаление избранного
 
 export const mockToggleFavorites = async (

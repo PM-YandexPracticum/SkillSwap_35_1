@@ -5,27 +5,57 @@ import { useEffect } from 'react';
 import { SkillCard } from '@widgets/card/skill-card';
 import { CardsSlider } from '@widgets/card/cards-slider';
 import { SkillDetails } from '@entities/skill/ui/skill-details';
-import { getSkillById, getSimilarSkills } from '@entities/skill/model/skills-slice/skillsSlice';
+import { Preloader } from '@ui/preloader';
+import { Text } from '@ui/text';
+import {
+  getSkillById,
+  fetchSkillById,
+  getSimilarSkills,
+  getLoading
+} from '@entities/skill/model/skills-slice/skillsSlice';
 import type { IUser, IUserPublic } from '@entities/user/model/types/types';
-import { getUserData, toggleFavorites } from '@entities/user/model/user-slice/userSliсe';
+import {
+  getUserData,
+  toggleFavorites
+} from '@entities/user/model/user-slice/userSliсe';
 
 export const SkillPage = () => {
-  useEffect(() => { window.scrollTo(0, 0) }, []);
   const { id } = useParams();
   const dispatch = useDispatch();
 
   const skill: IUserPublic | undefined = useSelector(getSkillById(id || ''));
+  const loading = useSelector(getLoading);
   const similarSkills = useSelector(getSimilarSkills(id || ''));
   const user: IUser | null = useSelector(getUserData);
 
+  useEffect(() => {
+    if (id && !skill) {
+      dispatch(fetchSkillById(id));
+    }
+  }, [id, skill, dispatch]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (!skill) {
-    return <div>Пользователь не найден</div>;
+    return loading ? (
+      <div className={styles.page_empty}>
+        <Preloader />
+      </div>
+    ) : (
+      <div className={styles.page_empty}>
+        <Text tag='span' size='main'>
+          Пользователь не найден
+        </Text>
+      </div>
+    );
   }
 
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        <SkillCard 
+        <SkillCard
           id={skill.id}
           userName={skill.name}
           userCity={skill.city}
@@ -47,7 +77,7 @@ export const SkillPage = () => {
           onLikeClick={() => dispatch(toggleFavorites(skill.id))}
         />
       </div>
-      <CardsSlider title='Похожие предложения' skillsList={similarSkills}/>
+      <CardsSlider title='Похожие предложения' skillsList={similarSkills} />
     </div>
   );
-}
+};
