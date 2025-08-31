@@ -1,27 +1,49 @@
-import { InfiniteGrid } from '@ui/infinite-grid';
-import { useSelector } from '../../app/providers/store/store';
-import { getNewSkills } from '../../entities/skill/model/skills-slice/skillsSlice';
-import { getPopularSkills } from '../../entities/skill/model/skills-slice/skillsSlice';
-import { CardSection } from '../../shared/ui/card-section';
-import styles from '../../shared/styles/skill-list/skillList.module.scss';
-import { useFetchMoreSkills } from '../../shared/hooks/useFetchMoreSkills';
+import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { MainPage } from '../pages/main-page';
+import { SearchPage } from '../pages/search-page';
+import { LatestSkills } from '../pages/latest-skills';
+import { PopularSkills } from '../pages/popular-skills';
+import { FilterPage } from '../pages/filter-page';
+import { ProfilePage } from '../pages/profile/ProfilePage';
+import { SkillPage } from '../pages/skill-page';
+import { AppFooter } from '../shared/ui/app-footer';
+import { AppHeader } from '../widgets/app-header';
+import { FilterLayout } from '../shared/layouts/filter-layout';
+import { useDispatch } from './providers/store/store';
+import styles from './App.module.scss';
+import { loadSkills } from '../entities/skill/model/skills-slice/skillsSlice';
+import SearchWatcher from '../features/search/search-watcher/SearchWatcher';
+import FilterWatcher from '../features/filter/filters-watcher/FiltersWatcher';
 
-export const MainPage = () => {
-  
-  const popularSkills = useSelector(getPopularSkills);
-  const newSkills = useSelector(getNewSkills);
-  const { skills, hasMore, fetchMoreData } = useFetchMoreSkills();
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadSkills(0));
+  }, [dispatch]);
 
   return (
-    <div className={styles.main}>
-      <CardSection data={popularSkills} title='Популярное' linkSeeAll='/popular' />
-      <CardSection data={newSkills} title='Новое' linkSeeAll='/latest' />
-      <InfiniteGrid
-        title='Рекомендуем'
-        data={skills}
-        fetchData={fetchMoreData}
-        hasMore={hasMore}
-      />
+    <div className={styles.app}>
+      <AppHeader />
+      <main className={styles.main}>
+        <Routes>
+          <Route element={<FilterLayout />}>
+            <Route path='/' element={<MainPage />} />
+            <Route path='/search' element={<SearchPage />} />
+            <Route path='/popular' element={<PopularSkills />} />
+            <Route path='/latest' element={<LatestSkills />} />
+            <Route path='/filter' element={<FilterPage />} />
+          </Route>
+          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/skills/:id' element={<SkillPage />} />
+        </Routes>
+        <SearchWatcher />
+        <FilterWatcher />
+      </main>
+      <AppFooter />
     </div>
   );
 };
+
+export default App;
