@@ -17,6 +17,8 @@ import { loadSkills } from '../entities/skill/model/skills-slice/skillsSlice';
 import { checkUserAuth } from '@entities/user/model/user-slice/userSliсe';
 import SearchWatcher from '../features/search/search-watcher/SearchWatcher';
 import FilterWatcher from '../features/filter/filters-watcher/FiltersWatcher';
+import { NotFoundPage404 } from '../pages/not-found404';
+import { ServerError500 } from '../pages/server-error500';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -50,6 +52,8 @@ const App = () => {
             }
           />
           <Route path='/skills/:id' element={<SkillPage />} />
+          <Route path='*' element={<NotFoundPage404 />} />
+          <Route path='/500' element={<ServerError500 />} />
         </Routes>
         <SearchWatcher />
         <FilterWatcher />
