@@ -299,6 +299,7 @@ export const userSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload as string;
         state.isAuth = false;
+        state.isInit = true;
       })
 
       // Вход пользователя
@@ -316,6 +317,7 @@ export const userSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload as string;
         state.isAuth = false;
+        state.isInit = true;
       })
 
       // Получение пользователя
@@ -352,6 +354,7 @@ export const userSlice = createSlice({
       .addCase(logoutUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string;
+        state.isInit = true;
       });
   },
 });
