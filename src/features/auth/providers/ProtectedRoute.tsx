@@ -1,40 +1,47 @@
-import { Navigate, useLocation } from "react-router-dom";
-import { ReactNode } from "react";
+import React from 'react';
+import { useEffect } from 'react';
+import { Navigate, useLocation } from 'react-router';
+import { Preloader } from '@ui/preloader';
+import {
+  checkUserAuth,
+  getUserData,
+  getIsInit
+} from '@entities/user/model/user-slice/userSliсe';
+import { useSelector, useDispatch } from '../../../app/providers/store/store';
 
-interface ProtectedRouteProps {
+type ProtectedRouteProps = {
   onlyUnAuth?: boolean;
-  children: ReactNode;
-}
-
-interface LocationState {
-  from?: {
-    pathname: string;
-  };
-}
-
-// заглушка авторизации — заменить
-const useAuth = (): { isAuth: boolean } => {
-  const accessToken = localStorage.getItem("accessToken");
-  return { isAuth: Boolean(accessToken) };
+  children: React.ReactElement;
 };
 
-const ProtectedRoute = ({ onlyUnAuth = false, children }: ProtectedRouteProps) => {
-  const { isAuth } = useAuth();
+export const ProtectedRoute = ({
+  onlyUnAuth,
+  children
+}: ProtectedRouteProps) => {
+  const dispatch = useDispatch();
+  const user = useSelector(getUserData);
+  const isInit = useSelector(getIsInit);
   const location = useLocation();
-  const state = location.state as LocationState | null;
 
-  if (onlyUnAuth && isAuth) {
-    // авторизованных пользователей не пускаем на login/register
-    return <Navigate to={state?.from?.pathname || "/"} replace />;
+  useEffect(() => {
+    if (!isInit) {
+      dispatch(checkUserAuth());
+    }
+  }, [dispatch, isInit]);
+
+  if (!isInit) {
+    return <Preloader />;
   }
 
-  if (!onlyUnAuth && !isAuth) {
-    // неавторизованных отправляем на login
-    return <Navigate to="/login" replace state={{ from: location }} />;
+  if (!onlyUnAuth && !user) {
+    return <Navigate replace to='/login' state={{ from: location }} />;
   }
 
-  // если проверки пройдены → рендерим содержимое
+  if (onlyUnAuth && user) {
+    const from = location.state?.from || { pathname: '/' };
+
+    return <Navigate replace to={from} />;
+  }
+
   return children;
 };
-
-export default ProtectedRoute;
