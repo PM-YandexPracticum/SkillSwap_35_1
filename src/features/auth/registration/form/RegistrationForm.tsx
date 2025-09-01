@@ -63,10 +63,7 @@ const RegistrationForm = () => {
     };
 
     try {
-      const response = await dispatch(registerUser(preparedData)).unwrap();
-
-      localStorage.setItem('registrationData', JSON.stringify(preparedData));
-      localStorage.setItem('accessToken', response.accessToken);
+      await dispatch(registerUser(preparedData)).unwrap();
 
       // TODO: открыть модалку успешной регистрации
     } catch (err) {

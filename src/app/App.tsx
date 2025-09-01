@@ -7,20 +7,26 @@ import { PopularSkills } from '../pages/popular-skills';
 import { FilterPage } from '../pages/filter-page';
 import { ProfilePage } from '../pages/profile/ProfilePage';
 import { SkillPage } from '../pages/skill-page';
+import { RegisterPage } from '../pages/register-page';
 import { AppFooter } from '../shared/ui/app-footer';
 import { AppHeader } from '../widgets/app-header';
 import { ProtectedRoute } from '../features/auth/providers/ProtectedRoute';
 import { FilterLayout } from '../shared/layouts/filter-layout';
-import { useDispatch } from './providers/store/store';
+import { useSelector, useDispatch } from './providers/store/store';
 import styles from './App.module.scss';
 import { loadSkills } from '../entities/skill/model/skills-slice/skillsSlice';
-import { checkUserAuth } from '@entities/user/model/user-slice/userSliсe';
+import {
+  checkUserAuth,
+  getUserData
+} from '@entities/user/model/user-slice/userSliсe';
 import SearchWatcher from '../features/search/search-watcher/SearchWatcher';
 import FilterWatcher from '../features/filter/filters-watcher/FiltersWatcher';
 import { NotFoundPage404 } from '../pages/not-found404';
 
 const App = () => {
   const dispatch = useDispatch();
+
+  const user = useSelector(getUserData);
 
   useEffect(() => {
     dispatch(checkUserAuth());
@@ -32,7 +38,7 @@ const App = () => {
 
   return (
     <div className={styles.app}>
-      <AppHeader />
+      <AppHeader user={user} />
       <main className={styles.main}>
         <Routes>
           <Route element={<FilterLayout />}>
@@ -51,6 +57,14 @@ const App = () => {
             }
           />
           <Route path='/skills/:id' element={<SkillPage />} />
+          <Route
+            path='/register'
+            element={
+              <ProtectedRoute onlyUnAuth>
+                <RegisterPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path='*' element={<NotFoundPage404 />} />
         </Routes>
         <SearchWatcher />

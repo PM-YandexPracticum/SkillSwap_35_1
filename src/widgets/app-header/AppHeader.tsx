@@ -1,6 +1,6 @@
 /* eslint-disable import-x/prefer-default-export */
 import { useState, type ChangeEvent } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Chevron from '@icons/ui/chevron-down.svg?react';
 import DarkThemeIcon from '@icons/ui/moon.svg?react';
 // import LightThemeIcon from '@icons/ui/sun.svg?react';
@@ -24,6 +24,7 @@ export const AppHeader = ({
   const [searchValue, setSearchValue] = useState(''); // для инпута поиска
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isFilterPage =
     location.pathname === '/filter';
@@ -113,7 +114,7 @@ export const AppHeader = ({
                 <Button variant='secondary' style={{ maxInlineSize: '92px' }}>
                   Войти
                 </Button>
-                <Button variant='primary'>Зарегистрироваться</Button>
+                <Button variant='primary' onClick={() => navigate('/register')}>Зарегистрироваться</Button>
               </div>
             )}
           </div>

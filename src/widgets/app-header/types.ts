@@ -8,6 +8,6 @@ import { type IUser } from '../../entities/user/model/types/types';
  */
 
 export interface AppHeaderProps {
-  user?: IUser | undefined;
+  user?: IUser | null;
   isRegistrationHeader?: boolean;
 }
