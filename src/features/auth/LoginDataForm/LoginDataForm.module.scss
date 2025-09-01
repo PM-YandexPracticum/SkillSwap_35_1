@@ -19,3 +19,23 @@
     border-top: 1px solid var(--accent-color-lightest);
   }
 }
+
+.buttonWrapper {
+  width: 100%;
+}
+
+.registerButton {
+  display: block;
+  background-color: inherit;
+  border: none;
+  color: var(--accent-color-dark);
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0 auto;
+  cursor: pointer;
+  padding-top: 15px;
+
+  &:hover {
+    color: var(--accent-color);
+  }
+}

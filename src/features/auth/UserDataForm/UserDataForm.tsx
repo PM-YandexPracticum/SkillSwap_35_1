@@ -1,25 +1,25 @@
-import React, { useRef } from 'react';
-import DefaultAvatar from '@icons/ui/user-circle.svg?react';
-import AddAvatarIcon from '@icons/ui/plus-circle.svg?react';
+import React, { useRef, useState, useCallback } from 'react';
+import { useFormContext, Controller, useWatch } from 'react-hook-form';
+import skillCategories from '@lib/constants/skillCategories';
+import cities from '@lib/constants/cities';
+import { genderOptions } from '@lib/constants/genders';
 import { InputText } from '@ui/input/Input';
 import Button from '@ui/button/Button';
 import { Text } from '@ui/text';
-import skillCategories from '@lib/constants/skillCategories';
-import { useFormContext, Controller } from 'react-hook-form';
 import Dropdown from '@ui/dropDown/dropdown';
-import cities from '@lib/constants/cities';
-import { genderOptions } from '@lib/constants/genders';
-import styles from './UserDataForm.module.scss';
-import type { TFormData } from '../registration/form/RegistrationForm';
+import DatePicker from '@ui/date-picker/datePicker';
+import DefaultAvatar from '@icons/ui/user-circle.svg?react';
+import AddAvatarIcon from '@icons/ui/plus-circle.svg?react';
+import CalendarIcon from '@icons/ui/calendar.svg?react';
+import useClickOutside from '../../../shared/hooks/useClickOutside';
 import {
   updateCategories,
   updateSubcategories
 } from '../../../utils/skillSelection';
-
-interface UserDataFormProps {
-  nextStep: () => void;
-  prevStep: () => void;
-}
+import { formatDate } from '../../../utils/dateFormatter';
+import type { TFormData } from '../registration/form/RegistrationForm';
+import type { UserDataFormProps } from './types';
+import styles from './UserDataForm.module.scss';
 
 const AvatarIcon = () => <DefaultAvatar className={styles.avatarIcon} />;
 const AddIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -28,16 +28,13 @@ const AddIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const UserDataForm = ({ nextStep, prevStep }: UserDataFormProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const {
-    control,
-    formState,
-    trigger,
-    setValue,
-    watch,
-    setError,
-    clearErrors
-  } = useFormContext<TFormData>();
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const { control, formState, trigger, setValue, setError, clearErrors } =
+    useFormContext<TFormData>();
   const { errors } = formState;
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+
+  useClickOutside(wrapperRef, () => setIsCalendarOpen(false));
 
   const handleAvatarClick = () => {
     inputRef.current?.click();
@@ -62,7 +59,7 @@ const UserDataForm = ({ nextStep, prevStep }: UserDataFormProps) => {
     setValue('image', file);
   };
 
-  const handleNextStep = async () => {
+  const handleNextStep = useCallback(async () => {
     const fieldsToValidate = [
       'name',
       'dateOfBirth',
@@ -70,16 +67,11 @@ const UserDataForm = ({ nextStep, prevStep }: UserDataFormProps) => {
       'city',
       'want'
     ] as const;
-    const validationResults = await Promise.all(
-      fieldsToValidate.map((field) => trigger(field))
-    );
+    const isValid = await trigger(fieldsToValidate);
+    if (isValid) nextStep();
+  }, [trigger, nextStep]);
 
-    if (validationResults.every((result) => result)) {
-      nextStep();
-    }
-  };
-
-  const imageFile = watch('image');
+  const imageFile = useWatch({ control, name: 'image' });
 
   return (
     <>
@@ -121,31 +113,55 @@ const UserDataForm = ({ nextStep, prevStep }: UserDataFormProps) => {
         />
 
         <div className={styles.row}>
-          {/* Дата рождения - СЕЙЧАС ЗАГЛУШКА НУЖЕН СПЕЦ ИНПУТ ДАТЫ */}
+          {/* Дата рождения */}
           <Controller
             name='dateOfBirth'
             control={control}
-            render={({ field }) => (
-              <InputText
-                {...field}
-                placeholder='дд.мм.гггг'
-                label='Дата рождения'
-                status={errors.dateOfBirth ? 'error' : undefined}
-                message={errors.dateOfBirth?.message}
-                style={{ width: 206 }}
-              />
-            )}
+            render={({ field }) => {
+              const selectedDate = field.value
+                ? new Date(field.value.split('.').reverse().join('-'))
+                : undefined;
+
+              return (
+                <div className={styles.dateWrapper} ref={wrapperRef}>
+                  <InputText
+                    {...field}
+                    placeholder='дд.мм.гггг'
+                    label='Дата рождения'
+                    status={errors.dateOfBirth ? 'error' : undefined}
+                    message={errors.dateOfBirth?.message}
+                    inputSize='full'
+                    onClick={() => setIsCalendarOpen((prev) => !prev)}
+                    value={field.value}
+                    icon={<CalendarIcon />}
+                    onIconClick={() => setIsCalendarOpen((prev) => !prev)}
+                  />
+                  {isCalendarOpen && (
+                    <DatePicker
+                      selectedDate={selectedDate}
+                      onSelect={(date) => {
+                        field.onChange(formatDate(date));
+                      }}
+                      onBack={() => {
+                        field.onChange('');
+                        setIsCalendarOpen(false);
+                      }}
+                      onSave={() => setIsCalendarOpen(false)}
+                    />
+                  )}
+                </div>
+              );
+            }}
           />
 
           {/* Пол */}
           <Controller
             name='gender'
             control={control}
-            rules={{ required: 'Пол обязателен' }}
             render={({ field }) => (
               <Dropdown
                 options={genderOptions}
-                value={field.value}
+                value={field.value || ''}
                 placeholder='Не указан'
                 label='Пол'
                 error={errors.gender?.message}
@@ -188,8 +204,8 @@ const UserDataForm = ({ nextStep, prevStep }: UserDataFormProps) => {
                   value: cat
                 }))}
                 value={selectedCategories}
-                placeholder='Выберите категории'
-                label='Категории навыков'
+                placeholder='Выберите категорию'
+                label='Категория навыка, которому хотите научиться'
                 multiple
                 error={errors.want?.message}
                 onChange={(vals) => {
@@ -227,8 +243,8 @@ const UserDataForm = ({ nextStep, prevStep }: UserDataFormProps) => {
               <Dropdown
                 options={options}
                 value={selectedValues}
-                placeholder='Выберите подкатегории'
-                label='Подкатегории навыков'
+                placeholder='Выберите подкатегорию'
+                label='Подкатегория навыка, которому хотите научиться'
                 multiple
                 error={errors.want?.message}
                 onChange={(vals) => {

@@ -39,9 +39,14 @@ const useDropdown = ({
   const setOption = useCallback(
     (val: string) => {
       if (multiple) {
-        const next = selectedValues.includes(val)
-          ? selectedValues.filter((v) => v !== val)
-          : [...selectedValues, val];
+        let next: string[];
+        if (Array.isArray(value)) {
+          next = value.includes(val)
+            ? value.filter((v) => v !== val)
+            : [...value, val];
+        } else {
+          next = value === val ? [] : [val];
+        }
         onChange(next);
       } else {
         onChange(val);
@@ -50,7 +55,7 @@ const useDropdown = ({
         setHighlightedIndex(null);
       }
     },
-    [multiple, onChange, selectedValues]
+    [multiple, onChange, value]
   );
 
   // Очистка поиска
@@ -69,11 +74,15 @@ const useDropdown = ({
         setHighlightedIndex((prev) =>
           prev === null ? filteredOptions.length - 1 : Math.max(prev - 1, 0)
         );
-      } else if (e.key === 'Enter' && highlightedIndex !== null) {
+      } else if (e.key === 'Enter') {
         e.preventDefault();
-        setOption(filteredOptions[highlightedIndex].value);
+        if (highlightedIndex !== null) {
+          const val = filteredOptions[highlightedIndex]?.value;
+          if (val !== undefined) setOption(val); // берём именно значение, не index
+        }
       } else if (e.key === 'Escape') {
         setActive(false);
+        setHighlightedIndex(null);
       }
     },
     [filteredOptions, highlightedIndex, setOption]
@@ -86,12 +95,10 @@ const useDropdown = ({
 
   // Корректировка индекса выделения при изменении списка опций
   useEffect(() => {
-    if (highlightedIndex === null) {
-      if (filteredOptions.length > 0) setHighlightedIndex(0);
-      return;
-    }
-
-    if (highlightedIndex >= filteredOptions.length) {
+    if (
+      highlightedIndex !== null &&
+      highlightedIndex >= filteredOptions.length
+    ) {
       setHighlightedIndex(filteredOptions.length - 1);
     }
   }, [filteredOptions, highlightedIndex]);

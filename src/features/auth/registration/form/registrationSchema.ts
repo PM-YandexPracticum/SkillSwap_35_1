@@ -23,16 +23,7 @@ const registrationSchema: yup.ObjectSchema<TFormData> = yup.object({
     .string()
     .min(8, 'Пароль должен содержать не менее 8 знаков')
     .required('Введите пароль'),
-  name: yup.string().required('Введите ваше имя'),
-  city: yup.string().required('Укажите город'),
-  gender: yup
-    .string()
-    .oneOf(['Женский', 'Мужской', ''], 'Выберете пол')
-    .required('Выберите пол'),
-  dateOfBirth: yup
-    .string()
-    .required('Введите дату рождения')
-    .matches(/^\d{2}\.\d{2}\.\d{4}$/, 'Формат: дд.мм.гггг'),
+
   image: yup
     .mixed<File>()
     .optional()
@@ -45,15 +36,35 @@ const registrationSchema: yup.ObjectSchema<TFormData> = yup.object({
           ['image/png', 'image/jpeg', 'image/jpg'].includes(value.type))
     ),
 
-  can: yup
-    .object({
-      category: yup.string().required(),
-      subcategory: yup.string().required(),
-      title: yup.string().required(),
-      description: yup.string().required(),
-      images: yup.array().of(yup.string().defined()).optional()
+  name: yup.string().required('Введите ваше имя'),
+
+  dateOfBirth: yup
+    .string()
+    .required('Введите дату рождения')
+    .matches(/^\d{2}\.\d{2}\.\d{4}$/, 'Формат: дд.мм.гггг')
+    .test('is-valid-date', 'Некорректная дата', (value) => {
+      if (!value) return false;
+      const [day, month, year] = value.split('.').map(Number);
+      const date = new Date(year, month - 1, day);
+      return (
+        date.getFullYear() === year &&
+        date.getMonth() === month - 1 &&
+        date.getDate() === day
+      );
     })
-    .required(),
+    .test('not-in-future', 'Вы не можете выбрать будущую дату', (value) => {
+      if (!value) return false;
+      const [day, month, year] = value.split('.').map(Number);
+      const date = new Date(year, month - 1, day);
+      return date <= new Date();
+    }),
+
+  gender: yup
+    .mixed<'Мужской' | 'Женский' | ''>()
+    .oneOf(['Мужской', 'Женский', '', undefined], 'Выберите пол')
+    .optional(),
+
+  city: yup.string().required('Укажите город'),
 
   want: yup
     .array()
@@ -64,6 +75,30 @@ const registrationSchema: yup.ObjectSchema<TFormData> = yup.object({
       })
     )
     .min(1, 'Выберите хотя бы один навык')
+    .test(
+      'at-least-one-valid-skill',
+      'Выберите подкатегории для всех выбранных категорий',
+      (items) =>
+        items?.every(
+          (item) => !item.category || (item.category && item.subcategory)
+        ) ?? false
+    )
+    .required(),
+
+  can: yup
+    .object({
+      title: yup
+        .string()
+        .max(40, 'Название не должно превышать 40 символов')
+        .required('Необходимо ввести название вашего навыка'),
+      category: yup.string().required('Выберите категорию'),
+      subcategory: yup.string().required('Выберите подкатегорию'),
+      description: yup
+        .string()
+        .max(270, 'Описание не должно превышать 270 символов')
+        .required('Необходимо ввести описание вашего навыка'),
+      images: yup.array().of(yup.mixed<File>().defined()).optional().default([])
+    })
     .required()
 });
 

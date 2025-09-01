@@ -1,47 +1,48 @@
 /* eslint-disable no-nested-ternary */
-import { useState } from 'react';
+import { useState, useCallback, useMemo } from 'react';
+import { useFormContext, Controller, useFormState } from 'react-hook-form';
+import { InputEmail, InputPassword } from '@ui/input/Input';
 import Button from '@ui/button/Button';
 import { Text } from '@ui/text';
-import { InputEmail, InputPassword } from '@ui/input/Input';
 import AppleIcon from '@icons/ui/apple.svg?react';
 import GoogleIcon from '@icons/ui/google.svg?react';
 import EyeIcon from '@icons/ui/eye.svg?react';
 import EyeSlashIcon from '@icons/ui/eye-slash.svg?react';
-import { useFormContext, Controller } from 'react-hook-form';
-import styles from './LoginDataForm.module.scss';
 import type { TFormData } from '../registration/form/RegistrationForm';
+import type { LoginDataFormProps } from './types';
+import styles from './LoginDataForm.module.scss';
 
-interface LoginDataFormProps {
-  nextStep: () => void;
-}
-
-const LoginDataForm = ({ nextStep }: LoginDataFormProps) => {
+const LoginDataForm = ({
+  nextStep,
+  variant,
+  onAuth,
+  goToRegister
+}: LoginDataFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
-  const { control, formState, trigger } = useFormContext<TFormData>();
-  const { errors } = formState;
+  const { control, trigger } = useFormContext<TFormData>();
+  const { errors } = useFormState({ control });
 
-  const handleNextStep = async () => {
-    const isEmailValid = await trigger('email');
-    const isPasswordValid = await trigger('password');
+  const isStepValid = useMemo(
+    () => !errors.email && !errors.password,
+    [errors.email, errors.password]
+  );
 
-    if (isEmailValid && isPasswordValid) {
+  const handleNextStep = useCallback(async () => {
+    const isValid = await trigger(['email', 'password']);
+
+    if (isValid) {
       nextStep();
     }
-  };
-
-  const { getFieldState } = useFormContext<TFormData>();
-  const emailState = getFieldState('email');
-  const passwordState = getFieldState('password');
-  const isStepValid = !emailState.invalid && !passwordState.invalid;
+  }, [trigger, nextStep]);
 
   return (
     <>
       <div className={styles.inputsWraper}>
-        {/* кнопки заглушки для входа apple/google */}
+        {/* кнопки заглушки для входа google/apple */}
         <Button
           variant='secondary'
           onClick={() => {}}
-          style={{ borderColor: '#69735D' }}
+          style={{ borderColor: 'var(--tertiary-color-dark)' }}
         >
           <GoogleIcon />
           <Text tag='span' size='main' align='center'>
@@ -51,7 +52,7 @@ const LoginDataForm = ({ nextStep }: LoginDataFormProps) => {
         <Button
           variant='secondary'
           onClick={() => {}}
-          style={{ borderColor: '#69735D' }}
+          style={{ borderColor: 'var(--tertiary-color-dark)' }}
         >
           <AppleIcon />
           <Text tag='span' size='main' align='center'>
@@ -66,7 +67,7 @@ const LoginDataForm = ({ nextStep }: LoginDataFormProps) => {
           <hr />
         </div>
 
-        {/* Email поле с валидацией */}
+        {/* Email */}
         <Controller
           name='email'
           control={control}
@@ -81,14 +82,16 @@ const LoginDataForm = ({ nextStep }: LoginDataFormProps) => {
           )}
         />
 
-        {/* Password поле с валидацией */}
+        {/* Пароль */}
         <Controller
           name='password'
           control={control}
           render={({ field }) => (
             <InputPassword
               {...field}
-              placeholder='Введите пароль'
+              placeholder={
+                variant === 'auth' ? 'Введите ваш пароль' : 'Введите пароль'
+              }
               label='Пароль'
               type={showPassword ? 'text' : 'password'}
               status={errors.password ? 'error' : undefined}
@@ -121,11 +124,28 @@ const LoginDataForm = ({ nextStep }: LoginDataFormProps) => {
           )}
         />
       </div>
-      <Button onClick={handleNextStep} disabled={!isStepValid}>
-        <Text tag='span' size='main' align='center'>
-          Далее
-        </Text>
-      </Button>
+      {variant === 'register' ? (
+        <Button onClick={handleNextStep} disabled={!isStepValid}>
+          <Text tag='span' size='main' align='center'>
+            Далее
+          </Text>
+        </Button>
+      ) : (
+        <div className={styles.buttonWrapper}>
+          <Button onClick={onAuth}>
+            <Text tag='span' size='main' align='center'>
+              Войти
+            </Text>
+          </Button>
+          <button
+            type='button'
+            onClick={goToRegister}
+            className={styles.registerButton}
+          >
+            Зарегистрироваться
+          </button>
+        </div>
+      )}
     </>
   );
 };

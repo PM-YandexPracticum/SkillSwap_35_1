@@ -5,30 +5,30 @@ import type {
   ISkill,
   IDesiredSkill
 } from 'src/entities/skill/model/types/types';
+import { useDispatch } from '../../../../app/providers/store/store';
+import { registerUser } from '../../../../entities/user/model/user-slice/userSliсe';
 import registrationSchema from './registrationSchema';
-import styles from './RegistrationForm.module.scss';
 import LoginDataForm from '../../LoginDataForm/LoginDataForm';
 import UserDataForm from '../../UserDataForm/UserDataForm';
 import SkillDataForm from '../../SkillDataForm/SkillDataForm';
 import RegistrationInfo from '../info/RegistrationInfo';
+import styles from './RegistrationForm.module.scss';
 
 export interface TFormData {
   email: string;
   password: string;
   name: string;
   city: string;
-  gender: 'Мужской' | 'Женский' | '';
+  gender?: 'Мужской' | 'Женский' | '';
   dateOfBirth: string;
   want: IDesiredSkill[];
-  can: ISkill;
+  can: Omit<ISkill, 'images'> & { images?: File[] };
   image?: File;
 }
 
 const RegistrationForm = () => {
-  const [step, setStep] = useState(2);
-
-  const nextStep = () => setStep((prev) => Math.min(prev + 1, 3));
-  const prevStep = () => setStep((prev) => Math.max(prev - 1, 1));
+  const [step, setStep] = useState(1);
+  const dispatch = useDispatch();
 
   const methods = useForm<TFormData>({
     mode: 'onChange',
@@ -52,8 +52,28 @@ const RegistrationForm = () => {
     }
   });
 
-  const onSubmit = (data: TFormData) => {
-    localStorage.setItem('registrationData', JSON.stringify(data));
+  const nextStep = () => setStep((prev) => Math.min(prev + 1, 3));
+  const prevStep = () => setStep((prev) => Math.max(prev - 1, 1));
+
+  const onSubmit = async (data: TFormData) => {
+    // преобразование пустой строки при выборе пола в underfined
+    const preparedData = {
+      ...data,
+      gender: data.gender === '' ? undefined : data.gender
+    };
+
+    try {
+      const response = await dispatch(registerUser(preparedData)).unwrap();
+
+      localStorage.setItem('registrationData', JSON.stringify(preparedData));
+      localStorage.setItem('accessToken', response.accessToken);
+
+      // TODO: открыть модалку успешной регистрации
+    } catch (err) {
+      // TODO: возможно дополнить выводом ошибок, пока стоит заглушка
+      // eslint-disable-next-line no-console
+      console.error('Ошибка при регистрации:', err);
+    }
   };
 
   return (
@@ -63,15 +83,13 @@ const RegistrationForm = () => {
           className={`${styles.container} ${styles[`step-${step}`]}`}
           onSubmit={methods.handleSubmit(onSubmit)}
         >
-          {step === 1 && <LoginDataForm nextStep={nextStep} />}
+          {step === 1 && (
+            <LoginDataForm variant='register' nextStep={nextStep} />
+          )}
           {step === 2 && (
             <UserDataForm nextStep={nextStep} prevStep={prevStep} />
           )}
-          {/* ЗАГЛУШКА по макету сабмит будет в модальном окне, дополнить */}
-          {step === 3 && (
-            <SkillDataForm prevStep={prevStep} onReady={() => {}} />
-          )}
-          {/* ЗАГЛУШКА тут будет шаг 4 с открытием модалки со SkillDetails can variant */}
+          {step === 3 && <SkillDataForm prevStep={prevStep} />}
         </form>
       </FormProvider>
       <RegistrationInfo step={step} />

@@ -42,6 +42,7 @@ const DatePicker = ({
         today: styles.todayDay
       }}
       components={{ Chevron: CustomChevron }}
+      disabled={{ after: new Date() }}
     />
     <div className={styles.buttons}>
       <Button variant='secondary' onClick={onBack} style={{ width: '125px' }}>
