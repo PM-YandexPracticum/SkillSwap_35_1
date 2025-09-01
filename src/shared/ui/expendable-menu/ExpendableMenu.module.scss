@@ -1,0 +1,49 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover .toggle__text {
+    color: var(--accent-color);
+  }
+}
+
+.toggle__icon {
+  width: 24px;
+  height: 24px;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
+
+.toggle_open .toggle__icon {
+  transform: rotate(180deg);
+}
+
+.toggle:hover .toggle__icon {
+  opacity: 1;
+}

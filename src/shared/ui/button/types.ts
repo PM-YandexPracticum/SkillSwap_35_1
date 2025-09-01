@@ -10,11 +10,9 @@ import React from 'react';
  * style — дополнительные inline-стили
  */
 
-export interface ButtonProps {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: 'primary' | 'secondary' | 'tertiary';
-  onClick?: () => void;
-  disabled?: boolean;
   htmlType?: 'button' | 'submit' | 'reset';
   style?: React.CSSProperties;
 }

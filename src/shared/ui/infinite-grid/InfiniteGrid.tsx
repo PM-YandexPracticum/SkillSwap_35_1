@@ -24,6 +24,7 @@ export const InfiniteGrid = ({ title, data, fetchData, hasMore }: InfiniteGridPr
             {data.map((card) => (
               <SkillCard
                 key={card.id}
+                id={card.id}
                 userName={card.name}
                 userCity={card.city}
                 userDateofBirth={card.dateOfBirth}

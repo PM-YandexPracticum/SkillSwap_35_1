@@ -1,16 +1,17 @@
+
 import { InfiniteGrid } from '@ui/infinite-grid';
 import { useSelector } from '../../app/providers/store/store';
 import { getNewSkills } from '../../entities/skill/model/skills-slice/skillsSlice';
 import { getPopularSkills } from '../../entities/skill/model/skills-slice/skillsSlice';
 import { CardSection } from '../../shared/ui/card-section';
 import styles from '../../shared/styles/skill-list/skillList.module.scss';
-import { fetchMoreSkills } from '../../utils/fetchMoreSkills';
+import { useFetchMoreSkills } from '../../shared/hooks/useFetchMoreSkills';
 
 export const MainPage = () => {
   
   const popularSkills = useSelector(getPopularSkills);
   const newSkills = useSelector(getNewSkills);
-  const { skills, hasMore, fetchMoreData } = fetchMoreSkills();
+  const { skills, hasMore, fetchMoreData } = useFetchMoreSkills();
 
   return (
     <div className={styles.main}>

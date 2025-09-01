@@ -5,6 +5,7 @@ import IconCross from '@icons/ui/cross.svg?react';
 import { RadioButton } from '@ui/radioButton/radioButton';
 import { Checkbox } from '@ui/checkbox/checkbox';
 import { CheckboxAccordion } from '@ui/checkboxAccordion/checkboxAccordion';
+import ExpendableMenu from '@ui/expendable-menu/ExpendableMenu';
 import type { CheckboxAccordionItem } from '@ui/checkboxAccordion/type';
 import cities from '@lib/constants/cities';
 import skillCategories from '@lib/constants/skillCategories';
@@ -97,6 +98,7 @@ export const FilterPanel = (props: FilterPanelProps) => {
 
       <Title tag='h4'>Навыки</Title>
       <div className={styles.block}>
+        <ExpendableMenu maxCount={3} collapsedLabel='Все категории'>
         {Object.keys(skills).map(city => (
           <CheckboxAccordion
             key={city}
@@ -105,6 +107,7 @@ export const FilterPanel = (props: FilterPanelProps) => {
             onItemsChange={handleSkillsChange}
           />
         ))}
+        </ExpendableMenu>
       </div>
 
       <Title tag='h4'>Пол автора</Title>
@@ -140,6 +143,7 @@ export const FilterPanel = (props: FilterPanelProps) => {
 
       <Title tag='h4'>Город</Title>
       <div className={styles.block}>
+        <ExpendableMenu maxCount={3} collapsedLabel='Все города'>
         {cities.map(city => (
           <Checkbox
             key={city}
@@ -149,6 +153,7 @@ export const FilterPanel = (props: FilterPanelProps) => {
             <Text tag='span' size='main'>{city}</Text>
           </Checkbox>
         ))}
+        </ExpendableMenu>
       </div>
     </div>
   );

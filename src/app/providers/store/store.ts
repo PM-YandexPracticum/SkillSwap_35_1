@@ -6,8 +6,9 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 import { SkillSlice } from '../../../entities/skill/model/skills-slice/skillsSlice';
+import { userSlice } from '../../../entities/user/model/user-slice/userSliсe';
 
-export const rootReducer = combineSlices(SkillSlice);
+export const rootReducer = combineSlices(SkillSlice, userSlice);
 
 const store = configureStore({
   reducer: rootReducer,

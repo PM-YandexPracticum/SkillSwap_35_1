@@ -5,12 +5,16 @@ import { SearchPage } from '../pages/search-page';
 import { LatestSkills } from '../pages/latest-skills';
 import { PopularSkills } from '../pages/popular-skills';
 import { FilterPage } from '../pages/filter-page';
+import { ProfilePage } from '../pages/profile/ProfilePage';
+import { SkillPage } from '../pages/skill-page';
 import { AppFooter } from '../shared/ui/app-footer';
 import { AppHeader } from '../widgets/app-header';
+import { ProtectedRoute } from '../features/auth/providers/ProtectedRoute';
 import { FilterLayout } from '../shared/layouts/filter-layout';
 import { useDispatch } from './providers/store/store';
 import styles from './App.module.scss';
 import { loadSkills } from '../entities/skill/model/skills-slice/skillsSlice';
+import { checkUserAuth } from '@entities/user/model/user-slice/userSliсe';
 import SearchWatcher from '../features/search/search-watcher/SearchWatcher';
 import FilterWatcher from '../features/filter/filters-watcher/FiltersWatcher';
 import { NotFoundPage404 } from '../pages/not-found404';
@@ -18,6 +22,10 @@ import { ServerError500 } from '../pages/server-error500';
 
 const App = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkUserAuth());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(loadSkills(0));
@@ -35,6 +43,15 @@ const App = () => {
             <Route path='/latest' element={<LatestSkills />} />
             <Route path='/filter' element={<FilterPage />} />
           </Route>
+          <Route
+            path='/profile'
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route path='/skills/:id' element={<SkillPage />} />
           <Route path='*' element={<NotFoundPage404 />} />
           <Route path='/500' element={<ServerError500 />} />
         </Routes>

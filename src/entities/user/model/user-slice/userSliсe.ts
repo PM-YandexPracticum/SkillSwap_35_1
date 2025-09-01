@@ -5,6 +5,8 @@ import {
   type PayloadAction
 } from '@reduxjs/toolkit';
 import { type IUser } from "../types/types";
+import type { RootState } from '../../../../app/providers/store/store';
+import type { IRegisterData } from 'src/features/auth/types/types';
 import {
   mockToggleFavorites,
   mockRequest,
@@ -15,7 +17,6 @@ import {
   mockLoginUser,
   mockLogout,
   mockGetUser,
-  type IRegisterData,
   type ILoginData
 } from '../../../../api/mockApi';
 
@@ -165,7 +166,7 @@ export const checkUserAuth = createAsyncThunk(
   }
 );
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
@@ -298,6 +299,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload as string;
         state.isAuth = false;
+        state.isInit = true;
       })
 
       // Вход пользователя
@@ -315,6 +317,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload as string;
         state.isAuth = false;
+        state.isInit = true;
       })
 
       // Получение пользователя
@@ -351,21 +354,18 @@ const userSlice = createSlice({
       .addCase(logoutUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string;
+        state.isInit = true;
       });
   },
-  selectors: {
-    userData: (state) => state.user,
-    isInit: (state) => state.isInit,
-    isAuth: (state) => state.isAuth,
-    isLoading: (state) => state.isLoading,
-    error: (state) => state.error
-  }
 });
 
 export const userReducer = userSlice.reducer;
 
-export const { userData, isInit, isAuth, isLoading, error } =
-  userSlice.selectors;
+export const getUserData = (state: RootState) => state.user.user;
+export const getIsInit = (state: RootState) => state.user.isInit;
+export const getIsAuth = (state: RootState) => state.user.isAuth;
+export const getIsLoading = (state: RootState) => state.user.isLoading;
+export const getError = (state: RootState) => state.user.error;
 
 export const { setUser, setIsAuth, logout, setError, clearError } =
   userSlice.actions;

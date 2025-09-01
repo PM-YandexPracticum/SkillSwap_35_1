@@ -5,6 +5,7 @@ export type SkillDetailsProps = {
   text: string;
   images: string[];
   isLiked?: boolean;
+  isLikeActive?: boolean;
   variant: 'can' | 'want';
   onExchangeClick?: () => void;
   onLikeClick?: () => void;

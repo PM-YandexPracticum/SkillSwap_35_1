@@ -1,0 +1,22 @@
+.option {
+  display: flex;
+  align-items: center;
+  padding: 6px 11px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--accent-color-lightest);
+  }
+
+  &.selected {
+    color: var( --accent-color-dark);
+  }
+
+  &.highlighted {
+    background-color: var(--accent-color-lightest);
+  }
+
+  &.single {
+    padding: 9px 18px;
+  }
+}

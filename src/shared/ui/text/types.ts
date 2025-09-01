@@ -12,4 +12,5 @@ export type TextProps = {
     | 'colorError';
   family?: 'main' | 'userName';
   align?: 'center' | 'left';
+  extraClassName?: string;
 };
