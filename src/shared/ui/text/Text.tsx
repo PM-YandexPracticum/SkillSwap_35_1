@@ -7,9 +7,10 @@ export const Text = ({
   size = 'main',
   color = 'mainColorText',
   family = 'main',
-  align = 'left'
+  align = 'left',
+  extraClassName = ''
 }: TextProps) => {
-  const className = `${styles.text} ${styles[`text${size}`]} ${styles[`${family}`]} ${styles[`${color}`]} ${styles[`${align}`]}`;
+  const className = `${styles.text} ${styles[`text${size}`]} ${styles[`${family}`]} ${styles[`${color}`]} ${styles[`${align}`]} ${extraClassName}`;
 
   return <Tag className={className}>{children}</Tag>;
 };

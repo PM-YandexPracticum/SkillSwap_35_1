@@ -33,7 +33,6 @@ export const WithRadios: Story = {
         id={`gender-${g}`}
         name="gender"
         value={g}
-        label={g}
         checked={g === 'Не имеет значения'}
         onChange={() => {}}
       />

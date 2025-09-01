@@ -1,5 +1,5 @@
 import { useState, Children } from "react";
-import type { ExpendableMenuProps } from "./ExpendableMenu.types";
+import type { ExpendableMenuProps } from "./types";
 
 import { Text } from "../text/Text";
 import ChevronDown from "../../assets/icons/ui/chevron-down.svg?react";
@@ -25,15 +25,13 @@ const ExpendableMenu = ({ children, maxCount = 3, collapsedLabel }: ExpendableMe
       {items.length > maxCount && (
         <button
           type="button"
-          className={styles.toggle}
+          className={`${styles.toggle} ${expanded ? styles.toggle_open : ""}`}
           onClick={() => setExpanded((p) => !p)}
         >
-          <Text tag='span' size='main' color='mainColorText'>
+          <Text tag='span' size='main' color='accentColorDark' extraClassName={styles.toggle__text}>
             {expanded ? "Свернуть" : collapsedLabel}
           </Text>
-          <ChevronDown
-            className={`${styles.arrow} ${expanded ? styles.open : ""}`}
-          />
+          <ChevronDown className={styles.toggle__icon} />
         </button>
       )}
     </div>

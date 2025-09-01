@@ -10,6 +10,7 @@
   gap: 8px;
   list-style: none;
   margin: 0;
+  padding: 0;
 }
 
 .item {
@@ -20,28 +21,29 @@
 .toggle {
   display: flex;
   align-items: center;
-  justify-content: center;
+  align-self: flex-start;
   gap: 6px;
   background: none;
   border: none;
-  padding: 4px 0;
   cursor: pointer;
-  color: var(--primary-color, #508826);
-  font-size: 14px;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  padding: 0;
+
+  &:hover .toggle__text {
+    color: var(--accent-color);
+  }
 }
 
-.toggle:hover {
-  color: var(--primary-hover-color, #3a631c);
-}
-
-.arrow {
-  width: 16px;
-  height: 16px;
+.toggle__icon {
+  width: 24px;
+  height: 24px;
+  transform: rotate(0deg);
   transition: transform 0.2s ease;
 }
 
-.open {
-  transform: rotate(180deg); /* стрелка вверх */
+.toggle_open .toggle__icon {
+  transform: rotate(180deg);
+}
+
+.toggle:hover .toggle__icon {
+  opacity: 1;
 }
