@@ -30,7 +30,7 @@ const LoginDataForm = ({
   const handleNextStep = useCallback(async () => {
     const isValid = await trigger(['email', 'password']);
 
-    if (isValid) {
+    if (isValid && nextStep) {
       nextStep();
     }
   }, [trigger, nextStep]);
@@ -132,7 +132,7 @@ const LoginDataForm = ({
         </Button>
       ) : (
         <div className={styles.buttonWrapper}>
-          <Button onClick={onAuth}>
+          <Button onClick={onAuth} htmlType='submit'>
             <Text tag='span' size='main' align='center'>
               Войти
             </Text>

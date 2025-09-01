@@ -5,6 +5,7 @@ import { Preloader } from '@ui/preloader';
 import {
   checkUserAuth,
   getUserData,
+  getUserLoading,
   getIsInit
 } from '@entities/user/model/user-slice/userSliсe';
 import { useSelector, useDispatch } from '../../../app/providers/store/store';
@@ -21,6 +22,7 @@ export const ProtectedRoute = ({
   const dispatch = useDispatch();
   const user = useSelector(getUserData);
   const isInit = useSelector(getIsInit);
+  const isLoading = useSelector(getUserLoading);
   const location = useLocation();
 
   useEffect(() => {
@@ -29,7 +31,7 @@ export const ProtectedRoute = ({
     }
   }, [dispatch, isInit]);
 
-  if (!isInit) {
+  if (isLoading) {
     return <Preloader />;
   }
 

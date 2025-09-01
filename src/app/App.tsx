@@ -8,6 +8,7 @@ import { FilterPage } from '../pages/filter-page';
 import { ProfilePage } from '../pages/profile/ProfilePage';
 import { SkillPage } from '../pages/skill-page';
 import { RegisterPage } from '../pages/register-page';
+import { LoginPage } from '../pages/login-page';
 import { AppFooter } from '../shared/ui/app-footer';
 import { AppHeader } from '../widgets/app-header';
 import { ProtectedRoute } from '../features/auth/providers/ProtectedRoute';
@@ -62,6 +63,14 @@ const App = () => {
             element={
               <ProtectedRoute onlyUnAuth>
                 <RegisterPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/login'
+            element={
+              <ProtectedRoute onlyUnAuth>
+                <LoginPage />
               </ProtectedRoute>
             }
           />

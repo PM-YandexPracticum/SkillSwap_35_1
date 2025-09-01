@@ -15,7 +15,8 @@ import { InputSearch } from '@ui/input/Input';
 import { type AppHeaderProps } from './types';
 import styles from './AppHeader.module.scss';
 import { useDispatch } from '../../app/providers/store/store';
-import { setSearchQuery } from '../../entities/skill/model/skills-slice/skillsSlice';
+import { setSearchQuery } from '@entities/skill/model/skills-slice/skillsSlice';
+import { logoutUser } from '@entities/user/model/user-slice/userSliсe';
 
 export const AppHeader = ({
   user,
@@ -26,8 +27,7 @@ export const AppHeader = ({
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isFilterPage =
-    location.pathname === '/filter';
+  const isFilterPage = location.pathname === '/filter';
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -93,7 +93,13 @@ export const AppHeader = ({
           <button type='button' className={styles.themeToggleButton}>
             {/* TODO: временная заглушка, 
             заменить на логику отображения кнопки в зависимости от темы: sun/moon */}
-            <DarkThemeIcon />
+            <DarkThemeIcon
+              onClick={() => { // ЗДЕСЬ ВРЕМЕННЫЙ ЛОГАУТ ДЛЯ ТЕСТИРОВАНИЯ
+                if (user) {
+                  dispatch(logoutUser());
+                }
+              }}
+            />
           </button>
 
           <div className={styles.accountBlock}>
@@ -111,10 +117,12 @@ export const AppHeader = ({
               </div>
             ) : (
               <div className={styles.authButtons}>
-                <Button variant='secondary' style={{ maxInlineSize: '92px' }}>
+                <Button variant='secondary' style={{ maxInlineSize: '92px' }} onClick={() => navigate('/login')}>
                   Войти
                 </Button>
-                <Button variant='primary' onClick={() => navigate('/register')}>Зарегистрироваться</Button>
+                <Button variant='primary' onClick={() => navigate('/register')}>
+                  Зарегистрироваться
+                </Button>
               </div>
             )}
           </div>

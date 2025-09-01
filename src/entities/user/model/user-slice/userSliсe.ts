@@ -24,7 +24,8 @@ export interface IUserState {
   user: IUser | null;
   isInit: boolean;
   isAuth: boolean;
-  isLoading: boolean;
+  userLoading: boolean;
+  actionLoading: boolean;
   error: string | null;
 }
 
@@ -32,7 +33,8 @@ const initialState: IUserState = {
   user: null,
   isInit: false,
   isAuth: false,
-  isLoading: false,
+  userLoading: false,
+  actionLoading: false,
   error: null
 };
 
@@ -194,11 +196,11 @@ export const userSlice = createSlice({
     builder
       // Переключение избранных
       .addCase(toggleFavorites.pending, (state) => {
-        state.isLoading = true;
+        state.actionLoading = true;
         state.error = null;
       })
       .addCase(toggleFavorites.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.actionLoading = false;
         if (state.user) {
           if (action.payload.status === 'added') {
             state.user.favorites.push(action.payload.userId);
@@ -210,17 +212,17 @@ export const userSlice = createSlice({
         }
       })
       .addCase(toggleFavorites.rejected, (state, action) => {
-        state.isLoading = false;
+        state.actionLoading = false;
         state.error = action.payload as string;
       })
 
       // Отправка заявки
       .addCase(sendRequest.pending, (state) => {
-        state.isLoading = true;
+        state.actionLoading = true;
         state.error = null;
       })
       .addCase(sendRequest.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.actionLoading = false;
         if (
           state.user &&
           !state.user.outgoingRequests.includes(action.payload)
@@ -229,17 +231,17 @@ export const userSlice = createSlice({
         }
       })
       .addCase(sendRequest.rejected, (state, action) => {
-        state.isLoading = false;
+        state.actionLoading = false;
         state.error = action.payload as string;
       })
 
       // Отклонение заявки
       .addCase(declineRequest.pending, (state) => {
-        state.isLoading = true;
+        state.actionLoading = true;
         state.error = null;
       })
       .addCase(declineRequest.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.actionLoading = false;
         if (state.user) {
           state.user.incomingRequests = state.user.incomingRequests.filter(
             (id) => id !== action.payload
@@ -247,17 +249,17 @@ export const userSlice = createSlice({
         }
       })
       .addCase(declineRequest.rejected, (state, action) => {
-        state.isLoading = false;
+        state.actionLoading = false;
         state.error = action.payload as string;
       })
 
       // Принятие заявки
       .addCase(acceptRequest.pending, (state) => {
-        state.isLoading = true;
+        state.actionLoading = true;
         state.error = null;
       })
       .addCase(acceptRequest.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.actionLoading = false;
         if (state.user && !state.user.exchanges.includes(action.payload)) {
           state.user.exchanges.push(action.payload);
           state.user.incomingRequests = state.user.incomingRequests.filter(
@@ -266,37 +268,37 @@ export const userSlice = createSlice({
         }
       })
       .addCase(acceptRequest.rejected, (state, action) => {
-        state.isLoading = false;
+        state.actionLoading = false;
         state.error = action.payload as string;
       })
 
       // Обновление пользователя
       .addCase(updateUser.pending, (state) => {
-        state.isLoading = true;
+        state.userLoading = true;
         state.error = null;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.userLoading = false;
         state.user = action.payload;
       })
       .addCase(updateUser.rejected, (state, action) => {
-        state.isLoading = false;
+        state.userLoading = false;
         state.error = action.payload as string;
       })
 
       // Регистрация пользователя
       .addCase(registerUser.pending, (state) => {
-        state.isLoading = true;
+        state.userLoading = true;
         state.error = null;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.userLoading = false;
         state.user = action.payload.user;
         state.isAuth = true;
         state.isInit = true;
       })
       .addCase(registerUser.rejected, (state, action) => {
-        state.isLoading = false;
+        state.userLoading = false;
         state.error = action.payload as string;
         state.isAuth = false;
         state.isInit = true;
@@ -304,17 +306,17 @@ export const userSlice = createSlice({
 
       // Вход пользователя
       .addCase(loginUser.pending, (state) => {
-        state.isLoading = true;
+        state.userLoading = true;
         state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.userLoading = false;
         state.user = action.payload.user;
         state.isAuth = true;
         state.isInit = true;
       })
       .addCase(loginUser.rejected, (state, action) => {
-        state.isLoading = false;
+        state.userLoading = false;
         state.error = action.payload as string;
         state.isAuth = false;
         state.isInit = true;
@@ -322,17 +324,17 @@ export const userSlice = createSlice({
 
       // Получение пользователя
       .addCase(getUser.pending, (state) => {
-        state.isLoading = true;
+        state.userLoading = true;
         state.error = null;
       })
       .addCase(getUser.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.userLoading = false;
         state.user = action.payload.user;
         state.isAuth = true;
         state.isInit = true;
       })
       .addCase(getUser.rejected, (state, action) => {
-        state.isLoading = false;
+        state.userLoading = false;
         state.user = null;
         state.isAuth = false;
         state.isInit = true;
@@ -342,17 +344,17 @@ export const userSlice = createSlice({
 
       // Выход пользователя
       .addCase(logoutUser.pending, (state) => {
-        state.isLoading = true;
+        state.userLoading = true;
         state.error = null;
       })
       .addCase(logoutUser.fulfilled, (state) => {
-        state.isLoading = false;
+        state.userLoading = false;
         state.user = null;
         state.isAuth = false;
         state.isInit = true;
       })
       .addCase(logoutUser.rejected, (state, action) => {
-        state.isLoading = false;
+        state.userLoading = false;
         state.error = action.payload as string;
         state.isInit = true;
       });
@@ -364,7 +366,8 @@ export const userReducer = userSlice.reducer;
 export const getUserData = (state: RootState) => state.user.user;
 export const getIsInit = (state: RootState) => state.user.isInit;
 export const getIsAuth = (state: RootState) => state.user.isAuth;
-export const getIsLoading = (state: RootState) => state.user.isLoading;
+export const getUserLoading = (state: RootState) => state.user.userLoading;
+export const getActionLoading = (state: RootState) => state.user.actionLoading;
 export const getError = (state: RootState) => state.user.error;
 
 export const { setUser, setIsAuth, logout, setError, clearError } =
