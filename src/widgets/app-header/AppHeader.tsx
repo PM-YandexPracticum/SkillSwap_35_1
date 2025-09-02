@@ -16,7 +16,7 @@ import { type AppHeaderProps } from './types';
 import styles from './AppHeader.module.scss';
 import { useDispatch } from '../../app/providers/store/store';
 import { setSearchQuery } from '@entities/skill/model/skills-slice/skillsSlice';
-import { logoutUser } from '@entities/user/model/user-slice/userSliсe';
+import { logoutUser } from '@entities/user/model/user-slice/userSlice';
 
 export const AppHeader = ({
   user,

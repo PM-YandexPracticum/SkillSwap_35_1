@@ -11,7 +11,7 @@ import {
   toggleFavorites,
   getUserData,
   getIsAuth
-} from '../../../entities/user/model/user-slice/userSliсe';
+} from '../../../entities/user/model/user-slice/userSlice';
 import { useDispatch, useSelector } from '../../../app/providers/store/store';
 import styles from './SkillCard.module.scss';
 import type { SkillCardProps } from './types';

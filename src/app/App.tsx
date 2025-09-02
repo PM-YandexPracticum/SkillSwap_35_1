@@ -16,17 +16,13 @@ import { FilterLayout } from '../shared/layouts/filter-layout';
 import { useSelector, useDispatch } from './providers/store/store';
 import styles from './App.module.scss';
 import { loadSkills } from '../entities/skill/model/skills-slice/skillsSlice';
-import {
-  checkUserAuth,
-  getUserData
-} from '@entities/user/model/user-slice/userSliсe';
+import { checkUserAuth, getUserData } from "@entities/user/model/user-slice/userSlice";
 import SearchWatcher from '../features/search/search-watcher/SearchWatcher';
 import FilterWatcher from '../features/filter/filters-watcher/FiltersWatcher';
 import { NotFoundPage404 } from '../pages/not-found404';
 
 const App = () => {
   const dispatch = useDispatch();
-
   const user = useSelector(getUserData);
 
   useEffect(() => {

@@ -6,7 +6,7 @@ import type {
   IDesiredSkill
 } from 'src/entities/skill/model/types/types';
 import { useDispatch } from '../../../../app/providers/store/store';
-import { registerUser } from '../../../../entities/user/model/user-slice/userSliсe';
+import { registerUser } from '../../../../entities/user/model/user-slice/userSlice';
 import registrationSchema from './registrationSchema';
 import LoginDataForm from '../../LoginDataForm/LoginDataForm';
 import UserDataForm from '../../UserDataForm/UserDataForm';

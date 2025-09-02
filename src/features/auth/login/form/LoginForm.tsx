@@ -1,7 +1,7 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { useDispatch } from '../../../../app/providers/store/store';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../../../../entities/user/model/user-slice/userSliсe';
+import { loginUser } from '../../../../entities/user/model/user-slice/userSlice';
 import LoginInfo from '../info/LoginInfo';
 import LoginDataForm from '../../LoginDataForm/LoginDataForm';
 import styles from './LoginForm.module.scss';

@@ -18,7 +18,7 @@ import type { IUser, IUserPublic } from '@entities/user/model/types/types';
 import {
   getUserData,
   toggleFavorites
-} from '@entities/user/model/user-slice/userSliсe';
+} from '@entities/user/model/user-slice/userSlice';
 
 export const SkillPage = () => {
   const { id } = useParams();

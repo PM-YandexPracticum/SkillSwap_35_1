@@ -7,7 +7,7 @@ import {
   getUserData,
   getUserLoading,
   getIsInit
-} from '@entities/user/model/user-slice/userSliсe';
+} from '@entities/user/model/user-slice/userSlice';
 import { useSelector, useDispatch } from '../../../app/providers/store/store';
 
 type ProtectedRouteProps = {
