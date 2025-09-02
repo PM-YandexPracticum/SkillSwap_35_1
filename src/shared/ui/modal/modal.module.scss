@@ -1,0 +1,29 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(142 142 142/ 60%);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity 0.3s;
+  
+}
+
+.modal {
+  background-color: var(--secondary-color);
+  border-radius: var(--main-border-radius);
+  padding: 44px 60px;
+}
+
+.entering,
+.entered {
+    opacity: 1;
+}
+
+.exiting,
+.exited {
+    opacity: 0;
+}
