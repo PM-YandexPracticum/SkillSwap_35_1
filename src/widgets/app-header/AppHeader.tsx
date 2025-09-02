@@ -1,6 +1,6 @@
 /* eslint-disable import-x/prefer-default-export */
 import { useState, type ChangeEvent } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import Chevron from '@icons/ui/chevron-down.svg?react';
 import DarkThemeIcon from '@icons/ui/moon.svg?react';
 // import LightThemeIcon from '@icons/ui/sun.svg?react';
@@ -22,7 +22,7 @@ export const AppHeader = ({
   user,
   isRegistrationHeader = false
 }: AppHeaderProps) => {
-  const [searchValue, setSearchValue] = useState(''); // для инпута поиска
+  const [searchParams, setSearchParams] = useSearchParams('')
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
@@ -30,12 +30,33 @@ export const AppHeader = ({
   const isFilterPage = location.pathname === '/filter';
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-    dispatch(setSearchQuery(e.target.value));
+    const value = e.target.value
+    const next = new URLSearchParams(searchParams)
+    
+    if (value) {
+      next.set('search', value)
+    } else {
+      next.delete('search')
+    }
+
+    if (value.trim() && location.pathname !== '/') {
+      navigate({pathname: '/', search: `?${next.toString()}`})
+    } else {
+      setSearchParams(next);
+    }
+
+    dispatch(setSearchQuery(value));
   };
 
   const onIconClick = () => {
-    setSearchValue('');
+    const next = new URLSearchParams(searchParams)
+    next.delete('search')
+
+    if (location.pathname !== '/') {
+      navigate({pathname: '/', search: ''})
+    } else {
+      setSearchParams(next);
+    }
     dispatch(setSearchQuery(''));
   };
 
@@ -81,11 +102,11 @@ export const AppHeader = ({
 
           {!isFilterPage && (
             <InputSearch
-              value={searchValue}
+              value={searchParams.get('search') || ''}
               onChange={handleSearch}
               placeholder='Искать навык'
               inputSize={user ? 'xlarge' : 'large'}
-              icon={searchValue ? <CrossIcon /> : undefined}
+              icon={searchParams.get('search') ? <CrossIcon /> : undefined}
               onIconClick={onIconClick}
             />
           )}
