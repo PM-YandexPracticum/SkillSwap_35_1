@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 
 // закрытие по клику вне элемента
@@ -16,3 +17,4 @@ const useClickOutside = (
 };
 
 export default useClickOutside;
+

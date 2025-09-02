@@ -29,10 +29,15 @@
   text-decoration: none;
 }
 
-.dropdown {
+.popoverWrapper {
+  position: relative;
+}
+
+.popoverButton {
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }
 
 .themeToggleButton {

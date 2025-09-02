@@ -1,5 +1,5 @@
 /* eslint-disable import-x/prefer-default-export */
-import { useState, type ChangeEvent } from 'react';
+import { useRef, useState, type ChangeEvent } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Chevron from '@icons/ui/chevron-down.svg?react';
 import DarkThemeIcon from '@icons/ui/moon.svg?react';
@@ -17,6 +17,7 @@ import styles from './AppHeader.module.scss';
 import { useDispatch } from '../../app/providers/store/store';
 import { setSearchQuery } from '@entities/skill/model/skills-slice/skillsSlice';
 import { logoutUser } from '@entities/user/model/user-slice/userSliсe';
+import { Popover } from '@ui/popover/popover';
 
 export const AppHeader = ({
   user,
@@ -27,7 +28,14 @@ export const AppHeader = ({
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isFilterPage = location.pathname === '/filter';
+  const [isOpenSkills, setIsOpenSkills] = useState(false); // состояние для поповера навыков
+  const [isOpenNotification, setIsOpenNotification] = useState(false); // состояние для поповера уведомлений
+
+  const skillsRef = useRef<HTMLDivElement | null>(null); // ссылка на обкртку поповера навыкрв
+  const notificationRef = useRef<HTMLDivElement | null>(null); // ссылка на обкртку поповера уведомлений
+
+  const isFilterPage =
+    location.pathname === '/filter';
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -70,12 +78,16 @@ export const AppHeader = ({
                 О проекте
               </Text>
             </a>
-            {/* TODO: временная заглушка, заменить на настоящий выпадающий список */}
-            <div className={styles.dropdown}>
-              <Text tag='span' size='main' color='mainColorText'>
-                Все навыки
-              </Text>
-              <Chevron />
+            <div className={styles.popoverWrapper} ref={skillsRef}>
+              <div className={styles.popoverButton} onClick={() => setIsOpenSkills(!isOpenSkills)}>
+                <Text tag='span' size='main' color='mainColorText'>
+                  Все навыки
+                </Text>
+                <Chevron />
+              </div>
+              <Popover isOpen={isOpenSkills} onClose={() => setIsOpenSkills(false)} triggerRef={skillsRef} isRightAligned={false}>
+                {'Заглушка'}
+              </Popover>
             </div>
           </div>
 
@@ -106,7 +118,12 @@ export const AppHeader = ({
             {user ? (
               <div className={styles.userBlock}>
                 {/* TODO: Заглушки для иконок, возможно нужны отдельные UI */}
-                <NotificationIcon />
+                <div className={styles.popoverWrapper}  ref={notificationRef}>
+                  <NotificationIcon onClick={() => setIsOpenNotification(!isOpenNotification)}/>
+                  <Popover isOpen={isOpenNotification} onClose={() => setIsOpenNotification(false)} triggerRef={notificationRef} isRightAligned={true}>
+                    {'Заглушка'}
+                  </Popover>
+                </div>
                 <LikeIcon />
                 <div className={styles.userInfo}>
                   <Text tag='p' size='main' color='mainColorText'>
