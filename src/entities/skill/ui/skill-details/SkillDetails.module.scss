@@ -1,10 +1,9 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   gap: 24px;
   border-radius: var(--main-border-radius);
+  padding: 32px 52px 40px;
   background-color: var(--secondary-color);
 }
 
