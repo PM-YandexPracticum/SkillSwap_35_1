@@ -11,8 +11,18 @@ import IconSort from '../../../shared/assets/icons/ui/sort.svg?react';
 export const InfiniteGrid = ({ title, data, fetchData, hasMore, onClick }: InfiniteGridProps ) => {
   return (
     <div className={styles.infinite__grid}>
-      <Title tag='h2'>{title}</Title>
-
+      <div className={styles.infinite__grid__header}>
+        <Title tag='h2'>{title}</Title>
+        {onClick && (
+          <div>
+            <Button variant='tertiary' onClick={onClick} >
+              <IconSort></IconSort>
+              Сначала новые
+            </Button>
+          </div>
+        )}
+      </div>
+      
       {data && data.length > 0 && (
         <InfiniteScroll
           dataLength={data.length}
@@ -25,8 +35,8 @@ export const InfiniteGrid = ({ title, data, fetchData, hasMore, onClick }: Infin
           <div className={styles.infinite__grid__container}>
             {data.map((card) => (
               <SkillCard
-                key={card.id}
                 id={card.id}
+                key={card.id}
                 userName={card.name}
                 userCity={card.city}
                 userDateofBirth={card.dateOfBirth}
