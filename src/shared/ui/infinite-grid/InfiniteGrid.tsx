@@ -5,8 +5,10 @@ import { Preloader } from '@ui/preloader';
 import type { InfiniteGridProps } from './types';
 import { SkillCard } from '../../../widgets/card/skill-card';
 import styles from './Infinite.module.scss';
+import Button from '@ui/button/Button';
+import IconSort from '../../../shared/assets/icons/ui/sort.svg?react';
 
-export const InfiniteGrid = ({ title, data, fetchData, hasMore }: InfiniteGridProps ) => {
+export const InfiniteGrid = ({ title, data, fetchData, hasMore, onClick }: InfiniteGridProps ) => {
   return (
     <div className={styles.infinite__grid}>
       <Title tag='h2'>{title}</Title>
