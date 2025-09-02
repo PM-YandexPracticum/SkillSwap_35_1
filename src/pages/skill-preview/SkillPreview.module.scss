@@ -4,6 +4,13 @@
   background-color: var(--secondary-color);
 }
 
+.container_empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 h3 {
   margin: 0;
 }
