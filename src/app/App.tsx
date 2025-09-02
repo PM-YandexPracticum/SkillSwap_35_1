@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { MainPage } from '../pages/main-page';
-import { SearchPage } from '../pages/search-page';
 import { LatestSkills } from '../pages/latest-skills';
 import { PopularSkills } from '../pages/popular-skills';
 import { FilterPage } from '../pages/filter-page';
@@ -20,7 +19,6 @@ import {
   checkUserAuth,
   getUserData
 } from '@entities/user/model/user-slice/userSliсe';
-import SearchWatcher from '../features/search/search-watcher/SearchWatcher';
 import FilterWatcher from '../features/filter/filters-watcher/FiltersWatcher';
 import { NotFoundPage404 } from '../pages/not-found404';
 
@@ -44,7 +42,6 @@ const App = () => {
         <Routes>
           <Route element={<FilterLayout />}>
             <Route path='/' element={<MainPage />} />
-            <Route path='/search' element={<SearchPage />} />
             <Route path='/popular' element={<PopularSkills />} />
             <Route path='/latest' element={<LatestSkills />} />
             <Route path='/filter' element={<FilterPage />} />
@@ -76,7 +73,6 @@ const App = () => {
           />
           <Route path='*' element={<NotFoundPage404 />} />
         </Routes>
-        <SearchWatcher />
         <FilterWatcher />
       </main>
       <AppFooter />
