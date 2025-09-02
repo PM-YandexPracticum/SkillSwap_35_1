@@ -1,6 +1,7 @@
 import { type IUserPublic, type IUser } from '../entities/user/model/types/types'
 import { type IRegisterData } from '../features/auth/types/types';
 import { multiplyArrayElements } from '../utils/multiplyArrayElements';
+import { type INotification } from '../features/requests/types/types';
 
 export interface ILoginData {
   email: string;
@@ -28,6 +29,18 @@ interface IErrorResponse {
   status: number;
   message: string;
 }
+
+const createNotification = (
+  type: 'request' | 'accept' | 'decline',
+  from: string,
+  to: string
+): INotification => ({
+  id: Date.now().toString() + Math.floor(Math.random() * 1000),
+  type,
+  date: new Date().toISOString(),
+  from,
+  to,
+});
 
 const uploadImageToImgBB = async (file: File): Promise<string> => {
   const API_KEY = '6114584f51fd63eccd3dae90cc50138c';
@@ -131,43 +144,123 @@ export const mockToggleFavorites = async (
 
 // Заявка на обмен навыками
 
-export const mockRequest = async (requestedId: string): Promise<string> => {
+export const mockRequest = async (requestedId: string): Promise<INotification> => {
   await delay(200);
   const user = getCurrentUser();
-  if (!user.outgoingRequests.includes(requestedId))
+
+  if (!user.outgoingRequests.includes(requestedId)) {
     user.outgoingRequests.push(requestedId);
-  updateStoredUser(user.id, { outgoingRequests: user.outgoingRequests });
-  return requestedId;
+  }
+
+  const notification = createNotification('request', user.id, requestedId);
+  user.notifications.new.push(notification);
+
+  updateStoredUser(user.id, {
+    outgoingRequests: user.outgoingRequests,
+    notifications: user.notifications,
+  });
+
+  return notification;
 };
 
 // Отклонение заявки
 
-export const mockDecline = async (declinedId: string): Promise<string> => {
+export const mockDecline = async (declinedId: string): Promise<INotification> => {
   await delay(200);
   const user = getCurrentUser();
-  if (user.incomingRequests.includes(declinedId))
-    user.incomingRequests = user.incomingRequests.filter(
-      (id) => id !== declinedId
-    );
-  updateStoredUser(user.id, { incomingRequests: user.incomingRequests });
-  return declinedId;
+
+  if (user.incomingRequests.includes(declinedId)) {
+    user.incomingRequests = user.incomingRequests.filter(id => id !== declinedId);
+  }
+
+  const notification = createNotification('decline', user.id, declinedId);
+  user.notifications.new.push(notification);
+
+  updateStoredUser(user.id, {
+    incomingRequests: user.incomingRequests,
+    notifications: user.notifications,
+  });
+
+  return notification;
 };
 
 // Принятие заявки
 
-export const mockAccept = async (acceptedId: string): Promise<string> => {
+export const mockAccept = async (acceptedId: string): Promise<INotification> => {
   await delay(200);
   const user = getCurrentUser();
-  if (!user.exchanges.includes(acceptedId)) user.exchanges.push(acceptedId);
-  if (user.incomingRequests.includes(acceptedId))
-    user.incomingRequests = user.incomingRequests.filter(
-      (id) => id !== acceptedId
-    );
-  updateStoredUser(user.id, { exchanges: user.exchanges });
-  return acceptedId;
+
+  if (!user.exchanges.includes(acceptedId)) {
+    user.exchanges.push(acceptedId);
+  }
+  if (user.incomingRequests.includes(acceptedId)) {
+    user.incomingRequests = user.incomingRequests.filter(id => id !== acceptedId);
+  }
+
+  const notification = createNotification('accept', user.id, acceptedId);
+  user.notifications.new.push(notification);
+
+  updateStoredUser(user.id, {
+    exchanges: user.exchanges,
+    incomingRequests: user.incomingRequests,
+    notifications: user.notifications,
+  });
+
+  return notification;
 };
 
-//Получение пользователя
+// Просмотр уведомления
+
+export const mockViewNotification = async (notificationId: string): Promise<INotification> => {
+  await delay(100);
+  const user = getCurrentUser();
+
+  const notification = user.notifications.new.find(n => n.id === notificationId);
+  if (!notification) {
+    throw { status: 404, message: 'Уведомление не найдено' } as IErrorResponse;
+  }
+
+  user.notifications.new = user.notifications.new.filter(n => n.id !== notificationId);
+
+  if (!user.notifications.viewed.some(n => n.id === notificationId)) {
+    user.notifications.viewed.push(notification);
+  }
+
+  updateStoredUser(user.id, { notifications: user.notifications });
+
+  return notification;
+};
+
+// Просмотр всех уведомлений
+
+export const mockViewAllNotifications = async (): Promise<INotification[]> => {
+  await delay(100);
+  const user = getCurrentUser();
+
+  const notificationsToMove = [...user.notifications.new];
+  user.notifications.viewed.push(...notificationsToMove);
+  user.notifications.new = [];
+
+  updateStoredUser(user.id, { notifications: user.notifications });
+
+  return notificationsToMove;
+};
+
+// Удалиение всех просмотренных уведомлений
+
+export const mockRemoveViewedNotifications = async (): Promise<string[]> => {
+  await delay(100);
+  const user = getCurrentUser();
+
+  const removedIds = user.notifications.viewed.map(n => n.id);
+  user.notifications.viewed = [];
+
+  updateStoredUser(user.id, { notifications: user.notifications });
+
+  return removedIds;
+};
+
+// Получение пользователя
 
 export const mockGetUser = async (): Promise<{ user: IUser }> => {
   await delay(100);
@@ -228,6 +321,7 @@ export const mockRegisterUser = async (
     incomingRequests: [],
     outgoingRequests: [],
     exchanges: [],
+    notifications: { new: [], viewed: [] },
     createdAt: new Date().toISOString(),
     image: userImageUrl,
     can: {

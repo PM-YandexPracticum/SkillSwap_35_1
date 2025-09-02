@@ -3,6 +3,8 @@ import type {
   IDesiredSkill
 } from 'src/entities/skill/model/types/types';
 
+import type { INotificationList } from '../../../../features/requests/types/types';
+
 export interface IUser {
   id: string;
   email: string;
@@ -20,6 +22,7 @@ export interface IUser {
   incomingRequests: string[];
   outgoingRequests: string[];
   exchanges: string[];
+  notifications: INotificationList;
   createdAt: string;
 }
 
@@ -31,4 +34,5 @@ export type IUserPublic = Omit<
   | 'incomingRequests'
   | 'outgoingRequests'
   | 'exchanges'
+  | 'notifications'
 >;

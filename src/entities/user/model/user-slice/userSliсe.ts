@@ -17,6 +17,9 @@ import {
   mockLoginUser,
   mockLogout,
   mockGetUser,
+  mockViewNotification,
+  mockViewAllNotifications,
+  mockRemoveViewedNotifications,
   type ILoginData
 } from '../../../../api/mockApi';
 
@@ -84,6 +87,42 @@ export const acceptRequest = createAsyncThunk(
       return response;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Ошибка при принятии заявки');
+    }
+  }
+);
+
+export const viewNotification = createAsyncThunk(
+  'user/viewNotification',
+  async (notificationId: string, { rejectWithValue }) => {
+    try {
+      const response = await mockViewNotification(notificationId);
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.message || 'Ошибка при просмотре уведомления');
+    }
+  }
+);
+
+export const viewAllNotifications = createAsyncThunk(
+  'user/viewAllNotifications',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await mockViewAllNotifications();
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.message || 'Ошибка при просмотре всех уведомлений');
+    }
+  }
+);
+
+export const removeViewedNotifications = createAsyncThunk(
+  'user/removeViewedNotifications',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await mockRemoveViewedNotifications();
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.message || 'Ошибка при удалении просмотренных уведомлений');
     }
   }
 );
@@ -223,11 +262,12 @@ export const userSlice = createSlice({
       })
       .addCase(sendRequest.fulfilled, (state, action) => {
         state.actionLoading = false;
-        if (
-          state.user &&
-          !state.user.outgoingRequests.includes(action.payload)
-        ) {
-          state.user.outgoingRequests.push(action.payload);
+        if (state.user) {
+          const notification = action.payload;
+          if (!state.user.outgoingRequests.includes(notification.to)) {
+            state.user.outgoingRequests.push(notification.to);
+          }
+          state.user.notifications.new.push(notification);
         }
       })
       .addCase(sendRequest.rejected, (state, action) => {
@@ -243,9 +283,11 @@ export const userSlice = createSlice({
       .addCase(declineRequest.fulfilled, (state, action) => {
         state.actionLoading = false;
         if (state.user) {
+          const notification = action.payload;
           state.user.incomingRequests = state.user.incomingRequests.filter(
-            (id) => id !== action.payload
+            (id) => id !== notification.to
           );
+          state.user.notifications.new.push(notification);
         }
       })
       .addCase(declineRequest.rejected, (state, action) => {
@@ -260,14 +302,74 @@ export const userSlice = createSlice({
       })
       .addCase(acceptRequest.fulfilled, (state, action) => {
         state.actionLoading = false;
-        if (state.user && !state.user.exchanges.includes(action.payload)) {
-          state.user.exchanges.push(action.payload);
+        if (state.user) {
+          const notification = action.payload;
+          if (!state.user.exchanges.includes(notification.to)) {
+            state.user.exchanges.push(notification.to);
+          }
           state.user.incomingRequests = state.user.incomingRequests.filter(
-            (id) => id !== action.payload
+            (id) => id !== notification.to
           );
+          state.user.notifications.new.push(notification);
         }
       })
       .addCase(acceptRequest.rejected, (state, action) => {
+        state.actionLoading = false;
+        state.error = action.payload as string;
+      })
+
+      // Просмотр одного уведомления
+      .addCase(viewNotification.pending, (state) => {
+        state.actionLoading = true;
+        state.error = null;
+      })
+      .addCase(viewNotification.fulfilled, (state, action) => {
+        state.actionLoading = false;
+        if (state.user) {
+          const notification = action.payload;
+
+          state.user.notifications.new = state.user.notifications.new.filter(
+            (n) => n.id !== notification.id
+          );
+
+          state.user.notifications.viewed.push(notification);
+        }
+      })
+      .addCase(viewNotification.rejected, (state, action) => {
+        state.actionLoading = false;
+        state.error = action.payload as string;
+      })
+
+      // Просмотр всех уведомлений
+      .addCase(viewAllNotifications.pending, (state) => {
+        state.actionLoading = true;
+        state.error = null;
+      })
+      .addCase(viewAllNotifications.fulfilled, (state, action) => {
+        state.actionLoading = false;
+        if (state.user) {
+          const moved = action.payload;
+          state.user.notifications.viewed.push(...moved);
+          state.user.notifications.new = [];
+        }
+      })
+      .addCase(viewAllNotifications.rejected, (state, action) => {
+        state.actionLoading = false;
+        state.error = action.payload as string;
+      })
+
+      // Удаление просмотренных уведомлений
+      .addCase(removeViewedNotifications.pending, (state) => {
+        state.actionLoading = true;
+        state.error = null;
+      })
+      .addCase(removeViewedNotifications.fulfilled, (state) => {
+        state.actionLoading = false;
+        if (state.user) {
+          state.user.notifications.viewed = [];
+        }
+      })
+      .addCase(removeViewedNotifications.rejected, (state, action) => {
         state.actionLoading = false;
         state.error = action.payload as string;
       })
