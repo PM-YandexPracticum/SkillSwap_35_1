@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 
 // закрытие по клику вне элемента
@@ -10,9 +11,10 @@ const useClickOutside = (
       if (!ref.current) return;
       if (!ref.current.contains(e.target as Node)) handler();
     };
-    document.addEventListener('click', onDoc);
-    return () => document.removeEventListener('click', onDoc);
+    document.addEventListener('mousedown', onDoc);
+    return () => document.removeEventListener('mousedown', onDoc);
   }, [ref, handler]);
 };
 
 export default useClickOutside;
+
