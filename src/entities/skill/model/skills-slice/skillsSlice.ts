@@ -4,11 +4,17 @@ import {
   createSlice,
   createAsyncThunk
 } from '@reduxjs/toolkit';
-import { mockGetSkills } from '../../../../api/mockApi';
+import {
+  mockGetSkills,
+  mockGetSkillById,
+  mockGetSimilarSkills
+} from '../../../../api/mockApi';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { IUserPublic } from "src/entities/user/model/types/types";
+import type { IUserPublic } from 'src/entities/user/model/types/types';
 import type { RootState } from '../../../../app/providers/store/store';
 import type { IFilters } from '../../../../shared/types/IFilters';
+
+export type IPreview = IUserPublic & { similarSkills: IUserPublic[] | null };
 
 export interface TSkillsState {
   skills: IUserPublic[];
@@ -17,6 +23,7 @@ export interface TSkillsState {
   hasMore: boolean;
   searchQuery: string;
   filters: IFilters;
+  preview: IPreview | null;
 }
 
 export const initialState: TSkillsState = {
@@ -25,6 +32,7 @@ export const initialState: TSkillsState = {
   error: null,
   hasMore: true,
   searchQuery: '',
+  preview: null,
   filters: {
     subcategories: [],
     gender: 'Не имеет значения',
@@ -48,6 +56,31 @@ export const loadSkills = createAsyncThunk(
       };
     } catch (error) {
       return rejectWithValue(error);
+    }
+  }
+);
+
+export const fetchSkillById = createAsyncThunk<
+  IUserPublic | null,
+  string,
+  { rejectValue: string }
+>('skills/fetchSkillById', async (id, { rejectWithValue }) => {
+  try {
+    const skill = await mockGetSkillById(id);
+    return skill;
+  } catch {
+    return rejectWithValue('Ошибка при загрузке навыка');
+  }
+});
+
+export const loadSimilarSkills = createAsyncThunk(
+  'skills/loadSimilarSkills',
+  async (userId: string, { rejectWithValue }) => {
+    try {
+      const data = await mockGetSimilarSkills(userId);
+      return data;
+    } catch {
+      return rejectWithValue('Ошибка при загрузке похожих навыков');
     }
   }
 );
@@ -83,12 +116,57 @@ export const SkillSlice = createSlice({
         state.loading = false;
         state.error = null;
 
-        state.skills = [...state.skills, ...action.payload.skills];
+        const newSkills = action.payload.skills.filter(
+          (s) => !state.skills.find((existing) => existing.id === s.id)
+        );
+        state.skills = [...state.skills, ...newSkills];
         state.hasMore = action.payload.hasMore;
       })
       .addCase(loadSkills.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
+      })
+      .addCase(fetchSkillById.pending, (state) => {
+        state.preview = null;
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(
+        fetchSkillById.fulfilled,
+        (state, action: PayloadAction<IUserPublic | null>) => {
+          state.loading = false;
+          state.preview = action.payload
+            ? { ...action.payload, similarSkills: [] }
+            : null;
+        }
+      )
+      .addCase(fetchSkillById.rejected, (state, action) => {
+        state.preview = null;
+        state.loading = false;
+        state.error = action.payload as string;
+      })
+      .addCase(loadSimilarSkills.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        if (state.preview) {
+          state.preview.similarSkills = null;
+        }
+      })
+      .addCase(
+        loadSimilarSkills.fulfilled,
+        (state, action: PayloadAction<IUserPublic[]>) => {
+          state.loading = false;
+          if (state.preview) {
+            state.preview.similarSkills = action.payload;
+          }
+        }
+      )
+      .addCase(loadSimilarSkills.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+        if (state.preview) {
+          state.preview.similarSkills = null;
+        }
       });
   }
 });
@@ -107,6 +185,9 @@ export const getSkills = (state: RootState) => state.skills.skills;
 export const getSearchQuery = (state: RootState) => state.skills.searchQuery;
 export const getFilters = (state: RootState) => state.skills.filters;
 export const getHasMore = (state: RootState) => state.skills.hasMore;
+export const getLoading = (state: RootState) => state.skills.loading;
+export const getPreview = (state: RootState) => state.skills.preview;
+export const getSimilarSkills = (state: RootState) => state.skills.preview?.similarSkills;
 
 export const getSkillById = (id: string) =>
   createSelector(getSkills, (skills) =>
@@ -149,14 +230,14 @@ export const getPopularSkills = createSelector(getSkills, (skills) =>
   skills.filter((skill) => skill.likeCount >= 100)
 );
 
-export const getSimilarSkills = createSelector(
-  [getSkills, (_, user: IUserPublic) => user],
-  (skills, user) => {
-    if (!user?.can?.subcategory) return [];
+export const getSearchResults = createSelector(
+  [getSkills, getSearchQuery],
+  (skills, searchQuery) => {
+    if (!searchQuery) return skills;
 
-    return skills.filter(
-      (skill) =>
-        skill.can?.subcategory === user.can.subcategory && skill.id !== user.id
+    const lowerQuery = searchQuery.toLowerCase();
+    return skills.filter((skill) =>
+      skill.can?.title?.toLowerCase().includes(lowerQuery)
     );
   }
 );

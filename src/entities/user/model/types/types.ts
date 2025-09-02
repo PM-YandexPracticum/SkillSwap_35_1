@@ -1,12 +1,15 @@
-import type { ISkill, IDesiredSkill } from "src/entities/skill/model/types/types";
+import type {
+  ISkill,
+  IDesiredSkill
+} from 'src/entities/skill/model/types/types';
 
 export interface IUser {
   id: string;
   email: string;
   password: string;
   name: string;
-  about: string;
-  gender: 'Женский' | 'Мужской';
+  about?: string;
+  gender: 'Женский' | 'Мужской' | undefined;
   dateOfBirth: string;
   city: string;
   image?: string;
@@ -18,7 +21,14 @@ export interface IUser {
   outgoingRequests: string[];
   exchanges: string[];
   createdAt: string;
-};
+}
 
-export type IUserPublic = Omit<IUser, 'email' | 'password' | 'favourites' | 'incomingRequests' | 'outgoingRequests' | 'exchanges'>;
-
+export type IUserPublic = Omit<
+  IUser,
+  | 'email'
+  | 'password'
+  | 'favorites'
+  | 'incomingRequests'
+  | 'outgoingRequests'
+  | 'exchanges'
+>;

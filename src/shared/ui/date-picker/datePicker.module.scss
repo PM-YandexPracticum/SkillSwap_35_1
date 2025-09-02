@@ -1,0 +1,114 @@
+.wrapper {
+  position: absolute;
+  top: 100%;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+  height: 360px;
+  border: 1px solid var(--tertiary-color-dark);
+  border-radius: 12px;
+  background-color: var(--secondary-color);
+  padding: 15px 16px 0;
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-details);
+  line-height: var(--font-line-details);
+
+  .container {
+    padding: 0 13px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 25px;
+    z-index: 0;
+    position: relative;
+  }
+
+  .dropdowns {
+    height: 40px;
+    color: var(--main-color-text);
+    font-size: var(--font-size-main-text);
+    line-height: var(--font-line-main-tex);
+    position: relative;
+    text-transform: capitalize;
+    cursor: pointer;
+    
+      > *:nth-child(2) {
+        width: 85px;
+      }
+
+    .dropdown {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 2px;
+      height: 100%;
+      text-align: center;
+    }
+
+    .monthNames {
+      text-transform: capitalize;
+    }
+  }
+
+  .calendarField {
+    position: relative;
+    padding-top: 6px;
+    width: 224px;
+    border-collapse: separate;
+    border-spacing: 0 3px;
+  }
+
+  .weekNames {
+    font-size: 14px;
+    color: #508826;
+    text-transform: capitalize;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .days {
+    color: var(--main-color-text);
+    pointer-events: auto;
+  }
+
+  .day {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  .dayButton {
+    border: none;
+    background-color: inherit;
+    color: inherit;
+    border-radius: 50%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  .dayOutside {
+    color: var(--tertiary-color-light);
+    pointer-events: none;
+  }
+
+  .selectedDay {
+    background-color: var(--accent-color);
+    border-radius: 50%;
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    width: 100%;
+  }
+}

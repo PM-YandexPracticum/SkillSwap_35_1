@@ -1,4 +1,3 @@
-
 export interface ISkill {
   category: string;
   subcategory: string;
@@ -11,4 +10,3 @@ export interface IDesiredSkill {
   category: string;
   subcategory: string;
 }
-

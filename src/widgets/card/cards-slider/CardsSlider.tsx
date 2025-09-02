@@ -6,7 +6,11 @@ import styles from './CardsSlider.module.scss';
 import type { CardsSliderProps } from './types';
 import { SkillCard } from '../../../widgets/card/skill-card';
 
-export const CardsSlider = ({ title, skillsList }: CardsSliderProps) => {
+export const CardsSlider = ({
+  title,
+  skillsList,
+  loading = false
+}: CardsSliderProps) => {
   return (
     <div className={styles.section}>
       <Title tag='h2'>{title}</Title>
@@ -14,8 +18,10 @@ export const CardsSlider = ({ title, skillsList }: CardsSliderProps) => {
       <Slider
         data={skillsList}
         getItemId={(skill) => skill.id}
+        loading={loading}
         renderItem={(skill) => (
           <SkillCard
+            id={skill.id}
             userName={skill.name}
             userCity={skill.city}
             userDateofBirth={skill.dateOfBirth}

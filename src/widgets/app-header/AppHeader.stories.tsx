@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { type IUser } from "src/entities/user/model/types/types";
+import { type IUser } from '../../entities/user/model/types/types';
 import { AppHeader } from './AppHeader';
 
 const currentUser = {

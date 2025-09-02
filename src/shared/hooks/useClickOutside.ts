@@ -1,17 +1,20 @@
-import { useEffect, type RefObject } from "react"
 
-export const useClickOutside = (ref: RefObject<HTMLDivElement | null>, callback: () => void) => {
-  const handleClick = (e: MouseEvent) => {
-    if (ref.current && !ref.current.contains(e.target as Node)) {
-      callback();
-    }
-  };
+import { useEffect } from 'react';
 
+// закрытие по клику вне элемента
+const useClickOutside = (
+  ref: React.RefObject<HTMLElement | null>,
+  handler: () => void
+) => {
   useEffect(() => {
-    document.addEventListener('mousedown', handleClick);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClick);
-    }
-  }, []);
+    const onDoc = (e: MouseEvent) => {
+      if (!ref.current) return;
+      if (!ref.current.contains(e.target as Node)) handler();
+    };
+    document.addEventListener('click', onDoc);
+    return () => document.removeEventListener('click', onDoc);
+  }, [ref, handler]);
 };
+
+export default useClickOutside;
+

@@ -1,5 +1,11 @@
 .slider__wrapper {
     position: relative;
+
+    &_empty {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .slider {
@@ -14,6 +20,10 @@
 
 .slider__slide {
     inline-size: 100%;
+}
+
+.slider__loader {
+    position: relative;
 }
 
 .slider__navigation {

@@ -3,14 +3,14 @@ export const multiplyArrayElements = (
   multiplyCount = 5
 ): any[] => {
   const resultArray = [];
-  const timestamp = Date.now();
 
   for (let i = 0; i <= multiplyCount; i += 1) {
     resultArray.push(
-      ...data.map((item, index) => ({
-        ...item,
-        id: `${item?.id}-${index}-${i}-${timestamp}`
-      }))
+      ...data.map((item, index) => {
+        const idBase = item?.id ?? index;
+        const newId = `${idBase}-${i}-${index}`;
+        return { ...item, id: newId };
+      })
     );
   }
 

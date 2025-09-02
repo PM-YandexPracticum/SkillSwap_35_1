@@ -1,6 +1,6 @@
 /* eslint-disable import-x/prefer-default-export */
 import { useRef, useState, type ChangeEvent } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Chevron from '@icons/ui/chevron-down.svg?react';
 import DarkThemeIcon from '@icons/ui/moon.svg?react';
 // import LightThemeIcon from '@icons/ui/sun.svg?react';
@@ -15,7 +15,8 @@ import { InputSearch } from '@ui/input/Input';
 import { type AppHeaderProps } from './types';
 import styles from './AppHeader.module.scss';
 import { useDispatch } from '../../app/providers/store/store';
-import { setSearchQuery } from '../../entities/skill/model/skills-slice/skillsSlice';
+import { setSearchQuery } from '@entities/skill/model/skills-slice/skillsSlice';
+import { logoutUser } from '@entities/user/model/user-slice/userSliсe';
 import { Popover } from '@ui/popover/popover';
 
 export const AppHeader = ({
@@ -25,6 +26,7 @@ export const AppHeader = ({
   const [searchValue, setSearchValue] = useState(''); // для инпута поиска
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [isOpenSkills, setIsOpenSkills] = useState(false); // состояние для поповера навыков
   const [isOpenNotification, setIsOpenNotification] = useState(false); // состояние для поповера уведомлений
@@ -103,7 +105,13 @@ export const AppHeader = ({
           <button type='button' className={styles.themeToggleButton}>
             {/* TODO: временная заглушка, 
             заменить на логику отображения кнопки в зависимости от темы: sun/moon */}
-            <DarkThemeIcon />
+            <DarkThemeIcon
+              onClick={() => { // ЗДЕСЬ ВРЕМЕННЫЙ ЛОГАУТ ДЛЯ ТЕСТИРОВАНИЯ
+                if (user) {
+                  dispatch(logoutUser());
+                }
+              }}
+            />
           </button>
 
           <div className={styles.accountBlock}>
@@ -126,10 +134,12 @@ export const AppHeader = ({
               </div>
             ) : (
               <div className={styles.authButtons}>
-                <Button variant='secondary' style={{ maxInlineSize: '92px' }}>
+                <Button variant='secondary' style={{ maxInlineSize: '92px' }} onClick={() => navigate('/login')}>
                   Войти
                 </Button>
-                <Button variant='primary'>Зарегистрироваться</Button>
+                <Button variant='primary' onClick={() => navigate('/register')}>
+                  Зарегистрироваться
+                </Button>
               </div>
             )}
           </div>

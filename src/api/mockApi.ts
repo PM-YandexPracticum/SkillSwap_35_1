@@ -1,16 +1,7 @@
 import { type IUserPublic, type IUser } from '../entities/user/model/types/types'
+import { type IRegisterData } from '../features/auth/types/types';
 import { multiplyArrayElements } from '../utils/multiplyArrayElements';
 
-export type IRegisterData = Omit<
-  IUser,
-  | 'id'
-  | 'createdAt'
-  | 'likeCount'
-  | 'favorites'
-  | 'incomingRequests'
-  | 'outgoingRequests'
-  | 'exchanges'
->;
 export interface ILoginData {
   email: string;
   password: string;
@@ -37,6 +28,25 @@ interface IErrorResponse {
   status: number;
   message: string;
 }
+
+const uploadImageToImgBB = async (file: File): Promise<string> => {
+  const API_KEY = '6114584f51fd63eccd3dae90cc50138c';
+  const formData = new FormData();
+  formData.append('image', file);
+  const response = await fetch(
+    `https://api.imgbb.com/1/upload?key=${API_KEY}`,
+    {
+      method: 'POST',
+      body: formData,
+    }
+  );
+  const data = await response.json();
+  if (data.success) {
+    return data.data.display_url;
+  } else {
+    throw new Error('Не удалось загрузить изображение: ' + data.error.message);
+  }
+};
 
 const getStoredUsers = (): IUser[] => {
   const data = localStorage.getItem('users');
@@ -76,10 +86,28 @@ const getCurrentUser = (): IUser => {
 // Получение карточек
 
 export const mockGetSkills = async (): Promise<IUserPublic[]> => {
-  await delay(300);
+  await delay(500);
   const response = await fetch('/db/users.json');
   const data: IUserPublic[] = await response.json();
   return multiplyArrayElements(data);
+};
+
+export const mockGetSkillById = async (id: string): Promise<IUserPublic | null> => {
+  await delay(200);
+  const response = await fetch('/db/users.json');
+  const data: IUserPublic[] = await response.json();
+  const expanded = multiplyArrayElements(data);
+  const skill = expanded.find((user) => user.id === id) || null;
+  return skill;
+};
+
+export const mockGetSimilarSkills = async (userId: string): Promise<IUserPublic[]> => {
+  const allSkills = await mockGetSkills();
+  const user = allSkills.find(u => u.id === userId);
+  if (!user?.can?.subcategory) return [];
+  return allSkills.filter(
+    s => s.can?.subcategory === user.can.subcategory && s.id !== user.id
+  );
 };
 
 // Добавление /удаление избранного
@@ -154,10 +182,29 @@ export const mockUpdateUser = async (
 ): Promise<IUser> => {
   await delay(200);
   const user = getCurrentUser();
-  Object.assign(user, update);
-  updateStoredUser(user.id, update);
-  return user;
+
+  const userImageUrl = update.image ? await uploadImageToImgBB(update.image) : user.image;
+
+  const skillImageUrls = update.can?.images
+    ? await Promise.all(update.can.images.map((img) => uploadImageToImgBB(img)))
+    : user.can.images;
+
+  const updatedUser: IUser = {
+    ...user,
+    ...update,
+    image: userImageUrl,
+    can: {
+      ...user.can,
+      ...update.can,
+      images: skillImageUrls,
+    },
+  };
+
+  updateStoredUser(user.id, updatedUser);
+
+  return updatedUser;
 };
+
 
 // Регистрация пользователя (пользователь добавляется в local storage)
 
@@ -165,6 +212,13 @@ export const mockRegisterUser = async (
   data: IRegisterData
 ): Promise<IAuthResponse> => {
   await delay(300);
+
+  const userImageUrl = data.image ? await uploadImageToImgBB(data.image) : '';
+
+  const skillImageUrls = await Promise.all(
+    data.can.images?.map((image) => uploadImageToImgBB(image)) || []
+  );
+
   const users = getStoredUsers();
   const newUser: IUser = {
     ...data,
@@ -174,14 +228,22 @@ export const mockRegisterUser = async (
     incomingRequests: [],
     outgoingRequests: [],
     exchanges: [],
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
+    image: userImageUrl,
+    can: {
+      ...data.can,
+      images: skillImageUrls,
+    },
   };
+
   users.push(newUser);
   setStoredUsers(users);
   localStorage.setItem('currentUser', newUser.id);
+
   const token = await createToken();
   return { user: newUser, ...token };
 };
+
 
 // Логин пользователя
 
