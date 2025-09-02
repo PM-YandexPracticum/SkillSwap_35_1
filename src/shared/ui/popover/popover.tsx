@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Transition } from "react-transition-group";
 import { useRef } from 'react';
 import { useClickEsc } from "../../hooks/useClickEsc";
-import { useClickOutside } from "../../hooks/useClickOutside";
+import useClickOutside from "../../hooks/useClickOutside";
 import { usePositionPopover } from "../../hooks/usePositionPopover";
 
 export const Popover = ({isOpen, onClose, children, triggerRef, isRightAligned}: TPopoverProps) => {
