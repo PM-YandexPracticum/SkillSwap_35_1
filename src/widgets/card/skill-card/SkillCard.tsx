@@ -46,6 +46,8 @@ export const SkillCard = (props: SkillCardProps) => {
     dispatch(toggleFavorites(id));
   };
 
+  const handleButtonClick = () => navigate(`/skills/${id}`);
+
   return (
     <div
       className={`${styles.container} ${userAbout ? styles['with-about'] : ''}`}
@@ -123,9 +125,9 @@ export const SkillCard = (props: SkillCardProps) => {
       </div>
       {!userAbout &&
         (!isRequestSent ? (
-          <Button onClick={() => navigate(`/skills/${id}`)}>Подробнее</Button>
+          <Button onClick={handleButtonClick}>Подробнее</Button>
         ) : (
-          <Button variant='secondary'><Clock className={styles.button_icon}/>Обмен предложен</Button>
+          <Button variant='secondary' onClick={handleButtonClick}><Clock className={styles.button_icon}/>Обмен предложен</Button>
         ))}
     </div>
   );

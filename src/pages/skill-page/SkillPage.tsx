@@ -32,6 +32,7 @@ export const SkillPage = () => {
   const similarSkills = useSelector(getSimilarSkills);
   const user: IUser | null = useSelector(getUserData);
   const isAuth = useSelector(getIsAuth);
+  const isRequestSent = !!user && !!id && user.outgoingRequests.includes(id);
 
   const onExchangeClick = () => {
     if (!id) return;
@@ -95,6 +96,7 @@ export const SkillPage = () => {
           isLiked={!!user && user.favorites.includes(skill.id)}
           onLikeClick={() => dispatch(toggleFavorites(skill.id))}
           onExchangeClick={onExchangeClick}
+          isRequestSent={isRequestSent}
         />
       </div>
       <CardsSlider
