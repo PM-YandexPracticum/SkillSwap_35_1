@@ -1,6 +1,11 @@
 /* eslint-disable import-x/prefer-default-export */
 import { useRef, useState, type ChangeEvent } from 'react';
-import { NavLink, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import {
+  NavLink,
+  useLocation,
+  useNavigate,
+  useSearchParams
+} from 'react-router-dom';
 import Chevron from '@icons/ui/chevron-down.svg?react';
 import DarkThemeIcon from '@icons/ui/moon.svg?react';
 // import LightThemeIcon from '@icons/ui/sun.svg?react';
@@ -19,12 +24,13 @@ import { setSearchQuery } from '@entities/skill/model/skills-slice/skillsSlice';
 import { logoutUser } from '@entities/user/model/user-slice/userSliсe';
 import { Popover } from '@ui/popover/popover';
 import { ProfileMenu } from '../../features/auth/ProfileMenu/ProfileMenu';
+import { CategoryList } from '../../features/skills/category-list/CategoryList';
 
 export const AppHeader = ({
   user,
   isRegistrationHeader = false
 }: AppHeaderProps) => {
-  const [searchParams, setSearchParams] = useSearchParams('')
+  const [searchParams, setSearchParams] = useSearchParams('');
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
@@ -38,21 +44,20 @@ export const AppHeader = ({
   const menuRef = useRef<HTMLDivElement | null>(null); // ссылка на обёртку поповера меню профиля
 
 
-  const isFilterPage =
-    location.pathname === '/filter';
+  const isFilterPage = location.pathname === '/filter';
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    const next = new URLSearchParams(searchParams)
-    
+    const value = e.target.value;
+    const next = new URLSearchParams(searchParams);
+
     if (value) {
-      next.set('search', value)
+      next.set('search', value);
     } else {
-      next.delete('search')
+      next.delete('search');
     }
 
     if (value.trim() && location.pathname !== '/') {
-      navigate({pathname: '/', search: `?${next.toString()}`})
+      navigate({ pathname: '/', search: `?${next.toString()}` });
     } else {
       setSearchParams(next);
     }
@@ -61,15 +66,27 @@ export const AppHeader = ({
   };
 
   const onIconClick = () => {
-    const next = new URLSearchParams(searchParams)
-    next.delete('search')
+    const next = new URLSearchParams(searchParams);
+    next.delete('search');
 
     if (location.pathname !== '/') {
-      navigate({pathname: '/', search: ''})
+      navigate({ pathname: '/', search: '' });
     } else {
       setSearchParams(next);
     }
     dispatch(setSearchQuery(''));
+  };
+
+  const handleClose = () => {
+    const from = location.state?.from;
+
+    if (from) {
+      navigate(from, { replace: true });
+    } else if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
   };
 
   return (
@@ -85,13 +102,12 @@ export const AppHeader = ({
       {isRegistrationHeader ? (
         <Button
           variant='tertiary'
+          onClick={handleClose}
           style={{
             maxInlineSize: '147px'
           }}
         >
-          <Text tag='span' size='main' color='mainColorText'>
-            Закрыть
-          </Text>
+          Закрыть
           <CrossIcon style={{ color: 'var(--main-color-text)' }} />
         </Button>
       ) : (
@@ -104,14 +120,22 @@ export const AppHeader = ({
               </Text>
             </a>
             <div className={styles.popoverWrapper} ref={skillsRef}>
-              <div className={styles.popoverButton} onClick={() => setIsOpenSkills(!isOpenSkills)}>
+              <div
+                className={styles.popoverButton}
+                onClick={() => setIsOpenSkills(!isOpenSkills)}
+              >
                 <Text tag='span' size='main' color='mainColorText'>
                   Все навыки
                 </Text>
                 <Chevron />
               </div>
-              <Popover isOpen={isOpenSkills} onClose={() => setIsOpenSkills(false)} triggerRef={skillsRef} isRightAligned={false}>
-                {'Заглушка'}
+              <Popover
+                isOpen={isOpenSkills}
+                onClose={() => setIsOpenSkills(false)}
+                triggerRef={skillsRef}
+                isRightAligned={false}
+              >
+                <CategoryList />
               </Popover>
             </div>
           </div>
@@ -131,7 +155,8 @@ export const AppHeader = ({
             {/* TODO: временная заглушка, 
             заменить на логику отображения кнопки в зависимости от темы: sun/moon */}
             <DarkThemeIcon
-              onClick={() => { // ЗДЕСЬ ВРЕМЕННЫЙ ЛОГАУТ ДЛЯ ТЕСТИРОВАНИЯ
+              onClick={() => {
+                // ЗДЕСЬ ВРЕМЕННЫЙ ЛОГАУТ ДЛЯ ТЕСТИРОВАНИЯ
                 if (user) {
                   dispatch(logoutUser());
                 }
@@ -143,9 +168,16 @@ export const AppHeader = ({
             {user ? (
               <div className={styles.userBlock}>
                 {/* TODO: Заглушки для иконок, возможно нужны отдельные UI */}
-                <div className={styles.popoverWrapper}  ref={notificationRef}>
-                  <NotificationIcon onClick={() => setIsOpenNotification(!isOpenNotification)}/>
-                  <Popover isOpen={isOpenNotification} onClose={() => setIsOpenNotification(false)} triggerRef={notificationRef} isRightAligned={true}>
+                <div className={styles.popoverWrapper} ref={notificationRef}>
+                  <NotificationIcon
+                    onClick={() => setIsOpenNotification(!isOpenNotification)}
+                  />
+                  <Popover
+                    isOpen={isOpenNotification}
+                    onClose={() => setIsOpenNotification(false)}
+                    triggerRef={notificationRef}
+                    isRightAligned={true}
+                  >
                     {'Заглушка'}
                   </Popover>
                 </div>
@@ -164,7 +196,15 @@ export const AppHeader = ({
               </div>
             ) : (
               <div className={styles.authButtons}>
-                <Button variant='secondary' style={{ maxInlineSize: '92px' }} onClick={() => navigate('/login')}>
+                <Button
+                  variant='secondary'
+                  style={{ maxInlineSize: '92px' }}
+                  onClick={() =>
+                    navigate('/login', {
+                      state: { from: location.pathname + location.search }
+                    })
+                  }
+                >
                   Войти
                 </Button>
                 <Button variant='primary' onClick={() => navigate('/register')}>

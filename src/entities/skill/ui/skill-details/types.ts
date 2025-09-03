@@ -6,6 +6,7 @@ export type SkillDetailsProps = {
   images: string[];
   isLiked?: boolean;
   isLikeActive?: boolean;
+  isRequestSent?: boolean;
   variant: 'can' | 'want';
   onExchangeClick?: () => void;
   onLikeClick?: () => void;

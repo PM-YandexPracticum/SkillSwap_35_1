@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import type {
@@ -13,6 +12,8 @@ import LoginDataForm from '../../LoginDataForm/LoginDataForm';
 import UserDataForm from '../../UserDataForm/UserDataForm';
 import SkillDataForm from '../../SkillDataForm/SkillDataForm';
 import RegistrationInfo from '../info/RegistrationInfo';
+import { Modal } from '@ui/modal';
+import { SkillPreview } from '../../skill-preview';
 import styles from './RegistrationForm.module.scss';
 
 export interface TFormData {
@@ -30,10 +31,6 @@ export interface TFormData {
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const from = (location.state as any)?.from?.pathname || "/";
 
   const methods = useForm<TFormData>({
     mode: 'onChange',
@@ -60,22 +57,19 @@ const RegistrationForm = () => {
   const nextStep = () => setStep((prev) => Math.min(prev + 1, 3));
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 1));
 
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [previewData, setPreviewData] = useState<TFormData | null>(null);
+
+  const closePreview = () => setIsPreviewOpen(false);
+
+  const getImagePreviews = (files?: File[]) => {
+    if (!files || files.length === 0) return [];
+    return files.map((file) => URL.createObjectURL(file));
+  };
+
   const onSubmit = async (data: TFormData) => {
-    // преобразование пустой строки при выборе пола в underfined
-    const preparedData = {
-      ...data,
-      gender: data.gender === '' ? undefined : data.gender
-    };
-
-    try {
-      await dispatch(registerUser(preparedData)).unwrap()
-      .then(() => navigate(from, { state: { showSkillPreview: true }, replace: true }));
-
-    } catch (err) {
-      // TODO: возможно дополнить выводом ошибок, пока стоит заглушка
-      // eslint-disable-next-line no-console
-      console.error('Ошибка при регистрации:', err);
-    }
+    setPreviewData(data);
+    setIsPreviewOpen(true);
   };
 
   return (
@@ -94,7 +88,32 @@ const RegistrationForm = () => {
           {step === 3 && <SkillDataForm prevStep={prevStep} />}
         </form>
       </FormProvider>
+
       <RegistrationInfo step={step} />
+
+      <Modal isOpen={isPreviewOpen} onClose={closePreview}>
+        <SkillPreview
+          title={previewData?.can.title || ''}
+          subTitle={`${previewData?.can.category} / ${previewData?.can.subcategory}`|| ''}
+          text={previewData?.can.description || ''}
+          images={getImagePreviews(previewData?.can.images)}
+          onEditClick={() => setIsPreviewOpen(false)}
+          onDoneClick={async () => {
+            try {
+              const fullFormData = methods.getValues();
+              const preparedData = {
+                ...fullFormData,
+                gender:
+                  fullFormData.gender === '' ? undefined : fullFormData.gender
+              };
+
+              await dispatch(registerUser(preparedData)).unwrap();
+            } catch (err) {
+              console.error('Ошибка при регистрации:', err);
+            }
+          }}
+        />
+      </Modal>
     </div>
   );
 };

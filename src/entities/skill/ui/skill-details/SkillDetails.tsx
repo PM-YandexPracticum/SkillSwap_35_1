@@ -1,5 +1,6 @@
 /* eslint-disable import-x/prefer-default-export */
 import { LikeButton } from '@ui/likeButton';
+import Clock from '@icons/ui/clock.svg?react';
 import IconShare from '@icons/ui/share.svg?react';
 import IconMore from '@icons/ui/more-square.svg?react';
 import IconEdit from '@icons/ui/edit.svg?react';
@@ -18,6 +19,7 @@ export const SkillDetails = (props: SkillDetailsProps) => {
     title,
     isLiked = false,
     isLikeActive = false,
+    isRequestSent = false,
     variant,
     onExchangeClick,
     onLikeClick,
@@ -57,10 +59,15 @@ export const SkillDetails = (props: SkillDetailsProps) => {
               </Button>
             </div>
           ) : (
-            <Button style={{ marginTop: 'auto' }} onClick={onExchangeClick}>
-              Предложить обмен
-            </Button>
-          )}
+            isRequestSent ? (
+    <Button style={{ marginTop: 'auto' }} variant='secondary' disabled={true}>
+      <Clock className={styles.button_icon} /> Обмен предложен
+    </Button>
+  ) : (
+    <Button style={{ marginTop: 'auto' }} onClick={onExchangeClick}>
+      Предложить обмен
+    </Button>
+          ))}
         </div>
         <ImageGallery images={images} />
       </div>
