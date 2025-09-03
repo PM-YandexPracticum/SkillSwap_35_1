@@ -1,6 +1,6 @@
 import styles from './SkillPage.module.scss';
 import { useSelector, useDispatch } from '../../app/providers/store/store';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { SkillCard } from '@widgets/card/skill-card';
 import { CardsSlider } from '@widgets/card/cards-slider';
@@ -12,31 +12,46 @@ import {
   fetchSkillById,
   getSimilarSkills,
   loadSimilarSkills,
-  getLoading,
+  getLoading
 } from '@entities/skill/model/skills-slice/skillsSlice';
 import type { IUser, IUserPublic } from '@entities/user/model/types/types';
 import {
   getUserData,
-  toggleFavorites
+  getIsAuth,
+  toggleFavorites,
+  sendRequest
 } from '@entities/user/model/user-slice/userSliсe';
 
 export const SkillPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const skill: IUserPublic | null = useSelector(getPreview);
   const loading = useSelector(getLoading);
   const similarSkills = useSelector(getSimilarSkills);
   const user: IUser | null = useSelector(getUserData);
+  const isAuth = useSelector(getIsAuth);
+
+  const onExchangeClick = () => {
+    if (!id) return;
+
+    if (!isAuth) {
+      navigate('/login', {
+        state: { from: location.pathname + location.search }
+      });
+    } else {
+      dispatch(sendRequest(id));
+    }
+  };
 
   useEffect(() => {
-  if (!id) return;
+    if (!id) return;
 
-  dispatch(fetchSkillById(id)).then(() => {
-    dispatch(loadSimilarSkills(id));
-  });
-}, [id, dispatch]);
-
+    dispatch(fetchSkillById(id)).then(() => {
+      dispatch(loadSimilarSkills(id));
+    });
+  }, [id, dispatch]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -79,9 +94,14 @@ export const SkillPage = () => {
           isLikeActive={!!user}
           isLiked={!!user && user.favorites.includes(skill.id)}
           onLikeClick={() => dispatch(toggleFavorites(skill.id))}
+          onExchangeClick={onExchangeClick}
         />
       </div>
-      <CardsSlider title='Похожие предложения' skillsList={similarSkills ?? []} loading={similarSkills === null} />
+      <CardsSlider
+        title='Похожие предложения'
+        skillsList={similarSkills ?? []}
+        loading={similarSkills === null}
+      />
     </div>
   );
 };

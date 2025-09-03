@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { Navigate, useLocation } from 'react-router';
+import { Navigate, useLocation } from 'react-router-dom';
 import { Preloader } from '@ui/preloader';
 import {
   checkUserAuth,
