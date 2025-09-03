@@ -29,6 +29,8 @@ const App = () => {
   const user = useSelector(getUserData);
   const background = location.state?.background;
 
+  const isAuthRoute = location.pathname === '/login' || location.pathname === '/register';
+
   useEffect(() => {
     dispatch(checkUserAuth());
   }, [dispatch]);
@@ -39,7 +41,7 @@ const App = () => {
 
   return (
     <div className={styles.app}>
-      <AppHeader user={user} />
+      <AppHeader user={user} isRegistrationHeader={isAuthRoute} />
       <main className={styles.main}>
         <Routes location={background || location}>
           <Route element={<FilterLayout />}>
@@ -77,7 +79,7 @@ const App = () => {
         </Routes>
         <FilterWatcher />
       </main>
-      <AppFooter />
+      {!isAuthRoute && <AppFooter /> }
     </div>
   );
 };

@@ -72,6 +72,16 @@ export const AppHeader = ({
     dispatch(setSearchQuery(''));
   };
 
+  const handleClose = () => {
+  if (location.state?.from) {
+    navigate(location.state.from, { replace: true });
+  } else if (window.history.state && window.history.state.idx > 0) {
+    navigate(-1);
+  } else {
+    navigate('/');
+  }
+};
+
   return (
     <header
       className={`${styles.container} ${isFilterPage ? styles.start : ''}`}
@@ -85,13 +95,12 @@ export const AppHeader = ({
       {isRegistrationHeader ? (
         <Button
           variant='tertiary'
+          onClick={handleClose}
           style={{
             maxInlineSize: '147px'
           }}
         >
-          <Text tag='span' size='main' color='mainColorText'>
             Закрыть
-          </Text>
           <CrossIcon style={{ color: 'var(--main-color-text)' }} />
         </Button>
       ) : (
