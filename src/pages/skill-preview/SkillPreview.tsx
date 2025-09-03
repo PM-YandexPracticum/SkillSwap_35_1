@@ -1,4 +1,5 @@
-import styles from './SkillPreview.module.scss'
+import styles from './SkillPreview.module.scss';
+import { useNavigate } from 'react-router-dom';
 import { Title } from '@ui/title/Title';
 import { Text } from '@ui/text/Text';
 import { SkillDetails } from '@entities/skill/ui/skill-details';
@@ -6,6 +7,7 @@ import { useSelector } from '../../app/providers/store/store';
 import { getUserData } from '@entities/user/model/user-slice/userSliсe';
 
 export const SkillPreview = () => {
+  const navigate = useNavigate();
   
   const user = useSelector(getUserData);
   const skill = user?.can;
@@ -33,7 +35,7 @@ export const SkillPreview = () => {
         images={skill.images || []}
         variant='can'
         onEditClick={() => null}
-        onDoneClick={() => null}
+        onDoneClick={() => navigate(-1)}
       />
     </div>
   );

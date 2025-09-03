@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Modal } from '../shared/ui/modal/modal';
+import { SkillPreview } from '../pages/skill-preview';
 import { MainPage } from '../pages/main-page';
 import { LatestSkills } from '../pages/latest-skills';
 import { PopularSkills } from '../pages/popular-skills';
@@ -24,8 +26,12 @@ import { NotFoundPage404 } from '../pages/not-found404';
 
 const App = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const closeModal = () => navigate(-1);
 
   const user = useSelector(getUserData);
+  const showSkillPreview = location.state?.showSkillPreview;
 
   useEffect(() => {
     dispatch(checkUserAuth());
@@ -74,6 +80,14 @@ const App = () => {
           <Route path='*' element={<NotFoundPage404 />} />
         </Routes>
         <FilterWatcher />
+        {showSkillPreview && (
+          <Modal
+            isOpen={true}
+            onClose={closeModal}
+          >
+            <SkillPreview />
+          </Modal>
+        )}
       </main>
       <AppFooter />
     </div>

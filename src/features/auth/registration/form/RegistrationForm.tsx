@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import type {
@@ -29,6 +30,10 @@ export interface TFormData {
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = (location.state as any)?.from?.pathname || "/";
 
   const methods = useForm<TFormData>({
     mode: 'onChange',
@@ -63,9 +68,9 @@ const RegistrationForm = () => {
     };
 
     try {
-      await dispatch(registerUser(preparedData)).unwrap();
+      await dispatch(registerUser(preparedData)).unwrap()
+      .then(() => navigate(from, { state: { showSkillPreview: true }, replace: true }));
 
-      // TODO: открыть модалку успешной регистрации
     } catch (err) {
       // TODO: возможно дополнить выводом ошибок, пока стоит заглушка
       // eslint-disable-next-line no-console
