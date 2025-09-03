@@ -1,0 +1,10 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+
+  .dateWrapper {
+    position: relative;
+    min-width: 216px;
+  }
+}
