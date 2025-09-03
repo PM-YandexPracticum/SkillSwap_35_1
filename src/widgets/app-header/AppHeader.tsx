@@ -21,7 +21,6 @@ import { type AppHeaderProps } from './types';
 import styles from './AppHeader.module.scss';
 import { useDispatch } from '../../app/providers/store/store';
 import { setSearchQuery } from '@entities/skill/model/skills-slice/skillsSlice';
-import { logoutUser } from '@entities/user/model/user-slice/userSliсe';
 import { Popover } from '@ui/popover/popover';
 import { ProfileMenu } from '../../features/auth/ProfileMenu/ProfileMenu';
 import { CategoryList } from '../../features/skills/category-list/CategoryList';
@@ -42,9 +41,6 @@ export const AppHeader = ({
   const skillsRef = useRef<HTMLDivElement | null>(null); // ссылка на обёртку поповера навыкрв
   const notificationRef = useRef<HTMLDivElement | null>(null); // ссылка на обёртку поповера уведомлений
   const menuRef = useRef<HTMLDivElement | null>(null); // ссылка на обёртку поповера меню профиля
-
-
-  const isFilterPage = location.pathname === '/filter';
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -90,9 +86,7 @@ export const AppHeader = ({
   };
 
   return (
-    <header
-      className={`${styles.container} ${isFilterPage ? styles.start : ''}`}
-    >
+    <header className={styles.container}>
       <div className={styles.logo}>
         <NavLink to='/'>
           <Logo />
@@ -135,33 +129,22 @@ export const AppHeader = ({
                 triggerRef={skillsRef}
                 isRightAligned={false}
               >
-                <CategoryList />
+                <CategoryList onSelect={() => setIsOpenSkills(false)} />
               </Popover>
             </div>
           </div>
-
-          {!isFilterPage && (
-            <InputSearch
-              value={searchParams.get('search') || ''}
-              onChange={handleSearch}
-              placeholder='Искать навык'
-              inputSize={user ? 'xlarge' : 'large'}
-              icon={searchParams.get('search') ? <CrossIcon /> : undefined}
-              onIconClick={onIconClick}
-            />
-          )}
-
+          <InputSearch
+            value={searchParams.get('search') || ''}
+            onChange={handleSearch}
+            placeholder='Искать навык'
+            inputSize={user ? 'xlarge' : 'large'}
+            icon={searchParams.get('search') ? <CrossIcon /> : undefined}
+            onIconClick={onIconClick}
+          />
           <button type='button' className={styles.themeToggleButton}>
             {/* TODO: временная заглушка, 
             заменить на логику отображения кнопки в зависимости от темы: sun/moon */}
-            <DarkThemeIcon
-              onClick={() => {
-                // ЗДЕСЬ ВРЕМЕННЫЙ ЛОГАУТ ДЛЯ ТЕСТИРОВАНИЯ
-                if (user) {
-                  dispatch(logoutUser());
-                }
-              }}
-            />
+            <DarkThemeIcon />
           </button>
 
           <div className={styles.accountBlock}>
@@ -182,15 +165,23 @@ export const AppHeader = ({
                   </Popover>
                 </div>
                 <LikeIcon />
-                <div className={styles.popoverWrapper}  ref={menuRef}>
-                  <div className={styles.userInfo} onClick={() => setIsOpenProfileMenu(!isOpenProfileMenu)}>
+                <div className={styles.popoverWrapper} ref={menuRef}>
+                  <div
+                    className={styles.userInfo}
+                    onClick={() => setIsOpenProfileMenu(!isOpenProfileMenu)}
+                  >
                     <Text tag='p' size='main' color='mainColorText'>
                       {user.name}
                     </Text>
                     <Avatar src={user.image} size='small' />
                   </div>
-                  <Popover isOpen={isOpenProfileMenu} onClose={() => setIsOpenProfileMenu(false)} triggerRef={menuRef} isRightAligned={true}>
-                    <ProfileMenu></ProfileMenu>
+                  <Popover
+                    isOpen={isOpenProfileMenu}
+                    onClose={() => setIsOpenProfileMenu(false)}
+                    triggerRef={menuRef}
+                    isRightAligned={true}
+                  >
+                    <ProfileMenu onSelect={() => setIsOpenProfileMenu(false)} />
                   </Popover>
                 </div>
               </div>

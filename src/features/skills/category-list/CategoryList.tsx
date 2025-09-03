@@ -1,3 +1,4 @@
+import type { CategoryListProps } from './types';
 import { useDispatch } from 'react-redux';
 import { setFilters } from '@entities/skill/model/skills-slice/skillsSlice';
 import styles from './CategoryList.module.scss';
@@ -11,7 +12,7 @@ import { Title } from '@ui/title';
 import { Text } from '@ui/text';
 import skillCategories from '@lib/constants/skillCategories';
 
-export const CategoryList = () => {
+export const CategoryList = ({ onSelect }: CategoryListProps) => {
   const dispatch = useDispatch();
 
   const handleCategoryClick = (subcategories: string[]) => {
@@ -23,6 +24,7 @@ export const CategoryList = () => {
         searchTarget: 'Всё'
       })
     );
+    onSelect?.();
   };
 
   return (

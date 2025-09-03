@@ -1,9 +1,7 @@
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 488px);
   gap: 40px;
-  border-radius: var(--main-border-radius);
-  background-color: var(--secondary-color);
-  padding: 60px;
 }
 
 .column {

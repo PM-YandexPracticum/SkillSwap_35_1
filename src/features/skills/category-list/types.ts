@@ -1,3 +1,3 @@
-export type CategoryListProps = {
-  onClick: (categories: string[]) => void;
+export interface CategoryListProps {
+  onSelect?: () => void;
 }
