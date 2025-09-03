@@ -21,7 +21,7 @@
 }
 
 @font-face {
-  font-family: 'Roboto-Medium';
+  font-family: 'Roboto';
   font-weight: 500;
   src: url('../../shared/assets/fonts/Roboto-Medium.woff2') format('woff2');
   font-display: swap;

@@ -1,7 +1,9 @@
-export const usePositionPopover = (trigger: HTMLElement, isRightAligned: boolean) => {
+export const usePositionPopover = (trigger: HTMLElement, popover:HTMLElement, isRightAligned: boolean) => {
   const targetRect = trigger.getBoundingClientRect();
   const viewportWidth = window.innerWidth;
   const margin = 36; // Внутренний отступ страницы по макету
+
+  popover.offsetHeight < 300 ? popover.style.padding = '40px' : popover.style.padding = '60px';
     
   let topPosition = targetRect.height + 20;
   let leftPosition = 0;

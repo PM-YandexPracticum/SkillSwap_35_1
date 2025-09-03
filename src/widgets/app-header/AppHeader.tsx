@@ -18,6 +18,7 @@ import { useDispatch } from '../../app/providers/store/store';
 import { setSearchQuery } from '@entities/skill/model/skills-slice/skillsSlice';
 import { logoutUser } from '@entities/user/model/user-slice/userSliсe';
 import { Popover } from '@ui/popover/popover';
+import { ProfileMenu } from '../../features/auth/ProfileMenu/ProfileMenu';
 
 export const AppHeader = ({
   user,
@@ -30,9 +31,12 @@ export const AppHeader = ({
 
   const [isOpenSkills, setIsOpenSkills] = useState(false); // состояние для поповера навыков
   const [isOpenNotification, setIsOpenNotification] = useState(false); // состояние для поповера уведомлений
+  const [isOpenProfileMenu, setIsOpenProfileMenu] = useState(false); // состояние для поповера меню профиля
 
-  const skillsRef = useRef<HTMLDivElement | null>(null); // ссылка на обкртку поповера навыкрв
-  const notificationRef = useRef<HTMLDivElement | null>(null); // ссылка на обкртку поповера уведомлений
+  const skillsRef = useRef<HTMLDivElement | null>(null); // ссылка на обёртку поповера навыкрв
+  const notificationRef = useRef<HTMLDivElement | null>(null); // ссылка на обёртку поповера уведомлений
+  const menuRef = useRef<HTMLDivElement | null>(null); // ссылка на обёртку поповера меню профиля
+
 
   const isFilterPage =
     location.pathname === '/filter';
@@ -146,11 +150,16 @@ export const AppHeader = ({
                   </Popover>
                 </div>
                 <LikeIcon />
-                <div className={styles.userInfo}>
-                  <Text tag='p' size='main' color='mainColorText'>
-                    {user.name}
-                  </Text>
-                  <Avatar src={user.image} size='small' />
+                <div className={styles.popoverWrapper}  ref={menuRef}>
+                  <div className={styles.userInfo} onClick={() => setIsOpenProfileMenu(!isOpenProfileMenu)}>
+                    <Text tag='p' size='main' color='mainColorText'>
+                      {user.name}
+                    </Text>
+                    <Avatar src={user.image} size='small' />
+                  </div>
+                  <Popover isOpen={isOpenProfileMenu} onClose={() => setIsOpenProfileMenu(false)} triggerRef={menuRef} isRightAligned={true}>
+                    <ProfileMenu></ProfileMenu>
+                  </Popover>
                 </div>
               </div>
             ) : (

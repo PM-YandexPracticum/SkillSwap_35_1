@@ -14,7 +14,7 @@ export const Popover = ({isOpen, onClose, children, triggerRef, isRightAligned}:
   useEffect(() => {
     if (isOpen && activeRef.current && popoverRef.current) {
 
-      const [top, left, right] = usePositionPopover(activeRef.current, isRightAligned);
+      const [top, left, right] = usePositionPopover(activeRef.current, popoverRef.current, isRightAligned);
       popoverRef.current.style.top = top;
       popoverRef.current.style.left = left;
       popoverRef.current.style.right = right;
