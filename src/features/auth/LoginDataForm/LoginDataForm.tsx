@@ -15,7 +15,6 @@ import styles from './LoginDataForm.module.scss';
 const LoginDataForm = ({
   nextStep,
   variant,
-  onAuth,
   goToRegister
 }: LoginDataFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -99,7 +98,7 @@ const LoginDataForm = ({
                 errors.password
                   ? errors.password.message
                   : field.value.length === 0
-                    ? 'Пароль должен содержать не менее 8 символов'
+                    ? (variant === 'auth' ? '' : 'Пароль должен содержать не менее 8 символов')
                     : undefined
               }
               icon={
@@ -132,7 +131,7 @@ const LoginDataForm = ({
         </Button>
       ) : (
         <div className={styles.buttonWrapper}>
-          <Button onClick={onAuth} htmlType='submit'>
+          <Button htmlType='submit'>
             <Text tag='span' size='main' align='center'>
               Войти
             </Text>

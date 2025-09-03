@@ -350,7 +350,7 @@ export const mockLoginUser = async (
     (u) => u.email === data.email && u.password === data.password
   );
   if (!user)
-    throw { status: 401, message: 'Неправильные данные' } as IErrorResponse;
+    throw { status: 401, message: 'Такого пользователя не существует' } as IErrorResponse;
   localStorage.setItem('currentUser', user.id);
   const token = await createToken();
   return { user, ...token };
