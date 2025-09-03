@@ -23,6 +23,7 @@ import { useDispatch } from '../../app/providers/store/store';
 import { setSearchQuery } from '@entities/skill/model/skills-slice/skillsSlice';
 import { logoutUser } from '@entities/user/model/user-slice/userSliсe';
 import { Popover } from '@ui/popover/popover';
+import { CategoryList } from '../../features/skills/category-list/CategoryList';
 
 export const AppHeader = ({
   user,
@@ -130,7 +131,7 @@ export const AppHeader = ({
                 triggerRef={skillsRef}
                 isRightAligned={false}
               >
-                {'Заглушка'}
+                <CategoryList />
               </Popover>
             </div>
           </div>

@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+import { setFilters } from '@entities/skill/model/skills-slice/skillsSlice';
 import styles from './CategoryList.module.scss';
 import IconBriefcase from '@icons/ui/briefcase.svg?react';
 import IconGlobal from '@icons/ui/global.svg?react';
@@ -8,35 +10,50 @@ import IconLifestyle from '@icons/ui/lifestyle.svg?react';
 import { Title } from '@ui/title';
 import { Text } from '@ui/text';
 import skillCategories from '@lib/constants/skillCategories';
-import type { CategoryListProps } from './types';
 
-export const CategoryList = (props: CategoryListProps) => {
-  const { onClick } = props;
+export const CategoryList = () => {
+  const dispatch = useDispatch();
+
+  const handleCategoryClick = (subcategories: string[]) => {
+    dispatch(
+      setFilters({
+        subcategories,
+        gender: 'Не имеет значения',
+        cities: [],
+        searchTarget: 'Всё'
+      })
+    );
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.column}>
-        {getBlock('Бизнес и карьера', IconBriefcase, styles.icon_briefcase, onClick)}
-        {getBlock('Иностранные языки', IconGlobal, styles.icon_global, onClick)}
-        {getBlock('Дом и уют', IconHome, styles.icon_home, onClick)}
+        {getBlock('Бизнес и карьера', IconBriefcase, styles.icon_briefcase, handleCategoryClick)}
+        {getBlock('Иностранные языки', IconGlobal, styles.icon_global, handleCategoryClick)}
+        {getBlock('Дом и уют', IconHome, styles.icon_home, handleCategoryClick)}
       </div>
       <div className={styles.column}>
-        {getBlock('Творчество и искусство', IconPalette, styles.icon_palette, onClick)}
-        {getBlock('Образование и развитие', IconBook, styles.icon_book, onClick)}
-        {getBlock('Здоровье и лайфстайл', IconLifestyle, styles.icon_lifestyle, onClick)}
+        {getBlock('Творчество и искусство', IconPalette, styles.icon_palette, handleCategoryClick)}
+        {getBlock('Образование и развитие', IconBook, styles.icon_book, handleCategoryClick)}
+        {getBlock('Здоровье и лайфстайл', IconLifestyle, styles.icon_lifestyle, handleCategoryClick)}
       </div>
     </div>
   );
 }
 
-const getBlock = (category: string, Icon:React.FunctionComponent, iconStyle: string, onClick: (categories: string[]) => void) => {
-  const onItemClick = (name: string) => {
-    onClick([name]);
-  }
+const getBlock = (
+  category: string,
+  Icon: React.FunctionComponent,
+  iconStyle: string,
+  handleCategoryClick: (subcategories: string[]) => void
+) => {
+  const handleItemClick = (name: string) => {
+    handleCategoryClick([name]);
+  };
 
-  const onTitleClick = () => {
-    onClick(skillCategories[category]);
-  }
+  const handleTitleClick = () => {
+    handleCategoryClick(skillCategories[category]);
+  };
 
   return (
     <div className={styles.block}>
@@ -44,14 +61,14 @@ const getBlock = (category: string, Icon:React.FunctionComponent, iconStyle: str
         <Icon />
       </div>
       <div className={styles.list}>
-        <button type='button' onClick={onTitleClick} className={styles.button}>
-          <Title tag='h3'>{category}</Title>
+        <button type="button" onClick={handleTitleClick} className={styles.button}>
+          <Title tag="h3">{category}</Title>
         </button>
         <ul>
-          {skillCategories[category].map(i => (
+          {skillCategories[category].map((i) => (
             <li key={i}>
-              <button type='button' onClick={() => onItemClick(i)} className={styles.button}>
-                <Text tag='p' size='main'>{i}</Text>
+              <button type="button" onClick={() => handleItemClick(i)} className={styles.button}>
+                <Text tag="p" size="main">{i}</Text>
               </button>
             </li>
           ))}
@@ -59,4 +76,4 @@ const getBlock = (category: string, Icon:React.FunctionComponent, iconStyle: str
       </div>
     </div>
   );
-}
+};
