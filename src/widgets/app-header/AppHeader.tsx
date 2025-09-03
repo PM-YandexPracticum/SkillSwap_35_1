@@ -73,14 +73,16 @@ export const AppHeader = ({
   };
 
   const handleClose = () => {
-  if (location.state?.from) {
-    navigate(location.state.from, { replace: true });
-  } else if (window.history.state && window.history.state.idx > 0) {
-    navigate(-1);
-  } else {
-    navigate('/');
-  }
-};
+    const from = location.state?.from;
+
+    if (from) {
+      navigate(from, { replace: true });
+    } else if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
 
   return (
     <header
@@ -100,7 +102,7 @@ export const AppHeader = ({
             maxInlineSize: '147px'
           }}
         >
-            Закрыть
+          Закрыть
           <CrossIcon style={{ color: 'var(--main-color-text)' }} />
         </Button>
       ) : (
@@ -188,17 +190,14 @@ export const AppHeader = ({
                   variant='secondary'
                   style={{ maxInlineSize: '92px' }}
                   onClick={() =>
-                    navigate('/login', { state: { from: location.pathname + location.search } })
+                    navigate('/login', {
+                      state: { from: location.pathname + location.search }
+                    })
                   }
                 >
                   Войти
                 </Button>
-                <Button
-                  variant='primary'
-                  onClick={() =>
-                    navigate('/register')
-                  }
-                >
+                <Button variant='primary' onClick={() => navigate('/register')}>
                   Зарегистрироваться
                 </Button>
               </div>

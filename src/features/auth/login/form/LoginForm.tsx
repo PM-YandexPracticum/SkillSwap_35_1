@@ -1,6 +1,6 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { useDispatch } from '../../../../app/providers/store/store';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { loginUser } from '../../../../entities/user/model/user-slice/userSliсe';
 import LoginInfo from '../info/LoginInfo';
 import LoginDataForm from '../../LoginDataForm/LoginDataForm';
@@ -14,12 +14,13 @@ export interface TLoginData {
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const methods = useForm<TLoginData>({
     mode: 'onChange',
     defaultValues: {
       email: '',
-      password: '',
+      password: ''
     }
   });
 
@@ -39,7 +40,14 @@ const LoginForm = () => {
           className={styles.container}
           onSubmit={methods.handleSubmit(onSubmit)}
         >
-            <LoginDataForm variant='auth' goToRegister={() => navigate('/register')} />
+          <LoginDataForm
+            variant='auth'
+            goToRegister={() =>
+              navigate('/register', {
+                state: { from: location.state?.from || '/' }
+              })
+            }
+          />
         </form>
       </FormProvider>
       <LoginInfo />
