@@ -1,5 +1,9 @@
 import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import {
+  checkUserAuth,
+  getUserData
+} from '@entities/user/model/user-slice/userSliсe';
 import { MainPage } from '../pages/main-page';
 import { LatestSkills } from '../pages/latest-skills';
 import { PopularSkills } from '../pages/popular-skills';
@@ -13,13 +17,8 @@ import { AppHeader } from '../widgets/app-header';
 import { ProtectedRoute } from '../features/auth/providers/ProtectedRoute';
 import { FilterLayout } from '../shared/layouts/filter-layout';
 import { useSelector, useDispatch } from './providers/store/store';
-import styles from './App.module.scss';
+import styles from './app.module.scss';
 import { loadSkills } from '../entities/skill/model/skills-slice/skillsSlice';
-import {
-  checkUserAuth,
-  getUserData
-} from '@entities/user/model/user-slice/userSliсe';
-import FilterWatcher from '../features/filter/filters-watcher/FiltersWatcher';
 import { NotFoundPage404 } from '../pages/not-found404';
 
 const App = () => {
@@ -75,7 +74,6 @@ const App = () => {
           />
           <Route path='*' element={<NotFoundPage404 />} />
         </Routes>
-        <FilterWatcher />
       </main>
       <AppFooter />
     </div>
