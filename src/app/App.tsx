@@ -22,6 +22,7 @@ import {
 } from '@entities/user/model/user-slice/userSliсe';
 import FilterWatcher from '../features/filter/filters-watcher/FiltersWatcher';
 import { NotFoundPage404 } from '../pages/not-found404';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -61,7 +62,6 @@ const App = () => {
             }
           >
             <Route index element={<PersonalInfo />} />
-
           </Route>
           <Route path='/skills/:id' element={<SkillPage />} />
           <Route
@@ -85,6 +85,13 @@ const App = () => {
         <FilterWatcher />
       </main>
       {!isAuthRoute && <AppFooter />}
+      <ToastContainer
+        position='bottom-left'
+        autoClose={false}
+        newestOnTop
+        style={{ width: '340px' }}
+        hideProgressBar={true}
+      />
     </div>
   );
 };

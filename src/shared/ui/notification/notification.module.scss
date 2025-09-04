@@ -7,6 +7,7 @@
   border-radius: var(--main-border-radius);
   padding: 24px 34px 24px 24px;
   color: var(--main-color-text);
+  width: 100%;
 }
 
 h4 {
@@ -36,4 +37,10 @@ h4 {
 
 .container:hover .button {
   display: flex;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }

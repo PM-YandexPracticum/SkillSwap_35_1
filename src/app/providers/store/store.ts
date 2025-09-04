@@ -1,4 +1,6 @@
 import { configureStore, combineSlices } from '@reduxjs/toolkit';
+import { notificationMiddleware } from '../../../features/requests/notification-middleware/notificationMiddleware';
+
 
 import type { TypedUseSelectorHook } from 'react-redux';
 import {
@@ -12,7 +14,9 @@ export const rootReducer = combineSlices(SkillSlice, userSlice);
 
 const store = configureStore({
   reducer: rootReducer,
-  devTools: process.env.NODE_ENV !== 'production'
+  devTools: process.env.NODE_ENV !== 'production',
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(notificationMiddleware)
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

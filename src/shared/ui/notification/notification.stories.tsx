@@ -15,7 +15,6 @@ export const SelectStory: Story = {
         <Notification
           text='Олег предлагает вам обмен'
           onClose={() => alert('Close clicked')}
-          onClick={() => alert('Перейти clicked ')}
         />
       </div>
     );
