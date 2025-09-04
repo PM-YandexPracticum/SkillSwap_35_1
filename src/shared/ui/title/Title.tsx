@@ -6,9 +6,11 @@ export const Title = ({
   children,
   tag: Tag = 'h2',
   align = 'left',
-  color = 'mainColorText'
+  color = 'mainColorText',
+  extraClassName='',
+  ...props
 }: TitleProps) => {
-  const className = `${styles.title} ${styles[`${color}`]} ${styles[`title${Tag}`]} ${styles[`${align}`]}`;
+  const className = `${styles.title} ${styles[`${color}`]} ${styles[`title${Tag}`]} ${styles[`${align}`]} ${extraClassName}`;
 
-  return <Tag className={className}>{children}</Tag>;
+  return <Tag className={className} {...props}>{children}</Tag>;
 };

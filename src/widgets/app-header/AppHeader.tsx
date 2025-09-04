@@ -21,6 +21,7 @@ import { type AppHeaderProps } from './types';
 import styles from './AppHeader.module.scss';
 import { useDispatch } from '../../app/providers/store/store';
 import { setSearchQuery } from '@entities/skill/model/skills-slice/skillsSlice';
+import NotificationMenu from '../../features/requests/notification-menu/NotificationMenu';
 import { Popover } from '@ui/popover/popover';
 import { ProfileMenu } from '../../features/auth/ProfileMenu/ProfileMenu';
 import { CategoryList } from '../../features/skills/category-list/CategoryList';
@@ -161,7 +162,7 @@ export const AppHeader = ({
                     triggerRef={notificationRef}
                     isRightAligned={true}
                   >
-                    {'Заглушка'}
+                    <NotificationMenu />
                   </Popover>
                 </div>
                 <LikeIcon />

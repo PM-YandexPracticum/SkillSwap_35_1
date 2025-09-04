@@ -30,17 +30,42 @@ interface IErrorResponse {
   message: string;
 }
 
-const createNotification = (
+const toPublicUser = (user: IUser): IUserPublic => {
+  const {
+    email,
+    password,
+    favorites,
+    incomingRequests,
+    outgoingRequests,
+    exchanges,
+    notifications,
+    ...rest
+  } = user;
+  return rest;
+};
+
+
+const createNotification = async (
   type: 'request' | 'accept' | 'decline',
-  from: string,
-  to: string
-): INotification => ({
-  id: Date.now().toString() + Math.floor(Math.random() * 1000),
-  type,
-  date: new Date().toISOString(),
-  from,
-  to,
-});
+  fromId: string,
+  toId: string
+): Promise<INotification> => {
+  const users = getStoredUsers();
+  const fromUser = users.find((u) => u.id === fromId);
+  if (!fromUser) throw { status: 404, message: 'Пользователь не найден' } as IErrorResponse;
+
+  const allSkills = await mockGetSkills();
+  const toUser = allSkills.find((u) => u.id === toId);
+  if (!toUser) throw { status: 404, message: 'Пользователь не найден' } as IErrorResponse;
+
+  return {
+    id: Date.now().toString() + Math.floor(Math.random() * 1000),
+    type,
+    date: new Date().toISOString(),
+    from: toPublicUser(fromUser),
+    to: toUser,
+  };
+};
 
 const uploadImageToImgBB = async (file: File): Promise<string> => {
   const API_KEY = '6114584f51fd63eccd3dae90cc50138c';
@@ -82,7 +107,7 @@ const updateStoredUser = (userId: string, update: Partial<IUser>) => {
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 const createToken = async (): Promise<IToken> => {
-  await delay(100);
+  await delay(50);
   const accessToken = 'mockAccessToken-' + Date.now();
   return { accessToken };
 };
@@ -99,7 +124,7 @@ const getCurrentUser = (): IUser => {
 // Получение карточек
 
 export const mockGetSkills = async (): Promise<IUserPublic[]> => {
-  await delay(500);
+  await delay(200);
   const response = await fetch('/db/users.json');
   const data: IUserPublic[] = await response.json();
   return multiplyArrayElements(data);
@@ -145,14 +170,14 @@ export const mockToggleFavorites = async (
 // Заявка на обмен навыками
 
 export const mockRequest = async (requestedId: string): Promise<INotification> => {
-  await delay(200);
+  await delay(50);
   const user = getCurrentUser();
 
   if (!user.outgoingRequests.includes(requestedId)) {
     user.outgoingRequests.push(requestedId);
   }
 
-  const notification = createNotification('request', user.id, requestedId);
+  const notification = await createNotification('request', user.id, requestedId);
   user.notifications.new.push(notification);
 
   updateStoredUser(user.id, {
@@ -170,10 +195,10 @@ export const mockDecline = async (declinedId: string): Promise<INotification> =>
   const user = getCurrentUser();
 
   if (user.incomingRequests.includes(declinedId)) {
-    user.incomingRequests = user.incomingRequests.filter(id => id !== declinedId);
+    user.incomingRequests = user.incomingRequests.filter((id) => id !== declinedId);
   }
 
-  const notification = createNotification('decline', user.id, declinedId);
+  const notification = await createNotification('decline', user.id, declinedId);
   user.notifications.new.push(notification);
 
   updateStoredUser(user.id, {
@@ -194,10 +219,10 @@ export const mockAccept = async (acceptedId: string): Promise<INotification> => 
     user.exchanges.push(acceptedId);
   }
   if (user.incomingRequests.includes(acceptedId)) {
-    user.incomingRequests = user.incomingRequests.filter(id => id !== acceptedId);
+    user.incomingRequests = user.incomingRequests.filter((id) => id !== acceptedId);
   }
 
-  const notification = createNotification('accept', user.id, acceptedId);
+  const notification = await createNotification('accept', user.id, acceptedId);
   user.notifications.new.push(notification);
 
   updateStoredUser(user.id, {
@@ -304,7 +329,7 @@ export const mockUpdateUser = async (
 export const mockRegisterUser = async (
   data: IRegisterData
 ): Promise<IAuthResponse> => {
-  await delay(300);
+  await delay(100);
 
   const userImageUrl = data.image ? await uploadImageToImgBB(data.image) : '';
 

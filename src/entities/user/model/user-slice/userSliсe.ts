@@ -187,7 +187,6 @@ export const logoutUser = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await mockLogout();
-      localStorage.removeItem('refreshToken');
       localStorage.removeItem('accessToken');
       return response;
     } catch (error: any) {
@@ -265,8 +264,8 @@ export const userSlice = createSlice({
         state.actionLoading = false;
         if (state.user) {
           const notification = action.payload;
-          if (!state.user.outgoingRequests.includes(notification.to)) {
-            state.user.outgoingRequests.push(notification.to);
+          if (!state.user.outgoingRequests.includes(notification.to.id)) {
+            state.user.outgoingRequests.push(notification.to.id);
           }
           state.user.notifications.new.push(notification);
         }
@@ -286,7 +285,7 @@ export const userSlice = createSlice({
         if (state.user) {
           const notification = action.payload;
           state.user.incomingRequests = state.user.incomingRequests.filter(
-            (id) => id !== notification.to
+            (id) => id !== notification.to.id
           );
           state.user.notifications.new.push(notification);
         }
@@ -305,11 +304,11 @@ export const userSlice = createSlice({
         state.actionLoading = false;
         if (state.user) {
           const notification = action.payload;
-          if (!state.user.exchanges.includes(notification.to)) {
-            state.user.exchanges.push(notification.to);
+          if (!state.user.exchanges.includes(notification.to.id)) {
+            state.user.exchanges.push(notification.to.id);
           }
           state.user.incomingRequests = state.user.incomingRequests.filter(
-            (id) => id !== notification.to
+            (id) => id !== notification.to.id
           );
           state.user.notifications.new.push(notification);
         }

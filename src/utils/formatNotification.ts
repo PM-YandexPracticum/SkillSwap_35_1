@@ -1,5 +1,10 @@
-import { mockGetSkillById } from '../api/mockApi';
 import { type INotification } from '../features/requests/types/types';
+
+export type IFormattedNotification = {
+  id: string;
+  message: string;
+  date: string;
+}
 
 const formatDate = (isoDate: string): string => {
   const date = new Date(isoDate);
@@ -24,15 +29,16 @@ const formatDate = (isoDate: string): string => {
   return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
 };
 
-export const formatNotification = async (
+export const formatNotification = (
   notification: INotification
-): Promise<{ message: string; date: string }> => {
-  const user = await mockGetSkillById(notification.to);
+): IFormattedNotification => {
+  const user = notification.to;
 
   if (!user) {
     return {
       message: 'Пользователь не найден',
       date: formatDate(notification.date),
+      id: notification.id
     };
   }
 
@@ -58,6 +64,7 @@ export const formatNotification = async (
   }
 
   return {
+    id: notification.id,
     message,
     date: formatDate(notification.date),
   };
