@@ -37,7 +37,7 @@ export const ProfilePage = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to={'/temp'} className={({ isActive }) => `${styles.link} ${isActive ? styles.link_active : ''}`}>
+            <NavLink to={'/profile'} className={({ isActive }) => `${styles.link} ${isActive ? styles.link_active : ''}`}>
               <IconUser></IconUser>
               <Text tag={'div'} size='main'>Личные данные</Text>
             </NavLink>

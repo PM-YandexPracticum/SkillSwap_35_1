@@ -5,6 +5,7 @@ import { LatestSkills } from '../pages/latest-skills';
 import { PopularSkills } from '../pages/popular-skills';
 import { FilterPage } from '../pages/filter-page';
 import { ProfilePage } from '../pages/profile/ProfilePage';
+import PersonalInfo from '../pages/profile/personal-info/PersonalInfo';
 import { SkillPage } from '../pages/skill-page';
 import { RegisterPage } from '../pages/register-page';
 import { LoginPage } from '../pages/login-page';
@@ -29,7 +30,8 @@ const App = () => {
   const user = useSelector(getUserData);
   const background = location.state?.background;
 
-  const isAuthRoute = location.pathname === '/login' || location.pathname === '/register';
+  const isAuthRoute =
+    location.pathname === '/login' || location.pathname === '/register';
 
   useEffect(() => {
     dispatch(checkUserAuth());
@@ -57,7 +59,10 @@ const App = () => {
                 <ProfilePage />
               </ProtectedRoute>
             }
-          />
+          >
+            <Route index element={<PersonalInfo />} />
+
+          </Route>
           <Route path='/skills/:id' element={<SkillPage />} />
           <Route
             path='/register'
@@ -79,7 +84,7 @@ const App = () => {
         </Routes>
         <FilterWatcher />
       </main>
-      {!isAuthRoute && <AppFooter /> }
+      {!isAuthRoute && <AppFooter />}
     </div>
   );
 };
