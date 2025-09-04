@@ -471,14 +471,20 @@ export const getIsAuth = (state: RootState) => state.user.isAuth;
 export const getUserLoading = (state: RootState) => state.user.userLoading;
 export const getActionLoading = (state: RootState) => state.user.actionLoading;
 export const getError = (state: RootState) => state.user.error;
-export const getNewNotifications = (state: RootState) =>
-  state.user.user?.notifications.new ?? [];
-export const getViewedNotifications = (state: RootState) =>
-  state.user.user?.notifications.viewed ?? [];
 export const getNotificationById = (id: string) =>
   createSelector([getNewNotifications, getViewedNotifications], (newNotifs, viewedNotifs) => {
     return newNotifs.find((n) => n.id === id) || viewedNotifs.find((n) => n.id === id) || null;
   });
+
+  export const getNewNotifications = createSelector(
+  [getUserData],
+  (user) => user?.notifications.new ?? []
+);
+
+export const getViewedNotifications = createSelector(
+  [getUserData],
+  (user) => user?.notifications.viewed ?? []
+);
 
 export const { setUser, setIsAuth, logout, setError, clearError } =
   userSlice.actions;
