@@ -10,7 +10,6 @@ import Chevron from '@icons/ui/chevron-down.svg?react';
 import DarkThemeIcon from '@icons/ui/moon.svg?react';
 // import LightThemeIcon from '@icons/ui/sun.svg?react';
 import CrossIcon from '@icons/ui/cross.svg?react';
-import NotificationIcon from '@icons/ui/notification.svg?react';
 import LikeIcon from '@icons/ui/like.svg?react';
 import { Logo } from '@ui/logo/Logo';
 import Button from '@ui//button/Button';
@@ -19,12 +18,14 @@ import { Text } from '@ui/text/Text';
 import { InputSearch } from '@ui/input/Input';
 import { type AppHeaderProps } from './types';
 import styles from './AppHeader.module.scss';
-import { useDispatch } from '../../app/providers/store/store';
+import { useDispatch, useSelector } from '../../app/providers/store/store';
 import { setSearchQuery } from '@entities/skill/model/skills-slice/skillsSlice';
+import { getNewNotifications } from '@entities/user/model/user-slice/userSliсe';
 import NotificationMenu from '../../features/requests/notification-menu/NotificationMenu';
 import { Popover } from '@ui/popover/popover';
 import { ProfileMenu } from '../../features/auth/ProfileMenu/ProfileMenu';
 import { CategoryList } from '../../features/skills/category-list/CategoryList';
+import { NotificationBell } from '@ui/notification-bell/notification-bell';
 
 export const AppHeader = ({
   user,
@@ -34,6 +35,9 @@ export const AppHeader = ({
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
+
+  const newNotifs = useSelector(getNewNotifications);
+  const hasNewNotifs = newNotifs.length !== 0;
 
   const [isOpenSkills, setIsOpenSkills] = useState(false); // состояние для поповера навыков
   const [isOpenNotification, setIsOpenNotification] = useState(false); // состояние для поповера уведомлений
@@ -142,7 +146,7 @@ export const AppHeader = ({
             icon={searchParams.get('search') ? <CrossIcon /> : undefined}
             onIconClick={onIconClick}
           />
-          <button type='button' className={styles.themeToggleButton}>
+          <button className={styles.themeToggleButton}>
             {/* TODO: временная заглушка, 
             заменить на логику отображения кнопки в зависимости от темы: sun/moon */}
             <DarkThemeIcon />
@@ -153,8 +157,9 @@ export const AppHeader = ({
               <div className={styles.userBlock}>
                 {/* TODO: Заглушки для иконок, возможно нужны отдельные UI */}
                 <div className={styles.popoverWrapper} ref={notificationRef}>
-                  <NotificationIcon
+                  <NotificationBell
                     onClick={() => setIsOpenNotification(!isOpenNotification)}
+                    hasNew={hasNewNotifs}
                   />
                   <Popover
                     isOpen={isOpenNotification}
