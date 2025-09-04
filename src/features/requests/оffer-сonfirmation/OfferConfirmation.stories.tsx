@@ -28,14 +28,6 @@ export default meta;
 
 type Story = StoryObj<typeof OfferConfirmation>;
 
-const styles = {
-  paddingTop: '50px',
-  paddingBottom: '50px',
-  display: 'flex',
-  justifyContent: 'center',
-  backgroundColor: '#fafafa',
-};
-
 // окно с иконкой "Done"
 export const DoneIcon: Story = {
   args: {

@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { type Option } from '@ui/dropdown/types';
+import { type Option } from '@ui/dropDown/types';
 
 interface UseDropdownProps {
   value: string | string[];

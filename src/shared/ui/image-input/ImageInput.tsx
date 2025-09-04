@@ -6,7 +6,7 @@ import styles from './ImageInput.module.scss';
 import IconUploadImage from '../../assets/icons/ui/gallery-add.svg?react';
 import IconClose from '../../assets/icons/ui/cross.svg?react';
 
-const ImageInput: React.FC<ImageInputProps> = ({
+export const ImageInput: React.FC<ImageInputProps> = ({
   multiple = true,
   onFilesChange
 }) => {

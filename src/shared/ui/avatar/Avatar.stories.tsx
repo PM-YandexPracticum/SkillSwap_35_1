@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import GalleryEditIcon from '@icons/ui/gallery-edit.svg?react';
 import Avatar from './Avatar';
+import type { JSX, SVGProps } from 'react';
 
 const meta: Meta<typeof Avatar> = {
   title: 'Shared/Avatar',
@@ -34,6 +35,6 @@ export const WithButton: Story = {
   args: {
     src: '',
     size: 'large',
-    buttonIcon: GalleryEditIcon
+    buttonIcon: GalleryEditIcon as (props: SVGProps<SVGSVGElement>) => JSX.Element
   }
 };
