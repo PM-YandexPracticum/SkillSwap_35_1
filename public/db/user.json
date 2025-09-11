@@ -1,0 +1,45 @@
+[
+  {
+    "id": "17",
+    "name": "Эля",
+    "city": "Москва",
+    "dateOfBirth": "02.03.1997",
+    "image": "https://i.ibb.co/N67QXmz3/user9.jpg",
+    "gender": "Женский",
+    "about": "Люблю прогулки и домашних животных.",
+    "email": "elya@test.ru",
+    "password": "54545",
+    "can": {
+      "title": "Предпринимательство",
+      "category": "Бизнес и карьера",
+      "subcategory": "Предпринимательство",
+      "description": "Помогу определиться с нишей и начать зарабатывать.",
+      "images": [
+        "https://i.ibb.co/cXSmSWv9/business4.jpg",
+        "https://i.ibb.co/bTdgtJN/business3.jpg",
+        "https://i.ibb.co/DHCHfP0q/business2.jpg",
+        "https://i.ibb.co/chbKSFWT/business1.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Китайский"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Ментальное здоровье"
+      }
+    ],
+    "createdAt": "10.08.2025",
+    "likeCount": 3
+  }
+]

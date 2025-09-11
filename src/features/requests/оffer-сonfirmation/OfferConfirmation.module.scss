@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 556px;
+    width: 100%;
+    border-radius: var(--main-border-radius);
+    padding: 62px 60px;
+    background-color: var(--secondary-color);
+  }
+  
+  
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  
+  .icon {
+    margin-bottom: 52px;
+  
+    svg {
+      width: 100px;
+      height: 100px;
+      color: var(--main-color-text);
+    }
+  }
+
+  p, h3 {
+    margin: 0;
+  }
+  

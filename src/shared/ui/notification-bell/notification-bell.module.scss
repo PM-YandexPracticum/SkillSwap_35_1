@@ -1,0 +1,19 @@
+.notificationBell {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .bellIcon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .notificationDot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-alarm);
+    border-radius: 50%;
+  }

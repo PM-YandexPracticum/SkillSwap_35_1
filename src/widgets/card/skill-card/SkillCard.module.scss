@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 324px;
+  padding: 20px;
+  background-color: var(--secondary-color);
+  border-radius: var(--main-border-radius);
+
+  &.with-about {
+    padding: 32px;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+.user {
+  position: relative;
+  display: flex;
+  gap: 12px;
+}
+
+.user_info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.user_name {
+  color: var(--main-color-text);
+  font-weight: 600;
+  font-size: var(--font-size-main-header);
+  font-family: var(--font-family-user-name);
+  line-height: var(--font-line-main-header);
+}
+
+.like {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.button_icon {
+  width: 24px;
+  height: 24px;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &.with-about {
+    gap: 24px;
+  }
+}
+
+.skill_section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skills_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}

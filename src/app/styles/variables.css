@@ -1,0 +1,45 @@
+:root {
+  /* основные цвета */
+  --bg-color: #f9faf7;
+  --secondary-color: #ffffff;
+  --main-color-text: #253017;
+  --accent-color-dark: #508826;
+  --accent-color: #abd27a;
+  --accent-color-light: #deebc5;
+  --accent-color-lightest: #e4e8df;
+  --color-alarm: #e0796e;
+  --color-error: #bf3920;
+
+  /* доп цвета */
+  --tertiary-color-dark: #69735d;
+  --tertiary-color: #b2b9a9;
+  --tertiary-color-light: #9ca197;
+  --color-neutral: #000000;
+
+  /* цвета для тегов (категорий) */
+  --color-tag-business: #eee7f7;
+  --color-tag-creative: #f7e7f2;
+  --color-tag-language: #ebe5c5;
+  --color-tag-education: #e7f2f6;
+  --color-tag-household: #f7ebe5;
+  --color-tag-health: #e9f7e7;
+  --color-tag-another: #e8ecf7;
+
+  /* шрифты */
+  --font-family-main: 'Roboto', sans-serif;
+  --font-family-header-redesigned: 'Jost', sans-serif;
+  --font-family-user-name: 'OpenSans', sans-serif;
+  --font-size-title: 32px;
+  --font-line-title: 40px;
+  --font-size-heading-secondary: 24px;
+  --font-line-heading-secondary: 28px;
+  --font-size-main-header: 20px;
+  --font-line-main-header: 24px;
+  --font-size-main-text: 16px;
+  --font-line-main-text: 24px;
+  --font-size-details: 12px;
+  --font-line-details: 16px;
+
+  /* скругление углов */
+  --main-border-radius: 12px;
+}

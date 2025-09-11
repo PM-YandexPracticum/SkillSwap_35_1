@@ -1,0 +1,682 @@
+[
+  {
+    "id": "1",
+    "name": "Иван",
+    "city": "Санкт-Петербург",
+    "dateOfBirth": "20.02.1989",
+    "image": "https://i.ibb.co/YTRz55D4/user1.jpg",
+    "gender": "Мужской",
+    "about": "Люблю путешествовать и быстрые машины.",
+    "can": {
+      "title": "Продажи",
+      "category": "Бизнес и карьера",
+      "subcategory": "Продажи и переговоры",
+      "description": "Научусь продажам и переговорам с нуля.",
+      "images": [
+        "https://i.ibb.co/Mx631D6g/sell1.jpg",
+        "https://i.ibb.co/sfRNL8v/sell2.jpg",
+        "https://i.ibb.co/jvxPZYBn/sell3.jpg",
+        "https://i.ibb.co/TMs3vBb6/sell4.jpg",
+        "https://i.ibb.co/5WkJrFfS/sell5.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Йога и медитация"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Английский"
+      }
+    ],
+    "createdAt": "2025.06.13",
+    "likeCount": 2
+  },
+  {
+    "id": "2",
+    "name": "Анна",
+    "city": "Казань",
+    "dateOfBirth": "05.10.1996",
+    "gender": "Женский",
+    "image": "https://i.ibb.co/4RKsVmzT/user2.jpg",
+    "about": "Люблю модно одеваться и играть в шахматы.",
+    "can": {
+      "title": "Наведение порядка",
+      "category": "Дом и уют",
+      "subcategory": "Уборка и организация",
+      "description": "Научу наводить чистоту и порядок в доме.",
+      "images": [
+        "https://i.ibb.co/bgpRkRYy/cleaning5.jpg",
+        "https://i.ibb.co/GfPV4qSV/cleaning4.jpg",
+        "https://i.ibb.co/C3fq2mb4/cleaning3.jpg",
+        "https://i.ibb.co/Z1cPtp0G/cleaning2.jpg",
+        "https://i.ibb.co/gb1JGhjj/cleaning1.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Французский"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Питание и ЗОЖ"
+      }
+    ],
+    "createdAt": "2025.05.14",
+    "likeCount": 1
+  },
+  {
+    "id": "3",
+    "name": "Максим",
+    "city": "Москва",
+    "dateOfBirth": "03.02.1999",
+    "gender": "Мужской",
+    "image": "https://i.ibb.co/ymw9NM1v/user3.jpg",
+    "about": "Люблю вкусную еду и хорошие игры.",
+    "can": {
+      "title": "Игра на барабанах",
+      "category": "Творчество и искусство",
+      "subcategory": "Музыка и звук",
+      "description": "Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры",
+      "images": [
+        "https://i.ibb.co/Kj3VpST8/music1.jpg",
+        "https://i.ibb.co/Hw1rDw9/music2.jpg",
+        "https://i.ibb.co/Rpm84Q0D/music3.jpg",
+        "https://i.ibb.co/0VJ63KKn/music4.jpg",
+        "https://i.ibb.co/S7XFtZJf/music5.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Скорочтение"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Японский"
+      }
+    ],
+    "createdAt": "2025.04.15",
+    "likeCount": 2
+  },
+  {
+    "id": "4",
+    "name": "Алла",
+    "city": "Архангельск",
+    "dateOfBirth": "02.05.1995",
+    "gender": "Женский",
+    "image": "https://i.ibb.co/6pn0Z9X/user4.jpg",
+    "about": "Люблю ходить по магазинам и заниматься спортом.",
+    "can": {
+      "title": "Ремонт в доме",
+      "category": "Дом и уют",
+      "subcategory": "Ремонт",
+      "description": "Научу делать ремонт дома с нуля.",
+      "images": [
+        "https://i.ibb.co/BHLtHjcv/repair1.jpg",
+        "https://i.ibb.co/Q7xtcGwV/repair2.jpg",
+        "https://i.ibb.co/1f66j1F8/repair3.jpg",
+        "https://i.ibb.co/gMV5WhhD/repair4.jpg",
+        "https://i.ibb.co/fbFVS2y/repair5.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Декор и DIY"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Личностное развитие"
+      }
+    ],
+    "createdAt": "2025.08.12",
+    "likeCount": 100
+  },
+  {
+    "id": "5",
+    "name": "Дарья",
+    "city": "Ярославль",
+    "dateOfBirth": "01.05.1997",
+    "gender": "Женский",
+    "image": "https://i.ibb.co/zVxMbSm2/user5.jpg",
+    "about": "Люблю работать и усердно учиться.",
+    "can": {
+      "title": "Монтаж",
+      "category": "Творчество и искусство",
+      "subcategory": "Видеомонтаж",
+      "description": "Научу видеомонтажу абсолютно любого с нуля.",
+      "images": [
+        "https://i.ibb.co/W4ZcQr6Q/editing1.jpg",
+        "https://i.ibb.co/GvMWrL1T/editing2.jpg",
+        "https://i.ibb.co/JwDqyFkW/editing3.jpg",
+        "https://i.ibb.co/TB5CcZQ6/editing4.jpg",
+        "https://i.ibb.co/fVhTCNh1/editing5.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Креативное письмо"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Осознанность"
+      }
+    ],
+    "createdAt": "2025.07.11",
+    "likeCount": 200
+  },
+  {
+    "id": "6",
+    "name": "Екатерина",
+    "city": "Пермь",
+    "dateOfBirth": "21.05.1986",
+    "gender": "Женский",
+    "image": "https://i.ibb.co/8gMCQbjq/user6.jpg",
+    "about": "Постоянно развиваюсь и путешествую.",
+    "can": {
+      "title": "Арт-терапия",
+      "category": "Творчество и искусство",
+      "subcategory": "Арт-терапия",
+      "description": "Научу спокойствию и восстановлению сил с помощью Арт-терапии.",
+      "images": [
+        "https://i.ibb.co/jkpVQHc6/art4.jpg",
+        "https://i.ibb.co/rGLQrz9p/art5.jpg",
+        "https://i.ibb.co/dsHyW5rF/art3.jpg",
+        "https://i.ibb.co/z1HZX08/art2.png",
+        "https://i.ibb.co/Pn6hJzq/art1.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Дом и уют",
+        "subcategory": "Ремонт"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Сон и восстановление"
+      }
+    ],
+    "createdAt": "2025.06.10",
+    "likeCount": 300
+  },
+  {
+    "id": "7",
+    "name": "Елена",
+    "city": "Красноярск",
+    "dateOfBirth": "21.05.1989",
+    "gender": "Женский",
+    "image": "https://i.ibb.co/4RshdhkB/user7.jpg",
+    "about": "Люблю ходить по клубам и ездить на машине.",
+    "can": {
+      "title": "Программирование",
+      "category": "Образование и развитие",
+      "subcategory": "Навыки обучения",
+      "description": "Научу программированию любого человека при огромном желаний.",
+      "images": [
+        "https://i.ibb.co/xSsgTxYf/robot1.jpg",
+        "https://i.ibb.co/4wq4JwL0/robot2.jpg",
+        "https://i.ibb.co/WvnfGV75/robot3.jpg",
+        "https://i.ibb.co/jnyKjCG/robot4.jpg",
+        "https://i.ibb.co/7tSdP3kf/robot5.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Навыки обучения"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Баланс жизни и работы"
+      }
+    ],
+    "createdAt": "2025.06.13",
+    "likeCount": 400
+  },
+  {
+    "id": "8",
+    "name": "София",
+    "city": "Абакан",
+    "dateOfBirth": "21.05.1984",
+    "gender": "Женский",
+    "image": "https://i.ibb.co/Rk8qZNn9/user8.jpg",
+    "about": "Люблю отдыхать и постоянно развиваться.",
+    "can": {
+      "title": "Правильное питание",
+      "category": "Здоровье и лайфстайл",
+      "subcategory": "Питание и ЗОЖ",
+      "description": "Научу правильно питаться и следить за здоровьем.",
+      "images": [
+        "https://i.ibb.co/Y7z6czFY/food1.jpg",
+        "https://i.ibb.co/TqknkpGG/food2.jpg",
+        "https://i.ibb.co/FL6VSqBz/food3.jpg",
+        "https://i.ibb.co/Ndm9bwXK/food4.png",
+        "https://i.ibb.co/QFGFTtZ0/food5.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Английский"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Ментальное здоровье"
+      }
+    ],
+    "createdAt": "2025.05.11",
+    "likeCount": 2
+  },
+  {
+    "id": "9",
+    "name": "Иван",
+    "city": "Санкт-Петербург",
+    "dateOfBirth": "20.02.1989",
+    "image": "https://i.ibb.co/YTRz55D4/user1.jpg",
+    "gender": "Мужской",
+    "about": "Люблю путешествовать и быстрые машины.",
+    "can": {
+      "title": "Хранение вещей",
+      "category": "Дом и уют",
+      "subcategory": "Хранение вещей",
+      "description": "Научу хранить вещи дома и экономить пространство.",
+      "images": [
+        "https://i.ibb.co/zVhJ4V9f/method1.jpg",
+        "https://i.ibb.co/3wc9dKQ/method2.jpg",
+        "https://i.ibb.co/jktpwDXc/method3.jpg",
+        "https://i.ibb.co/dsHZT3YJ/method4.jpg",
+        "https://i.ibb.co/pjpx8F9x/method5.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Бизнес и карьера",
+        "subcategory": "Тайм-менеджмент"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Физические тренировки"
+      }
+    ],
+    "createdAt": "2025.04.13",
+    "likeCount": 2
+  },
+  {
+    "id": "10",
+    "name": "Анна",
+    "city": "Казань",
+    "dateOfBirth": "05.10.1996",
+    "gender": "Женский",
+    "image": "https://i.ibb.co/4RKsVmzT/user2.jpg",
+    "about": "Люблю модно одеваться и играть в шахматы.",
+    "can": {
+      "title": "Японский",
+      "category": "Иностранные языки",
+      "subcategory": "Японский",
+      "description": "Научу разговаривать на японском языке.",
+      "images": [
+        "https://i.ibb.co/ccYSjcFR/japan1.jpg",
+        "https://i.ibb.co/zhnM0tgk/japan2.jpg",
+        "https://i.ibb.co/1f5SjPKm/japan3.jpg",
+        "https://i.ibb.co/HLtQStwq/japan4.jpg",
+        "https://i.ibb.co/qZPr42N/japan5.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Французский"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Коучинг"
+      }
+    ],
+    "createdAt": "2025.08.20",
+    "likeCount": 1
+  },
+  {
+    "id": "11",
+    "name": "Максим",
+    "city": "Москва",
+    "dateOfBirth": "03.02.1999",
+    "gender": "Мужской",
+    "image": "https://i.ibb.co/ymw9NM1v/user3.jpg",
+    "about": "Люблю вкусную еду и хорошие игры.",
+    "can": {
+      "title": "DIY",
+      "category": "Творчество и искусство",
+      "subcategory": "Декор и DIY",
+      "description": "Научу работать руками и собирать предметы для собственного дома.",
+      "images": [
+        "https://i.ibb.co/Kcn7kmf3/diy5.jpg",
+        "https://i.ibb.co/qVT4bmT/diy4.png",
+        "https://i.ibb.co/M5JBjJ3G/diy3.png",
+        "https://i.ibb.co/3bPx8y9/diy2.png",
+        "https://i.ibb.co/tMf8Ry7X/diy1.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Дом и уют",
+        "subcategory": "Домашние растения"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Рисование и иллюстрация"
+      }
+    ],
+    "createdAt": "2025.08.21",
+    "likeCount": 2
+  },
+  {
+    "id": "12",
+    "name": "Алла",
+    "city": "Архангельск",
+    "dateOfBirth": "02.05.1995",
+    "gender": "Женский",
+    "image": "https://i.ibb.co/6pn0Z9X/user4.jpg",
+    "about": "Люблю ходить по магазинам и заниматься спортом.",
+    "can": {
+      "title": "Французский",
+      "category": "Иностранные языки",
+      "subcategory": "Французский",
+      "description": "Научусь разговаривать на французском с нуля.",
+      "images": [
+        "https://i.ibb.co/Zz7Mfk7C/france1.jpg",
+        "https://i.ibb.co/HwcT2vp/france2.jpg",
+        "https://i.ibb.co/GfvqTc4y/france3.jpg",
+        "https://i.ibb.co/Q7gndhYv/france4.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Испанский"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Осознанность"
+      }
+    ],
+    "createdAt": "2025.08.22",
+    "likeCount": 2
+  },
+  {
+    "id": "13",
+    "name": "Дарья",
+    "city": "Ярославль",
+    "dateOfBirth": "01.05.1997",
+    "gender": "Женский",
+    "image": "https://i.ibb.co/zVxMbSm2/user5.jpg",
+    "about": "Люблю работать и усердно учиться.",
+    "can": {
+      "title": "Самопрезентация",
+      "category": "Бизнес и карьера",
+      "subcategory": "Резюме и собеседование",
+      "description": "Научу заполнять резюме, чтобы оно было заметно и интересно.",
+      "images": [
+        "https://i.ibb.co/7xKBDy95/resume4.jpg",
+        "https://i.ibb.co/fVpLhMHy/resume1.jpg",
+        "https://i.ibb.co/XfKWrZTf/resume3.jpg",
+        "https://i.ibb.co/PZMs2SvZ/resume2.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Бизнес и карьера",
+        "subcategory": "Управление командой"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Личностное развитие"
+      }
+    ],
+    "createdAt": "2025.08.23",
+    "likeCount": 1
+  },
+  {
+    "id": "14",
+    "name": "Екатерина",
+    "city": "Пермь",
+    "dateOfBirth": "21.05.1986",
+    "gender": "Женский",
+    "image": "https://i.ibb.co/8gMCQbjq/user6.jpg",
+    "about": "Постоянно развиваюсь и путешествую.",
+    "can": {
+      "title": "Немецкий",
+      "category": "Иностранные языки",
+      "subcategory": "Немецкий",
+      "description": "Научу разговаривать на немецком языке, опыт преподавания 5 лет.",
+      "images": [
+        "https://i.ibb.co/SkJ8QCR/germany1.jpg",
+        "https://i.ibb.co/CpFyjgm0/germany2.jpg",
+        "https://i.ibb.co/Q7W80XKt/germany3.jpg",
+        "https://i.ibb.co/Vcs1Z7q9/germany4.jpg",
+        "https://i.ibb.co/1pX260C/germany5.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Английский"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Питание и ЗОЖ"
+      },
+      {
+        "category": "Бизнес и карьера",
+        "subcategory": "Маркетинг и реклама"
+      }
+    ],
+    "createdAt": "2025.08.24",
+    "likeCount": 3
+  },
+  {
+    "id": "15",
+    "name": "Елена",
+    "city": "Красноярск",
+    "dateOfBirth": "21.05.1989",
+    "gender": "Женский",
+    "image": "https://i.ibb.co/4RshdhkB/user7.jpg",
+    "about": "Люблю ходить по клубам и ездить на машине.",
+    "can": {
+      "title": "Уход за растениями",
+      "category": "Дом и уют",
+      "subcategory": "Домашние растения",
+      "description": "Научу ухаживать за домашними растениями.",
+      "images": [
+        "https://i.ibb.co/dsZpWBRX/plant1.png",
+        "https://i.ibb.co/Q3wpGrFF/plant2.png",
+        "https://i.ibb.co/LzmXVbCC/plant3.jpg",
+        "https://i.ibb.co/4R8TbzhX/plant4.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Дом и уют",
+        "subcategory": "Домашние финансы"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Декор и DIY"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Баланс жизни и работы"
+      }
+    ],
+    "createdAt": "2025.08.25",
+    "likeCount": 3
+  },
+  {
+    "id": "16",
+    "name": "София",
+    "city": "Абакан",
+    "dateOfBirth": "21.05.1984",
+    "gender": "Женский",
+    "image": "https://i.ibb.co/Rk8qZNn9/user8.jpg",
+    "about": "Люблю отдыхать и постоянно развиваться.",
+    "can": {
+      "title": "Йога",
+      "category": "Здоровье и лайфстайл",
+      "subcategory": "Йога и медитация",
+      "description": "Помогу научиться медитировать и обретать покой.",
+      "images": [
+        "https://i.ibb.co/B57YvksX/yoga1.jpg",
+        "https://i.ibb.co/hR3r288F/yoga2.jpg",
+        "https://i.ibb.co/YsRMNVX/yoga3.jpg",
+        "https://i.ibb.co/ccj86R3V/yoga4.jpg"
+      ]
+    },
+    "want": [
+      {
+        "category": "Дом и уют",
+        "subcategory": "Приготовление еды"
+      },
+      {
+        "category": "Творчество и искусство",
+        "subcategory": "Фотография"
+      },
+      {
+        "category": "Здоровье и лайфстайл",
+        "subcategory": "Ментальное здоровье"
+      },
+      {
+        "category": "Образование и развитие",
+        "subcategory": "Когнитивные техники"
+      },
+      {
+        "category": "Иностранные языки",
+        "subcategory": "Китайский"
+      }
+    ],
+    "createdAt": "2025.08.25",
+    "likeCount": 2
+  }
+]

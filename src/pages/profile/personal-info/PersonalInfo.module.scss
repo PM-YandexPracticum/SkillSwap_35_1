@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px;
+
+  .inputsWraper {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    width: 460px;
+  }
+
+  .passwordButton {
+    background-color: inherit;
+    border: none;
+    color: var(--accent-color-dark);
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    text-align: start;
+  
+    &:hover {
+      color: var(--accent-color);
+    }
+  }
+}

@@ -1,0 +1,73 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 488px);
+  gap: 40px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  flex: 1;
+}
+
+.block {
+  display: flex;
+  gap: 12px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.icon_briefcase {
+  background-color: var(--color-tag-business);
+}
+
+.icon_global {
+  background-color: var(--color-tag-language);
+}
+
+.icon_home {
+  background-color: var(--color-tag-household);
+}
+
+.icon_palette {
+  background-color: var(--color-tag-creative);
+}
+
+.icon_book {
+  background-color: var(--color-tag-education);
+}
+
+.icon_lifestyle {
+  background-color: var(--color-tag-health);
+}
+
+ul, h3, p {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+li {
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

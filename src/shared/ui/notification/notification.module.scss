@@ -1,0 +1,46 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--accent-color-light);
+  border-radius: var(--main-border-radius);
+  padding: 24px 34px 24px 24px;
+  color: var(--main-color-text);
+  width: 100%;
+}
+
+h4 {
+  margin: 0;
+}
+
+.close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: var(--accent-color-light);
+  border: none;
+  cursor: pointer;
+}
+
+.button {
+  display: none;
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 8px 12px;
+  background-color: var(--secondary-color);
+}
+
+.container:hover .button {
+  display: flex;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
